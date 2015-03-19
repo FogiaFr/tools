@@ -88,7 +88,10 @@ public class MapGenerator {
                             System.out.println("Oops, le chemin " + pathFound + " n'a pas ete trouve pour " + currentProv.getName());
                         }
                     }
-                } else if (ligne.startsWith("%#") && ligne.split(" ").length - 2 < currentProvDeepth) {
+                } else if (ligne.startsWith("%#") && ligne.split(" ")[0].length() - 2 < currentProvDeepth) {
+                    if (currentProv.getName().equals("Highlands")) {
+                        int a = 1;
+                    }
                     provinces.put(currentProv.getName(), currentProv);
                     currentProvDeepth = -1;
                     currentProv = null;
@@ -415,7 +418,7 @@ public class MapGenerator {
 
         /** Generates the restructurated coords of the province. */
         public void restructurate() {
-            if (getName().equals("Norvege")) {
+            if (getName().equals("Highlands")) {
                 int a = 1;
             }
             coords = new ArrayList<>();
