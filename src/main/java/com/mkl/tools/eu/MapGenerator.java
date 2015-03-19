@@ -40,10 +40,11 @@ public class MapGenerator {
         Path currentPath = null;
         Map<String, Province> provinces = new HashMap<>();
         Province currentProv = null;
+        int currentProvDeepth = -1;
         Pattern mer = Pattern.compile("/mer\\d+ beginpath.*");
         Pattern bord = Pattern.compile("/bord\\d+ beginpath.*");
         Pattern path = Pattern.compile("/path\\d+ beginpath.*");
-        Pattern province = Pattern.compile("%#=+ (.*)");
+        Pattern province = Pattern.compile("%#(=+) (.*)");
         while ((ligne = reader.readLine()) != null) {
             Matcher provMatch = province.matcher(ligne);
             if (mer.matcher(ligne).matches() || bord.matcher(ligne).matches() || path.matcher(ligne).matches()) {
@@ -66,7 +67,8 @@ public class MapGenerator {
                 if (currentProv != null) {
                     provinces.put(currentProv.getName(), currentProv);
                 }
-                String fullName = provMatch.group(1);
+                currentProvDeepth = provMatch.group(1).length();
+                String fullName = provMatch.group(2);
                 Matcher m = Pattern.compile("(.*) <(.*)>").matcher(fullName);
                 if (m.matches()) {
                     currentProv = new Province(m.group(1), m.group(2));
@@ -86,9 +88,12 @@ public class MapGenerator {
                             System.out.println("Oops, le chemin " + pathFound + " n'a pas ete trouve pour " + currentProv.getName());
                         }
                     }
+                } else if (ligne.startsWith("%#") && ligne.split(" ").length - 2 < currentProvDeepth) {
+                    provinces.put(currentProv.getName(), currentProv);
+                    currentProvDeepth = -1;
+                    currentProv = null;
                 }
             }
-            // Bad parsing of provinces, does not detect some cases.
         }
 
         if (currentProv != null) {
