@@ -88,7 +88,7 @@ public class MapGenerator {
                             System.out.println("Oops, le chemin " + pathFound + " n'a pas ete trouve pour " + currentProv.getName());
                         }
                     }
-                } else if (ligne.startsWith("%#") && ligne.split(" ")[0].length() - 2 < currentProvDeepth) {
+                } else if (ligne.startsWith("%#") && ! ligne.startsWith("%##") && ligne.split(" ")[0].length() - 2 < currentProvDeepth) {
                     if (currentProv.getName().equals("Highlands")) {
                         int a = 1;
                     }
