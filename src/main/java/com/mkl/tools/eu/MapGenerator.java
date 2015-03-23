@@ -70,6 +70,9 @@ public final class MapGenerator {
                 }
             } else if (provMatch.matches()) {
                 if (currentProv != null) {
+                    if (provinces.containsKey(currentProv.getName())) {
+                        log.append(currentProv.getName()).append("\t").append("Province already exists\n");
+                    }
                     provinces.put(currentProv.getName(), currentProv);
                 }
                 currentProvDeepth = provMatch.group(1).length();
@@ -95,6 +98,9 @@ public final class MapGenerator {
                         }
                     }
                 } else if (ligne.startsWith("%#") && !ligne.startsWith("%##") && ligne.split(" ")[0].length() - 2 < currentProvDeepth) {
+                    if (provinces.containsKey(currentProv.getName())) {
+                        log.append(currentProv.getName()).append("\t").append("Province already exists\n");
+                    }
                     provinces.put(currentProv.getName(), currentProv);
                     currentProvDeepth = -1;
                     currentProv = null;
@@ -103,6 +109,9 @@ public final class MapGenerator {
         }
 
         if (currentProv != null) {
+            if (provinces.containsKey(currentProv.getName())) {
+                log.append(currentProv.getName()).append("\t").append("Province already exists\n");
+            }
             provinces.put(currentProv.getName(), currentProv);
         }
 
@@ -122,8 +131,6 @@ public final class MapGenerator {
      * @throws Exception exception.
      */
     private static void extractData(Map<String, Province> provinces, Writer log) throws Exception {
-
-
         Writer writer = createFileWriter("src/main/resources/countries.geo.json", false);
         writer.append("{\"type\":\"FeatureCollection\",\"features\":[\n");
         boolean first = true;

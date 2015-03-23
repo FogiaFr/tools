@@ -233,6 +233,7 @@ Malopolska	Border not consistent (ignored)	/path0723	(4023,3316)	(4010,3327)	(39
 Malopolska	Border not closed	/path0513	(3939,3768)	(3924,3759)
 Armor	Border not closed	/path0751	(1196,3265)	(1193,3266)
 Trasosmontes	Border not consistent (ignored)	/path1104	(607,2075)	(604,2080)	(384,2246)
+Mumhan	Border not closed	/path0359	(565,4057)	(558,4058)
 Bassorah	Border not consistent (ignored)	/path1418	(7063,502)	(7067,515)	(7101,711)
 Bassorah	Border not consistent (ignored)	/path1402	(7212,560)	(7211,553)	(7101,711)
 Murcia	Border not consistent (ignored)	/path1222	(1148,1626)	(1156,1620)	(1294,1690)
