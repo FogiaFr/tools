@@ -25,7 +25,12 @@ import java.util.regex.Pattern;
  *
  * @author MKL
  */
-public class MapGenerator {
+public final class MapGenerator {
+    /** No constructor for utility class. */
+    private MapGenerator() {
+
+    }
+
     /**
      * Do all the stuff.
      *
@@ -56,9 +61,7 @@ public class MapGenerator {
                 String[] coords = ligne.split(" ");
                 for (int i = 0; i < ligne.length() - 1; i = i + 2) {
                     try {
-                        Integer x = Integer.parseInt(coords[i]);
-                        Integer y = Integer.parseInt(coords[i + 1]);
-                        currentPath.getCoords().add(new ImmutablePair<>(x, y));
+                        currentPath.getCoords().add(new ImmutablePair<>(Integer.parseInt(coords[i]), Integer.parseInt(coords[i + 1])));
                     } catch (NumberFormatException e) {
                         break;
                     }
@@ -77,21 +80,19 @@ public class MapGenerator {
                 }
             } else if (currentProv != null) {
                 if (ligne.startsWith("/prov")) {
-                    currentProv.setTerrain(ligne.split(" ")[1]);
+                    SubProvince portion = new SubProvince(ligne.split(" ")[1]);
+                    currentProv.getPortions().add(portion);
                     Matcher m = Pattern.compile("(/path\\d+ AR?)|(/bord\\d+ AR?)|(/mer\\d+ AR?)").matcher(ligne);
                     while (m.find()) {
                         String chaine = m.group();
                         Path pathFound = paths.get(chaine.split(" ")[0]);
                         if (pathFound != null) {
-                            currentProv.getPaths().add(new DirectedPath(pathFound, chaine.split(" ")[1].contains("R")));
+                            portion.getPaths().add(new DirectedPath(pathFound, chaine.split(" ")[1].contains("R")));
                         } else {
                             System.out.println("Oops, le chemin " + pathFound + " n'a pas ete trouve pour " + currentProv.getName());
                         }
                     }
-                } else if (ligne.startsWith("%#") && ! ligne.startsWith("%##") && ligne.split(" ")[0].length() - 2 < currentProvDeepth) {
-                    if (currentProv.getName().equals("Highlands")) {
-                        int a = 1;
-                    }
+                } else if (ligne.startsWith("%#") && !ligne.startsWith("%##") && ligne.split(" ")[0].length() - 2 < currentProvDeepth) {
                     provinces.put(currentProv.getName(), currentProv);
                     currentProvDeepth = -1;
                     currentProv = null;
@@ -108,6 +109,12 @@ public class MapGenerator {
         extractData(provinces);
     }
 
+    /**
+     * Create files used by the application.
+     *
+     * @param provinces data gathered by the input.
+     * @throws Exception exception.
+     */
     private static void extractData(Map<String, Province> provinces) throws Exception {
 
 
@@ -124,44 +131,31 @@ public class MapGenerator {
             writer.append("    {\"type\":\"Feature\",\"geometry\":{\"type\":\"");
             Province polygones = provinces.get(prov);
             polygones.restructurate();
-//            if (polygones.getCoords().size() == 1) {
+            if (polygones.getCoords().size() == 1) {
                 writer.append("Polygon");
-//            } else if (polygones.getCoords().size() > 1) {
-//                writer.append("MultiPolygon");
-//            } else {
-//                System.out.println("Oops, la province " + polygones.getName() + " n'a pas de frontieres.");
-//            }
+            } else if (polygones.getCoords().size() > 1) {
+                writer.append("MultiPolygon");
+            } else {
+                System.out.println("Oops, la province " + polygones.getName() + " n'a pas de frontieres.");
+            }
             writer.append("\",\"coordinates\":[");
 
-            boolean firstPolygon = true;
-            for (List<Pair<Integer, Integer>> polygone : polygones.getCoords()) {
-                if (!firstPolygon) {
-                    writer.append(", ");
-                } else {
-                    firstPolygon = false;
-                }
-                writer.append("[");
-//                if (polygones.getCoords().size() > 1) {
-//                    writer.append("[");
-//                }
-
-                boolean firstCoord = true;
-                for (Pair<Integer, Integer> coord : polygone) {
-                    if (!firstCoord) {
+            if (polygones.getCoords().size() == 1) {
+                writePolygone(polygones.getCoords().get(0), writer);
+            } else {
+                boolean firstPolygon = true;
+                for (List<List<Pair<Integer, Integer>>> polygone : polygones.getCoords()) {
+                    if (!firstPolygon) {
                         writer.append(", ");
                     } else {
-                        firstCoord = false;
+                        firstPolygon = false;
                     }
-                    double x = 1.204 + coord.getLeft() * 12.859 / 8425;
-                    double y = 1.204 + coord.getRight() * 8.862 / 5840;
-                    writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("]");
+                    writer.append("[");
+
+                    writePolygone(polygone, writer);
+
+                    writer.append("]");
                 }
-
-//                if (polygones.getCoords().size() > 1) {
-//                    writer.append("]");
-//                }
-
-                writer.append("]");
             }
 
             writer.append("]},\"id\":\"").append(polygones.getName()).append("\"}");
@@ -171,6 +165,40 @@ public class MapGenerator {
 
         writer.flush();
         writer.close();
+    }
+
+    /**
+     * Write a polygone in a geo.json format.
+     *
+     * @param polygones List of coordinates of the polygones.
+     * @param writer    File Writer.
+     * @throws Exception exception.
+     */
+    private static void writePolygone(List<List<Pair<Integer, Integer>>> polygones, Writer writer) throws Exception {
+        boolean firstPolygon = true;
+        for (List<Pair<Integer, Integer>> polygone : polygones) {
+            if (!firstPolygon) {
+                writer.append(", ");
+            } else {
+                firstPolygon = false;
+            }
+            writer.append("[");
+
+
+            boolean firstCoord = true;
+            for (Pair<Integer, Integer> coord : polygone) {
+                if (!firstCoord) {
+                    writer.append(", ");
+                } else {
+                    firstCoord = false;
+                }
+                double x = 1.204 + coord.getLeft() * 12.859 / 8425;
+                double y = 1.204 + coord.getRight() * 8.862 / 5840;
+                writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("]");
+            }
+
+            writer.append("]");
+        }
     }
 
     /**
@@ -368,12 +396,10 @@ public class MapGenerator {
         private String name;
         /** The religion of the province. */
         private String religion;
-        /** The terrain of the province. */
-        private String terrain;
-        /** The paths representing the frontiers of the province. */
-        private List<DirectedPath> paths = new ArrayList<>();
+        /** Portions of the province. */
+        private List<SubProvince> portions = new ArrayList<>();
         /** Restructuration of the coords for the geo.json export. */
-        private List<List<Pair<Integer, Integer>>> coords;
+        private List<List<List<Pair<Integer, Integer>>>> coords;
 
         /**
          * Constructor.
@@ -396,82 +422,35 @@ public class MapGenerator {
             return religion;
         }
 
-        /** @return the terrain. */
-        public String getTerrain() {
-            return terrain;
-        }
-
-        /** @param terrain the terrain to set. */
-        public void setTerrain(String terrain) {
-            this.terrain = terrain;
-        }
-
-        /** @return the paths. */
-        public List<DirectedPath> getPaths() {
-            return paths;
+        /** @return the portions. */
+        public List<SubProvince> getPortions() {
+            return portions;
         }
 
         /** @return the coords. */
-        public List<List<Pair<Integer, Integer>>> getCoords() {
+        public List<List<List<Pair<Integer, Integer>>>> getCoords() {
             return coords;
         }
 
         /** Generates the restructurated coords of the province. */
         public void restructurate() {
-            if (getName().equals("Highlands")) {
-                int a = 1;
-            }
             coords = new ArrayList<>();
-            coords.add(new ArrayList<>());
-
-            for (DirectedPath path : getPaths()) {
-                List<Pair<Integer, Integer>> pathValues;
-                if (path.isInverse()) {
-                    pathValues = path.getPath().getInvertedCoords();
-                } else {
-                    pathValues = path.getPath().getCoords();
+            String terrain = null;
+            for (SubProvince portion : portions) {
+                coords.add(portion.getStructuratedCoords(this));
+                if (terrain == null) {
+                    terrain = portion.getTerrain();
+                } else if (!StringUtils.equals(terrain, portion.getTerrain())) {
+                    System.out.println("Erreur de terrain pour la province " + getName());
                 }
-
-                if (path.getPath().isBegin() && !lastElement(coords).isEmpty() && !pathValues.isEmpty()) {
-                    double nextDistance = distance(lastElement(lastElement(coords)), firstElement(pathValues));
-                    if (nextDistance > 0) {
-                        double distance = distanceToClosePolygone(lastElement(coords));
-
-                        if (distance > 0) {
-                            if (distance > nextDistance) {
-                                System.out.println("OK " + getName() + " n'est pas fermé à " + path.getPath().getName() + " ! " + firstElement(lastElement(coords)) + " vs " + lastElement(lastElement(coords)));
-                            } else {
-                                System.out.println( "KO " + getName() + " n'est pas fermé à " + path.getPath().getName() + " ! " + firstElement(lastElement(coords)) + " vs " + lastElement(lastElement(coords)));
-                                coords.add(new ArrayList<>());
-                            }
-                        } else {
-                            coords.add(new ArrayList<>());
-                        }
-                    }
-                }
-
-                lastElement(coords).addAll(pathValues);
             }
-
-            double distance = distanceToClosePolygone(lastElement(coords));
-
-
-            if (distance > 0) {
-                System.out.println(getName() + " n'est pas fermé à " + firstElement(getPaths()).getPath().getName()
-                        + " ! " + firstElement(lastElement(coords)) + " vs " + lastElement(lastElement(coords)));
-            }
-
-//            if (getPaths().get(0).getPath().isBegin() && ! coords.isEmpty() && ! coords.get(coords.size() - 1).equals(coords.get(0))) {
-//                System.out.println(getName() + " a une discontinuite en " + getPaths().get(0).getPath().getName() + " : " + coords.get(coords.size() - 1) + " vs " + coords.get(0));
-//            }
         }
 
         /** {@inheritDoc} */
         @Override
         public boolean equals(Object obj) {
-            if (obj == this) {
+            if (obj == this)
                 return true;
-            }
 
             boolean equals = false;
 
@@ -486,6 +465,82 @@ public class MapGenerator {
         @Override
         public int hashCode() {
             return name.hashCode();
+        }
+    }
+
+    /** Inner class describing a portion of a province. */
+    private static class SubProvince {
+        /** The terrain of the province. */
+        private String terrain;
+        /** The paths representing the frontiers of the province. */
+        private List<DirectedPath> paths = new ArrayList<>();
+
+        /**
+         * Constructor.
+         *
+         * @param terrain of the province.
+         */
+        public SubProvince(String terrain) {
+            this.terrain = terrain;
+        }
+
+        /** @return the terrain. */
+        public String getTerrain() {
+            return terrain;
+        }
+
+        /** @return the paths. */
+        public List<DirectedPath> getPaths() {
+            return paths;
+        }
+
+        /**
+         * Generates the restructurated coords of the province.
+         *
+         * @param province for logging purpose.
+         * @return the restructurated coords of the province.
+         */
+        public List<List<Pair<Integer, Integer>>> getStructuratedCoords(Province province) {
+            List<List<Pair<Integer, Integer>>> coordsPortion = new ArrayList<>();
+            coordsPortion.add(new ArrayList<>());
+            for (DirectedPath path : getPaths()) {
+                List<Pair<Integer, Integer>> pathValues;
+                if (path.isInverse()) {
+                    pathValues = path.getPath().getInvertedCoords();
+                } else {
+                    pathValues = path.getPath().getCoords();
+                }
+
+                if (path.getPath().isBegin() && !lastElement(coordsPortion).isEmpty() && !pathValues.isEmpty()) {
+                    double nextDistance = distance(lastElement(lastElement(coordsPortion)), firstElement(pathValues));
+                    if (nextDistance > 0) {
+                        double distance = distanceToClosePolygone(lastElement(coordsPortion));
+
+                        if (distance > 0) {
+                            if (distance > nextDistance) {
+                                System.out.println("OK " + province.getName() + " n'est pas fermé à " + path.getPath().getName() + " ! " + firstElement(pathValues) + " vs " + lastElement(lastElement(coordsPortion)));
+                            } else {
+                                System.out.println("KO " + province.getName() + " n'est pas fermé à " + path.getPath().getName() + " ! " + firstElement(lastElement(coordsPortion)) + " vs " + lastElement(lastElement(coordsPortion)));
+                                coordsPortion.add(new ArrayList<>());
+                            }
+                        } else {
+                            coordsPortion.add(new ArrayList<>());
+                        }
+                    }
+                }
+
+                lastElement(coordsPortion).addAll(pathValues);
+            }
+
+            double distance = distanceToClosePolygone(lastElement(coordsPortion));
+
+
+            if (distance > 0) {
+                System.out.println(province.getName() + " n'est pas fermé à " + firstElement(getPaths()).getPath().getName()
+                        + " ! " + firstElement(lastElement(coordsPortion)) + " vs " + lastElement(lastElement(coordsPortion)));
+            }
+
+            return coordsPortion;
         }
     }
 }
