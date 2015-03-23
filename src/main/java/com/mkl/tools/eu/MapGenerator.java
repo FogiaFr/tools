@@ -40,6 +40,8 @@ public final class MapGenerator {
     public static void main(String[] args) throws Exception {
         String ligne;
 
+        Writer log = createFileWriter("src/main/resources/log.txt", false);
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("chemins.eps")));
         Map<String, Path> paths = new HashMap<>();
         Path currentPath = null;
@@ -74,9 +76,9 @@ public final class MapGenerator {
                 String fullName = provMatch.group(2);
                 Matcher m = Pattern.compile("(.*) <(.*)>").matcher(fullName);
                 if (m.matches()) {
-                    currentProv = new Province(m.group(1), m.group(2));
+                    currentProv = new Province(m.group(1), m.group(2), log);
                 } else {
-                    currentProv = new Province(fullName, null);
+                    currentProv = new Province(fullName, null, log);
                 }
             } else if (currentProv != null) {
                 if (ligne.startsWith("/prov")) {
@@ -89,7 +91,7 @@ public final class MapGenerator {
                         if (pathFound != null) {
                             portion.getPaths().add(new DirectedPath(pathFound, chaine.split(" ")[1].contains("R")));
                         } else {
-                            System.out.println("Oops, le chemin " + pathFound + " n'a pas ete trouve pour " + currentProv.getName());
+                            log.append(currentProv.getName()).append("\t").append("Path not found").append("\t").append(chaine.split(" ")[0]).append("\n");
                         }
                     }
                 } else if (ligne.startsWith("%#") && !ligne.startsWith("%##") && ligne.split(" ")[0].length() - 2 < currentProvDeepth) {
@@ -106,16 +108,20 @@ public final class MapGenerator {
 
         reader.close();
 
-        extractData(provinces);
+        extractData(provinces, log);
+
+        log.flush();
+        log.close();
     }
 
     /**
      * Create files used by the application.
      *
      * @param provinces data gathered by the input.
+     * @param log       log writer.
      * @throws Exception exception.
      */
-    private static void extractData(Map<String, Province> provinces) throws Exception {
+    private static void extractData(Map<String, Province> provinces, Writer log) throws Exception {
 
 
         Writer writer = createFileWriter("src/main/resources/countries.geo.json", false);
@@ -136,7 +142,7 @@ public final class MapGenerator {
             } else if (polygones.getCoords().size() > 1) {
                 writer.append("MultiPolygon");
             } else {
-                System.out.println("Oops, la province " + polygones.getName() + " n'a pas de frontieres.");
+                log.append(polygones.getName()).append("\t").append("No border.").append("\n");
             }
             writer.append("\",\"coordinates\":[");
 
@@ -160,11 +166,47 @@ public final class MapGenerator {
 
             writer.append("]},\"id\":\"").append(polygones.getName()).append("\"}");
         }
+        // Military rounds tiles
+        int roundXBegin = 1550;
+        int roundYBegin = 32;
+        int roundSize = 113;
+        for (int i = 0; i <= 5; i++) {
+            writeSquare(writer, roundXBegin + 2 * i * roundSize, roundYBegin, roundSize, "MR_W" + i);
+            String name = "MR_S" + (i + 1);
+            if (i == 5) {
+                name = "MR_End";
+            }
+            writeSquare(writer, roundXBegin + 2 * i * roundSize, roundYBegin + 2 * roundSize, roundSize, name);
+        }
+
 
         writer.append("\n]}");
 
         writer.flush();
         writer.close();
+    }
+
+    private static void writeSquare(Writer writer, int xBegin, int yBegin, int size, String name) throws IOException {
+        writer.append(",\n");
+        writer.append("    {\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[");
+
+        double x = 1.204 + xBegin * 12.859 / 8425;
+        double y = 1.204 + yBegin * 8.862 / 5840;
+        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
+
+        x = 1.204 + (xBegin + size) * 12.859 / 8425;
+        y = 1.204 + yBegin * 8.862 / 5840;
+        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
+
+        x = 1.204 + (xBegin + size) * 12.859 / 8425;
+        y = 1.204 + (yBegin + size) * 8.862 / 5840;
+        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
+
+        x = 1.204 + xBegin * 12.859 / 8425;
+        y = 1.204 + (yBegin + size) * 8.862 / 5840;
+        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("]");
+
+        writer.append("]]},\"id\":\"").append(name).append("\"}");
     }
 
     /**
@@ -400,16 +442,20 @@ public final class MapGenerator {
         private List<SubProvince> portions = new ArrayList<>();
         /** Restructuration of the coords for the geo.json export. */
         private List<List<List<Pair<Integer, Integer>>>> coords;
+        /** Log writer. */
+        private Writer log;
 
         /**
          * Constructor.
          *
          * @param name     of the province.
          * @param religion of the province.
+         * @param log      log writer.
          */
-        public Province(String name, String religion) {
+        public Province(String name, String religion, Writer log) {
             this.name = name;
             this.religion = religion;
+            this.log = log;
         }
 
         /** @return the name. */
@@ -432,16 +478,20 @@ public final class MapGenerator {
             return coords;
         }
 
-        /** Generates the restructurated coords of the province. */
-        public void restructurate() {
+        /**
+         * Generates the restructurated coords of the province.
+         *
+         * @throws Exception exception.
+         */
+        public void restructurate() throws Exception {
             coords = new ArrayList<>();
             String terrain = null;
             for (SubProvince portion : portions) {
-                coords.add(portion.getStructuratedCoords(this));
-                if (terrain == null) {
+                coords.add(portion.getStructuratedCoords(this, log));
+                if (terrain == null && ! StringUtils.equals("lac", portion.getTerrain())) {
                     terrain = portion.getTerrain();
-                } else if (!StringUtils.equals(terrain, portion.getTerrain())) {
-                    System.out.println("Erreur de terrain pour la province " + getName());
+                } else if (!StringUtils.equals(terrain, portion.getTerrain()) && ! StringUtils.equals("lac", portion.getTerrain())) {
+                    log.append(getName()).append("\t").append("Terrain not consistent").append("\t").append(terrain).append("\t").append(portion.getTerrain()).append("\n");
                 }
             }
         }
@@ -498,9 +548,11 @@ public final class MapGenerator {
          * Generates the restructurated coords of the province.
          *
          * @param province for logging purpose.
+         * @param log      log writer.
          * @return the restructurated coords of the province.
+         * @throws Exception exception.
          */
-        public List<List<Pair<Integer, Integer>>> getStructuratedCoords(Province province) {
+        public List<List<Pair<Integer, Integer>>> getStructuratedCoords(Province province, Writer log) throws Exception {
             List<List<Pair<Integer, Integer>>> coordsPortion = new ArrayList<>();
             coordsPortion.add(new ArrayList<>());
             for (DirectedPath path : getPaths()) {
@@ -518,9 +570,11 @@ public final class MapGenerator {
 
                         if (distance > 0) {
                             if (distance > nextDistance) {
-                                System.out.println("OK " + province.getName() + " n'est pas fermé à " + path.getPath().getName() + " ! " + firstElement(pathValues) + " vs " + lastElement(lastElement(coordsPortion)));
+                                log.append(province.getName()).append("\t").append("Border not consistent (ignored)").append("\t").append(path.getPath().getName())
+                                        .append("\t").append(firstElement(pathValues).toString()).append("\t").append(lastElement(lastElement(coordsPortion)).toString()).append("\t").append(firstElement(lastElement(coordsPortion)).toString()).append("\n");
                             } else {
-                                System.out.println("KO " + province.getName() + " n'est pas fermé à " + path.getPath().getName() + " ! " + firstElement(lastElement(coordsPortion)) + " vs " + lastElement(lastElement(coordsPortion)));
+                                log.append(province.getName()).append("\t").append("Border not consistent (enclave)").append("\t").append(path.getPath().getName())
+                                        .append("\t").append(firstElement(pathValues).toString()).append("\t").append(lastElement(lastElement(coordsPortion)).toString()).append("\t").append(firstElement(lastElement(coordsPortion)).toString()).append("\n");
                                 coordsPortion.add(new ArrayList<>());
                             }
                         } else {
@@ -536,8 +590,8 @@ public final class MapGenerator {
 
 
             if (distance > 0) {
-                System.out.println(province.getName() + " n'est pas fermé à " + firstElement(getPaths()).getPath().getName()
-                        + " ! " + firstElement(lastElement(coordsPortion)) + " vs " + lastElement(lastElement(coordsPortion)));
+                log.append(province.getName()).append("\t").append("Border not closed").append("\t").append(firstElement(getPaths()).getPath().getName())
+                        .append("\t").append(lastElement(lastElement(coordsPortion)).toString()).append("\t").append(firstElement(lastElement(coordsPortion)).toString()).append("\n");
             }
 
             return coordsPortion;
