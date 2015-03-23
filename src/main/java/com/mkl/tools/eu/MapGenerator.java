@@ -46,14 +46,10 @@ public final class MapGenerator {
         Map<String, Path> paths = new HashMap<>();
         Path currentPath = null;
         Map<String, Province> provinces = new HashMap<>();
-        Province currentProv = null;
-        int currentProvDeepth = -1;
         Pattern mer = Pattern.compile("/mer\\d+ beginpath.*");
         Pattern bord = Pattern.compile("/bord\\d+ beginpath.*");
         Pattern path = Pattern.compile("/path\\d+ beginpath.*");
-        Pattern province = Pattern.compile("%#(=+) (.*)");
         while ((ligne = reader.readLine()) != null) {
-            Matcher provMatch = province.matcher(ligne);
             if (mer.matcher(ligne).matches() || bord.matcher(ligne).matches() || path.matcher(ligne).matches()) {
                 currentPath = new Path(ligne.split(" ")[0], !ligne.contains("contpath"));
             } else if (ligne.startsWith("endpath") && currentPath != null) {
@@ -68,51 +64,9 @@ public final class MapGenerator {
                         break;
                     }
                 }
-            } else if (provMatch.matches()) {
-                if (currentProv != null) {
-                    if (provinces.containsKey(currentProv.getName())) {
-                        log.append(currentProv.getName()).append("\t").append("Province already exists\n");
-                    }
-                    provinces.put(currentProv.getName(), currentProv);
-                }
-                currentProvDeepth = provMatch.group(1).length();
-                String fullName = provMatch.group(2);
-                Matcher m = Pattern.compile("(.*) <(.*)>").matcher(fullName);
-                if (m.matches()) {
-                    currentProv = new Province(m.group(1), m.group(2), log);
-                } else {
-                    currentProv = new Province(fullName, null, log);
-                }
-            } else if (currentProv != null) {
-                if (ligne.startsWith("/prov")) {
-                    SubProvince portion = new SubProvince(ligne.split(" ")[1]);
-                    currentProv.getPortions().add(portion);
-                    Matcher m = Pattern.compile("(/path\\d+ AR?)|(/bord\\d+ AR?)|(/mer\\d+ AR?)").matcher(ligne);
-                    while (m.find()) {
-                        String chaine = m.group();
-                        Path pathFound = paths.get(chaine.split(" ")[0]);
-                        if (pathFound != null) {
-                            portion.getPaths().add(new DirectedPath(pathFound, chaine.split(" ")[1].contains("R")));
-                        } else {
-                            log.append(currentProv.getName()).append("\t").append("Path not found").append("\t").append(chaine.split(" ")[0]).append("\n");
-                        }
-                    }
-                } else if (ligne.startsWith("%#") && !ligne.startsWith("%##") && ligne.split(" ")[0].length() - 2 < currentProvDeepth) {
-                    if (provinces.containsKey(currentProv.getName())) {
-                        log.append(currentProv.getName()).append("\t").append("Province already exists\n");
-                    }
-                    provinces.put(currentProv.getName(), currentProv);
-                    currentProvDeepth = -1;
-                    currentProv = null;
-                }
+            } else if (ligne.startsWith("/prov")) {
+                addSubProvince(ligne, provinces, paths, log);
             }
-        }
-
-        if (currentProv != null) {
-            if (provinces.containsKey(currentProv.getName())) {
-                log.append(currentProv.getName()).append("\t").append("Province already exists\n");
-            }
-            provinces.put(currentProv.getName(), currentProv);
         }
 
         reader.close();
@@ -121,6 +75,46 @@ public final class MapGenerator {
 
         log.flush();
         log.close();
+    }
+
+    /**
+     * Adds a portion to an existing province.
+     *
+     * @param ligne     to parse.
+     * @param provinces existing provinces.
+     * @param paths     list of paths.
+     * @param log       log writer.
+     * @throws IOException exception.
+     */
+    private static void addSubProvince(String ligne, Map<String, Province> provinces, Map<String, Path> paths, Writer log) throws IOException {
+        Matcher m = Pattern.compile(".*\\((.*)\\) ?ppdef.*").matcher(ligne);
+        if (! m.matches()) {
+            return;
+        }
+        String provinceName = m.group(1);
+        if (provinceName.startsWith("*")) {
+            provinceName = provinceName.substring(1);
+        }
+        if (StringUtils.equals("Caption", provinceName) || StringUtils.equals("Special", provinceName)) {
+            return;
+        }
+        Province province = provinces.get(provinceName);
+        if (province == null) {
+            province = new Province(provinceName, log);
+            provinces.put(provinceName, province);
+        }
+        SubProvince portion = new SubProvince(ligne.split(" ")[1]);
+        province.getPortions().add(portion);
+        m = Pattern.compile("(/path\\d+ AR?)|(/bord\\d+ AR?)|(/mer\\d+ AR?)").matcher(ligne);
+        while (m.find()) {
+            String chaine = m.group();
+            Path pathFound = paths.get(chaine.split(" ")[0]);
+            if (pathFound != null) {
+                portion.getPaths().add(new DirectedPath(pathFound, chaine.split(" ")[1].contains("R")));
+            } else {
+                log.append(province.getName()).append("\t").append("Path not found").append("\t").append(chaine.split(" ")[0]).append("\n");
+            }
+        }
     }
 
     /**
@@ -443,8 +437,6 @@ public final class MapGenerator {
     private static class Province {
         /** The name of the province. */
         private String name;
-        /** The religion of the province. */
-        private String religion;
         /** Portions of the province. */
         private List<SubProvince> portions = new ArrayList<>();
         /** Restructuration of the coords for the geo.json export. */
@@ -455,24 +447,17 @@ public final class MapGenerator {
         /**
          * Constructor.
          *
-         * @param name     of the province.
-         * @param religion of the province.
-         * @param log      log writer.
+         * @param name of the province.
+         * @param log  log writer.
          */
-        public Province(String name, String religion, Writer log) {
+        public Province(String name, Writer log) {
             this.name = name;
-            this.religion = religion;
             this.log = log;
         }
 
         /** @return the name. */
         public String getName() {
             return name;
-        }
-
-        /** @return the religion. */
-        public String getReligion() {
-            return religion;
         }
 
         /** @return the portions. */
@@ -495,9 +480,9 @@ public final class MapGenerator {
             String terrain = null;
             for (SubProvince portion : portions) {
                 coords.add(portion.getStructuratedCoords(this, log));
-                if (terrain == null && ! StringUtils.equals("lac", portion.getTerrain())) {
+                if (terrain == null && !StringUtils.equals("lac", portion.getTerrain())) {
                     terrain = portion.getTerrain();
-                } else if (!StringUtils.equals(terrain, portion.getTerrain()) && ! StringUtils.equals("lac", portion.getTerrain())) {
+                } else if (!StringUtils.equals(terrain, portion.getTerrain()) && !StringUtils.equals("lac", portion.getTerrain())) {
                     log.append(getName()).append("\t").append("Terrain not consistent").append("\t").append(terrain).append("\t").append(portion.getTerrain()).append("\n");
                 }
             }
