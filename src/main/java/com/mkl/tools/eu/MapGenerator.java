@@ -1,6 +1,9 @@
 package com.mkl.tools.eu;
 
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -45,10 +48,13 @@ public final class MapGenerator {
         BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("chemins.eps")));
         Map<String, Path> paths = new HashMap<>();
         Path currentPath = null;
+        String currentBorder = null;
+        Map<String, List<Path>> specialBorders = new HashMap<>();
         Map<String, Province> provinces = new HashMap<>();
         Pattern mer = Pattern.compile("/mer\\d+ beginpath.*");
         Pattern bord = Pattern.compile("/bord\\d+ beginpath.*");
         Pattern path = Pattern.compile("/path\\d+ beginpath.*");
+        Pattern multiPath = Pattern.compile("\\s*(/mer|/path)\\d+ .*");
         while ((ligne = reader.readLine()) != null) {
             if (mer.matcher(ligne).matches() || bord.matcher(ligne).matches() || path.matcher(ligne).matches()) {
                 currentPath = new Path(ligne.split(" ")[0], !ligne.contains("contpath"));
@@ -66,12 +72,33 @@ public final class MapGenerator {
                 }
             } else if (ligne.startsWith("/prov")) {
                 addSubProvince(ligne, provinces, paths, log);
+            } else if (ligne.startsWith("%                 RIVER DEFS")) {
+                currentBorder = "river";
+            } else if (ligne.startsWith("%Mountain passes")) {
+                currentBorder = "mountain_pass";
+            } else if (ligne.startsWith("%Strait fortress controlled frontiers")) {
+                currentBorder = "straits";
+            } else if (currentBorder != null && multiPath.matcher(ligne).matches()) {
+                String[] specialsBorder = ligne.trim().split(" ");
+                List<Path> pathsBorder = new ArrayList<>();
+                for (String specialBorder : specialsBorder) {
+                    Path pathBorder = paths.get(specialBorder);
+                    if (pathBorder == null) {
+                        log.append(specialBorder).append("\tBorder not found\n");
+                    } else {
+                        pathsBorder.add(pathBorder);
+                    }
+                }
+                specialBorders.put(currentBorder, pathsBorder);
+                currentBorder = null;
             }
         }
 
         reader.close();
 
-        extractData(provinces, log);
+        extractMapData(provinces, log);
+
+        extractProvincesData(provinces, specialBorders, log);
 
         log.flush();
         log.close();
@@ -88,14 +115,14 @@ public final class MapGenerator {
      */
     private static void addSubProvince(String ligne, Map<String, Province> provinces, Map<String, Path> paths, Writer log) throws IOException {
         Matcher m = Pattern.compile(".*\\((.*)\\) ?ppdef.*").matcher(ligne);
-        if (! m.matches()) {
+        if (!m.matches()) {
             return;
         }
         String provinceName = m.group(1);
         if (provinceName.startsWith("*")) {
             provinceName = provinceName.substring(1);
         }
-        if (StringUtils.equals("Caption", provinceName) || StringUtils.equals("Special", provinceName)) {
+        if (StringUtils.equals("Caption", provinceName) || StringUtils.equals("Special", provinceName) || StringUtils.isEmpty(provinceName)) {
             return;
         }
         Province province = provinces.get(provinceName);
@@ -118,13 +145,13 @@ public final class MapGenerator {
     }
 
     /**
-     * Create files used by the application.
+     * Create the geo.json file used by the application.
      *
      * @param provinces data gathered by the input.
      * @param log       log writer.
      * @throws Exception exception.
      */
-    private static void extractData(Map<String, Province> provinces, Writer log) throws Exception {
+    private static void extractMapData(Map<String, Province> provinces, Writer log) throws Exception {
         Writer writer = createFileWriter("src/main/resources/countries.geo.json", false);
         writer.append("{\"type\":\"FeatureCollection\",\"features\":[\n");
         boolean first = true;
@@ -187,29 +214,6 @@ public final class MapGenerator {
         writer.close();
     }
 
-    private static void writeSquare(Writer writer, int xBegin, int yBegin, int size, String name) throws IOException {
-        writer.append(",\n");
-        writer.append("    {\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[");
-
-        double x = 1.204 + xBegin * 12.859 / 8425;
-        double y = 1.204 + yBegin * 8.862 / 5840;
-        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
-
-        x = 1.204 + (xBegin + size) * 12.859 / 8425;
-        y = 1.204 + yBegin * 8.862 / 5840;
-        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
-
-        x = 1.204 + (xBegin + size) * 12.859 / 8425;
-        y = 1.204 + (yBegin + size) * 8.862 / 5840;
-        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
-
-        x = 1.204 + xBegin * 12.859 / 8425;
-        y = 1.204 + (yBegin + size) * 8.862 / 5840;
-        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("]");
-
-        writer.append("]]},\"id\":\"").append(name).append("\"}");
-    }
-
     /**
      * Write a polygone in a geo.json format.
      *
@@ -242,6 +246,119 @@ public final class MapGenerator {
 
             writer.append("]");
         }
+    }
+
+    /**
+     * Write a square in a geo.json format.
+     *
+     * @param writer to write the square in.
+     * @param xBegin coordinate x of the square.
+     * @param yBegin coordinate y of the square.
+     * @param size   size of the square.
+     * @param name   name of the square.
+     * @throws IOException exception.
+     */
+    private static void writeSquare(Writer writer, int xBegin, int yBegin, int size, String name) throws IOException {
+        writer.append(",\n");
+        writer.append("    {\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[");
+
+        double x = 1.204 + xBegin * 12.859 / 8425;
+        double y = 1.204 + yBegin * 8.862 / 5840;
+        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
+
+        x = 1.204 + (xBegin + size) * 12.859 / 8425;
+        y = 1.204 + yBegin * 8.862 / 5840;
+        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
+
+        x = 1.204 + (xBegin + size) * 12.859 / 8425;
+        y = 1.204 + (yBegin + size) * 8.862 / 5840;
+        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("], ");
+
+        x = 1.204 + xBegin * 12.859 / 8425;
+        y = 1.204 + (yBegin + size) * 8.862 / 5840;
+        writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("]");
+
+        writer.append("]]},\"id\":\"").append(name).append("\"}");
+    }
+
+    /**
+     * Create provinces neighbour file used by the application.
+     *
+     * @param provinces      data gathered by the input.
+     * @param specialBorders rivers, moutain passes and straits.
+     * @param log            log writer.
+     * @throws Exception exception.
+     */
+    private static void extractProvincesData(Map<String, Province> provinces, Map<String, List<Path>> specialBorders, Writer log) throws Exception {
+        Map<Path, List<Province>> provincesByPath = new HashMap<>();
+        for (Province province : provinces.values()) {
+            for (SubProvince subProvince : province.getPortions()) {
+                for (DirectedPath path : subProvince.getPaths()) {
+                    if (!provincesByPath.containsKey(path.getPath())) {
+                        provincesByPath.put(path.getPath(), new ArrayList<>());
+                    }
+
+                    List<Province> provincesForPath = provincesByPath.get(path.getPath());
+                    if (!provincesForPath.contains(province)) {
+                        provincesForPath.add(province);
+                    }
+                }
+            }
+        }
+
+        List<Border> borders = createBorders(provincesByPath, specialBorders, log);
+
+        XStream xstream = new XStream();
+        xstream.processAnnotations(Border.class);
+
+
+
+        Writer borderWriter = createFileWriter("src/main/resources/borders.xml", false);
+        xstream.toXML(borders, borderWriter);
+    }
+
+    /**
+     * Create borders object from arranged provinces by paths.
+     *
+     * @param provincesByPath provinces arranged by paths.
+     * @param specialBorders  rivers, moutain passes and straits.
+     * @param log             log writer.
+     * @return the borders.
+     * @throws IOException exception.
+     */
+    private static List<Border> createBorders(Map<Path, List<Province>> provincesByPath, Map<String, List<Path>> specialBorders, Writer log) throws IOException {
+        List<Border> borders = new ArrayList<>();
+        for (Path path : provincesByPath.keySet()) {
+            List<Province> provincesForPath = provincesByPath.get(path);
+
+            for (int i = 0; i < provincesForPath.size(); i++) {
+                for (int j = i + 1; j < provincesForPath.size(); j++) {
+                    Province first = provincesForPath.get(i);
+                    Province second = provincesForPath.get(j);
+
+                    if (first != second) {
+                        String type = null;
+                        for (String specialType : specialBorders.keySet()) {
+                            if (specialBorders.get(specialType).contains(path)) {
+                                type = specialType;
+                            }
+                        }
+
+                        Border border = new Border(first, second, type);
+                        if (borders.contains(border)) {
+                            Border existingBorder = borders.get(borders.indexOf(border));
+                            if (! StringUtils.equals(border.getType(), existingBorder.getType())) {
+                                log.append(first.getName()).append("\t").append("Duplicate borders").append("\t")
+                                        .append(second.getName()).append("\n");
+                            }
+                        }
+                        borders.add(border);
+                    }
+                }
+            }
+        }
+
+        return borders;
     }
 
     /**
@@ -587,6 +704,82 @@ public final class MapGenerator {
             }
 
             return coordsPortion;
+        }
+    }
+
+    /** Inner class describing a border between two provinces. */
+    @XStreamAlias("border")
+    private static class Border {
+        /** First province (alphabetical order) of the border. */
+        @XStreamAlias("first")
+        private String first;
+        /** Second province (alphabetical order) of the border. */
+        @XStreamAlias("second")
+        private String second;
+        /** Type of border. */
+        @XStreamAlias("type")
+        private String type;
+
+        /**
+         * Constructor.
+         *
+         * @param province1 first province.
+         * @param province2 second province.
+         * @param type      type.
+         */
+        public Border(Province province1, Province province2, String type) {
+            if (province1 == null || province2 == null || province1 == province2) {
+                throw new IllegalStateException();
+            }
+
+            if (province1.getName().compareTo(province2.getName()) < 0) {
+                first = province1.getName();
+                second = province2.getName();
+            } else {
+                first = province2.getName();
+                second = province1.getName();
+            }
+
+            this.type = type;
+        }
+
+        /** @return the first. */
+        public String getFirst() {
+            return first;
+        }
+
+        /** @return the second. */
+        public String getSecond() {
+            return second;
+        }
+
+        /** @return the type. */
+        public String getType() {
+            return type;
+        }
+
+        /** {@inheritDoc} */
+        @Override
+        public int hashCode() {
+            return 11 + 13 * first.hashCode() + 15 * second.hashCode();
+        }
+
+        /** {@inheritDoc} */
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this)
+                return true;
+
+            boolean equals = false;
+
+            if (obj instanceof Border) {
+                Border border = (Border) obj;
+
+                return StringUtils.equals(first, border.getFirst())
+                        && StringUtils.equals(second, border.getSecond());
+            }
+
+            return equals;
         }
     }
 }

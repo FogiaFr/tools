@@ -1,18 +1,3 @@
-	Border not closed	/path0114	(5664,5476)	(5650,5487)
-	Border not closed	/bord49	(5491,5840)	(5358,5840)
-	Border not consistent (enclave)	/path0064	(4954,5776)	(4973,5778)	(4967,5780)
-	Border not closed	/path0365	(6731,3803)	(6726,3795)
-	Border not closed	/path0765	(6479,3257)	(6481,3262)
-	Border not consistent (ignored)	/path0760	(5339,3294)	(5345,3293)	(5476,3217)
-	Border not closed	/path0734	(5162,3378)	(5155,3379)
-	Border not consistent (ignored)	/path0820	(5538,3098)	(5539,3093)	(5348,2915)
-	Border not consistent (ignored)	/path0625	(4998,3611)	(4992,3577)	(4984,3657)
-	Border not closed	/path1113	(6953,2065)	(6950,2080)
-	Border not closed	/path0936	(4747,1580)	(4751,1580)
-	Border not closed	/path0938	(4797,1584)	(4803,1586)
-	Border not consistent (ignored)	/path0928	(5094,1570)	(5098,1572)	(5091,1562)
-	Border not closed	/path0596	(2567,3036)	(2571,3033)
-	Border not closed	/path0205	(4638,5162)	(4638,5175)
 Antalya	Border not consistent (ignored)	/path1233	(5378,1338)	(5380,1333)	(5061,1521)
 Antalya	Border not consistent (enclave)	/path1289	(5206,1453)	(5091,1562)	(5061,1521)
 Poltava	Border not consistent (ignored)	/path0619	(5715,3534)	(5721,3527)	(4992,3577)
@@ -703,3 +688,10 @@ Västergotland	Border not consistent (ignored)	/path0269	(3153,4723)	(3142,4732)
 Västergotland	Border not consistent (ignored)	/path0184	(3147,5185)	(3155,5184)	(2840,5197)
 Västergotland	Border not closed	/path0183	(2843,5199)	(2840,5197)
 Valencia	Border not consistent (ignored)	/path1190	(1247,1801)	(1249,1806)	(1479,1931)
+Bergslagen	Duplicate borders	Østlandet
+Bresse	Duplicate borders	Savoia
+Svealand	Duplicate borders	Västergotland
+Svealand	Duplicate borders	Västergotland
+Svealand	Duplicate borders	Västergotland
+Svealand	Duplicate borders	Västergotland
+Svealand	Duplicate borders	Västergotland
