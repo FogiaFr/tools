@@ -24,7 +24,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Utility to generate the EU Map to the format .geo.json.
+ * Utility to generate various files for the EU Map whose the map in the format .geo.json.
  *
  * @author MKL
  */
@@ -312,7 +312,6 @@ public final class MapGenerator {
         xstream.processAnnotations(Border.class);
 
 
-
         Writer borderWriter = createFileWriter("src/main/resources/borders.xml", false);
         xstream.toXML(borders, borderWriter);
     }
@@ -347,12 +346,13 @@ public final class MapGenerator {
                         Border border = new Border(first, second, type);
                         if (borders.contains(border)) {
                             Border existingBorder = borders.get(borders.indexOf(border));
-                            if (! StringUtils.equals(border.getType(), existingBorder.getType())) {
+                            if (!StringUtils.equals(border.getType(), existingBorder.getType())) {
                                 log.append(first.getName()).append("\t").append("Duplicate borders").append("\t")
                                         .append(second.getName()).append("\n");
                             }
+                        } else {
+                            borders.add(border);
                         }
-                        borders.add(border);
                     }
                 }
             }
