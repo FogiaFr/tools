@@ -3,23 +3,12 @@ package com.mkl.tools.eu;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -295,7 +284,7 @@ public final class MapGenerator {
             for (SubProvince subProvince : province.getPortions()) {
                 for (DirectedPath path : subProvince.getPaths()) {
                     if (!provincesByPath.containsKey(path.getPath())) {
-                        provincesByPath.put(path.getPath(), new ArrayList<>());
+                        provincesByPath.put(path.getPath(), new ArrayList<Province>());
                     }
 
                     List<Province> provincesForPath = provincesByPath.get(path.getPath());
@@ -310,7 +299,6 @@ public final class MapGenerator {
 
         XStream xstream = new XStream();
         xstream.processAnnotations(Border.class);
-
 
         Writer borderWriter = createFileWriter("src/main/resources/borders.xml", false);
         xstream.toXML(borders, borderWriter);
@@ -663,7 +651,7 @@ public final class MapGenerator {
          */
         public List<List<Pair<Integer, Integer>>> getStructuratedCoords(Province province, Writer log) throws Exception {
             List<List<Pair<Integer, Integer>>> coordsPortion = new ArrayList<>();
-            coordsPortion.add(new ArrayList<>());
+            coordsPortion.add(new ArrayList<Pair<Integer, Integer>>());
             for (DirectedPath path : getPaths()) {
                 List<Pair<Integer, Integer>> pathValues;
                 if (path.isInverse()) {
@@ -684,10 +672,10 @@ public final class MapGenerator {
                             } else {
                                 log.append(province.getName()).append("\t").append("Border not consistent (enclave)").append("\t").append(path.getPath().getName())
                                         .append("\t").append(firstElement(pathValues).toString()).append("\t").append(lastElement(lastElement(coordsPortion)).toString()).append("\t").append(firstElement(lastElement(coordsPortion)).toString()).append("\n");
-                                coordsPortion.add(new ArrayList<>());
+                                coordsPortion.add(new ArrayList<Pair<Integer, Integer>>());
                             }
                         } else {
-                            coordsPortion.add(new ArrayList<>());
+                            coordsPortion.add(new ArrayList<Pair<Integer, Integer>>());
                         }
                     }
                 }
@@ -775,7 +763,7 @@ public final class MapGenerator {
             if (obj instanceof Border) {
                 Border border = (Border) obj;
 
-                return StringUtils.equals(first, border.getFirst())
+                equals = StringUtils.equals(first, border.getFirst())
                         && StringUtils.equals(second, border.getSecond());
             }
 
