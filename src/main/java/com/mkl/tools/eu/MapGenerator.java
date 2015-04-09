@@ -40,6 +40,7 @@ public final class MapGenerator {
         String currentBorder = null;
         Map<String, List<Path>> specialBorders = new HashMap<>();
         Map<String, Province> provinces = new HashMap<>();
+        boolean zoomParsing = false;
         Pattern mer = Pattern.compile("/mer\\d+ beginpath.*");
         Pattern bord = Pattern.compile("/bord\\d+ beginpath.*");
         Pattern path = Pattern.compile("/path\\d+ beginpath.*");
@@ -60,7 +61,9 @@ public final class MapGenerator {
                     }
                 }
             } else if (ligne.startsWith("/prov")) {
-                addSubProvince(ligne, provinces, paths, log);
+                addSubProvince(ligne, provinces, paths, zoomParsing, log);
+            } else if (ligne.startsWith("%#%% Zoom")) {
+                zoomParsing = true;
             } else if (ligne.startsWith("%                 RIVER DEFS")) {
                 currentBorder = "river";
             } else if (ligne.startsWith("%Mountain passes")) {
@@ -102,7 +105,7 @@ public final class MapGenerator {
      * @param log       log writer.
      * @throws IOException exception.
      */
-    private static void addSubProvince(String ligne, Map<String, Province> provinces, Map<String, Path> paths, Writer log) throws IOException {
+    private static void addSubProvince(String ligne, Map<String, Province> provinces, Map<String, Path> paths, boolean zoomParsing, Writer log) throws IOException {
         Matcher m = Pattern.compile(".*\\((.*)\\) ?ppdef.*").matcher(ligne);
         if (!m.matches()) {
             return;
@@ -120,16 +123,21 @@ public final class MapGenerator {
             provinces.put(provinceName, province);
         }
         SubProvince portion = new SubProvince(ligne.split(" ")[1]);
-        province.getPortions().add(portion);
         m = Pattern.compile("(/path\\d+ AR?)|(/bord\\d+ AR?)|(/mer\\d+ AR?)").matcher(ligne);
         while (m.find()) {
-            String chaine = m.group();
-            Path pathFound = paths.get(chaine.split(" ")[0]);
+            String string = m.group();
+            Path pathFound = paths.get(string.split(" ")[0]);
             if (pathFound != null) {
-                portion.getPaths().add(new DirectedPath(pathFound, chaine.split(" ")[1].contains("R")));
+                portion.getPaths().add(new DirectedPath(pathFound, string.split(" ")[1].contains("R")));
             } else {
-                log.append(province.getName()).append("\t").append("Path not found").append("\t").append(chaine.split(" ")[0]).append("\n");
+                log.append(province.getName()).append("\t").append("Path not found").append("\t").append(string.split(" ")[0]).append("\n");
             }
+        }
+
+        if (zoomParsing && !portion.getTerrain().startsWith("l")) {
+            province.getPortions().add(0, portion);
+        } else {
+            province.getPortions().add(portion);
         }
     }
 
