@@ -134,7 +134,7 @@ public final class MapGenerator {
             }
         }
 
-        if (zoomParsing && !portion.getTerrain().startsWith("l")) {
+        if (zoomParsing && !portion.isLight()) {
             province.getPortions().add(0, portion);
         } else {
             province.getPortions().add(portion);
@@ -679,6 +679,8 @@ public final class MapGenerator {
         private String terrain;
         /** The paths representing the frontiers of the province. */
         private List<DirectedPath> paths = new ArrayList<>();
+        /** Flag saying that this SubProvince is a light one not to be considered (in zoom or between Europe and ROTW). */
+        private boolean light;
 
         /**
          * Constructor.
@@ -686,7 +688,12 @@ public final class MapGenerator {
          * @param terrain of the province.
          */
         public SubProvince(String terrain) {
-            this.terrain = terrain;
+            if (terrain.startsWith("l") && !StringUtils.equals("lac", terrain)) {
+                this.terrain = terrain.substring(1);
+                light = true;
+            } else {
+                this.terrain = terrain;
+            }
         }
 
         /** @return the terrain. */
@@ -697,6 +704,11 @@ public final class MapGenerator {
         /** @return the paths. */
         public List<DirectedPath> getPaths() {
             return paths;
+        }
+
+        /** @return the light. */
+        public boolean isLight() {
+            return light;
         }
 
         /**
