@@ -284,7 +284,7 @@ public final class MapGenerator {
             for (SubProvince subProvince : province.getPortions()) {
                 for (DirectedPath path : subProvince.getPaths()) {
                     if (!provincesByPath.containsKey(path.getPath())) {
-                        provincesByPath.put(path.getPath(), new ArrayList<Province>());
+                        provincesByPath.put(path.getPath(), new ArrayList<>());
                     }
 
                     List<Province> provincesForPath = provincesByPath.get(path.getPath());
@@ -302,6 +302,8 @@ public final class MapGenerator {
 
         Writer borderWriter = createFileWriter("src/main/resources/borders.xml", false);
         xstream.toXML(borders, borderWriter);
+
+        createDBInjection(provinces, borders, log);
     }
 
     /**
@@ -347,6 +349,48 @@ public final class MapGenerator {
         }
 
         return borders;
+    }
+
+    /**
+     * Create a SQL injection script for provinces and borders.
+     *
+     * @param provinces list of provinces.
+     * @param borders   list of borders.
+     * @param log       log writer.
+     * @throws IOException exception.
+     */
+    private static void createDBInjection(Map<String, Province> provinces, List<Border> borders, Writer log) throws IOException {
+        Writer sqlWriter = createFileWriter("src/main/resources/provinces_borders.sql", false);
+
+        sqlWriter.append("DELETE FROM BORDER;\n").append("DELETE FROM PROVINCE_EU;\n")
+                .append("DELETE FROM PROVINCE;\n\n");
+
+        for (Province province : provinces.values()) {
+            sqlWriter.append("INSERT INTO PROVINCE (NAME, TERRAIN)\n")
+                    .append("    VALUES ('").append(province.getName())
+                    .append("', '").append(province.getTerrain())
+                    .append("');\n");
+        }
+
+        sqlWriter.append("\n");
+
+        for (Border border : borders) {
+            sqlWriter.append("INSERT INTO BORDER (TYPE, ID_PROVINCE_FROM, ID_PROVINCE_TO)\n")
+                    .append("    VALUES ('").append(border.getType()).append("',\n")
+                    .append("        (SELECT ID FROM PROVINCE WHERE NAME = '")
+                    .append(border.getFirst()).append("'),\n")
+                    .append("        (SELECT ID FROM PROVINCE WHERE NAME = '")
+                    .append(border.getSecond()).append("'));\n");
+            sqlWriter.append("INSERT INTO BORDER (TYPE, ID_PROVINCE_FROM, ID_PROVINCE_TO)\n")
+                    .append("    VALUES ('").append(border.getType()).append("',\n")
+                    .append("        (SELECT ID FROM PROVINCE WHERE NAME = '")
+                    .append(border.getSecond()).append("'),\n")
+                    .append("        (SELECT ID FROM PROVINCE WHERE NAME = '")
+                    .append(border.getFirst()).append("'));\n");
+        }
+
+        sqlWriter.flush();
+        sqlWriter.close();
     }
 
     /**
@@ -542,6 +586,8 @@ public final class MapGenerator {
     private static class Province {
         /** The name of the province. */
         private String name;
+        /** Terrain derived from the portions. */
+        private String terrain;
         /** Portions of the province. */
         private List<SubProvince> portions = new ArrayList<>();
         /** Restructuration of the coords for the geo.json export. */
@@ -565,6 +611,11 @@ public final class MapGenerator {
             return name;
         }
 
+        /** @return the terrain. */
+        public String getTerrain() {
+            return terrain;
+        }
+
         /** @return the portions. */
         public List<SubProvince> getPortions() {
             return portions;
@@ -582,7 +633,6 @@ public final class MapGenerator {
          */
         public void restructurate() throws Exception {
             coords = new ArrayList<>();
-            String terrain = null;
             for (SubProvince portion : portions) {
                 coords.add(portion.getStructuratedCoords(this, log));
                 if (terrain == null && !StringUtils.equals("lac", portion.getTerrain())) {
@@ -651,7 +701,7 @@ public final class MapGenerator {
          */
         public List<List<Pair<Integer, Integer>>> getStructuratedCoords(Province province, Writer log) throws Exception {
             List<List<Pair<Integer, Integer>>> coordsPortion = new ArrayList<>();
-            coordsPortion.add(new ArrayList<Pair<Integer, Integer>>());
+            coordsPortion.add(new ArrayList<>());
             for (DirectedPath path : getPaths()) {
                 List<Pair<Integer, Integer>> pathValues;
                 if (path.isInverse()) {
@@ -672,10 +722,10 @@ public final class MapGenerator {
                             } else {
                                 log.append(province.getName()).append("\t").append("Border not consistent (enclave)").append("\t").append(path.getPath().getName())
                                         .append("\t").append(firstElement(pathValues).toString()).append("\t").append(lastElement(lastElement(coordsPortion)).toString()).append("\t").append(firstElement(lastElement(coordsPortion)).toString()).append("\n");
-                                coordsPortion.add(new ArrayList<Pair<Integer, Integer>>());
+                                coordsPortion.add(new ArrayList<>());
                             }
                         } else {
-                            coordsPortion.add(new ArrayList<Pair<Integer, Integer>>());
+                            coordsPortion.add(new ArrayList<>());
                         }
                     }
                 }
