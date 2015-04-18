@@ -1,5 +1,4 @@
 europe.grid.ps:
- -
  - Sibérie NW -> Sibérie~NW
  - Sibérie W -> Sibérie~W
  - Sibérie S -> Sibérie~S
@@ -41,10 +40,3 @@ rotw.grid.ps:
  - Mascareignes~E -> Mascareignes~B
  - *Amazonia~N -> *Amazonia~North (prov167)
  - *Amazonia~S -> *Amazonia~South (prov168)
-
-
-
-
-
-  - Les mers ne décrivent pas les carrés des îles comme des exclusions (je m'attendais à avoir des carremartinique dans les îles sous le vent par exemple).
-  - La baie d'Hudson dans la carte zoom est incorrecte. En effet, le truc principal (sans l'île) commence par path1082 et termine par bord04. Or bord04 ne termine pas au début de path1082. Pire encore, il ne sert à rien car il continue path1091 au même endroit ! D'ailleurs, bord04 est défini comme AR, ce qui n'a pas de sens lorsqu'il n'y a qu'une seule coordonnées. En regardant le fichier de log que je génère, je m'aperçois qu'il y a d'autres cas de ce genre. Donc si ça ce trouve, c'est normal, mais j'ai besoin de comprendre le fonctionnement pour pouvoir le coder.
