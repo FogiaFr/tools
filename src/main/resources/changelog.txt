@@ -1,3 +1,11 @@
+DD/MM/YYYY:
+
+rotw.grid.ps:
+ - Aden~Socotra -> Aden~So
+ - Philippines~W -> Philippines~C
+ - Îles aux Épices~
+
+18/04/2015:
 europe.grid.ps:
  - Sibérie NW -> Sibérie~NW
  - Sibérie W -> Sibérie~W
