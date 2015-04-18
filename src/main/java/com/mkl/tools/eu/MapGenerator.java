@@ -38,8 +38,8 @@ public final class MapGenerator {
         Map<String, List<Path>> specialBorders = new HashMap<>();
         Map<String, Province> provinces = new HashMap<>();
 
-        extractPaths(provinces, specialBorders, "europe.grid.ps", false, log);
-        extractPaths(provinces, specialBorders, "rotw.grid.ps", true, log);
+        extractPaths(provinces, specialBorders, "input/europe.grid.ps", false, log);
+        extractPaths(provinces, specialBorders, "input/rotw.grid.ps", true, log);
 
         Map<String, Province> provs = new HashMap<>();
         for (String prov : provinces.keySet()) {
@@ -255,7 +255,7 @@ public final class MapGenerator {
      * @throws Exception exception.
      */
     private static void extractMapData(Map<String, Province> provinces, Writer log) throws Exception {
-        Writer writer = createFileWriter("src/main/resources/countries.geo.json", false);
+        Writer writer = createFileWriter("src/main/resources/output/countries.geo.json", false);
         writer.append("{\"type\":\"FeatureCollection\",\"features\":[\n");
         boolean first = true;
 
@@ -420,7 +420,7 @@ public final class MapGenerator {
         XStream xstream = new XStream();
         xstream.processAnnotations(Border.class);
 
-        Writer borderWriter = createFileWriter("src/main/resources/borders.xml", false);
+        Writer borderWriter = createFileWriter("src/main/resources/output/borders.xml", false);
         xstream.toXML(borders, borderWriter);
 
         createDBInjection(provinces, borders, log);
@@ -483,7 +483,7 @@ public final class MapGenerator {
      * @throws IOException exception.
      */
     private static void createDBInjection(Map<String, Province> provinces, List<Border> borders, Writer log) throws IOException {
-        Writer sqlWriter = createFileWriter("src/main/resources/provinces_borders.sql", false);
+        Writer sqlWriter = createFileWriter("src/main/resources/output/provinces_borders.sql", false);
 
         sqlWriter.append("DELETE FROM BORDER;\n").append("DELETE FROM PROVINCE_EU;\n")
                 .append("DELETE FROM PROVINCE;\n\n");
