@@ -1,0 +1,50 @@
+europe.grid.ps:
+ -
+ - Sibérie NW -> Sibérie~NW
+ - Sibérie W -> Sibérie~W
+ - Sibérie S -> Sibérie~S
+ - Aral E -> Aral~E (*3)
+ - Aral N -> Aral~N
+ - Aral S -> Aral~S (*2)
+ - Aral W -> Aral~W (*3)
+ - Nedj E -> Nedj~E
+ - Mauritanie N -> Mauritanie~N
+
+rotw.grid.ps:
+ - Addition of 2 \n in the mountain pass special borders (before and after the /path0711 /path0899)
+ - Pãjāb~C -> Pãjāb~E
+ - Pãjāb~S -> Pãjāb~W
+ - Ob~S -> Ob~N
+ - Ob~N -> Ob~S
+ - Birmanie~N -> Birmanie~E (prov408)
+ - Birmanie~E -> Birmanie~N (prov409)
+ - Europe~Mešhed -> Mešhed
+ - Europe~Bam -> Eşfahān
+ - Europe~Eşfahān -> Bam
+ - Europe~Océan Calédonien -> Western Approaches
+ - Europe~Mer d’Irlande -> Mer d’Irlande
+ - Europe~Golfe de Gascogne -> Golfe de Gascogne
+ - Europe~Ural -> Ural
+ - Europe~Bashkiria -> Bashkiria
+ - Europe~Step’ -> Step’
+ - Europe~Astrakhan -> Astrakhan
+ - Europe~Terek -> Terek
+ - Europe~as-Sūs -> as-Sūs
+ - Europe~Šallāl -> Šallāl
+ - Europe~al-Nūbah -> al-Nūbah
+ - Europe~al-’arabiyah -> al-’arabiyah
+ - Europe~an-Nafūd -> an-Nafūd
+ - Europe~al-Başrah -> al-Başrah
+ - *Antilles~Saint-Vincent -> Antilles~B
+ - Antilles~B -> *Antilles~Saint-Vincent
+ - Mascareignes~W -> Mascareignes~M
+ - Mascareignes~E -> Mascareignes~B
+ - *Amazonia~N -> *Amazonia~North (prov167)
+ - *Amazonia~S -> *Amazonia~South (prov168)
+
+
+
+
+
+  - Les mers ne décrivent pas les carrés des îles comme des exclusions (je m'attendais à avoir des carremartinique dans les îles sous le vent par exemple).
+  - La baie d'Hudson dans la carte zoom est incorrecte. En effet, le truc principal (sans l'île) commence par path1082 et termine par bord04. Or bord04 ne termine pas au début de path1082. Pire encore, il ne sert à rien car il continue path1091 au même endroit ! D'ailleurs, bord04 est défini comme AR, ce qui n'a pas de sens lorsqu'il n'y a qu'une seule coordonnées. En regardant le fichier de log que je génère, je m'aperçois qu'il y a d'autres cas de ce genre. Donc si ça ce trouve, c'est normal, mais j'ai besoin de comprendre le fonctionnement pour pouvoir le coder.
