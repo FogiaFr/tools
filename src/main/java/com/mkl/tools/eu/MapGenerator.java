@@ -622,6 +622,7 @@ public final class MapGenerator {
          *
          * @param name  of the path.
          * @param begin of the path.
+         * @param rotw  flag saying that the object is in the rotw map.
          */
         public Path(String name, boolean begin, boolean rotw) {
             this.name = name;
@@ -854,7 +855,9 @@ public final class MapGenerator {
         /**
          * Constructor.
          *
-         * @param terrain of the province.
+         * @param terrain   of the province.
+         * @param secondary flag saying that the subProvince is not the primal one.
+         * @param rotw      flag saying that the object is in the rotw map.
          */
         public SubProvince(String terrain, boolean secondary, boolean rotw) {
             if (terrain.startsWith("l") && !StringUtils.equals("lac", terrain)) {
