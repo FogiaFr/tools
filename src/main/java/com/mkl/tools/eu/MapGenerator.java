@@ -41,12 +41,19 @@ public final class MapGenerator {
         extractPaths(provinces, specialBorders, "input/europe.grid.ps", false, log);
         extractPaths(provinces, specialBorders, "input/rotw.grid.ps", true, log);
 
+        extractProvinceData(provinces, log);
+
         Map<String, Province> provs = new HashMap<>();
         for (String prov : provinces.keySet()) {
             Province province = provinces.get(prov);
             province.restructure();
             if (!StringUtils.isEmpty(province.getTerrain()) && !StringUtils.equals("noman", province.getTerrain())) {
                 provs.put(prov, province);
+
+
+                if (!province.getPortions().get(0).isRotw() && !province.isInfos() && !StringUtils.equals("SEA", province.getTerrain())) {
+                    int a = 1;
+                }
             }
         }
 
@@ -248,12 +255,176 @@ public final class MapGenerator {
     }
 
     /**
+     * Extract data about the provinces.
+     *
+     * @param provinces data gathered so far.
+     * @param log       log writer.
+     * @throws Exception exception.
+     */
+    private static void extractProvinceData(Map<String, Province> provinces, Writer log) throws Exception {
+        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("input/europe.utf")));
+        List<String> block = new ArrayList<>();
+        while ((line = reader.readLine()) != null) {
+            if (line.startsWith("NOM ")) {
+                if (!block.isEmpty()) {
+                    log.append("Truc bizarre:").append(line).append("\n");
+                }
+                block.add(line);
+            } else if (line.startsWith("; ---") || line.startsWith("; %%%")) {
+                if (!block.isEmpty()) {
+                    processBlock(block, provinces, log);
+                }
+                block.clear();
+            } else if (!block.isEmpty()) {
+                block.add(line);
+            }
+        }
+        if (!block.isEmpty()) {
+            processBlock(block, provinces, log);
+        }
+    }
+
+    /**
+     * Process a block of the extractProvinceData segment.
+     *
+     * @param block     to parse.
+     * @param provinces data gathered so far.
+     * @param log       log writer.
+     */
+    private static void processBlock(List<String> block, Map<String, Province> provinces, Writer log) {
+        String nameCity = null;
+        List<String> altNameCity = new ArrayList<>();
+        String nameProvince = null;
+        List<String> altNameProvince = new ArrayList<>();
+        int income = 0;
+        boolean capital = false;
+        int fortress = 0;
+        boolean praesidio = false;
+        boolean port = false;
+        boolean arsenal = false;
+        for (String line : block) {
+            Matcher m = Pattern.compile("NOM [^\"]* \"(.*)\" .*").matcher(line);
+            if (m.matches()) {
+                nameCity = purifyName(m.group(1));
+            } else {
+                m = Pattern.compile("ALTNOM [^\"]* \"(.*)\" .*").matcher(line);
+                if (m.matches()) {
+                    altNameCity.add(purifyName(m.group(1)));
+                } else {
+                    m = Pattern.compile("(PROV|PROVCURVE|PROVCURVEX) [^\"]* \"(.*)\" .*").matcher(line);
+                    if (m.matches()) {
+                        if (!StringUtils.isEmpty(nameProvince)) {
+                            altNameProvince.add(purifyName(m.group(2)));
+                        } else {
+                            nameProvince = purifyName(m.group(2));
+                        }
+                    } else {
+                        m = Pattern.compile("ALTPROV [^\"]* \"(.*)\" .*").matcher(line);
+                        if (m.matches()) {
+                            altNameProvince.add(purifyName(m.group(1)));
+                        } else {
+                            m = Pattern.compile("CITE \\d{4} \\d{4} (.*)").matcher(line);
+                            if (m.matches()) {
+                                String string = m.group(1);
+                                string = string.replace("jaune", "");
+                                capital = string.contains("capitale");
+                                fortress = Integer.parseInt(string.substring(string.length() - 1));
+                            } else {
+                                m = Pattern.compile("IMG \\d{4} \\d{4} (.*)").matcher(line);
+                                if (m.matches()) {
+                                    String string = m.group(1);
+                                    port = StringUtils.equals("anchor", string) || StringUtils.equals("anchor4", string);
+                                    arsenal = StringUtils.equals("anchor2", string) || StringUtils.equals("anchor5", string);
+                                    praesidio = StringUtils.equals("anchor3", string) || StringUtils.equals("anchor4", string);
+                                } else if (line.startsWith("VALUE ")) {
+                                    String[] segments = line.split(" ");
+                                    income = Integer.parseInt(segments[segments.length - 2]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Province found = isProvince(nameProvince, provinces);
+        if (found == null) {
+            for (String alt : altNameProvince) {
+                found = isProvince(alt, provinces);
+                if (found != null) {
+                    break;
+                }
+            }
+
+            if (found == null) {
+                if (altNameProvince.size() == 1) {
+                    found = isProvince(nameProvince + altNameProvince.get(0), provinces);
+                    if (found != null) {
+                        nameProvince = nameProvince + altNameProvince.get(0);
+                        altNameProvince.clear();
+                    } else {
+                        found = isProvince(nameProvince + " " + altNameProvince.get(0), provinces);
+                        if (found != null) {
+                            nameProvince = nameProvince + " " + altNameProvince.get(0);
+                            altNameProvince.clear();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (found != null) {
+            found.setInfos(true);
+        } else {
+            int a = 1;
+        }
+        if (StringUtils.isEmpty(nameCity) || StringUtils.isEmpty(nameProvince) || income == 0 || fortress == 0) {
+            int a = 1;
+        }
+    }
+
+    /**
+     * Remove special caracters from input name.
+     *
+     * @param input to process.
+     * @return name purified.
+     */
+    private static String purifyName(String input) {
+        String name = input.trim();
+
+        if (name.endsWith("/")) {
+            name = name.substring(0, name.length() - 1);
+        }
+        if ((name.startsWith("(") && name.endsWith(")"))
+                || (name.startsWith("[") && name.endsWith("]"))) {
+            name = name.substring(1, name.length() - 1);
+        }
+
+        return name;
+    }
+
+    private static Province isProvince(String name, Map<String, Province> provinces) {
+        Province found = provinces.get(name);
+
+        if (found == null) {
+            if (name.contains("(") && name.contains(")")) {
+                found = provinces.get(name.substring(name.indexOf('(') + 1, name.lastIndexOf(')')));
+            } else if (name.contains("[") && name.contains("]")) {
+                found = provinces.get(name.substring(name.indexOf('[') + 1, name.lastIndexOf(']')));
+            }
+        }
+
+        return found;
+    }
+
+    /**
      * Create the geo.json file used by the application.
      *
      * @param provinces data gathered by the input.
      * @param log       log writer.
      * @throws Exception exception.
      */
+
     private static void extractMapData(Map<String, Province> provinces, Writer log) throws Exception {
         Writer writer = createFileWriter("src/main/resources/output/countries.geo.json", false);
         writer.append("{\"type\":\"FeatureCollection\",\"features\":[\n");
@@ -485,11 +656,11 @@ public final class MapGenerator {
     private static void createDBInjection(Map<String, Province> provinces, List<Border> borders, Writer log) throws IOException {
         Writer sqlWriter = createFileWriter("src/main/resources/output/provinces_borders.sql", false);
 
-        sqlWriter.append("DELETE FROM BORDER;\n").append("DELETE FROM PROVINCE_EU;\n")
-                .append("DELETE FROM PROVINCE;\n\n");
+        sqlWriter.append("DELETE FROM R_BORDER;\n").append("DELETE FROM R_PROVINCE_EU;\n")
+                .append("DELETE FROM R_PROVINCE;\n\n");
 
         for (Province province : provinces.values()) {
-            sqlWriter.append("INSERT INTO PROVINCE (NAME, TERRAIN)\n")
+            sqlWriter.append("INSERT INTO R_PROVINCE (NAME, TERRAIN)\n")
                     .append("    VALUES ('").append(province.getName())
                     .append("', '").append(province.getTerrain())
                     .append("');\n");
@@ -498,17 +669,17 @@ public final class MapGenerator {
         sqlWriter.append("\n");
 
         for (Border border : borders) {
-            sqlWriter.append("INSERT INTO BORDER (TYPE, ID_PROVINCE_FROM, ID_PROVINCE_TO)\n")
+            sqlWriter.append("INSERT INTO R_BORDER (TYPE, ID_R_PROVINCE_FROM, ID_R_PROVINCE_TO)\n")
                     .append("    VALUES ('").append(border.getType()).append("',\n")
-                    .append("        (SELECT ID FROM PROVINCE WHERE NAME = '")
+                    .append("        (SELECT ID FROM R_PROVINCE WHERE NAME = '")
                     .append(border.getFirst()).append("'),\n")
-                    .append("        (SELECT ID FROM PROVINCE WHERE NAME = '")
+                    .append("        (SELECT ID FROM R_PROVINCE WHERE NAME = '")
                     .append(border.getSecond()).append("'));\n");
-            sqlWriter.append("INSERT INTO BORDER (TYPE, ID_PROVINCE_FROM, ID_PROVINCE_TO)\n")
+            sqlWriter.append("INSERT INTO R_BORDER (TYPE, ID_R_PROVINCE_FROM, ID_R_PROVINCE_TO)\n")
                     .append("    VALUES ('").append(border.getType()).append("',\n")
-                    .append("        (SELECT ID FROM PROVINCE WHERE NAME = '")
+                    .append("        (SELECT ID FROM R_PROVINCE WHERE NAME = '")
                     .append(border.getSecond()).append("'),\n")
-                    .append("        (SELECT ID FROM PROVINCE WHERE NAME = '")
+                    .append("        (SELECT ID FROM R_PROVINCE WHERE NAME = '")
                     .append(border.getFirst()).append("'));\n");
         }
 
@@ -721,6 +892,8 @@ public final class MapGenerator {
         private String name;
         /** Terrain derived from the portions. */
         private String terrain;
+        /** Additional infos. */
+        private boolean infos = false;
         /** Portions of the province. */
         private List<SubProvince> portions = new ArrayList<>();
         /** Restructuring of the coordinates for the geo.json export. */
@@ -747,6 +920,16 @@ public final class MapGenerator {
         /** @return the terrain. */
         public String getTerrain() {
             return terrain;
+        }
+
+        /** @return the infos. */
+        public boolean isInfos() {
+            return infos;
+        }
+
+        /** @param infos the infos to set. */
+        public void setInfos(boolean infos) {
+            this.infos = infos;
         }
 
         /** @return the portions. */

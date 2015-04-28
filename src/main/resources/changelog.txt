@@ -1,4 +1,17 @@
 DD/MM/YYYY:
+europe.utf:
+ - NOM -> ALTNOM (Kleve/Berg)
+
+europe.grid.ps:
+ - Valencia -> València
+ - Luxembourg -> Luxemburg (*2)
+ - Wurtemberg -> Würtemberg
+ - Kranj -> Carniola
+ - Neva -> Ingermanland
+ - Neva -> *Ingermanland (the lake)
+ - Wurtemberg -> Würtemberg
+ - *Isfahan -> *Eşfahān
+ - *Sjaelland -> *Sjælland
 
 rotw.grid.ps:
  - Aden~Socotra -> Aden~So
