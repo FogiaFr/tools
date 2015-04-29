@@ -49,11 +49,6 @@ public final class MapGenerator {
             province.restructure();
             if (!StringUtils.isEmpty(province.getTerrain()) && !StringUtils.equals("noman", province.getTerrain())) {
                 provs.put(prov, province);
-
-
-                if (!province.getPortions().get(0).isRotw() && !province.isInfos() && !StringUtils.equals("SEA", province.getTerrain())) {
-                    int a = 1;
-                }
             }
         }
 
@@ -268,7 +263,7 @@ public final class MapGenerator {
         while ((line = reader.readLine()) != null) {
             if (line.startsWith("NOM ")) {
                 if (!block.isEmpty()) {
-                    log.append("Truc bizarre:").append(line).append("\n");
+                    log.append("europe.utf\tNOM already parsed for this block\t").append(line).append("\n");
                 }
                 block.add(line);
             } else if (line.startsWith("; ---") || line.startsWith("; %%%")) {
@@ -293,63 +288,61 @@ public final class MapGenerator {
      * @param log       log writer.
      */
     private static void processBlock(List<String> block, Map<String, Province> provinces, Writer log) {
-        String nameCity = null;
-        List<String> altNameCity = new ArrayList<>();
-        String nameProvince = null;
-        List<String> altNameProvince = new ArrayList<>();
-        int income = 0;
-        boolean capital = false;
-        int fortress = 0;
-        boolean praesidio = false;
-        boolean port = false;
-        boolean arsenal = false;
+        ProvinceInfo info = new ProvinceInfo();
         for (String line : block) {
             Matcher m = Pattern.compile("NOM [^\"]* \"(.*)\" .*").matcher(line);
             if (m.matches()) {
-                nameCity = purifyName(m.group(1));
-            } else {
-                m = Pattern.compile("ALTNOM [^\"]* \"(.*)\" .*").matcher(line);
-                if (m.matches()) {
-                    altNameCity.add(purifyName(m.group(1)));
+                if (!StringUtils.isEmpty(info.getNameCity())) {
+                    info.getAltNameCity().add(purifyName(m.group(1)));
                 } else {
-                    m = Pattern.compile("(PROV|PROVCURVE|PROVCURVEX) [^\"]* \"(.*)\" .*").matcher(line);
-                    if (m.matches()) {
-                        if (!StringUtils.isEmpty(nameProvince)) {
-                            altNameProvince.add(purifyName(m.group(2)));
-                        } else {
-                            nameProvince = purifyName(m.group(2));
-                        }
-                    } else {
-                        m = Pattern.compile("ALTPROV [^\"]* \"(.*)\" .*").matcher(line);
-                        if (m.matches()) {
-                            altNameProvince.add(purifyName(m.group(1)));
-                        } else {
-                            m = Pattern.compile("CITE \\d{4} \\d{4} (.*)").matcher(line);
-                            if (m.matches()) {
-                                String string = m.group(1);
-                                string = string.replace("jaune", "");
-                                capital = string.contains("capitale");
-                                fortress = Integer.parseInt(string.substring(string.length() - 1));
-                            } else {
-                                m = Pattern.compile("IMG \\d{4} \\d{4} (.*)").matcher(line);
-                                if (m.matches()) {
-                                    String string = m.group(1);
-                                    port = StringUtils.equals("anchor", string) || StringUtils.equals("anchor4", string);
-                                    arsenal = StringUtils.equals("anchor2", string) || StringUtils.equals("anchor5", string);
-                                    praesidio = StringUtils.equals("anchor3", string) || StringUtils.equals("anchor4", string);
-                                } else if (line.startsWith("VALUE ")) {
-                                    String[] segments = line.split(" ");
-                                    income = Integer.parseInt(segments[segments.length - 2]);
-                                }
-                            }
-                        }
-                    }
+                    info.setNameCity(purifyName(m.group(1)));
                 }
+                continue;
+            }
+            m = Pattern.compile("ALTNOM [^\"]* \"(.*)\" .*").matcher(line);
+            if (m.matches()) {
+                info.getAltNameCity().add(purifyName(m.group(1)));
+                continue;
+            }
+            m = Pattern.compile("(PROV|PROVCURVE|PROVCURVEX) [^\"]* \"(.*)\" .*").matcher(line);
+            if (m.matches()) {
+                if (!StringUtils.isEmpty(info.getNameProvince())) {
+                    info.getAltNameProvince().add(purifyName(m.group(2)));
+                } else {
+                    info.setNameProvince(purifyName(m.group(2)));
+                }
+                continue;
+            }
+            m = Pattern.compile("ALTPROV [^\"]* \"(.*)\" .*").matcher(line);
+            if (m.matches()) {
+                info.getAltNameProvince().add(purifyName(m.group(1)));
+                continue;
+            }
+            m = Pattern.compile("CITE \\d{4} \\d{4} (.*)").matcher(line);
+            if (m.matches()) {
+                String string = m.group(1);
+                string = string.replace("jaune", "");
+                info.setCapital(string.contains("capitale"));
+                info.setFortress(Integer.parseInt(string.substring(string.length() - 1)));
+                continue;
+            }
+            m = Pattern.compile("IMG \\d{4} \\d{4} (.*)").matcher(line);
+            if (m.matches()) {
+                String string = m.group(1);
+                info.setPort(StringUtils.equals("anchor", string) || StringUtils.equals("anchor4", string));
+                info.setArsenal(StringUtils.equals("anchor2", string) || StringUtils.equals("anchor5", string));
+                info.setPraesidiable(StringUtils.equals("anchor3", string) || StringUtils.equals("anchor4", string));
+                continue;
+            }
+            if (line.startsWith("VALUE ")) {
+                String[] segments = line.split(" ");
+                info.setIncome(Integer.parseInt(segments[segments.length - 2]));
+                continue;
             }
         }
-        Province found = isProvince(nameProvince, provinces);
+        Province found = isProvince(info.getNameProvince(), provinces);
         if (found == null) {
-            for (String alt : altNameProvince) {
+            for (String alt : info.getAltNameProvince()) {
                 found = isProvince(alt, provinces);
                 if (found != null) {
                     break;
@@ -357,16 +350,16 @@ public final class MapGenerator {
             }
 
             if (found == null) {
-                if (altNameProvince.size() == 1) {
-                    found = isProvince(nameProvince + altNameProvince.get(0), provinces);
+                if (info.getAltNameProvince().size() == 1) {
+                    found = isProvince(info.getNameProvince() + info.getAltNameProvince().get(0), provinces);
                     if (found != null) {
-                        nameProvince = nameProvince + altNameProvince.get(0);
-                        altNameProvince.clear();
+                        info.setNameProvince(info.getNameProvince() + info.getAltNameProvince().get(0));
+                        info.getAltNameProvince().clear();
                     } else {
-                        found = isProvince(nameProvince + " " + altNameProvince.get(0), provinces);
+                        found = isProvince(info.getNameProvince() + " " + info.getAltNameProvince().get(0), provinces);
                         if (found != null) {
-                            nameProvince = nameProvince + " " + altNameProvince.get(0);
-                            altNameProvince.clear();
+                            info.setNameProvince(info.getNameProvince() + " " + info.getAltNameProvince().get(0));
+                            info.getAltNameProvince().clear();
                         }
                     }
                 }
@@ -374,11 +367,11 @@ public final class MapGenerator {
         }
 
         if (found != null) {
-            found.setInfos(true);
+            found.setInfo(info);
         } else {
             int a = 1;
         }
-        if (StringUtils.isEmpty(nameCity) || StringUtils.isEmpty(nameProvince) || income == 0 || fortress == 0) {
+        if (StringUtils.isEmpty(info.getNameCity()) || StringUtils.isEmpty(info.getNameProvince()) || info.getIncome() == 0 || info.getFortress() == 0) {
             int a = 1;
         }
     }
@@ -438,7 +431,24 @@ public final class MapGenerator {
                 first = false;
             }
             writer.append("    {\"type\":\"Feature\",\"properties\":{\"terrain\":\"").append(province.getTerrain())
-                    .append("\"},\"geometry\":{\"type\":\"");
+                    .append("\"");
+
+            if (province.getInfo() != null) {
+                writer.append(",\"rotw\":\"false\"")
+                        .append(",\"income\":\"").append(Integer.toString(province.getInfo().getIncome())).append("\"")
+                        .append(",\"fortress\":\"").append(Integer.toString(province.getInfo().getFortress())).append("\"")
+                        .append(",\"capital\":\"").append(Boolean.toString(province.getInfo().isCapital())).append("\"")
+                        .append(",\"port\":\"").append(Boolean.toString(province.getInfo().isPort())).append("\"")
+                        .append(",\"arsenal\":\"").append(Boolean.toString(province.getInfo().isArsenal())).append("\"")
+                        .append(",\"praesidiable\":\"").append(Boolean.toString(province.getInfo().isPraesidiable())).append("\"")
+                        .append(",\"metadata\":\"").append(String.join(";;", province.getInfo().getMetadata(province.getName()))).append("\"");
+            } else if (!province.getPortions().get(0).isRotw()) {
+                writer.append(",\"rotw\":\"false\"");
+            } else {
+                writer.append(",\"rotw\":\"true\"");
+            }
+
+            writer.append("},\"geometry\":{\"type\":\"");
             if (province.getCoords().size() == 1) {
                 writer.append("Polygon");
             } else if (province.getCoords().size() > 1) {
@@ -657,13 +667,35 @@ public final class MapGenerator {
         Writer sqlWriter = createFileWriter("src/main/resources/output/provinces_borders.sql", false);
 
         sqlWriter.append("DELETE FROM R_BORDER;\n").append("DELETE FROM R_PROVINCE_EU;\n")
-                .append("DELETE FROM R_PROVINCE;\n\n");
+                .append("DELETE FROM R_PROVINCE_ROTW;\n").append("DELETE FROM R_PROVINCE;\n\n");
 
         for (Province province : provinces.values()) {
             sqlWriter.append("INSERT INTO R_PROVINCE (NAME, TERRAIN)\n")
                     .append("    VALUES ('").append(province.getName())
                     .append("', '").append(province.getTerrain())
                     .append("');\n");
+
+            if (province.getInfo() != null) {
+                sqlWriter.append("INSERT INTO R_PROVINCE_EU (ID, INCOME, FORTRESS, CAPITAL, PORT, ARSENAL, PRAESIDIABLE, METADATA)\n")
+                        .append("    VALUES (").append(" (SELECT ID FROM R_PROVINCE WHERE NAME = '").append(province.getName()).append("')")
+                        .append(", '").append(Integer.toString(province.getInfo().getIncome()))
+                        .append("', '").append(Integer.toString(province.getInfo().getFortress()))
+                        .append("', b'").append(booleanToBit(province.getInfo().isCapital()))
+                        .append("', b'").append(booleanToBit(province.getInfo().isPort()))
+                        .append("', b'").append(booleanToBit(province.getInfo().isArsenal()))
+                        .append("', b'").append(booleanToBit(province.getInfo().isPraesidiable()))
+                        .append("', '").append(String.join(";;", province.getInfo().getMetadata(province.getName())))
+                        .append("');\n");
+
+            } else if (!province.getPortions().get(0).isRotw()) {
+                sqlWriter.append("INSERT INTO R_PROVINCE_EU (ID)\n")
+                        .append("    VALUES (").append(" (SELECT ID FROM R_PROVINCE WHERE NAME = '").append(province.getName()).append("')")
+                        .append(");\n");
+            } else {
+                sqlWriter.append("INSERT INTO R_PROVINCE_ROTW (ID)\n")
+                        .append("    VALUES (").append(" (SELECT ID FROM R_PROVINCE WHERE NAME = '").append(province.getName()).append("')")
+                        .append(");\n");
+            }
         }
 
         sqlWriter.append("\n");
@@ -685,6 +717,22 @@ public final class MapGenerator {
 
         sqlWriter.flush();
         sqlWriter.close();
+    }
+
+    /**
+     * Convert a boolean to bit (database).
+     *
+     * @param toConvert boolean to convert.
+     * @return a bit.
+     */
+    private static String booleanToBit(Boolean toConvert) {
+        String bit = "0";
+
+        if (toConvert != null && toConvert) {
+            bit = "1";
+        }
+
+        return bit;
     }
 
     /**
@@ -892,8 +940,8 @@ public final class MapGenerator {
         private String name;
         /** Terrain derived from the portions. */
         private String terrain;
-        /** Additional infos. */
-        private boolean infos = false;
+        /** Additional info. */
+        private ProvinceInfo info;
         /** Portions of the province. */
         private List<SubProvince> portions = new ArrayList<>();
         /** Restructuring of the coordinates for the geo.json export. */
@@ -922,14 +970,14 @@ public final class MapGenerator {
             return terrain;
         }
 
-        /** @return the infos. */
-        public boolean isInfos() {
-            return infos;
+        /** @return the info. */
+        public ProvinceInfo getInfo() {
+            return info;
         }
 
-        /** @param infos the infos to set. */
-        public void setInfos(boolean infos) {
-            this.infos = infos;
+        /** @param info the info to set. */
+        public void setInfo(ProvinceInfo info) {
+            this.info = info;
         }
 
         /** @return the portions. */
@@ -1019,6 +1067,148 @@ public final class MapGenerator {
         @Override
         public int hashCode() {
             return name.hashCode();
+        }
+    }
+
+    /** Additional information on a european province. */
+    private static class ProvinceInfo {
+        /** Principal name of the city. */
+        String nameCity;
+        /** Additional names of the city. */
+        List<String> altNameCity = new ArrayList<>();
+        /** Principal name of the province. */
+        String nameProvince;
+        /** Additional names of the province. */
+        List<String> altNameProvince = new ArrayList<>();
+        /** Income of the province. */
+        int income = 0;
+        /** Flag saying that the province is a capital. */
+        boolean capital = false;
+        /** Level of the natural fortress. */
+        int fortress = 0;
+        /** Flag saying that the province has a natural port. */
+        boolean port = false;
+        /** Flag saying that the port has a natural arsenal. */
+        boolean arsenal = false;
+        /** Flag saying that the natural port/arsenal can be blocked by a fortress. */
+        boolean praesidiable = false;
+
+        /** @return the nameCity. */
+        public String getNameCity() {
+            return nameCity;
+        }
+
+        /** @param nameCity the nameCity to set. */
+        public void setNameCity(String nameCity) {
+            this.nameCity = nameCity;
+        }
+
+        /** @return the altNameCity. */
+        public List<String> getAltNameCity() {
+            return altNameCity;
+        }
+
+        /** @param altNameCity the altNameCity to set. */
+        public void setAltNameCity(List<String> altNameCity) {
+            this.altNameCity = altNameCity;
+        }
+
+        /** @return the nameProvince. */
+        public String getNameProvince() {
+            return nameProvince;
+        }
+
+        /** @param nameProvince the nameProvince to set. */
+        public void setNameProvince(String nameProvince) {
+            this.nameProvince = nameProvince;
+        }
+
+        /** @return the altNameProvince. */
+        public List<String> getAltNameProvince() {
+            return altNameProvince;
+        }
+
+        /** @param altNameProvince the altNameProvince to set. */
+        public void setAltNameProvince(List<String> altNameProvince) {
+            this.altNameProvince = altNameProvince;
+        }
+
+        /** @return the income. */
+        public int getIncome() {
+            return income;
+        }
+
+        /** @param income the income to set. */
+        public void setIncome(int income) {
+            this.income = income;
+        }
+
+        /** @return the capital. */
+        public boolean isCapital() {
+            return capital;
+        }
+
+        /** @param capital the capital to set. */
+        public void setCapital(boolean capital) {
+            this.capital = capital;
+        }
+
+        /** @return the fortress. */
+        public int getFortress() {
+            return fortress;
+        }
+
+        /** @param fortress the fortress to set. */
+        public void setFortress(int fortress) {
+            this.fortress = fortress;
+        }
+
+        /** @return the port. */
+        public boolean isPort() {
+            return port;
+        }
+
+        /** @param port the port to set. */
+        public void setPort(boolean port) {
+            this.port = port;
+        }
+
+        /** @return the arsenal. */
+        public boolean isArsenal() {
+            return arsenal;
+        }
+
+        /** @param arsenal the arsenal to set. */
+        public void setArsenal(boolean arsenal) {
+            this.arsenal = arsenal;
+        }
+
+        /** @return the praesidiable. */
+        public boolean isPraesidiable() {
+            return praesidiable;
+        }
+
+        /** @param praesidiable the praesidiable to set. */
+        public void setPraesidiable(boolean praesidiable) {
+            this.praesidiable = praesidiable;
+        }
+
+        /**
+         * Returns a Collection of distinct names of cities/provinces.
+         *
+         * @param realNameProvince the name of the owning province.
+         * @return a Collection of distinct names of cities/provinces.
+         */
+        public Collection<String> getMetadata(String realNameProvince) {
+            Set<String> metadata = new HashSet<>();
+
+            metadata.add(realNameProvince);
+            metadata.add(nameProvince);
+            metadata.addAll(altNameProvince);
+            metadata.add(nameCity);
+            metadata.addAll(altNameCity);
+
+            return metadata;
         }
     }
 

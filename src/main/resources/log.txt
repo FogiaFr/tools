@@ -1,4 +1,4 @@
-Truc bizarre:NOM Xl 2297 3742 "{1}" N
+europe.utf	NOM already parsed for this block	NOM Xl 2297 3742 "{1}" N
 Golfe de Syrte	Border not consistent (ignored)	/path1383	(2712,993)	(2743,1016)	(3109,1189)
 Golfe de Syrte	Border not consistent (ignored)	/path1393	(2671,855)	(2712,993)	(3109,1189)
 Golfe de Syrte	Border not closed	/mer32	(2671,855)	(3109,1189)
