@@ -1,6 +1,7 @@
 DD/MM/YYYY:
 europe.utf:
  - NOM -> ALTNOM (Kleve/Berg)
+ - ""ﻥﺎﻬﻔﺻﺍ" -> "ﻥﺎﻬﻔﺻﺍ" (Isfahan)
 
 europe.grid.ps:
  - Valencia -> València
