@@ -1,4 +1,129 @@
 DD/MM/YYYY:
+engEntetesMineurs.tex:
+ - boheme -> Hboheme (in Royaumes semi-independants Habsbourgs)
+ - hongrie -> Hhongrie (in Royaumes semi-independants Habsbourgs)
+ - milan -> Hmilan (in Royaumes semi-independants Habsbourgs)
+ - naples -> Hnaples (in Royaumes semi-independants Habsbourgs)
+ - ukraine -> Vukraine (in Mineurs creables par revoltes)
+ - \minorcountry{grenade}{Kingdom of Granada}{Granada} -> minorcountryvirtual{grenade}{Kingdom of Granada}{Granada}
+ - \minorcountry{courlande}{Duchy of Kurland}{Curlandia} -> \minorcountryvirtual{courlande}{Duchy of Kurland}{Curlandia}
+ - \minorcountry{corse}{Independent Corsica}{Corsica} -> \minorcountryvirtual{corse}{Independent Corsica}{Corsica}
+ - \minorcountry{transylvanie}{Voivodat of Transylvanie}{Transilvania} -> \minorcountryvirtual{transylvanie}{Voivodat of Transylvanie}{Transilvania}
+ - \minorcountryvirtual{belgique} -> \minorcountryvirtual{Vbelgique}
+ - \minorcountryvirtual{hollande} -> \minorcountryvirtual{Vhollande}
+ - \minorcountryvirtual{catalogne} -> \minorcountryvirtual{Vcatalogne}
+ - \minorcountryvirtual{eastprussia} -> \minorcountryvirtual{Veastprussia}
+ - \minorcountryvirtual{finlande} -> \minorcountryvirtual{Vfinlande}
+ - \minorcountryvirtual{irlande} -> \minorcountryvirtual{Virlande}
+ - \minorcountryvirtual{lithuanie} -> \minorcountryvirtual{Vlithuanie}
+ - \minorcountryvirtual{liflandie} -> \minorcountryvirtual{Vliflandie}
+ - \minorcountryvirtual{norvege} -> \minorcountryvirtual{Vnorvege}
+ - \minorcountryvirtual{pommeranie} -> \minorcountryvirtual{Vpommeranie}
+
+engCorpsMineurs.tex:
+ - \n after a \minorXXX (mamelouks)
+ - Nefud -> an-Nafūd
+ - SidiIfni -> as-Sūs (and the income is 3 and not 1)
+ - Ostlandet -> Østlandet (*2)
+ - Nil -> an-Nīl
+ - Hongrie -> Magyarország (*2)
+ - Pars -> Pārs
+ - Kranj -> Carniola (*2)
+ - Osterreich -> Österreich
+ - Kazan -> Kazan’
+ - Silesie -> Silésie (*2)
+ - Thuringen -> Thüringen
+ - Koln -> Köln
+ - Alep -> Ĥalab
+ - Sinai -> Sīnā’
+ - Karnten -> Kärnten
+ - Tripoli -> Ṭarablūs (and the income is 4 and not 2)
+ - JebelTubqal -> Jebel Tubqāl
+ - Magrib -> al-Maġrib
+ - Algerie -> al-Jaza’ir
+ - Ryazan -> Ryazan’
+ - Kordistan -> Kordistān
+ - Rif -> er-Rif
+ - Cyrenaique -> Barqah
+ - Tobrouk -> Ṭubruq
+ - Cataractes -> Šallāl
+ - Erdely -> Erdély (*3)
+ - Mures -> Marosz (*3)
+ - Oran -> Wahrān
+ - Franche-Comte -> Franche-Comté
+ - Astragan -> Astrakhan
+ - Arabie -> al-’arabiyah
+ - Munster -> Münster
+ - Zaporozhye -> Zaporizhzhya (*3)
+ - Osnabruck -> Osnabrück
+ - Isfahan -> Eşfahān
+ - Jordanie -> al-Ā’urdunn
+ - Crimee -> Qırım
+ - Khadzhibei -> Hacıbey
+ - Tunisie -> ’Afrīqiyah
+ - Sjaelland -> Sjælland
+ - Atlas -> al-’Aṭlas
+ - Podolie -> Podillya (*2)
+ - Vlaandern -> Vlaanderen (*2)
+ - Ukrainya -> Ukraïnya (*2)
+ - Boheme -> Bohème
+ - Dagestan -> Daġestān
+ - Aures -> ’Arīs
+ - Nubie -> al-Nūbah
+ - Wurtemberg -> Würtemberg
+ - Syrie -> Sūriyah
+ - Bassorah -> al-Başrah
+ - Irak -> al-‛Irāq
+ - Tigre -> Dijlah
+ - Pecs -> Pécs (*2)
+ - Kabylie -> al-Qaba’il
+ - Annabah -> ‛Annābah
+ - Azarbayadjan -> Azarbāyadjān
+ - Van -> Wān
+ - Shirvan -> Šīrwān
+ - Kermanshah -> Kermānšāh
+ - Meshhed -> Mešhed
+ - Armenie -> Arménie
+ - Delta -> Deltā
+ - Egypte -> Mişr
+ - Liege -> Liège
+ - Trondelag -> Trøndelag (*2)
+ - Vastergotland -> Västergotland
+ - Skane -> Skåne
+ - Croatie -> Hrvatska (*2)
+ - Liban -> Lubnān
+ - Step -> Step’
+ - Tunis -> Tūnis
+ - Jamtland -> Jämtland
+ - Smaland -> Småland
+ - Gastrikland -> Gästrikland
+ - Szlovakia -> Szlovákia (*2)
+ - Karpatok -> Kárpátok (*2)
+ - Bolgars -> Idel Bolgarstany
+ - Preussen -> Preußen (*2)
+ - West Pommern -> Vorpommern
+ - Ost Pommern -> Hinterpommern
+ - Estland -> Eesti (*2)
+ - Lubeck -> Lübeck (*2)
+ - Suisse -> Schweiz
+ - Georgie -> Géorgie
+ - Saldigna -> Saldígna (*2)
+ - Cordoba -> Córdoba
+ - Neva -> Ingermanland
+ - Lietuva -> Lietuvą
+ - Zemaitija -> Žemaitija
+ - Smolenska -> Smolenską
+ - Prypec -> Prypeć
+ - Rosselo -> Rosseló
+ - Courlande -> Kurland
+ - Bearn -> Béarn
+ - Cevennes -> Cévennes
+ - Dauphine -> Dauphiné
+ - Orleanais -> Orléanais
+ - Ile-de-France -> Île-de-France
+ - Savo -> Kexholm
+ - added \minorprovince{suede}{Kexholm}2
+
 europe.utf:
  - NOM -> ALTNOM (Kleve/Berg)
  - ""ﻥﺎﻬﻔﺻﺍ" -> "ﻥﺎﻬﻔﺻﺍ" (Isfahan)

@@ -1,15 +1,19 @@
 package com.mkl.tools.eu;
 
 
+import com.mkl.tools.eu.util.ToolsUtil;
+import com.mkl.tools.eu.vo.country.Country;
+import com.mkl.tools.eu.vo.province.*;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,18 +47,30 @@ public final class MapGenerator {
 
         extractProvinceData(provinces, log);
 
+        Map<String, Country> countries = createCountries(log);
+
+        extractCountriesData(countries, provinces, log);
+
+        crossProvincesCountries(provinces, countries, log);
+
         Map<String, Province> provs = new HashMap<>();
         for (String prov : provinces.keySet()) {
             Province province = provinces.get(prov);
             province.restructure();
             if (!StringUtils.isEmpty(province.getTerrain()) && !StringUtils.equals("noman", province.getTerrain())) {
                 provs.put(prov, province);
+
+                if (province.getInfo() != null && province.getInfo().getDefaultOwner() == null) {
+                    log.append(province.getName()).append("\tProvince has no owner\n");
+                }
             }
         }
 
-        extractMapData(provs, log);
+        createMapData(provs, log);
 
-        extractProvincesData(provs, specialBorders, log);
+        createProvincesData(provs, specialBorders, log);
+
+        createCountriesData(countries, log);
 
         log.flush();
         log.close();
@@ -286,8 +302,9 @@ public final class MapGenerator {
      * @param block     to parse.
      * @param provinces data gathered so far.
      * @param log       log writer.
+     * @throws Exception exception.
      */
-    private static void processBlock(List<String> block, Map<String, Province> provinces, Writer log) {
+    private static void processBlock(List<String> block, Map<String, Province> provinces, Writer log) throws Exception {
         ProvinceInfo info = new ProvinceInfo();
         for (String line : block) {
             Matcher m = Pattern.compile("NOM [^\"]* \"(.*)\" .*").matcher(line);
@@ -339,6 +356,18 @@ public final class MapGenerator {
                 info.setIncome(Integer.parseInt(segments[segments.length - 2]));
                 continue;
             }
+            if (line.startsWith("ECU ")) {
+                String owner = toMajorName(line.substring(line.lastIndexOf(' ')).trim());
+                if (!StringUtils.isEmpty(owner)) {
+                    if (!StringUtils.isEmpty(info.getDefaultOwner())) {
+                        log.append(info.getNameProvince()).append("\tProvince has various owners\t")
+                                .append(info.getDefaultOwner()).append("\t")
+                                .append(owner).append("\n");
+                    }
+                    info.setDefaultOwner(owner);
+                }
+                continue;
+            }
         }
         Province found = isProvince(info.getNameProvince(), provinces);
         if (found == null) {
@@ -368,11 +397,6 @@ public final class MapGenerator {
 
         if (found != null) {
             found.setInfo(info);
-        } else {
-            int a = 1;
-        }
-        if (StringUtils.isEmpty(info.getNameCity()) || StringUtils.isEmpty(info.getNameProvince()) || info.getIncome() == 0 || info.getFortress() == 0) {
-            int a = 1;
         }
     }
 
@@ -396,6 +420,69 @@ public final class MapGenerator {
         return name;
     }
 
+    /**
+     * Transform a blason to a Major trigramme.
+     *
+     * @param blason to check.
+     * @return the major trigramme.
+     */
+    private static String toMajorName(String blason) {
+        String major = null;
+
+        switch (blason) {
+            case "france":
+                major = "FRA";
+                break;
+            case "espagne":
+                major = "SPA";
+                break;
+            case "portugal":
+                major = "POR";
+                break;
+            case "angleterre":
+                major = "ANG";
+                break;
+//            case "hollande":
+//                major = "HOL";
+//                break;
+//            case "brandebourg":
+//                major = "PRU";
+//                break;
+//            case "suede":
+//                major = "SUE";
+//                break;
+//            case "habsbourg":
+//                major = "HAB";
+//                break;
+            case "venise":
+                major = "VEN";
+                break;
+            case "pologne":
+            case "lithuanie":
+                major = "POL";
+                break;
+            case "russie":
+                major = "RUS";
+                break;
+            case "turquie":
+                major = "TUR";
+                break;
+            default:
+                break;
+        }
+
+        return major;
+    }
+
+    /**
+     * Check if the name is a province.
+     * <p>
+     * If province is 'PROV', name like 'PROV', 'toto (PROV)' or 'tutu [PROV]' will work.
+     *
+     * @param name      to check.
+     * @param provinces all the provinces.
+     * @return <code>true</code> if the name exists.
+     */
     private static Province isProvince(String name, Map<String, Province> provinces) {
         Province found = provinces.get(name);
 
@@ -411,6 +498,248 @@ public final class MapGenerator {
     }
 
     /**
+     * Create the countries from the header file of countries.
+     *
+     * @param log log writer.
+     * @throws Exception exception.
+     */
+    private static Map<String, Country> createCountries(Writer log) throws Exception {
+        Map<String, Country> countries = new HashMap<>();
+        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("input/engEntetesMineurs.tex")));
+        List<String> block = new ArrayList<>();
+        while ((line = reader.readLine()) != null) {
+            if (line.trim().startsWith("%") || StringUtils.isEmpty(line)) {
+                continue;
+            }
+
+            block.add(line);
+
+            if (wellBalanced(block, '{', '}')) {
+                Country country = null;
+                String minor = String.join("", block);
+                if (minor.startsWith("\\minorcountry")) {
+                    country = new Country("MINOR");
+                }
+                if (minor.startsWith("\\minorcountryminmaj")) {
+                    country = new Country("MINORMAJOR");
+                }
+                if (minor.startsWith("\\minorcountryvirtual")) {
+                    country = new Country("REVOLT");
+                }
+                if (minor.startsWith("\\minorcountryreallyvirtual")) {
+                    country = new Country("VIRTUAL");
+                }
+                if (minor.startsWith("\\minorcountryhab")) {
+                    country = new Country("HAB");
+                }
+                if (minor.startsWith("\\minorcountryrotw")) {
+                    country = new Country("ROTW");
+                }
+
+                if (country != null) {
+                    String[] split = ToolsUtil.split(minor, '{', '}');
+                    if (split.length == 3 || split.length == 4) {
+                        country.setName(transformSpecialChars(split[0]));
+                        country.setShortLabel(transformSpecialChars(split[2]));
+                        country.setLongLabel(transformSpecialChars(split[1]));
+                    } else {
+                        log.append("Minor country header\tUnparsable\t").append(minor).append("\n");
+                    }
+
+                    countries.put(country.getName(), country);
+                }
+
+                block.clear();
+            }
+        }
+
+        return countries;
+    }
+
+    /**
+     * Fill the countries from the file of countries.
+     *
+     * @param countries to fill.
+     * @param provinces gathered so far.
+     * @param log       log writer.
+     * @throws Exception exception.
+     */
+    private static void extractCountriesData(Map<String, Country> countries, Map<String, Province> provinces, Writer log) throws Exception {
+        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("input/engCorpsMineurs.tex")));
+        List<String> block = new ArrayList<>();
+        while ((line = reader.readLine()) != null) {
+            if (line.trim().startsWith("%") || StringUtils.isEmpty(line)) {
+                continue;
+            }
+
+            block.add(line);
+
+            if (wellBalanced(block, '{', '}')) {
+                String minor = String.join("", block);
+                block.clear();
+                String[] split = ToolsUtil.split(minor, '{', '}');
+                Country country = countries.get(split[0]);
+                if (country == null) {
+                    log.append(split[0]).append("\tMinor country not found, cant fill it\n");
+                    continue;
+                }
+                if (minor.startsWith("\\minorreligion")) {
+                    country.setReligion(split[1]);
+                } else if (minor.startsWith("\\minordiplo")) {
+                    if (!minor.startsWith("\\minordiplospecial")) {
+                        country.setRoyalMarriage(toDiplo(split[1]));
+                        country.setSubsidies(toDiplo(split[2]));
+                        country.setMilitaryAlliance(toDiplo(split[3]));
+                        country.setExpCorps(toDiplo(split[4]));
+                        country.setEntryInWar(toDiplo(split[5]));
+                        country.setVassal(toDiplo(split[6]));
+                        country.setAnnexion(toDiplo(split[7]));
+                    }
+                } else if (minor.startsWith("\\minorfid")) {
+                    country.setFidelity(Integer.parseInt(split[1]));
+                } else if (minor.startsWith("\\minorprovince")) {
+                    country.getProvinces().add(split[1]);
+                } else if (minor.startsWith("\\minorcapital")) {
+                    country.getCapitals().add(split[1]);
+                } else if (minor.startsWith("\\minorpref")) {
+                    // TODO conception
+                } else if (minor.startsWith("\\minorfixedincome")) {
+                    // TODO gold mines
+                } else if (minor.startsWith("\\minorbasicforces")) {
+                    // TODO conception
+                } else if (minor.startsWith("\\minorbasicrenforts")) {
+                    // TODO conception
+                } else if (minor.startsWith("\\minorforces")) {
+                    // TODO conception
+                } else if (minor.startsWith("\\minorarmyclass")) {
+                    country.setArmyClass(split[1]);
+                } else if (minor.startsWith("\\minorHRE[Elector]")) {
+                    country.setHre(true);
+                    country.setElector(true);
+                } else if (minor.startsWith("\\minorHRE")) {
+                    country.setHre(true);
+                } else if (minor.startsWith("\\minorgeo")) {
+                    // TODO conception
+                } else if (minor.startsWith("\\minorspecial")
+                        || minor.startsWith("\\minorrule")
+                        || minor.startsWith("\\minorblason")
+                        || minor.startsWith("\\eventref")
+                        || minor.startsWith("\\minoractivation")
+                        || minor.startsWith("\\minorevent")
+                        || minor.startsWith("\\minorindeptwo")
+                        || minor.startsWith("\\minorindep")
+                        || minor.startsWith("\\minorbonusrenforts")) {
+                } else {
+
+                    throw new RuntimeException(minor);
+                }
+            }
+        }
+    }
+
+    /**
+     * Transform special chars into ascii chars.
+     *
+     * @param string to transform.
+     * @return encoded string.
+     */
+    private static String transformSpecialChars(String string) {
+        String name = string;
+
+        name = name.replace("\\AE{}", "Æ");
+        name = name.replace("\\ae{}", "æ");
+        name = name.replace("\\ae", "æ");
+        name = name.replace("\\\"o", "ö");
+        name = name.replace("\\\"u", "ü");
+        name = name.replace("\\`", "è");
+        name = name.replace("\\bazar", "");
+        name = name.replace("\\HRE", "HRE");
+
+        return name;
+    }
+
+    /**
+     * Tell if a block of String is well balanced (same number oof open and close char).
+     *
+     * @param lines block of String.
+     * @param open  char.
+     * @param close char.
+     * @return <code>true</code> if the block is well balanced.
+     */
+    private static boolean wellBalanced(List<String> lines, char open, char close) {
+        int balance = 0;
+
+        for (String line : lines) {
+            for (char c : line.toCharArray()) {
+                if (c == open) {
+                    balance++;
+                }
+                if (c == close) {
+                    balance--;
+                }
+            }
+        }
+
+        return balance == 0;
+    }
+
+    /**
+     * Transform a string to a diplo track value.
+     *
+     * @param value to transform.
+     * @return the diplo track value.
+     */
+    private static Integer toDiplo(String value) {
+        if (StringUtils.equals("*", value)) {
+            return null;
+        }
+
+        String modValue = value;
+        if (modValue.endsWith("+")) {
+            modValue = modValue.substring(0, modValue.length() - 1);
+        }
+
+        return Integer.parseInt(modValue);
+    }
+
+    /**
+     * Cross the info in the provinces with those in the countries.
+     *
+     * @param countries to fill.
+     * @param provinces gathered so far.
+     * @param log       log writer.
+     * @throws Exception exception.
+     */
+    private static void crossProvincesCountries(Map<String, Province> provinces, Map<String, Country> countries, Writer log) throws Exception {
+        for (Country country : countries.values()) {
+            List<String> provincesToTest = new ArrayList<>(country.getProvinces());
+            provincesToTest.addAll(country.getCapitals());
+            for (String prov : provincesToTest) {
+                Province province = provinces.get(prov);
+                if (province == null) {
+                    log.append(country.getName()).append("\tProvince does not exist\t").append(prov).append("\n");
+                } else {
+                    if (StringUtils.equals("MINOR", country.getType())
+                            || (StringUtils.equals("MINORMAJOR", country.getType()) && !StringUtils.equals("hollande", country.getName()))) {
+                        if (!StringUtils.isEmpty(province.getInfo().getDefaultOwner())) {
+                            if (StringUtils.equals("ukraine", province.getInfo().getDefaultOwner())) {
+                                province.getInfo().setDefaultOwner(country.getName());
+                            }
+                            log.append(prov).append("\tProvince has 2 owners\t")
+                                    .append(province.getInfo().getDefaultOwner()).append("\t").append(country.getName())
+                                    .append("\tgiven to\t").append(province.getInfo().getDefaultOwner()).append("\n");
+                        } else {
+                            province.getInfo().setDefaultOwner(country.getName());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * Create the geo.json file used by the application.
      *
      * @param provinces data gathered by the input.
@@ -418,7 +747,7 @@ public final class MapGenerator {
      * @throws Exception exception.
      */
 
-    private static void extractMapData(Map<String, Province> provinces, Writer log) throws Exception {
+    private static void createMapData(Map<String, Province> provinces, Writer log) throws Exception {
         Writer writer = createFileWriter("src/main/resources/output/countries.geo.json", false);
         writer.append("{\"type\":\"FeatureCollection\",\"features\":[\n");
         boolean first = true;
@@ -579,7 +908,7 @@ public final class MapGenerator {
      * @param log            log writer.
      * @throws Exception exception.
      */
-    private static void extractProvincesData(Map<String, Province> provinces, Map<String, List<Path>> specialBorders, Writer log) throws Exception {
+    private static void createProvincesData(Map<String, Province> provinces, Map<String, List<Path>> specialBorders, Writer log) throws Exception {
         Map<Path, List<Province>> provincesByPath = new HashMap<>();
         for (Province province : provinces.values()) {
             for (SubProvince subProvince : province.getPortions()) {
@@ -720,6 +1049,60 @@ public final class MapGenerator {
     }
 
     /**
+     * Create a SQL injection script for countries.
+     *
+     * @param countries list of countries.
+     * @param log       log writer.
+     * @throws IOException exception.
+     */
+    private static void createCountriesData(Map<String, Country> countries, Writer log) throws IOException {
+        Writer sqlWriter = createFileWriter("src/main/resources/output/countries.sql", false);
+
+        sqlWriter.append("DELETE FROM R_COUNTRY_PROVINCE_EU_CAPITALS;\n")
+                .append("DELETE FROM R_COUNTRY_PROVINCE_EU;\n")
+                .append("DELETE FROM R_COUNTRY;\n");
+
+        for (Country country : countries.values()) {
+            sqlWriter.append("INSERT INTO R_COUNTRY (NAME, TYPE, RELIGION, RM, SUB, MA, EC, EW, VA, AN" +
+                    ", FIDELITY, ARMY_CLASS, ELECTOR, HRE)\n")
+                    .append("    VALUES ('").append(country.getName())
+                    .append("', '").append(country.getType())
+                    .append("', '").append(country.getReligion())
+                    .append("', ").append(integerToString(country.getRoyalMarriage()))
+                    .append(", ").append(integerToString(country.getSubsidies()))
+                    .append(", ").append(integerToString(country.getMilitaryAlliance()))
+                    .append(", ").append(integerToString(country.getExpCorps()))
+                    .append(", ").append(integerToString(country.getEntryInWar()))
+                    .append(", ").append(integerToString(country.getVassal()))
+                    .append(", ").append(integerToString(country.getAnnexion()))
+                    .append(", ").append(integerToString(country.getFidelity()))
+                    .append(", '").append(country.getArmyClass())
+                    .append("', b'").append(booleanToBit(country.isElector()))
+                    .append("', b'").append(booleanToBit(country.isHre()))
+                    .append("');\n");
+
+            for (String province : country.getCapitals()) {
+                sqlWriter.append("INSERT INTO R_COUNTRY_PROVINCE_EU_CAPITALS (ID_R_COUNTRY, ID_R_PROVINCE_EU)\n")
+                        .append("    VALUES (")
+                        .append(" (SELECT ID FROM R_COUNTRY WHERE NAME = '").append(country.getName()).append("')")
+                        .append(", (SELECT ID FROM R_PROVINCE WHERE NAME = '").append(province).append("')")
+                        .append(");\n");
+            }
+
+            for (String province : country.getProvinces()) {
+                sqlWriter.append("INSERT INTO R_COUNTRY_PROVINCE_EU (ID_R_COUNTRY, ID_R_PROVINCE_EU)\n")
+                        .append("    VALUES (")
+                        .append(" (SELECT ID FROM R_COUNTRY WHERE NAME = '").append(country.getName()).append("')")
+                        .append(", (SELECT ID FROM R_PROVINCE WHERE NAME = '").append(province).append("')")
+                        .append(");\n");
+            }
+        }
+
+        sqlWriter.flush();
+        sqlWriter.close();
+    }
+
+    /**
      * Convert a boolean to bit (database).
      *
      * @param toConvert boolean to convert.
@@ -733,6 +1116,22 @@ public final class MapGenerator {
         }
 
         return bit;
+    }
+
+    /**
+     * Convert an Integer to String (database).
+     *
+     * @param toConvert Integer to convert.
+     * @return an Integer.
+     */
+    private static String integerToString(Integer toConvert) {
+        String db = "null";
+
+        if (toConvert != null) {
+            db = "'" + Integer.toString(toConvert) + "'";
+        }
+
+        return db;
     }
 
     /**
@@ -764,678 +1163,5 @@ public final class MapGenerator {
         }
 
         return writer;
-    }
-
-    /**
-     * Returns the first element of the list.
-     *
-     * @param list the list.
-     * @param <E>  generic of the list.
-     * @return the first element of the list.
-     */
-    private static <E> E firstElement(List<E> list) {
-        E elem = null;
-
-        if (list != null && !list.isEmpty()) {
-            elem = list.get(0);
-        }
-
-        return elem;
-    }
-
-    /**
-     * Returns the last element of the list.
-     *
-     * @param list the list.
-     * @param <E>  generic of the list.
-     * @return the last element of the list.
-     */
-    private static <E> E lastElement(List<E> list) {
-        E elem = null;
-
-        if (list != null && !list.isEmpty()) {
-            elem = list.get(list.size() - 1);
-        }
-
-        return elem;
-    }
-
-    /**
-     * Return the distance that is needed in order to close the polygone. Returns 0 if the polygone is closed.
-     *
-     * @param polygone to check.
-     * @return the distance that is needed in order to close the polygone. Returns 0 if the polygone is closed.
-     */
-    private static double distanceToClosePolygone(List<Pair<Integer, Integer>> polygone) {
-        return distance(firstElement(polygone), lastElement(polygone));
-    }
-
-    /**
-     * Returns the distance between the two points.
-     *
-     * @param first  one point.
-     * @param second another point.
-     * @return the distance between the two points.
-     */
-    private static double distance(Pair<Integer, Integer> first, Pair<Integer, Integer> second) {
-        if (first == null || second == null) {
-            return 0;
-        }
-
-        return Math.sqrt((first.getLeft() - second.getLeft()) * (first.getLeft() - second.getLeft()) + (first.getRight() - second.getRight()) * (first.getRight() - second.getRight()));
-    }
-
-    /** Inner class describing a path (can be border, mer or path). */
-    private static class Path {
-        /** Name of the path. */
-        private String name;
-        /** Flag saying that the path begins by itself (and does not continue the previous one). */
-        private boolean begin;
-        /** Flag saying that this SubProvince is located in the ROTW map. */
-        private boolean rotw;
-        /** Coordinates of the path. */
-        private List<Pair<Integer, Integer>> coords = new ArrayList<>();
-
-        /**
-         * Constructor.
-         *
-         * @param name  of the path.
-         * @param begin of the path.
-         * @param rotw  flag saying that the object is in the rotw map.
-         */
-        public Path(String name, boolean begin, boolean rotw) {
-            this.name = name;
-            this.begin = begin;
-            this.rotw = rotw;
-        }
-
-        /** @return the name. */
-        public String getName() {
-            return name;
-        }
-
-        /** @return the begin. */
-        public boolean isBegin() {
-            return begin;
-        }
-
-        /** @return the rotw. */
-        public boolean isRotw() {
-            return rotw;
-        }
-
-        /** @return the coords. */
-        public List<Pair<Integer, Integer>> getCoords() {
-            return coords;
-        }
-
-        /**
-         * Returns the inverted coords of the path.
-         *
-         * @return the inverted coords of the path.
-         */
-        public List<Pair<Integer, Integer>> getInvertedCoords() {
-            List<Pair<Integer, Integer>> invertedCoords = new ArrayList<>(coords);
-            Collections.reverse(invertedCoords);
-
-            return invertedCoords;
-        }
-
-        /** {@inheritDoc} */
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this) {
-                return true;
-            }
-
-            boolean equals = false;
-
-            if (obj instanceof Path) {
-                equals = StringUtils.equals(name, ((Path) obj).getName())
-                        && rotw == ((Path) obj).isRotw();
-            }
-
-            return equals;
-        }
-
-        /** {@inheritDoc} */
-        @Override
-        public int hashCode() {
-            return new HashCodeBuilder().append(name).append(rotw).hashCode();
-        }
-    }
-
-    /** Inner class describing a directed path (inversed or not). */
-    private static class DirectedPath {
-        /** the path. */
-        private Path path;
-        /** the flag saying that the path is inversed or not. */
-        private boolean inverse;
-
-        /**
-         * Constructor.
-         *
-         * @param path    the path.
-         * @param inverse the inverse.
-         */
-        public DirectedPath(Path path, boolean inverse) {
-            this.path = path;
-            this.inverse = inverse;
-        }
-
-        /** @return the path. */
-        public Path getPath() {
-            return path;
-        }
-
-        /** @return the inverse. */
-        public boolean isInverse() {
-            return inverse;
-        }
-    }
-
-    /** Inner class describing a province. */
-    private static class Province {
-        /** The name of the province. */
-        private String name;
-        /** Terrain derived from the portions. */
-        private String terrain;
-        /** Additional info. */
-        private ProvinceInfo info;
-        /** Portions of the province. */
-        private List<SubProvince> portions = new ArrayList<>();
-        /** Restructuring of the coordinates for the geo.json export. */
-        private List<Pair<List<List<Pair<Integer, Integer>>>, Boolean>> coords;
-        /** Log writer. */
-        private Writer log;
-
-        /**
-         * Constructor.
-         *
-         * @param name of the province.
-         * @param log  log writer.
-         */
-        public Province(String name, Writer log) {
-            this.name = name;
-            this.log = log;
-        }
-
-        /** @return the name. */
-        public String getName() {
-            return name;
-        }
-
-        /** @return the terrain. */
-        public String getTerrain() {
-            return terrain;
-        }
-
-        /** @return the info. */
-        public ProvinceInfo getInfo() {
-            return info;
-        }
-
-        /** @param info the info to set. */
-        public void setInfo(ProvinceInfo info) {
-            this.info = info;
-        }
-
-        /** @return the portions. */
-        public List<SubProvince> getPortions() {
-            return portions;
-        }
-
-        /** @return the coords. */
-        public List<Pair<List<List<Pair<Integer, Integer>>>, Boolean>> getCoords() {
-            return coords;
-        }
-
-        /**
-         * Generates the restructurated coords of the province.
-         *
-         * @throws Exception exception.
-         */
-        public void restructure() throws Exception {
-            coords = new ArrayList<>();
-            for (SubProvince portion : portions) {
-                coords.add(portion.getStructuratedCoords(this, log));
-                if (terrain == null && !StringUtils.equals("lac", portion.getTerrain()) && portion.getTerrain() != null && !portion.getTerrain().startsWith("europe")) {
-                    terrain = portion.getTerrain();
-                } else if (!StringUtils.equals(terrain, portion.getTerrain()) && !StringUtils.equals("lac", portion.getTerrain())
-                        && portion.getTerrain() != null && !portion.getTerrain().startsWith("europe")) {
-                    log.append(getName()).append("\t").append("Terrain not consistent").append("\t").append(terrain).append("\t").append(portion.getTerrain()).append("\n");
-                }
-            }
-
-            convertTerrain();
-        }
-
-        /**
-         * Convert the terrain to the value of TerrainEnum.
-         */
-        private void convertTerrain() {
-            if (terrain != null) {
-                switch (terrain) {
-                    case "desert":
-                    case "kdesert":
-                        terrain = "DESERT";
-                        break;
-                    case "foret":
-                    case "kforet":
-                        terrain = "DENSE_FOREST";
-                        break;
-                    case "foreto":
-                        terrain = "SPARSE_FOREST";
-                        break;
-                    case "marais":
-                    case "kmarais":
-                        terrain = "SWAMP";
-                        break;
-                    case "mer":
-                        terrain = "SEA";
-                        break;
-                    case "monts":
-                    case "kmonts":
-                        terrain = "MOUNTAIN";
-                        break;
-                    case "plaine":
-                    case "kplaine":
-                        terrain = "PLAIN";
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        /** {@inheritDoc} */
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this)
-                return true;
-
-            boolean equals = false;
-
-            if (obj instanceof Province) {
-                equals = StringUtils.equals(name, ((Province) obj).getName());
-            }
-
-            return equals;
-        }
-
-        /** {@inheritDoc} */
-        @Override
-        public int hashCode() {
-            return name.hashCode();
-        }
-    }
-
-    /** Additional information on a european province. */
-    private static class ProvinceInfo {
-        /** Principal name of the city. */
-        String nameCity;
-        /** Additional names of the city. */
-        List<String> altNameCity = new ArrayList<>();
-        /** Principal name of the province. */
-        String nameProvince;
-        /** Additional names of the province. */
-        List<String> altNameProvince = new ArrayList<>();
-        /** Income of the province. */
-        int income = 0;
-        /** Flag saying that the province is a capital. */
-        boolean capital = false;
-        /** Level of the natural fortress. */
-        int fortress = 0;
-        /** Flag saying that the province has a natural port. */
-        boolean port = false;
-        /** Flag saying that the port has a natural arsenal. */
-        boolean arsenal = false;
-        /** Flag saying that the natural port/arsenal can be blocked by a fortress. */
-        boolean praesidiable = false;
-
-        /** @return the nameCity. */
-        public String getNameCity() {
-            return nameCity;
-        }
-
-        /** @param nameCity the nameCity to set. */
-        public void setNameCity(String nameCity) {
-            this.nameCity = nameCity;
-        }
-
-        /** @return the altNameCity. */
-        public List<String> getAltNameCity() {
-            return altNameCity;
-        }
-
-        /** @param altNameCity the altNameCity to set. */
-        public void setAltNameCity(List<String> altNameCity) {
-            this.altNameCity = altNameCity;
-        }
-
-        /** @return the nameProvince. */
-        public String getNameProvince() {
-            return nameProvince;
-        }
-
-        /** @param nameProvince the nameProvince to set. */
-        public void setNameProvince(String nameProvince) {
-            this.nameProvince = nameProvince;
-        }
-
-        /** @return the altNameProvince. */
-        public List<String> getAltNameProvince() {
-            return altNameProvince;
-        }
-
-        /** @param altNameProvince the altNameProvince to set. */
-        public void setAltNameProvince(List<String> altNameProvince) {
-            this.altNameProvince = altNameProvince;
-        }
-
-        /** @return the income. */
-        public int getIncome() {
-            return income;
-        }
-
-        /** @param income the income to set. */
-        public void setIncome(int income) {
-            this.income = income;
-        }
-
-        /** @return the capital. */
-        public boolean isCapital() {
-            return capital;
-        }
-
-        /** @param capital the capital to set. */
-        public void setCapital(boolean capital) {
-            this.capital = capital;
-        }
-
-        /** @return the fortress. */
-        public int getFortress() {
-            return fortress;
-        }
-
-        /** @param fortress the fortress to set. */
-        public void setFortress(int fortress) {
-            this.fortress = fortress;
-        }
-
-        /** @return the port. */
-        public boolean isPort() {
-            return port;
-        }
-
-        /** @param port the port to set. */
-        public void setPort(boolean port) {
-            this.port = port;
-        }
-
-        /** @return the arsenal. */
-        public boolean isArsenal() {
-            return arsenal;
-        }
-
-        /** @param arsenal the arsenal to set. */
-        public void setArsenal(boolean arsenal) {
-            this.arsenal = arsenal;
-        }
-
-        /** @return the praesidiable. */
-        public boolean isPraesidiable() {
-            return praesidiable;
-        }
-
-        /** @param praesidiable the praesidiable to set. */
-        public void setPraesidiable(boolean praesidiable) {
-            this.praesidiable = praesidiable;
-        }
-
-        /**
-         * Returns a Collection of distinct names of cities/provinces.
-         *
-         * @param realNameProvince the name of the owning province.
-         * @return a Collection of distinct names of cities/provinces.
-         */
-        public Collection<String> getMetadata(String realNameProvince) {
-            Set<String> metadata = new HashSet<>();
-
-            metadata.add(realNameProvince);
-            metadata.add(nameProvince);
-            metadata.addAll(altNameProvince);
-            metadata.add(nameCity);
-            metadata.addAll(altNameCity);
-
-            return metadata;
-        }
-    }
-
-    /** Inner class describing a portion of a province. */
-    private static class SubProvince {
-        /** The terrain of the province. */
-        private String terrain;
-        /** Flag saying that this sub province is secondary. */
-        private boolean secondary;
-        /** Flag saying that this SubProvince is located in the ROTW map. */
-        private boolean rotw;
-        /** The paths representing the frontiers of the province. */
-        private List<DirectedPath> paths = new ArrayList<>();
-        /** Flag saying that this SubProvince is a light one not to be considered (in zoom or between Europe and ROTW). */
-        private boolean light;
-
-        /**
-         * Constructor.
-         *
-         * @param terrain   of the province.
-         * @param secondary flag saying that the subProvince is not the primal one.
-         * @param rotw      flag saying that the object is in the rotw map.
-         */
-        public SubProvince(String terrain, boolean secondary, boolean rotw) {
-            if (terrain.startsWith("l") && !StringUtils.equals("lac", terrain)) {
-                this.terrain = terrain.substring(1);
-                light = true;
-            } else {
-                this.terrain = terrain;
-            }
-            if (terrain.startsWith("europe")) {
-                light = true;
-            }
-            this.secondary = secondary;
-            this.rotw = rotw;
-        }
-
-        /** @return the terrain. */
-        public String getTerrain() {
-            return terrain;
-        }
-
-        /** @return the secondary. */
-        public boolean isSecondary() {
-            return secondary;
-        }
-
-        /** @return the rotw. */
-        public boolean isRotw() {
-            return rotw;
-        }
-
-        /** @return the paths. */
-        public List<DirectedPath> getPaths() {
-            return paths;
-        }
-
-        /** @return the light. */
-        public boolean isLight() {
-            return light;
-        }
-
-        /**
-         * Generates the restructurated coords of the province.
-         *
-         * @param province for logging purpose.
-         * @param log      log writer.
-         * @return the restructurated coords of the province.
-         * @throws Exception exception.
-         */
-        public Pair<List<List<Pair<Integer, Integer>>>, Boolean> getStructuratedCoords(Province province, Writer log) throws Exception {
-            List<List<Pair<Integer, Integer>>> coordsPortion = new ArrayList<>();
-            coordsPortion.add(new ArrayList<>());
-            boolean sawBeginPath = false;
-            for (DirectedPath path : getPaths()) {
-                List<Pair<Integer, Integer>> pathValues;
-                if (path.isInverse()) {
-                    pathValues = path.getPath().getInvertedCoords();
-                } else {
-                    pathValues = path.getPath().getCoords();
-                }
-
-                // Should not happen but too many !pathValues.isEmpty() in code.
-                if (pathValues.isEmpty()) {
-                    continue;
-                }
-
-                if (path.getPath().isBegin()) {
-                    // if path is a begin path, we must check if it is en enclave or a continuation from last coords.
-                    Pair<Integer, Integer> lastCoords;
-                    if (!lastElement(coordsPortion).isEmpty()) {
-                        lastCoords = lastElement(lastElement(coordsPortion));
-                    } else {
-                        // if this is the first path, we take the last path to check.
-                        DirectedPath lastElement = lastElement(getPaths());
-                        if (lastElement.isInverse()) {
-                            lastCoords = lastElement(path.getPath().getInvertedCoords());
-                        } else {
-                            lastCoords = lastElement(path.getPath().getCoords());
-                        }
-                    }
-
-                    double nextDistance = distance(lastCoords, firstElement(pathValues));
-                    if (nextDistance > 0 && sawBeginPath) {
-                        // if it is not a continuation and this is not the first begin path that we saw, we check if it is an error in the file or an enclave.
-                        double distance;
-                        if (!lastElement(coordsPortion).isEmpty()) {
-                            distance = distanceToClosePolygone(lastElement(coordsPortion));
-                        } else {
-                            // if this is the first path of the SubProvince, we consider it is an error in the file.
-                            distance = 2 * nextDistance;
-                        }
-
-                        if (distance > 0) {
-                            if (distance > nextDistance) {
-                                log.append(province.getName()).append("\t").append("Border not consistent (ignored)").append("\t").append(path.getPath().getName())
-                                        .append("\t").append(firstElement(pathValues).toString()).append("\t").append(lastElement(lastElement(coordsPortion)).toString()).append("\t").append(firstElement(lastElement(coordsPortion)).toString()).append("\n");
-                            } else {
-                                log.append(province.getName()).append("\t").append("Border not consistent (enclave)").append("\t").append(path.getPath().getName())
-                                        .append("\t").append(firstElement(pathValues).toString()).append("\t").append(lastElement(lastElement(coordsPortion)).toString()).append("\t").append(firstElement(lastElement(coordsPortion)).toString())
-                                        .append("\t").append(distance + "").append("\t").append(nextDistance + "").append("\n");
-                                coordsPortion.add(new ArrayList<>());
-                                sawBeginPath = false;
-                            }
-                        } else {
-                            coordsPortion.add(new ArrayList<>());
-                            sawBeginPath = false;
-                        }
-                    } else if (nextDistance > 0) {
-                        // if it is not a continuation and this is the first begin path that we saw, we flag it and keep the process.
-                        if (path.getPath().getName().startsWith("carre")) {
-                            coordsPortion.add(new ArrayList<>());
-                            sawBeginPath = false;
-                        } else {
-                            sawBeginPath = true;
-                        }
-                    }
-                }
-
-                lastElement(coordsPortion).addAll(pathValues);
-            }
-
-            double distance = distanceToClosePolygone(lastElement(coordsPortion));
-
-
-            if (distance > 0) {
-                log.append(province.getName()).append("\t").append("Border not closed").append("\t").append(firstElement(getPaths()).getPath().getName())
-                        .append("\t").append(lastElement(lastElement(coordsPortion)).toString()).append("\t").append(firstElement(lastElement(coordsPortion)).toString()).append("\n");
-            }
-
-            return new ImmutablePair<>(coordsPortion, rotw);
-        }
-    }
-
-    /** Inner class describing a border between two provinces. */
-    @XStreamAlias("border")
-    private static class Border {
-        /** First province (alphabetical order) of the border. */
-        @XStreamAlias("first")
-        private String first;
-        /** Second province (alphabetical order) of the border. */
-        @XStreamAlias("second")
-        private String second;
-        /** Type of border. */
-        @XStreamAlias("type")
-        private String type;
-
-        /**
-         * Constructor.
-         *
-         * @param province1 first province.
-         * @param province2 second province.
-         * @param type      type.
-         */
-        public Border(Province province1, Province province2, String type) {
-            if (province1 == null || province2 == null || province1 == province2) {
-                throw new IllegalStateException();
-            }
-
-            if (province1.getName().compareTo(province2.getName()) < 0) {
-                first = province1.getName();
-                second = province2.getName();
-            } else {
-                first = province2.getName();
-                second = province1.getName();
-            }
-
-            this.type = type;
-        }
-
-        /** @return the first. */
-        public String getFirst() {
-            return first;
-        }
-
-        /** @return the second. */
-        public String getSecond() {
-            return second;
-        }
-
-        /** @return the type. */
-        public String getType() {
-            return type;
-        }
-
-        /** {@inheritDoc} */
-        @Override
-        public int hashCode() {
-            return 11 + 13 * first.hashCode() + 15 * second.hashCode();
-        }
-
-        /** {@inheritDoc} */
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this)
-                return true;
-
-            boolean equals = false;
-
-            if (obj instanceof Border) {
-                Border border = (Border) obj;
-
-                equals = StringUtils.equals(first, border.getFirst())
-                        && StringUtils.equals(second, border.getSecond());
-            }
-
-            return equals;
-        }
     }
 }
