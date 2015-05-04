@@ -124,22 +124,22 @@ public final class MapGenerator {
                 specialBordersParsing = false;
                 pathsBorder = null;
             } else if (line.endsWith("change pathtype to river")) {
-                if (!specialBorders.containsKey("river")) {
-                    specialBorders.put("river", new ArrayList<>());
+                if (!specialBorders.containsKey("RIVER")) {
+                    specialBorders.put("RIVER", new ArrayList<>());
                 }
-                specialBorders.get("river").addAll(pathsBorder);
+                specialBorders.get("RIVER").addAll(pathsBorder);
                 pathsBorder = new ArrayList<>();
             } else if (line.endsWith("change pathtype to pass")) {
-                if (!specialBorders.containsKey("pass")) {
-                    specialBorders.put("pass", new ArrayList<>());
+                if (!specialBorders.containsKey("MOUNTAIN_PASS")) {
+                    specialBorders.put("MOUNTAIN_PASS", new ArrayList<>());
                 }
-                specialBorders.get("pass").addAll(pathsBorder);
+                specialBorders.get("MOUNTAIN_PASS").addAll(pathsBorder);
                 pathsBorder = new ArrayList<>();
             } else if (line.endsWith("change pathtype to strait")) {
-                if (!specialBorders.containsKey("strait")) {
-                    specialBorders.put("strait", new ArrayList<>());
+                if (!specialBorders.containsKey("STRAITS")) {
+                    specialBorders.put("STRAITS", new ArrayList<>());
                 }
-                specialBorders.get("strait").addAll(pathsBorder);
+                specialBorders.get("STRAITS").addAll(pathsBorder);
                 pathsBorder = new ArrayList<>();
             } else if (specialBordersParsing && multiPath.matcher(line).matches()) {
                 String[] specialsBorder = line.trim().split(" ");
@@ -1436,13 +1436,13 @@ public final class MapGenerator {
 
         for (Border border : borders) {
             sqlWriter.append("INSERT INTO R_BORDER (TYPE, ID_R_PROVINCE_FROM, ID_R_PROVINCE_TO)\n")
-                    .append("    VALUES ('").append(border.getType()).append("',\n")
+                    .append("    VALUES (").append(stringToString(border.getType())).append(",\n")
                     .append("        (SELECT ID FROM R_PROVINCE WHERE NAME = '")
                     .append(border.getFirst()).append("'),\n")
                     .append("        (SELECT ID FROM R_PROVINCE WHERE NAME = '")
                     .append(border.getSecond()).append("'));\n");
             sqlWriter.append("INSERT INTO R_BORDER (TYPE, ID_R_PROVINCE_FROM, ID_R_PROVINCE_TO)\n")
-                    .append("    VALUES ('").append(border.getType()).append("',\n")
+                    .append("    VALUES (").append(stringToString(border.getType())).append(",\n")
                     .append("        (SELECT ID FROM R_PROVINCE WHERE NAME = '")
                     .append(border.getSecond()).append("'),\n")
                     .append("        (SELECT ID FROM R_PROVINCE WHERE NAME = '")
