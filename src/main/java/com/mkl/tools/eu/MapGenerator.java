@@ -430,42 +430,22 @@ public final class MapGenerator {
         String major = null;
 
         switch (blason) {
-            case "france":
-                major = "FRA";
-                break;
-            case "espagne":
-                major = "SPA";
-                break;
-            case "portugal":
-                major = "POR";
-                break;
-            case "angleterre":
-                major = "ANG";
-                break;
-//            case "hollande":
-//                major = "HOL";
-//                break;
 //            case "brandebourg":
-//                major = "PRU";
-//                break;
-//            case "suede":
-//                major = "SUE";
-//                break;
-//            case "habsbourg":
-//                major = "HAB";
-//                break;
-            case "venise":
-                major = "VEN";
-                break;
-            case "pologne":
             case "lithuanie":
-                major = "POL";
+                major = "pologne";
                 break;
+            case "france":
+            case "espagne":
+            case "portugal":
+            case "angleterre":
+//            case "hollande":
+//            case "suede":
+//            case "habsbourg":
+            case "venise":
+            case "pologne":
             case "russie":
-                major = "RUS";
-                break;
             case "turquie":
-                major = "TUR";
+                major = blason;
                 break;
             default:
                 break;
@@ -505,6 +485,55 @@ public final class MapGenerator {
      */
     private static Map<String, Country> createCountries(Writer log) throws Exception {
         Map<String, Country> countries = new HashMap<>();
+        Country major = new Country("MAJOR");
+        major.setName("france");
+        major.setLongLabel("Kingdom of France");
+        major.setShortLabel("France");
+        major.setArmyClass("IV");
+        major.setCulture("Latin");
+        major.setReligion("catholique");
+        countries.put(major.getName(), major);
+        major = new Country("MAJOR");
+        major.setName("angleterre");
+        major.setLongLabel("Kingdom of England");
+        major.setShortLabel("England");
+        major.setArmyClass("IVM");
+        major.setCulture("Latin");
+        major.setReligion("catholique");
+        countries.put(major.getName(), major);
+        major = new Country("MAJOR");
+        major.setName("espagne");
+        major.setLongLabel("Kingdom of Spain");
+        major.setShortLabel("Spain");
+        major.setArmyClass("III");
+        major.setCulture("Latin");
+        major.setReligion("catholique");
+        countries.put(major.getName(), major);
+        major = new Country("MAJOR");
+        major.setName("russie");
+        major.setLongLabel("Kingdom of Russia");
+        major.setShortLabel("Russia");
+        major.setArmyClass("IM");
+        major.setCulture("Orthodoxe");
+        major.setReligion("orthodoxe");
+        countries.put(major.getName(), major);
+        major = new Country("MAJOR");
+        major.setName("turquie");
+        major.setLongLabel("Ottoman Empire");
+        major.setShortLabel("Turkey");
+        major.setArmyClass("I");
+        major.setCulture("Islam");
+        major.setReligion("sunnite");
+        countries.put(major.getName(), major);
+        major = new Country("MAJOR");
+        major.setName("prusse");
+        major.setLongLabel("Kingdom of Prussia");
+        major.setShortLabel("Prussia");
+        major.setArmyClass("III");
+        major.setCulture("Latin");
+        major.setReligion("protestant");
+        countries.put(major.getName(), major);
+
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("input/engEntetesMineurs.tex")));
         List<String> block = new ArrayList<>();
@@ -574,10 +603,10 @@ public final class MapGenerator {
                 continue;
             }
 
-            block.add(line);
+            block.add(line.trim());
 
             if (wellBalanced(block, '{', '}')) {
-                String minor = String.join("", block);
+                String minor = String.join(" ", block);
                 block.clear();
                 String[] split = ToolsUtil.split(minor, '{', '}');
                 Country country = countries.get(split[0]);
@@ -605,23 +634,93 @@ public final class MapGenerator {
                     country.getCapitals().add(split[1]);
                 } else if (minor.startsWith("\\minorpref")) {
                     // TODO conception
-                } else if (minor.startsWith("\\minorfixedincome")) {
-                    // TODO gold mines
                 } else if (minor.startsWith("\\minorbasicforces")) {
-                    // TODO conception
+                    String[] forces = ToolsUtil.split(split[1], ',', '{', '}');
+                    for (String force : forces) {
+                        int number = 0;
+                        String type = null;
+                        String[] details = force.trim().split(" ");
+                        if (details.length == 1) {
+                            if (StringUtils.equals("nothing", details[0])
+                                    || StringUtils.equals("None", details[0])
+                                    || details[0].startsWith("See")) {
+                                continue;
+                            }
+                            number = 1;
+                            if (details[0].charAt(0) != '\\') {
+                                log.append(country.getName()).append("\tCountry has error in minorbasicforces\t")
+                                        .append(minor);
+                            }
+                            type = details[0];
+                        } else if (details.length == 2) {
+                            number = Integer.parseInt(details[0]);
+                            type = details[1];
+                        } else {
+                            int a = 1;
+                            continue;
+                        }
+                        country.addBasicForce(number, type);
+                    }
                 } else if (minor.startsWith("\\minorbasicrenforts")) {
-                    // TODO conception
+                    String[] forces = ToolsUtil.split(split[1], ',', '(', ')');
+                    for (String force : forces) {
+                        int number = 0;
+                        String type = null;
+                        String[] details = force.trim().split(" ");
+                        if (details.length == 1) {
+                            number = 1;
+                            if (details[0].charAt(0) != '\\') {
+                                log.append(country.getName()).append("\tCountry has error in minorbasicrenforts\t")
+                                        .append(minor);
+                            }
+                            type = details[0];
+                        } else if (details.length == 2) {
+                            number = Integer.parseInt(details[0]);
+                            type = details[1];
+                        } else {
+                            int a = 1;
+                            continue;
+                        }
+                        country.addReinforcements(number, type);
+                    }
                 } else if (minor.startsWith("\\minorforces")) {
-                    // TODO conception
+                    String[] forces = ToolsUtil.split(split[1], ',', '(', ')');
+                    for (String force : forces) {
+                        int number = 0;
+                        String type = null;
+                        String[] details = force.trim().split(" ");
+                        if (details.length == 1) {
+                            number = 1;
+                            if (details[0].charAt(0) != '\\') {
+                                log.append(country.getName()).append("\tCountry has error in minorforces\t")
+                                        .append(minor);
+                            }
+                            type = details[0].substring(1);
+                        } else if (details.length == 2) {
+                            number = Integer.parseInt(details[0]);
+                            type = details[1].substring(1);
+                        } else if (force.contains("transport \\FLEET")) {
+                            number = 1;
+                            type = "FLEET_TRANSPORT";
+                        } else {
+                            continue;
+                        }
+                        country.addLimit(number, type);
+                    }
                 } else if (minor.startsWith("\\minorarmyclass")) {
-                    country.setArmyClass(split[1]);
+                    country.setCulture(split[1]);
+                    country.setArmyClass(split[2]);
                 } else if (minor.startsWith("\\minorHRE[Elector]")) {
                     country.setHre(true);
                     country.setElector(true);
                 } else if (minor.startsWith("\\minorHRE")) {
                     country.setHre(true);
                 } else if (minor.startsWith("\\minorgeo")) {
-                    // TODO conception
+                    String geo = split[1];
+                    if (geo.length() <= 7) {
+                        country.setPreference(geo.substring(1, 4));
+                        country.setPreferenceBonus(Integer.parseInt(geo.substring(geo.length() - 1, geo.length())));
+                    }
                 } else if (minor.startsWith("\\minorspecial")
                         || minor.startsWith("\\minorrule")
                         || minor.startsWith("\\minorblason")
@@ -630,6 +729,7 @@ public final class MapGenerator {
                         || minor.startsWith("\\minorevent")
                         || minor.startsWith("\\minorindeptwo")
                         || minor.startsWith("\\minorindep")
+                        || minor.startsWith("\\minorfixedincome")
                         || minor.startsWith("\\minorbonusrenforts")) {
                 } else {
 
@@ -637,6 +737,311 @@ public final class MapGenerator {
                 }
             }
         }
+
+        // Default value for potential independent kingdoms
+        for (Country country : countries.values()) {
+            if (country.getFidelity() == 0 && StringUtils.equals("REVOLT", country.getType())
+                    && country.getName().startsWith("V")) {
+                country.setFidelity(10);
+
+                country.setRoyalMarriage(4);
+                country.setSubsidies(50);
+                country.setMilitaryAlliance(2);
+                country.setExpCorps(4);
+                country.setEntryInWar(5);
+                country.setVassal(8);
+
+                country.addLimit(1, "ARMY");
+                country.addLimit(2, "LD");
+
+                country.addBasicForce(1, "\\ARMY\\facemoins");
+
+                country.addReinforcements(1, "\\LD");
+            }
+        }
+
+        Country major = countries.get("france");
+        major.addLimit(6, "ARMY");
+        major.addLimit(5, "FLEET");
+        major.addLimit(4, "PIRATE");
+        major.addLimit(15, "LDND");
+        major.addLimit(5, "LD");
+        major.addLimit(4, "NTD");
+        major.addLimit(8, "LDENDE");
+        major.addLimit(5, "FORT12");
+        major.addLimit(5, "FORT23");
+        major.addLimit(6, "FORT34");
+        major.addLimit(4, "FORT45");
+        major.addLimit(11, "FORT");
+        major.addLimit(2, "ARS23");
+        major.addLimit(2, "ARS34");
+        major.addLimit(4, "MISSION");
+        major.addLimit(5, "SEPOY");
+        major.addLimit(3, "SEPOY_EXPLORATION");
+        major.addLimit(2, "INDIAN");
+        major.addLimit(4, "INDIAN_EXPLORATION");
+        major.addLimit(14, "COL");
+        major.addLimit(10, "TP");
+        major.addLimit(18, "TF");
+        major.addLimit(4, "ROTW_DIPLO");
+        major.addLimit(3, "MNU_ART");
+        major.addLimit(1, "MNU_WOOD");
+        major.addLimit(1, "MNU_CEREALS");
+        major.addLimit(2, "MNU_INSTRUMENTS");
+        major.addLimit(2, "MNU_METAL");
+        major.addLimit(1, "MNU_FISH");
+        major.addLimit(1, "MNU_SALT");
+        major.addLimit(1, "MNU_CLOTHES");
+        major.addLimit(2, "MNU_WINE");
+
+        major = countries.get("angleterre");
+        major.addLimit(4, "ARMY");
+        major.addLimit(6, "FLEET");
+        major.addLimit(3, "PIRATE");
+        major.addLimit(15, "LDND");
+        major.addLimit(5, "LD");
+        major.addLimit(4, "NTD");
+        major.addLimit(10, "LDENDE");
+        major.addLimit(2, "FORT12");
+        major.addLimit(4, "FORT23");
+        major.addLimit(4, "FORT34");
+        major.addLimit(2, "FORT45");
+        major.addLimit(11, "FORT");
+        major.addLimit(2, "ARS23");
+        major.addLimit(2, "ARS34");
+        major.addLimit(1, "ARS23_GIBRALTAR");
+        major.addLimit(2, "MISSION");
+        major.addLimit(5, "SEPOY");
+        major.addLimit(3, "SEPOY_EXPLORATION");
+        major.addLimit(14, "COL");
+        major.addLimit(10, "TP");
+        major.addLimit(18, "TF");
+        major.addLimit(4, "ROTW_DIPLO");
+        major.addLimit(1, "MNU_ART");
+        major.addLimit(1, "MNU_WOOD");
+        major.addLimit(1, "MNU_CEREALS");
+        major.addLimit(3, "MNU_INSTRUMENTS");
+        major.addLimit(3, "MNU_METAL");
+        major.addLimit(2, "MNU_FISH");
+        major.addLimit(2, "MNU_CLOTHES");
+
+        major = countries.get("espagne");
+        major.addLimit(5, "ARMY");
+        major.addLimit(4, "FLEET");
+        major.addLimit(2, "PIRATE");
+        major.addLimit(10, "LDND");
+        major.addLimit(10, "LD");
+        major.addLimit(4, "NTD");
+        major.addLimit(10, "LDENDE");
+        major.addLimit(6, "FORT12");
+        major.addLimit(4, "FORT23");
+        major.addLimit(4, "FORT34");
+        major.addLimit(3, "FORT45");
+        major.addLimit(10, "FORT");
+        major.addLimit(2, "ARS23");
+        major.addLimit(2, "ARS34");
+        major.addLimit(15, "MISSION");
+        major.addLimit(32, "COL");
+        major.addLimit(7, "TP");
+        major.addLimit(13, "TF");
+        major.addLimit(2, "ROTW_DIPLO");
+        major.addLimit(2, "MNU_ART");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(2, "MNU_METAL");
+        major.addLimit(1, "MNU_FISH");
+        major.addLimit(1, "MNU_SALT");
+        major.addLimit(1, "MNU_CLOTHES");
+        major.addLimit(1, "MNU_WINE");
+
+        major = countries.get("russie");
+        major.addLimit(6, "ARMY");
+        major.addLimit(3, "FLEET");
+        major.addLimit(1, "PIRATE");
+        major.addLimit(10, "LDND");
+        major.addLimit(10, "LD");
+        major.addLimit(2, "NTD");
+        major.addLimit(8, "LDENDE");
+        major.addLimit(4, "FORT12");
+        major.addLimit(4, "FORT23");
+        major.addLimit(3, "FORT34");
+        major.addLimit(1, "FORT45");
+        // TODO St Petersburg
+        major.addLimit(10, "FORT");
+        major.addLimit(1, "ARS23");
+        major.addLimit(11, "COL");
+        major.addLimit(5, "TP");
+        major.addLimit(7, "TF");
+        major.addLimit(2, "ROTW_DIPLO");
+        major.addLimit(1, "MNU_ART");
+        major.addLimit(1, "MNU_WOOD");
+        major.addLimit(1, "MNU_CEREALS");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(2, "MNU_METAL");
+        major.addLimit(2, "MNU_CLOTHES");
+
+        major = countries.get("turquie");
+        major.addLimit(6, "ARMY");
+        major.addLimit(4, "ARMY_TIMAR");
+        major.addLimit(6, "FLEET");
+        major.addLimit(2, "PIRATE");
+        major.addLimit(5, "LDND");
+        major.addLimit(5, "LDND_TIMAR");
+        major.addLimit(5, "LD");
+        major.addLimit(5, "LD_TIMAR");
+//        major.addLimit(5, "PASHAS"); TODO conception pashas
+        major.addLimit(4, "NTD");
+        major.addLimit(6, "LDENDE");
+        major.addLimit(5, "FORT12");
+        major.addLimit(10, "FORT23");
+        major.addLimit(2, "FORT34");
+        major.addLimit(1, "FORT45");
+        major.addLimit(5, "FORT");
+        major.addLimit(5, "COL");
+        major.addLimit(6, "TP");
+        major.addLimit(9, "TF");
+        major.addLimit(2, "ROTW_DIPLO");
+        major.addLimit(1, "MNU_ART");
+        major.addLimit(1, "MNU_WOOD");
+        major.addLimit(1, "MNU_CEREALS");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(2, "MNU_METAL");
+        major.addLimit(1, "MNU_SALT");
+        major.addLimit(2, "MNU_CLOTHES");
+
+        major = countries.get("hollande");
+        major.addLimit(2, "PIRATE");
+        major.addLimit(1, "LD");
+        major.addLimit(2, "FORT12");
+        major.addLimit(4, "FORT23");
+        major.addLimit(5, "FORT34");
+        major.addLimit(2, "FORT45");
+        major.addLimit(5, "FORT");
+        major.addLimit(2, "ARS23");
+        major.addLimit(2, "ARS34");
+        major.addLimit(4, "SEPOY");
+        major.addLimit(2, "SEPOY_EXPLORATION");
+        major.addLimit(10, "COL");
+        major.addLimit(12, "TP");
+        major.addLimit(20, "TF");
+        major.addLimit(4, "ROTW_DIPLO");
+        major.addLimit(2, "MNU_ART");
+        major.addLimit(2, "MNU_INSTRUMENTS");
+        major.addLimit(1, "MNU_METAL");
+        major.addLimit(1, "MNU_FISH");
+        major.addLimit(2, "MNU_CLOTHES");
+
+        major = countries.get("pologne");
+        major.addLimit(2, "FORT12");
+        major.addLimit(4, "FORT23");
+        major.addLimit(4, "FORT34");
+        major.addLimit(1, "FORT45");
+        major.addLimit(2, "FORT");
+        major.addLimit(5, "COL");
+        major.addLimit(5, "TP");
+        major.addLimit(6, "TF");
+        major.addLimit(2, "ROTW_DIPLO");
+        major.addLimit(1, "MNU_ART");
+        major.addLimit(2, "MNU_WOOD");
+        major.addLimit(2, "MNU_CEREALS");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(1, "MNU_METAL");
+        major.addLimit(1, "MNU_SALT");
+
+        major = countries.get("venise");
+        major.addLimit(1, "PIRATE");
+        major.addLimit(2, "FORT12");
+        major.addLimit(5, "FORT23");
+        major.addLimit(3, "FORT34");
+        major.addLimit(1, "FORT45");
+        major.addLimit(2, "FORT");
+        major.addLimit(1, "COL");
+        major.addLimit(4, "TP");
+        major.addLimit(5, "TF");
+        major.addLimit(2, "ROTW_DIPLO");
+        major.addLimit(2, "MNU_ART");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(1, "MNU_METAL");
+        major.addLimit(1, "MNU_SALT");
+        major.addLimit(1, "MNU_WINE");
+
+        major = countries.get("portugal");
+        major.addLimit(1, "PIRATE");
+        major.addLimit(3, "FORT12");
+        major.addLimit(5, "FORT23");
+        major.addLimit(2, "FORT34");
+        major.addLimit(4, "FORT");
+        major.addLimit(2, "ARS23");
+        major.addLimit(2, "ARS34");
+        major.addLimit(3, "MISSION");
+        major.addLimit(12, "COL");
+        major.addLimit(12, "TP");
+        major.addLimit(8, "TF");
+        major.addLimit(6, "ROTW_DIPLO");
+        major.addLimit(1, "MNU_ART");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(1, "MNU_METAL");
+        major.addLimit(1, "MNU_FISH");
+        major.addLimit(1, "MNU_SALT");
+        major.addLimit(1, "MNU_WINE");
+
+        major = countries.get("suede");
+        major.addLimit(1, "FLEET");
+        major.addLimit(1, "PIRATE");
+        major.addLimit(2, "FORT12");
+        major.addLimit(4, "FORT23");
+        major.addLimit(4, "FORT34");
+        major.addLimit(1, "FORT45");
+        major.addLimit(4, "FORT");
+        major.addLimit(2, "ARS23");
+        // TODO army pugatchev ?
+        major.addLimit(5, "COL");
+        major.addLimit(5, "TP");
+        major.addLimit(10, "TF");
+        major.addLimit(2, "ROTW_DIPLO");
+        major.addLimit(1, "MNU_ART");
+        major.addLimit(2, "MNU_WOOD");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(2, "MNU_METAL");
+        major.addLimit(1, "MNU_FISH");
+        major.addLimit(1, "MNU_CLOTHES");
+
+        major = countries.get("prusse");
+        major.addLimit(4, "ARMY");
+        major.addLimit(2, "LDND");
+        major.addLimit(8, "LD");
+        major.addLimit(2, "NTD");
+        major.addLimit(3, "LDENDE");
+        major.addLimit(2, "FORT12");
+        major.addLimit(4, "FORT23");
+        major.addLimit(4, "FORT34");
+        major.addLimit(1, "FORT45");
+        major.addLimit(2, "FORT");
+        major.addLimit(2, "COL");
+        major.addLimit(2, "TP");
+        major.addLimit(2, "TF");
+        major.addLimit(1, "MNU_ART");
+        major.addLimit(1, "MNU_WOOD");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(1, "MNU_METAL");
+        major.addLimit(1, "MNU_METAL_SCHLESIEN");
+        major.addLimit(1, "MNU_CLOTHES");
+
+        major = countries.get("habsbourg");
+        major.addLimit(1, "FLEET");
+        major.addLimit(2, "NTD");
+        major.addLimit(3, "LDENDE");
+        major.addLimit(2, "FORT12");
+        major.addLimit(4, "FORT23");
+        major.addLimit(4, "FORT34");
+        major.addLimit(3, "FORT45");
+        major.addLimit(2, "TF");
+        major.addLimit(1, "MNU_ART");
+        major.addLimit(1, "MNU_CEREALS");
+        major.addLimit(1, "MNU_INSTRUMENTS");
+        major.addLimit(2, "MNU_METAL");
+        major.addLimit(1, "MNU_SALT");
+        major.addLimit(1, "MNU_CLOTHES");
+
     }
 
     /**
@@ -1060,15 +1465,22 @@ public final class MapGenerator {
 
         sqlWriter.append("DELETE FROM R_COUNTRY_PROVINCE_EU_CAPITALS;\n")
                 .append("DELETE FROM R_COUNTRY_PROVINCE_EU;\n")
-                .append("DELETE FROM R_COUNTRY;\n");
+                .append("DELETE FROM R_LIMIT;\n")
+                .append("DELETE FROM R_BASIC_FORCE;\n")
+                .append("DELETE FROM R_REINFORCEMENTS;\n")
+                .append("DELETE FROM R_COUNTRY;\n\n");
 
         for (Country country : countries.values()) {
-            sqlWriter.append("INSERT INTO R_COUNTRY (NAME, TYPE, RELIGION, RM, SUB, MA, EC, EW, VA, AN" +
+            sqlWriter.append("INSERT INTO R_COUNTRY (NAME, TYPE, RELIGION, CULTURE, GEOPOLITICS_COUNTRY, GEOPOLITICS_BONUS" +
+                    ", RM, SUB, MA, EC, EW, VA, AN" +
                     ", FIDELITY, ARMY_CLASS, ELECTOR, HRE)\n")
                     .append("    VALUES ('").append(country.getName())
                     .append("', '").append(country.getType())
                     .append("', '").append(country.getReligion())
-                    .append("', ").append(integerToString(country.getRoyalMarriage()))
+                    .append("', '").append(country.getCulture())
+                    .append("', ").append(stringToString(country.getPreference()))
+                    .append(", ").append(integerToString(country.getPreferenceBonus()))
+                    .append(", ").append(integerToString(country.getRoyalMarriage()))
                     .append(", ").append(integerToString(country.getSubsidies()))
                     .append(", ").append(integerToString(country.getMilitaryAlliance()))
                     .append(", ").append(integerToString(country.getExpCorps()))
@@ -1094,6 +1506,30 @@ public final class MapGenerator {
                         .append("    VALUES (")
                         .append(" (SELECT ID FROM R_COUNTRY WHERE NAME = '").append(country.getName()).append("')")
                         .append(", (SELECT ID FROM R_PROVINCE WHERE NAME = '").append(province).append("')")
+                        .append(");\n");
+            }
+
+            for (Country.Limit limit : country.getLimits()) {
+                sqlWriter.append("INSERT INTO R_LIMIT (NUMBER, TYPE, ID_R_COUNTRY)\n")
+                        .append("    VALUES (").append(limit.getNumber().toString())
+                        .append(", '").append(limit.getType())
+                        .append("', (SELECT ID FROM R_COUNTRY WHERE NAME = '").append(country.getName()).append("')")
+                        .append(");\n");
+            }
+
+            for (Country.Limit limit : country.getBasicForces()) {
+                sqlWriter.append("INSERT INTO R_BASIC_FORCE (NUMBER, TYPE, ID_R_COUNTRY)\n")
+                        .append("    VALUES (").append(limit.getNumber().toString())
+                        .append(", '").append(limit.getType())
+                        .append("', (SELECT ID FROM R_COUNTRY WHERE NAME = '").append(country.getName()).append("')")
+                        .append(");\n");
+            }
+
+            for (Country.Limit limit : country.getReinforcements()) {
+                sqlWriter.append("INSERT INTO R_REINFORCEMENTS (NUMBER, TYPE, ID_R_COUNTRY)\n")
+                        .append("    VALUES (").append(limit.getNumber().toString())
+                        .append(", '").append(limit.getType())
+                        .append("', (SELECT ID FROM R_COUNTRY WHERE NAME = '").append(country.getName()).append("')")
                         .append(");\n");
             }
         }
@@ -1122,13 +1558,29 @@ public final class MapGenerator {
      * Convert an Integer to String (database).
      *
      * @param toConvert Integer to convert.
-     * @return an Integer.
+     * @return a String.
      */
     private static String integerToString(Integer toConvert) {
         String db = "null";
 
         if (toConvert != null) {
             db = "'" + Integer.toString(toConvert) + "'";
+        }
+
+        return db;
+    }
+
+    /**
+     * Convert a String to String (database).
+     *
+     * @param toConvert String to convert.
+     * @return a String.
+     */
+    private static String stringToString(String toConvert) {
+        String db = "null";
+
+        if (!StringUtils.isEmpty(toConvert)) {
+            db = "'" + toConvert + "'";
         }
 
         return db;

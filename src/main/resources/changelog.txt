@@ -21,6 +21,24 @@ engEntetesMineurs.tex:
  - \minorcountryvirtual{pommeranie} -> \minorcountryvirtual{Vpommeranie}
 
 engCorpsMineurs.tex:
+ - 16\corsaire -> 16 \corsaire
+ - \minorforces{habsbourg}{4 \ARMY, 8 \LD} -> \minorforces{habsbourg}{4 \ARMY, 6 \LD, 2 \LDND}
+ - \minorbasicforces{mamelouks}{2\ARMY\faceplus, \leader{Caliph}} -> \minorbasicforces{mamelouks}{2 \ARMY\faceplus, \leader{Caliph}}
+ - \minorbasicforces{astrakhan}{\ARMY \faceplus} -> \minorbasicforces{astrakhan}{\ARMY\faceplus}
+ - \minorbasicforces{crimee}{\ARMY \faceplus, \LD, \leader{Giray}} -> \minorbasicforces{crimee}{\ARMY\faceplus, \LD, \leader{Giray}}
+ - \minorbasicforces{hesse}{\ARMY \facemoins, \LD} -> \minorbasicforces{hesse}{\ARMY\facemoins, \LD}
+ - \minorbasicforces{ecosse}{\ARMY \faceplus} -> \minorbasicforces{ecosse}{\ARMY\faceplus}
+ - \minorbasicforces{cyrenaique}{\ND, \corsaire \facemoins} -> \minorbasicforces{cyrenaique}{\ND, \corsaire\facemoins}
+ - \minorbasicrenforts{damas}{1\LD} -> \minorbasicrenforts{damas}{\LD}
+ - \minorbasicrenforts{danemark}{\LD or \ND} -> \minorbasicrenforts{danemark}{\LDND}
+ - \minorbasicrenforts{hanse}{\LD or \ND} -> \minorbasicrenforts{hanse}{\LDND}
+ - \minorbasicrenforts{naples}{\LD or 2\NGD} -> \minorbasicrenforts{naples}{\LDND}
+ - \minorbasicrenforts{suede}{\LD, \LD or \ND} -> \minorbasicrenforts{suede}{\LD, \LDND}
+ - \minorbasicrenforts{chevaliers}{\corsaire\faceplus, 1 \NDE\ or 1 \NGD} -> \minorbasicrenforts{chevaliers}{\corsaire\faceplus, 1 \NDE}
+ - \minorbasicrenforts{venise}{1 \NWD or 2 \NGD} -> \minorbasicrenforts{venise}{1 \ND}
+ - \minorbasicrenforts{brandebourg}{\LD or 2 \LD after \xeventref{pV:Kingdom Prussia}{V-13}} -> \minorbasicrenforts{brandebourg}{\LD, 2 \LD after \xeventref{pV:Kingdom Prussia}{V-13}}
+ - \minorbasicrenforts{genes}{1 \NGD\ or 1 \NDE or 1\NTD} -> \minorbasicrenforts{genes}{1 \NDE}
+ -   \LeaderG\ (king)} ->   \LeaderG\(king)}
  - \n after a \minorXXX (mamelouks)
  - Nefud -> an-Nafūd
  - SidiIfni -> as-Sūs (and the income is 3 and not 1)
