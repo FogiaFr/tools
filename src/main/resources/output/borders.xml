@@ -18,7 +18,7 @@
   <border>
     <first>Ladoga</first>
     <second>Yaroslavl’</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer Égée</first>
@@ -43,7 +43,7 @@
   <border>
     <first>America~S</first>
     <second>Virginia~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Finland</first>
@@ -56,7 +56,7 @@
   <border>
     <first>Mer Rouge</first>
     <second>Mer des Seychelles</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Alsace</first>
@@ -85,12 +85,12 @@
   <border>
     <first>Midlands</first>
     <second>Yorkshire</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amazonia~N</first>
     <second>Amazonia~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>La Mancha</first>
@@ -103,12 +103,12 @@
   <border>
     <first>Nankin~NW</first>
     <second>Nankin~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Côte de Mascate</first>
     <second>Mer Rouge</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Champagne</first>
@@ -145,17 +145,17 @@
   <border>
     <first>Lublin</first>
     <second>Małopolska</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer Rouge</first>
     <second>Mer d’Oman</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Lincolnshire</first>
     <second>Yorkshire</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Afghanistan~C</first>
@@ -168,7 +168,7 @@
   <border>
     <first>Picardie</first>
     <second>Île-de-France</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bashkiria</first>
@@ -193,7 +193,7 @@
   <border>
     <first>Côte de Mascate</first>
     <second>Golfe Persique</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Castilla La Vieja</first>
@@ -210,7 +210,7 @@
   <border>
     <first>Berry</first>
     <second>Lyonnais</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kenya~N</first>
@@ -263,7 +263,7 @@
   <border>
     <first>Berry</first>
     <second>Bourgogne</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Aden~W</first>
@@ -276,7 +276,7 @@
   <border>
     <first>Lublin</first>
     <second>Prypeć</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Japon~W</first>
@@ -297,7 +297,7 @@
   <border>
     <first>Yakoutie~E</first>
     <second>Yakoutie~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Gelderland</first>
@@ -314,7 +314,7 @@
   <border>
     <first>Karelen</first>
     <second>Nyland</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Rocheuses~E</first>
@@ -327,7 +327,7 @@
   <border>
     <first>Indus~S</first>
     <second>Pãjāb~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ladoga</first>
@@ -348,7 +348,7 @@
   <border>
     <first>Yakoutie~NE</first>
     <second>Yakoutie~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Alabania</first>
@@ -357,7 +357,7 @@
   <border>
     <first>Gelderland</first>
     <second>Limburg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Minas Gerais~S</first>
@@ -366,7 +366,7 @@
   <border>
     <first>Lombardia</first>
     <second>Parma</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe d’Amazonie</first>
@@ -415,7 +415,7 @@
   <border>
     <first>Cáceres</first>
     <second>Extremadura</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bashkiria</first>
@@ -444,7 +444,7 @@
   <border>
     <first>Illinois~S</first>
     <second>Kansas~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Gujarat~W</first>
@@ -485,7 +485,7 @@
   <border>
     <first>La Mancha</first>
     <second>Toledo</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Sibérie~S</first>
@@ -510,7 +510,7 @@
   <border>
     <first>Svealand</first>
     <second>Västergotland</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Afghanistan~W</first>
@@ -523,7 +523,7 @@
   <border>
     <first>America~NW</first>
     <second>Québec~C</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kerkyra</first>
@@ -536,17 +536,17 @@
   <border>
     <first>Extremadura</first>
     <second>Toledo</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kansas~N</first>
     <second>Rocheuses~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mainz</first>
     <second>Nassau</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cymru</first>
@@ -559,7 +559,7 @@
   <border>
     <first>Castilla La Nueva</first>
     <second>Salamanca</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Cuba</first>
@@ -572,7 +572,7 @@
   <border>
     <first>Kazan’</first>
     <second>Mordoviya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Münster</first>
@@ -581,7 +581,7 @@
   <border>
     <first>Tirol</first>
     <second>Trentino</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Minas Gerais~S</first>
@@ -606,7 +606,7 @@
   <border>
     <first>Castilla La Nueva</first>
     <second>Toledo</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Lancashire</first>
@@ -615,7 +615,7 @@
   <border>
     <first>Kazan’</first>
     <second>Samara</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Florida~N</first>
@@ -624,7 +624,7 @@
   <border>
     <first>Troyes</first>
     <second>Île-de-France</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Illinois~NW</first>
@@ -633,7 +633,7 @@
   <border>
     <first>Graubunden</first>
     <second>Trentino</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Plata~NE</first>
@@ -726,7 +726,7 @@
   <border>
     <first>Cheboksary</first>
     <second>Kazan’</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Extremadura</first>
@@ -767,7 +767,7 @@
   <border>
     <first>Béarn</first>
     <second>Languedoc</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baïkal~E</first>
@@ -796,12 +796,12 @@
   <border>
     <first>Mississipi~SW</first>
     <second>Texas~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bohème</first>
     <second>Lausitz</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Mer Rouge</first>
@@ -810,7 +810,7 @@
   <border>
     <first>Guyenne</first>
     <second>Languedoc</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Dellī~S</first>
@@ -827,7 +827,7 @@
   <border>
     <first>Sénégal~N</first>
     <second>Sénégal~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe Persique</first>
@@ -880,7 +880,7 @@
   <border>
     <first>Eşfahān</first>
     <second>al-Başrah</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Canal de Mozambique</first>
@@ -917,12 +917,12 @@
   <border>
     <first>Brabant</first>
     <second>Vlaanderen</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Hinterpommern</first>
     <second>Vorpommern</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Illinois~C</first>
@@ -975,7 +975,7 @@
   <border>
     <first>Berg</first>
     <second>Limburg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>America~S</first>
@@ -988,7 +988,7 @@
   <border>
     <first>Illinois~C</first>
     <second>Kansas~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer du Nord</first>
@@ -997,7 +997,7 @@
   <border>
     <first>Baïkal~NE</first>
     <second>Yakoutie~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Guyana~W</first>
@@ -1038,12 +1038,12 @@
   <border>
     <first>Bosna</first>
     <second>Hrvatska</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Guyana~W</first>
     <second>Venezuela~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baie de Botnie</first>
@@ -1064,7 +1064,7 @@
   <border>
     <first>Illinois~C</first>
     <second>Kansas~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Brabant</first>
@@ -1089,7 +1089,7 @@
   <border>
     <first>Berg</first>
     <second>Köln</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bursa</first>
@@ -1102,7 +1102,7 @@
   <border>
     <first>Moldova</first>
     <second>Podillya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Atlantique nord-ouest</first>
@@ -1135,7 +1135,7 @@
   <border>
     <first>Bukovina</first>
     <second>Podillya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Atlantique ouest</first>
@@ -1144,7 +1144,7 @@
   <border>
     <first>Berg</first>
     <second>Trier</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Patagonia~C</first>
@@ -1173,7 +1173,7 @@
   <border>
     <first>Angora</first>
     <second>Kilikya</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Kansas~S</first>
@@ -1242,7 +1242,7 @@
   <border>
     <first>Kilikya</first>
     <second>Konya</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Iroquois~SW</first>
@@ -1267,7 +1267,7 @@
   <border>
     <first>Prypeć</first>
     <second>Ukraïnya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Angora</first>
@@ -1284,7 +1284,7 @@
   <border>
     <first>Kansas~S</first>
     <second>Texas~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Soudan~S</first>
@@ -1341,7 +1341,7 @@
   <border>
     <first>Mandchourie~W</first>
     <second>Pékin~C</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Eşfahān</first>
@@ -1370,7 +1370,7 @@
   <border>
     <first>Nassau</first>
     <second>Pfalz</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Gästrikland</first>
@@ -1387,7 +1387,7 @@
   <border>
     <first>Belém~W</first>
     <second>Guyana~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Atlantique</first>
@@ -1400,7 +1400,7 @@
   <border>
     <first>Mer Rouge</first>
     <second>Éthiopie~S</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Highlands</first>
@@ -1409,12 +1409,12 @@
   <border>
     <first>Mississipi~NW</first>
     <second>Mississipi~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Utrecht</first>
     <second>Vlaanderen</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Patagonia~E</first>
@@ -1447,7 +1447,7 @@
   <border>
     <first>Mississipi~NW</first>
     <second>Texas~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Friesland</first>
@@ -1456,7 +1456,7 @@
   <border>
     <first>Hrvatska</first>
     <second>Pécs</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Abruzzo</first>
@@ -1489,12 +1489,12 @@
   <border>
     <first>Nice</first>
     <second>Savoia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mississipi~NE</first>
     <second>Mississipi~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Atlantique</first>
@@ -1519,7 +1519,7 @@
   <border>
     <first>Arizona~N</first>
     <second>California~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Braunschweig</first>
@@ -1528,12 +1528,12 @@
   <border>
     <first>America~W</first>
     <second>Québec~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer du Labrador</first>
     <second>Saint-Laurent</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Golfe du Lion</first>
@@ -1546,12 +1546,12 @@
   <border>
     <first>Mainz</first>
     <second>Pfalz</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mississipi~NW</first>
     <second>Mississipi~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer des Seychelles</first>
@@ -1580,7 +1580,7 @@
   <border>
     <first>America~NW</first>
     <second>Québec~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Brabant</first>
@@ -1645,17 +1645,17 @@
   <border>
     <first>Azov</first>
     <second>Qırım</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Illinois~S</first>
     <second>Mississipi~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Memel</first>
     <second>Preußen</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Atlantique nord-ouest</first>
@@ -1680,7 +1680,7 @@
   <border>
     <first>Grands Lacs~SE</first>
     <second>Québec~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe d’Amazonie</first>
@@ -1697,7 +1697,7 @@
   <border>
     <first>Azov</first>
     <second>Donets</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Grønland</first>
@@ -1706,7 +1706,7 @@
   <border>
     <first>Saint-Laurent</first>
     <second>Terre-Neuve~N</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Mer Tyrrhénienne</first>
@@ -1743,7 +1743,7 @@
   <border>
     <first>Magyarország</first>
     <second>Pécs</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer Rouge</first>
@@ -1752,7 +1752,7 @@
   <border>
     <first>Saint-Laurent</first>
     <second>Terre-Neuve~S</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Antalya</first>
@@ -1769,7 +1769,7 @@
   <border>
     <first>Panamá~N</first>
     <second>Panamá~S</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Adriatique</first>
@@ -1778,7 +1778,7 @@
   <border>
     <first>Golfe Persique</first>
     <second>Oman~E</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Poltava</first>
@@ -1787,7 +1787,7 @@
   <border>
     <first>Morbihan</first>
     <second>Vendée</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Grønland</first>
@@ -1828,7 +1828,7 @@
   <border>
     <first>Connacht</first>
     <second>Laighean</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Balouchistan~E</first>
@@ -1853,7 +1853,7 @@
   <border>
     <first>Carolina~E</first>
     <second>Virginia~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>America~C</first>
@@ -1890,12 +1890,12 @@
   <border>
     <first>Kansas~E</first>
     <second>Kansas~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Grands Lacs~S</first>
     <second>Grands Lacs~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Grands Lacs~NW</first>
@@ -1908,12 +1908,12 @@
   <border>
     <first>Monferrato</first>
     <second>Nice</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Cymru</first>
     <second>Gloucester</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Münster</first>
@@ -1922,12 +1922,12 @@
   <border>
     <first>Kansas~E</first>
     <second>Mississipi~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Balouchistan~W</first>
     <second>Golfe Persique</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Champagne</first>
@@ -1964,7 +1964,7 @@
   <border>
     <first>Illinois~S</first>
     <second>Mississipi~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Balouchistan~W</first>
@@ -2013,7 +2013,7 @@
   <border>
     <first>Amazonia~S</first>
     <second>Amazonia~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Makedonya</first>
@@ -2030,7 +2030,7 @@
   <border>
     <first>al-Nūbah</first>
     <second>Šallāl</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bohème</first>
@@ -2043,7 +2043,7 @@
   <border>
     <first>Monferrato</first>
     <second>Savoia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ayutthaya~W</first>
@@ -2060,7 +2060,7 @@
   <border>
     <first>Kansas~E</first>
     <second>Kansas~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mainz</first>
@@ -2157,7 +2157,7 @@
   <border>
     <first>Dellī~C</first>
     <second>Pãjāb~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>al-Jaza’ir</first>
@@ -2166,7 +2166,7 @@
   <border>
     <first>Chichimeca~E</first>
     <second>Texas~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Finistère</first>
@@ -2207,7 +2207,7 @@
   <border>
     <first>al-Jaza’ir</first>
     <second>al-Qaba’il</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Armor</first>
@@ -2236,7 +2236,7 @@
   <border>
     <first>Hannover</first>
     <second>Holstein</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Hudson~S</first>
@@ -2313,7 +2313,7 @@
   <border>
     <first>Ayodhyā~E</first>
     <second>Gonḍānā~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Méditerrannée occidentale</first>
@@ -2350,7 +2350,7 @@
   <border>
     <first>Ayodhyā~E</first>
     <second>Bānglā~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe de Gascogne</first>
@@ -2359,12 +2359,12 @@
   <border>
     <first>Illinois~S</first>
     <second>Iroquois~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Dikoe Pole</first>
     <second>Mordoviya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mişr</first>
@@ -2389,7 +2389,7 @@
   <border>
     <first>Deltā</first>
     <second>an-Nīl</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ayodhyā~E</first>
@@ -2422,7 +2422,7 @@
   <border>
     <first>Idel Bolgarstany</first>
     <second>Tatarstan</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cap de Bonne-Espérance</first>
@@ -2431,7 +2431,7 @@
   <border>
     <first>Lena~E</first>
     <second>Yakoutie~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Dijlah</first>
@@ -2456,7 +2456,7 @@
   <border>
     <first>Kazan’</first>
     <second>Tatarstan</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Orissā~N</first>
@@ -2469,7 +2469,7 @@
   <border>
     <first>Baden</first>
     <second>Pfalz</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lena~E</first>
@@ -2490,7 +2490,7 @@
   <border>
     <first>Yakoutie~N</first>
     <second>Yakoutie~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Japon~E</first>
@@ -2503,7 +2503,7 @@
   <border>
     <first>Lena~NE</first>
     <second>Yakoutie~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bulgaristan</first>
@@ -2528,22 +2528,22 @@
   <border>
     <first>Bashkiria</first>
     <second>Idel Bolgarstany</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ob~SW</first>
     <second>Sibérie~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ayodhyā~W</first>
     <second>Dellī~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Alsace</first>
     <second>Baden</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Azarbāyadjān</first>
@@ -2616,7 +2616,7 @@
   <border>
     <first>Baden</first>
     <second>Schweiz</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Côte du Chili</first>
@@ -2629,7 +2629,7 @@
   <border>
     <first>Ayodhyā~W</first>
     <second>Gonḍānā~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Samara</first>
@@ -2650,7 +2650,7 @@
   <border>
     <first>Salamanca</first>
     <second>Trás-os-Montes</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Québec~NE</first>
@@ -2679,12 +2679,12 @@
   <border>
     <first>America~W</first>
     <second>Grands Lacs~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Alentejo</first>
     <second>Tejo</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cameroun~FP</first>
@@ -2693,12 +2693,12 @@
   <border>
     <first>Bulgaristan</first>
     <second>Makedonya</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Västergotland</first>
     <second>Østlandet</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Gujarat~E</first>
@@ -2707,12 +2707,12 @@
   <border>
     <first>Indus~N</first>
     <second>Indus~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Poltava</first>
     <second>Ukraïnya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baie de Botnie</first>
@@ -2721,7 +2721,7 @@
   <border>
     <first>Grands Lacs~SE</first>
     <second>Iroquois~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Basilicata</first>
@@ -2734,7 +2734,7 @@
   <border>
     <first>Bānglā~E</first>
     <second>Bānglā~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Aden~E</first>
@@ -2743,7 +2743,7 @@
   <border>
     <first>Amazonia~NE</first>
     <second>Amazonia~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Québec~C</first>
@@ -2756,12 +2756,12 @@
   <border>
     <first>Nankin~E</first>
     <second>Pékin~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Poltava</first>
     <second>Zaporizhzhya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bānglā~E</first>
@@ -2790,7 +2790,7 @@
   <border>
     <first>Afghanistan~C</first>
     <second>Indus~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Aral~W</first>
@@ -2859,7 +2859,7 @@
   <border>
     <first>Guyenne</first>
     <second>Poitou</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Đại Việt~C</first>
@@ -2868,7 +2868,7 @@
   <border>
     <first>Belém~E</first>
     <second>Belém~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Aral~S</first>
@@ -2885,7 +2885,7 @@
   <border>
     <first>Balouchistan~E</first>
     <second>Indus~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Basilicata</first>
@@ -3010,7 +3010,7 @@
   <border>
     <first>Basarabia</first>
     <second>Doğu Rumeli</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lübeck</first>
@@ -3035,7 +3035,7 @@
   <border>
     <first>Nevada~NW</first>
     <second>Oregon~C</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cornwall</first>
@@ -3044,7 +3044,7 @@
   <border>
     <first>Arizona~N</first>
     <second>Nevada~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baie de Botnie</first>
@@ -3069,7 +3069,7 @@
   <border>
     <first>Bulgaristan</first>
     <second>Valahia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Arménie</first>
@@ -3086,7 +3086,7 @@
   <border>
     <first>Gelderland</first>
     <second>Utrecht</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Chili~C</first>
@@ -3099,12 +3099,12 @@
   <border>
     <first>Doğu Rumeli</first>
     <second>Valahia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amazonia~N</first>
     <second>Amazonia~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Jebel Tubqāl</first>
@@ -3121,7 +3121,7 @@
   <border>
     <first>Kansas~N</first>
     <second>Kansas~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cornwall</first>
@@ -3130,7 +3130,7 @@
   <border>
     <first>Aragón</first>
     <second>Catalunya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Québec~C</first>
@@ -3151,17 +3151,17 @@
   <border>
     <first>Arizona~N</first>
     <second>Nevada~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kermānšāh</first>
     <second>al-Başrah</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Guyenne</first>
     <second>Quercy</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer d’Alaska</first>
@@ -3174,12 +3174,12 @@
   <border>
     <first>Détroit de Malaisie</first>
     <second>Sumatra~C</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Holland</first>
     <second>Utrecht</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Chili~C</first>
@@ -3204,12 +3204,12 @@
   <border>
     <first>Chichimeca~N</first>
     <second>Texas~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bremen</first>
     <second>Oldenburg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Modena</first>
@@ -3254,7 +3254,7 @@
   <border>
     <first>Iroquois~S</first>
     <second>Iroquois~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Friesland</first>
@@ -3263,7 +3263,7 @@
   <border>
     <first>Chichimeca~E</first>
     <second>Texas~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Yakoutie~S</first>
@@ -3300,7 +3300,7 @@
   <border>
     <first>Chichimeca~C</first>
     <second>Texas~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Asturias</first>
@@ -3313,7 +3313,7 @@
   <border>
     <first>Grands Lacs~C</first>
     <second>Illinois~C</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Détroit de Floride</first>
@@ -3374,7 +3374,7 @@
   <border>
     <first>Mişr</first>
     <second>an-Nīl</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Franken</first>
@@ -3383,7 +3383,7 @@
   <border>
     <first>Arizona~E</first>
     <second>Texas~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Inca~C</first>
@@ -3408,7 +3408,7 @@
   <border>
     <first>Mississipi~SE</first>
     <second>Mississipi~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Côte d’Ivoire~E</first>
@@ -3417,17 +3417,17 @@
   <border>
     <first>Basarabia</first>
     <second>Hacıbey</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mişr</first>
     <second>Šallāl</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Franken</first>
     <second>Mainz</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Arizona~E</first>
@@ -3444,12 +3444,12 @@
   <border>
     <first>Jämtland</first>
     <second>Trøndelag</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Dikoe Pole</first>
     <second>Ryazan’</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Brabant</first>
@@ -3466,12 +3466,12 @@
   <border>
     <first>Ayutthaya~S</first>
     <second>Đại Việt~C</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Yakoutie~NW</first>
     <second>Yakoutie~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Atlantique sud</first>
@@ -3492,7 +3492,7 @@
   <border>
     <first>Don</first>
     <second>Donets</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Grands Lacs~S</first>
@@ -3561,7 +3561,7 @@
   <border>
     <first>Minas Gerais~E</first>
     <second>Minas Gerais~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Terre-Neuve~N</first>
@@ -3570,7 +3570,7 @@
   <border>
     <first>Yakoutie~SW</first>
     <second>Yakoutie~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe de Gascogne</first>
@@ -3595,12 +3595,12 @@
   <border>
     <first>Ayutthaya~N</first>
     <second>Đại Việt~C</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bergslagen</first>
     <second>Trøndelag</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Illinois~S</first>
@@ -3621,7 +3621,7 @@
   <border>
     <first>Minas Gerais~E</first>
     <second>Paraguay~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kapela</first>
@@ -3650,7 +3650,7 @@
   <border>
     <first>Prypeć</first>
     <second>Severia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Illinois~SE</first>
@@ -3695,7 +3695,7 @@
   <border>
     <first>Yakoutie~C</first>
     <second>Yakoutie~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Hydārabad~S</first>
@@ -3716,12 +3716,12 @@
   <border>
     <first>Yakoutie~C</first>
     <second>Yakoutie~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Aden~E</first>
     <second>Mer Rouge</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Atlantique sud-est</first>
@@ -3730,7 +3730,7 @@
   <border>
     <first>Dikoe Pole</first>
     <second>Don</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Détroit de Floride</first>
@@ -3759,7 +3759,7 @@
   <border>
     <first>Yakoutie~C</first>
     <second>Yakoutie~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Grands Lacs~S</first>
@@ -3784,12 +3784,12 @@
   <border>
     <first>Altmark</first>
     <second>Mecklenburg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Virginia~E</first>
     <second>Virginia~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Labrador~E</first>
@@ -3826,7 +3826,7 @@
   <border>
     <first>America~S</first>
     <second>America~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe d’Amazonie</first>
@@ -3835,7 +3835,7 @@
   <border>
     <first>Danzig</first>
     <second>West Preußen</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Labrador~W</first>
@@ -3884,7 +3884,7 @@
   <border>
     <first>Chichimeca~N</first>
     <second>Chichimeca~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Inca~N</first>
@@ -3901,7 +3901,7 @@
   <border>
     <first>Ingermanland</first>
     <second>Karelen</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baie d’Hudson</first>
@@ -3950,7 +3950,7 @@
   <border>
     <first>Azarbāyadjān</first>
     <second>Šīrwān</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Antilles~Saint-Vincent</first>
@@ -3979,7 +3979,7 @@
   <border>
     <first>East Anglia</first>
     <second>Kent</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>California~C</first>
@@ -4012,7 +4012,7 @@
   <border>
     <first>Makedonya</first>
     <second>Trakya</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Neumark</first>
@@ -4025,7 +4025,7 @@
   <border>
     <first>Flandre</first>
     <second>Hainaut</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Nedj~E</first>
@@ -4034,7 +4034,7 @@
   <border>
     <first>Pfalz</first>
     <second>Würtemberg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Chili~C</first>
@@ -4071,17 +4071,17 @@
   <border>
     <first>Lausitz</first>
     <second>Neumark</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Hainaut</first>
     <second>Vlaanderen</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ienisseï~SW</first>
     <second>Ob~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>California~C</first>
@@ -4130,12 +4130,12 @@
   <border>
     <first>Acadie~Cape</first>
     <second>Acadie~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lombardia</first>
     <second>Mantova</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baïkal~E</first>
@@ -4176,7 +4176,7 @@
   <border>
     <first>Danzig</first>
     <second>Hinterpommern</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Java~C</first>
@@ -4185,7 +4185,7 @@
   <border>
     <first>Mantova</first>
     <second>Parma</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Belém~W</first>
@@ -4202,7 +4202,7 @@
   <border>
     <first>Yakoutie~C</first>
     <second>Yakoutie~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer de Java</first>
@@ -4219,7 +4219,7 @@
   <border>
     <first>Lublin</first>
     <second>Mazowia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Illinois~C</first>
@@ -4232,7 +4232,7 @@
   <border>
     <first>Atlantique nord-ouest</first>
     <second>Saint-Laurent</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Lena~N</first>
@@ -4245,7 +4245,7 @@
   <border>
     <first>Moskva</first>
     <second>Vyatka</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Barqah</first>
@@ -4322,7 +4322,7 @@
   <border>
     <first>Aragón</first>
     <second>Vizcaya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ecuador~N</first>
@@ -4335,7 +4335,7 @@
   <border>
     <first>Iroquois~S</first>
     <second>Virginia~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Carolina~C</first>
@@ -4348,7 +4348,7 @@
   <border>
     <first>Bassin de Wharton</first>
     <second>Sumatra~S</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Baie d’Hudson</first>
@@ -4377,7 +4377,7 @@
   <border>
     <first>Lublin</first>
     <second>Wielkopolska</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Nevada~C</first>
@@ -4398,7 +4398,7 @@
   <border>
     <first>Paraguay~SE</first>
     <second>Plata~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>an-Nīl</first>
@@ -4411,12 +4411,12 @@
   <border>
     <first>Illinois~SE</first>
     <second>Iroquois~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>León</first>
     <second>Salamanca</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Océan Indien</first>
@@ -4433,7 +4433,7 @@
   <border>
     <first>Castilla La Vieja</first>
     <second>Vizcaya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ecuador~N</first>
@@ -4442,7 +4442,7 @@
   <border>
     <first>Ob~E</first>
     <second>Ob~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Birmanie~S</first>
@@ -4467,7 +4467,7 @@
   <border>
     <first>Cheboksary</first>
     <second>Moskva</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Deltā</first>
@@ -4500,7 +4500,7 @@
   <border>
     <first>Hacıbey</first>
     <second>Qırım</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bānglā~W</first>
@@ -4533,7 +4533,7 @@
   <border>
     <first>Bassin de Wharton</first>
     <second>Mer de Java</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Anhalt</first>
@@ -4574,7 +4574,7 @@
   <border>
     <first>Don</first>
     <second>Samara</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe du Mexique</first>
@@ -4619,7 +4619,7 @@
   <border>
     <first>Mazowia</first>
     <second>Wielkopolska</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>’Afrīqiyah</first>
@@ -4628,12 +4628,12 @@
   <border>
     <first>Nyasa~S</first>
     <second>Nyasa~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mordoviya</first>
     <second>Samara</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Rocheuses~E</first>
@@ -4666,7 +4666,7 @@
   <border>
     <first>Languedoc</first>
     <second>Provence</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Méditerrannée orientale</first>
@@ -4675,7 +4675,7 @@
   <border>
     <first>al-Qaba’il</first>
     <second>‛Annābah</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Inca~E</first>
@@ -4712,7 +4712,7 @@
   <border>
     <first>Béarn</first>
     <second>Navarra</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>America~NW</first>
@@ -4757,7 +4757,7 @@
   <border>
     <first>Labrador~E</first>
     <second>Saint-Laurent</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Hessen</first>
@@ -4778,7 +4778,7 @@
   <border>
     <first>Béarn</first>
     <second>Rosseló</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Azteca~C</first>
@@ -4807,7 +4807,7 @@
   <border>
     <first>Małopolska</first>
     <second>Szlovákia</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Lucca</first>
@@ -4824,7 +4824,7 @@
   <border>
     <first>Baltarusija</first>
     <second>Polacak</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>California~N</first>
@@ -4833,7 +4833,7 @@
   <border>
     <first>Béarn</first>
     <second>Pirineos</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Inca~S</first>
@@ -4862,7 +4862,7 @@
   <border>
     <first>Banat</first>
     <second>Magyarország</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Jylland</first>
@@ -4871,7 +4871,7 @@
   <border>
     <first>Yakoutie~E</first>
     <second>Yakoutie~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Hudson~W</first>
@@ -4892,7 +4892,7 @@
   <border>
     <first>Anadolu</first>
     <second>Trabzon</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Inca~SW</first>
@@ -4933,12 +4933,12 @@
   <border>
     <first>Brega</first>
     <second>Connacht</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Angora</first>
     <second>Trabzon</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Java~E</first>
@@ -4951,7 +4951,7 @@
   <border>
     <first>Hannover</first>
     <second>Mecklenburg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Granada</first>
@@ -4968,7 +4968,7 @@
   <border>
     <first>Lena~C</first>
     <second>Lena~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lazio</first>
@@ -4985,7 +4985,7 @@
   <border>
     <first>Banat</first>
     <second>Hrvatska</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>America~C</first>
@@ -5070,7 +5070,7 @@
   <border>
     <first>Astrakhan</first>
     <second>Don</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kansas~W</first>
@@ -5091,7 +5091,7 @@
   <border>
     <first>Sinop</first>
     <second>Trabzon</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Côte du Pérou</first>
@@ -5100,7 +5100,7 @@
   <border>
     <first>Kansas~S</first>
     <second>Kansas~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bukovina</first>
@@ -5129,7 +5129,7 @@
   <border>
     <first>Dellī~C</first>
     <second>Dellī~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baltique</first>
@@ -5162,12 +5162,12 @@
   <border>
     <first>Dellī~C</first>
     <second>Pãjāb~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>OberPfalz</first>
     <second>Salzburg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mumbaī~NE</first>
@@ -5192,7 +5192,7 @@
   <border>
     <first>Bayern</first>
     <second>OberPfalz</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lausitz</first>
@@ -5209,12 +5209,12 @@
   <border>
     <first>Ienisseï~NE</first>
     <second>Ienisseï~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lubnān</first>
     <second>Ĥalab</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cuba</first>
@@ -5231,7 +5231,7 @@
   <border>
     <first>Steiermark</first>
     <second>Österreich</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Morava</first>
@@ -5268,7 +5268,7 @@
   <border>
     <first>Salzburg</first>
     <second>Österreich</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cuba</first>
@@ -5293,7 +5293,7 @@
   <border>
     <first>Baïkal~NW</first>
     <second>Lena~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Birmanie~E</first>
@@ -5302,7 +5302,7 @@
   <border>
     <first>Banat</first>
     <second>Bulgaristan</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Méditerrannée orientale</first>
@@ -5311,7 +5311,7 @@
   <border>
     <first>Abruzzo</first>
     <second>Lazio</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Altmark</first>
@@ -5328,7 +5328,7 @@
   <border>
     <first>Banat</first>
     <second>Serbia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Nedj~C</first>
@@ -5353,7 +5353,7 @@
   <border>
     <first>Lausitz</first>
     <second>Wielkopolska</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Brandenburg</first>
@@ -5382,7 +5382,7 @@
   <border>
     <first>Aragón</first>
     <second>Navarra</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cumberland</first>
@@ -5451,12 +5451,12 @@
   <border>
     <first>Ienisseï~C</first>
     <second>Ienisseï~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Moskva</first>
     <second>Yaroslavl’</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Détroit de Formose</first>
@@ -5473,7 +5473,7 @@
   <border>
     <first>Altmark</first>
     <second>Brandenburg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>California~N</first>
@@ -5490,7 +5490,7 @@
   <border>
     <first>Ienisseï~E</first>
     <second>Ienisseï~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Vyatka</first>
@@ -5519,7 +5519,7 @@
   <border>
     <first>Moskva</first>
     <second>Novgorod</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>West Preußen</first>
@@ -5544,17 +5544,17 @@
   <border>
     <first>Ienisseï~S</first>
     <second>Ienisseï~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Beira</first>
     <second>Trás-os-Montes</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ladoga</first>
     <second>Moskva</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>al-Ā’urdunn</first>
@@ -5567,7 +5567,7 @@
   <border>
     <first>Anhalt</first>
     <second>Brandenburg</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mandchourie~E</first>
@@ -5592,7 +5592,7 @@
   <border>
     <first>Hellas</first>
     <second>Makedonya</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Mer de Chine nord</first>
@@ -5609,7 +5609,7 @@
   <border>
     <first>Beira</first>
     <second>Cáceres</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lena~C</first>
@@ -5630,12 +5630,12 @@
   <border>
     <first>Steiermark</first>
     <second>Szlovákia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ienisseï~NW</first>
     <second>Ob~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Atlantique ouest</first>
@@ -5648,7 +5648,7 @@
   <border>
     <first>Kilikya</first>
     <second>Ĥalab</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Beira</first>
@@ -5661,7 +5661,7 @@
   <border>
     <first>East Anglia</first>
     <second>Wessex</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Nevada~SW</first>
@@ -5718,7 +5718,7 @@
   <border>
     <first>Alentejo</first>
     <second>Beira</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cap de Bonne-Espérance</first>
@@ -5735,7 +5735,7 @@
   <border>
     <first>Amazonia~NE</first>
     <second>Belém~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Manitoba~S</first>
@@ -5744,7 +5744,7 @@
   <border>
     <first>Connacht</first>
     <second>Mumhan</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Arizona~E</first>
@@ -5753,7 +5753,7 @@
   <border>
     <first>Géorgie</first>
     <second>Terek</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Mer de Sawu</first>
@@ -5786,12 +5786,12 @@
   <border>
     <first>Arizona~S</first>
     <second>Chichimeca~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cáceres</first>
     <second>Salamanca</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Béarn</first>
@@ -5816,7 +5816,7 @@
   <border>
     <first>Baïkal~E</first>
     <second>Mandchourie~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ayutthaya~N</first>
@@ -5845,7 +5845,7 @@
   <border>
     <first>Cáceres</first>
     <second>Toledo</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Congo~N</first>
@@ -5858,7 +5858,7 @@
   <border>
     <first>Amour~E</first>
     <second>Amour~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Brega</first>
@@ -5879,7 +5879,7 @@
   <border>
     <first>Salamanca</first>
     <second>Toledo</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Azov</first>
@@ -5888,12 +5888,12 @@
   <border>
     <first>Mazowia</first>
     <second>West Preußen</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kuban</first>
     <second>Terek</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Tūnis</first>
@@ -5914,7 +5914,7 @@
   <border>
     <first>Friuli</first>
     <second>Tirol</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Mer des Philippines</first>
@@ -5959,7 +5959,7 @@
   <border>
     <first>Moskva</first>
     <second>Ryazan’</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer de Corail</first>
@@ -5992,7 +5992,7 @@
   <border>
     <first>Kaluga</first>
     <second>Novgorod</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kenya~S</first>
@@ -6029,7 +6029,7 @@
   <border>
     <first>Astrakhan</first>
     <second>Terek</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>al-Başrah</first>
@@ -6046,7 +6046,7 @@
   <border>
     <first>Szlovákia</first>
     <second>Österreich</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer Ionienne</first>
@@ -6103,7 +6103,7 @@
   <border>
     <first>Kermānšāh</first>
     <second>al-‛Irāq</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baltique</first>
@@ -6136,7 +6136,7 @@
   <border>
     <first>Bremen</first>
     <second>Osnabrück</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe du Mexique</first>
@@ -6145,7 +6145,7 @@
   <border>
     <first>Ienisseï~SE</first>
     <second>Lena~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amour~E</first>
@@ -6162,7 +6162,7 @@
   <border>
     <first>Qırım</first>
     <second>Zaporizhzhya</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amour~E</first>
@@ -6179,7 +6179,7 @@
   <border>
     <first>Bursa</first>
     <second>İzmir</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Golfe du Mexique</first>
@@ -6200,7 +6200,7 @@
   <border>
     <first>Panamá~N</first>
     <second>Yucatán~S</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Abruzzo</first>
@@ -6213,7 +6213,7 @@
   <border>
     <first>Dellī~C</first>
     <second>Dellī~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Angola~S</first>
@@ -6270,7 +6270,7 @@
   <border>
     <first>Minas Gerais~N</first>
     <second>Minas Gerais~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cuba</first>
@@ -6331,7 +6331,7 @@
   <border>
     <first>Dijlah</first>
     <second>al-‛Irāq</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Adriatique</first>
@@ -6344,7 +6344,7 @@
   <border>
     <first>Cameroun~E</first>
     <second>Cameroun~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Haïti~E</first>
@@ -6353,7 +6353,7 @@
   <border>
     <first>Minas Gerais~W</first>
     <second>Paraguay~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Azov</first>
@@ -6370,7 +6370,7 @@
   <border>
     <first>Plata~NE</first>
     <second>Plata~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bergslagen</first>
@@ -6391,7 +6391,7 @@
   <border>
     <first>Virginia~E</first>
     <second>Virginia~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Patagonia~NE</first>
@@ -6408,7 +6408,7 @@
   <border>
     <first>Bulgaristan</first>
     <second>Serbia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Hainaut</first>
@@ -6417,12 +6417,12 @@
   <border>
     <first>Nankin~NW</first>
     <second>Pékin~C</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Polacak</first>
     <second>Pskov</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Côte du Pérou</first>
@@ -6431,12 +6431,12 @@
   <border>
     <first>Daġestān</first>
     <second>Terek</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Algarve</first>
     <second>Huelva</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Azteca~E</first>
@@ -6449,12 +6449,12 @@
   <border>
     <first>Campania</first>
     <second>Puglia</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Paraguay~NE</first>
     <second>Paraguay~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Java~C</first>
@@ -6463,7 +6463,7 @@
   <border>
     <first>Alabania</first>
     <second>Mer Ionienne</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Cap Horn</first>
@@ -6480,7 +6480,7 @@
   <border>
     <first>Livonija</first>
     <second>Pskov</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Paraguay~SE</first>
@@ -6505,7 +6505,7 @@
   <border>
     <first>Paraguay~NE</first>
     <second>Paraguay~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Limburg</first>
@@ -6566,7 +6566,7 @@
   <border>
     <first>Abruzzo</first>
     <second>Campania</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Chili~SW</first>
@@ -6639,7 +6639,7 @@
   <border>
     <first>Berry</first>
     <second>Orléanais</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe de Panama</first>
@@ -6680,7 +6680,7 @@
   <border>
     <first>Ob~N</first>
     <second>Ob~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cap des Tempêtes</first>
@@ -6689,7 +6689,7 @@
   <border>
     <first>Alentejo</first>
     <second>Huelva</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Congo~N</first>
@@ -6702,7 +6702,7 @@
   <border>
     <first>Détroit de Malaisie</first>
     <second>Mer de Java</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Mer d’Alaska</first>
@@ -6727,7 +6727,7 @@
   <border>
     <first>Mandchourie~S</first>
     <second>Pékin~C</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe de Syrte</first>
@@ -6744,22 +6744,22 @@
   <border>
     <first>Congo~N</first>
     <second>Congo~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ob~N</first>
     <second>Ob~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>al-Maġrib</first>
     <second>al-’Aṭlas</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Azov</first>
     <second>Kuban</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Caraïbes</first>
@@ -6780,7 +6780,7 @@
   <border>
     <first>Ienisseï~NW</first>
     <second>Ob~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kreta</first>
@@ -6813,7 +6813,7 @@
   <border>
     <first>Alentejo</first>
     <second>Extremadura</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ob~E</first>
@@ -6826,7 +6826,7 @@
   <border>
     <first>Kexholm</first>
     <second>Onega</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cheboksary</first>
@@ -6851,7 +6851,7 @@
   <border>
     <first>Corée~N</first>
     <second>Mandchourie~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Japon~N</first>
@@ -6884,7 +6884,7 @@
   <border>
     <first>Texas~N</first>
     <second>Texas~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Caux</first>
@@ -6897,12 +6897,12 @@
   <border>
     <first>Corée~N</first>
     <second>Mandchourie~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bursa</first>
     <second>Konya</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Venezuela~E</first>
@@ -6935,7 +6935,7 @@
   <border>
     <first>America~C</first>
     <second>America~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cumberland</first>
@@ -6988,7 +6988,7 @@
   <border>
     <first>Ob~NW</first>
     <second>Ob~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Gibraltar</first>
@@ -7037,7 +7037,7 @@
   <border>
     <first>Brandenburg</first>
     <second>Hinterpommern</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Granada</first>
@@ -7066,7 +7066,7 @@
   <border>
     <first>Caux</first>
     <second>Île-de-France</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amour~S</first>
@@ -7099,7 +7099,7 @@
   <border>
     <first>Orléanais</first>
     <second>Île-de-France</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Canton~E</first>
@@ -7112,7 +7112,7 @@
   <border>
     <first>Mantova</first>
     <second>Modena</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer du Bengale</first>
@@ -7121,7 +7121,7 @@
   <border>
     <first>Wahrān</first>
     <second>al-Maġrib</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Catalunya</first>
@@ -7130,7 +7130,7 @@
   <border>
     <first>Canton~E</first>
     <second>Canton~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bornéo~S</first>
@@ -7147,7 +7147,7 @@
   <border>
     <first>Wahrān</first>
     <second>al-’Aṭlas</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Mer du Bengale</first>
@@ -7192,7 +7192,7 @@
   <border>
     <first>Konya</first>
     <second>İzmir</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Afghanistan~E</first>
@@ -7221,7 +7221,7 @@
   <border>
     <first>Bresse</first>
     <second>Lyonnais</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bornéo~E</first>
@@ -7242,7 +7242,7 @@
   <border>
     <first>Liguria</first>
     <second>Lombardia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Patagonia~NE</first>
@@ -7251,7 +7251,7 @@
   <border>
     <first>Extremadura</first>
     <second>Huelva</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Maldives</first>
@@ -7264,7 +7264,7 @@
   <border>
     <first>Bourgogne</first>
     <second>Bresse</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kurland</first>
@@ -7273,12 +7273,12 @@
   <border>
     <first>Dauphiné</first>
     <second>Languedoc</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Canton~N</first>
     <second>Canton~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer Rouge</first>
@@ -7307,7 +7307,7 @@
   <border>
     <first>Dauphiné</first>
     <second>Lyonnais</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bornéo~N</first>
@@ -7328,7 +7328,7 @@
   <border>
     <first>Hacıbey</first>
     <second>Moldova</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Azteca~SW</first>
@@ -7337,12 +7337,12 @@
   <border>
     <first>Luxemburg</first>
     <second>Pfalz</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Pékin~C</first>
     <second>Pékin~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Alba</first>
@@ -7355,12 +7355,12 @@
   <border>
     <first>Pfalz</first>
     <second>Trier</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Nankin~NW</first>
     <second>Pékin~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bashkiria</first>
@@ -7405,7 +7405,7 @@
   <border>
     <first>Ob~NW</first>
     <second>Sibérie~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Azteca~SE</first>
@@ -7470,12 +7470,12 @@
   <border>
     <first>Nassau</first>
     <second>Trier</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Nankin~E</first>
     <second>Nankin~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Grande Baie australienne</first>
@@ -7492,7 +7492,7 @@
   <border>
     <first>Idel Bolgarstany</first>
     <second>Ural</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Limousin</first>
@@ -7529,7 +7529,7 @@
   <border>
     <first>Ural</first>
     <second>Vyatka</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baltarusija</first>
@@ -7546,7 +7546,7 @@
   <border>
     <first>Wān</first>
     <second>Ĥalab</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Chichimeca~N</first>
@@ -7559,7 +7559,7 @@
   <border>
     <first>Lena~E</first>
     <second>Yakoutie~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bam</first>
@@ -7572,7 +7572,7 @@
   <border>
     <first>Adriatique</first>
     <second>Mer Ionienne</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Chichimeca~NW</first>
@@ -7581,7 +7581,7 @@
   <border>
     <first>Severia</first>
     <second>Smolenską</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kordistān</first>
@@ -7606,7 +7606,7 @@
   <border>
     <first>Yakoutie~N</first>
     <second>Yakoutie~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe de Cadix</first>
@@ -7619,7 +7619,7 @@
   <border>
     <first>Anadolu</first>
     <second>Ĥalab</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Amour~N</first>
@@ -7652,7 +7652,7 @@
   <border>
     <first>Amazonia~N</first>
     <second>Amazonia~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ayr</first>
@@ -7661,12 +7661,12 @@
   <border>
     <first>Ob~W</first>
     <second>Sibérie~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer Ionienne</first>
     <second>Mer Tyrrhénienne</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Tânger</first>
@@ -7691,7 +7691,7 @@
   <border>
     <first>Lena~E</first>
     <second>Lena~SE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Baie d’Alger</first>
@@ -7700,7 +7700,7 @@
   <border>
     <first>Minas Gerais~S</first>
     <second>Paraguay~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>California~S</first>
@@ -7733,7 +7733,7 @@
   <border>
     <first>Paraguay~SE</first>
     <second>Paraguay~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Gonḍānā~N</first>
@@ -7754,7 +7754,7 @@
   <border>
     <first>Berry</first>
     <second>Maine</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amour~W</first>
@@ -7779,7 +7779,7 @@
   <border>
     <first>Maine</first>
     <second>Touraine</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amour~N</first>
@@ -7800,12 +7800,12 @@
   <border>
     <first>Bresse</first>
     <second>Dauphiné</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bremen</first>
     <second>Holstein</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe de Cadix</first>
@@ -7822,7 +7822,7 @@
   <border>
     <first>Brandenburg</first>
     <second>Neumark</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe de Gascogne</first>
@@ -7843,7 +7843,7 @@
   <border>
     <first>Dauphiné</first>
     <second>Savoia</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Amour~N</first>
@@ -7876,7 +7876,7 @@
   <border>
     <first>Amour~W</first>
     <second>Mandchourie~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ecuador~S</first>
@@ -7889,7 +7889,7 @@
   <border>
     <first>Yakoutie~E</first>
     <second>Yakoutie~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Balaton</first>
@@ -7898,7 +7898,7 @@
   <border>
     <first>Oregon~C</first>
     <second>Oregon~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Armor</first>
@@ -7911,12 +7911,12 @@
   <border>
     <first>Amour~E</first>
     <second>Amour~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Alba</first>
     <second>Highlands</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amour~W</first>
@@ -7925,7 +7925,7 @@
   <border>
     <first>Maine</first>
     <second>Vendée</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Azarbāyadjān</first>
@@ -7950,12 +7950,12 @@
   <border>
     <first>Amour~W</first>
     <second>Mandchourie~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Highlands</first>
     <second>Moray</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ayodhyā~E</first>
@@ -7976,7 +7976,7 @@
   <border>
     <first>Ayutthaya~S</first>
     <second>Đại Việt~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Gloucester</first>
@@ -7985,7 +7985,7 @@
   <border>
     <first>Romagna</first>
     <second>Veneto</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ayutthaya~S</first>
@@ -8010,7 +8010,7 @@
   <border>
     <first>Ob~W</first>
     <second>Sibérie~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lincolnshire</first>
@@ -8043,7 +8043,7 @@
   <border>
     <first>Catalunya</first>
     <second>Rosseló</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Azteca~E</first>
@@ -8064,7 +8064,7 @@
   <border>
     <first>Pirineos</first>
     <second>Rosseló</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Adriatique</first>
@@ -8097,12 +8097,12 @@
   <border>
     <first>Ayutthaya~N</first>
     <second>Đại Việt~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Andalucía</first>
     <second>Huelva</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Catalunya</first>
@@ -8123,7 +8123,7 @@
   <border>
     <first>Amazonia~N</first>
     <second>Amazonia~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Hessen</first>
@@ -8136,7 +8136,7 @@
   <border>
     <first>Lietuvą</first>
     <second>Žemaitija</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Aragón</first>
@@ -8145,7 +8145,7 @@
   <border>
     <first>Venezuela~E</first>
     <second>Venezuela~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Patagonia~SE</first>
@@ -8154,12 +8154,12 @@
   <border>
     <first>Lietuvą</first>
     <second>Memel</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Andalucía</first>
     <second>Extremadura</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer des Philippines</first>
@@ -8192,7 +8192,7 @@
   <border>
     <first>Caux</first>
     <second>Orléanais</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Moldova</first>
@@ -8237,7 +8237,7 @@
   <border>
     <first>Donets</first>
     <second>Poltava</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Wahrān</first>
@@ -8250,7 +8250,7 @@
   <border>
     <first>Kurland</first>
     <second>Livonija</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Schwaben</first>
@@ -8267,12 +8267,12 @@
   <border>
     <first>Canton~N</first>
     <second>Canton~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Erdély</first>
     <second>Moldova</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Pacifique</first>
@@ -8281,12 +8281,12 @@
   <border>
     <first>Wahrān</first>
     <second>al-Qaba’il</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Tirol</first>
     <second>Veneto</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Mauritanie~N</first>
@@ -8303,7 +8303,7 @@
   <border>
     <first>Paraguay~SE</first>
     <second>Plata~NW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Soudan~N</first>
@@ -8316,12 +8316,12 @@
   <border>
     <first>Caux</first>
     <second>Normandie</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Marosz</first>
     <second>Moldova</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Mer des Philippines</first>
@@ -8346,7 +8346,7 @@
   <border>
     <first>Bukovina</first>
     <second>Wołyń</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Amour~S</first>
@@ -8367,7 +8367,7 @@
   <border>
     <first>Hrvatska</first>
     <second>Serbia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cameroun~W</first>
@@ -8416,12 +8416,12 @@
   <border>
     <first>Ienisseï~C</first>
     <second>Ienisseï~E</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Marmara</first>
     <second>Mer Noire occidentale</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Océan Indien ouest</first>
@@ -8438,7 +8438,7 @@
   <border>
     <first>Côte d’Or~E</first>
     <second>Côte d’Or~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Afghanistan~W</first>
@@ -8455,7 +8455,7 @@
   <border>
     <first>Marosz</first>
     <second>Valahia</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Détroit de Malaisie</first>
@@ -8464,17 +8464,17 @@
   <border>
     <first>Eesti</first>
     <second>Ingermanland</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Gabon~N</first>
     <second>Gabon~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ienisseï~C</first>
     <second>Ienisseï~NE</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Côte d’Or~E</first>
@@ -8491,7 +8491,7 @@
   <border>
     <first>Marmara</first>
     <second>Mer Égée</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Idel Bolgarstany</first>
@@ -8516,22 +8516,22 @@
   <border>
     <first>Cheboksary</first>
     <second>Idel Bolgarstany</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mantova</first>
     <second>Romagna</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ienisseï~SW</first>
     <second>Ienisseï~W</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Cheboksary</first>
     <second>Vyatka</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Barqah</first>
@@ -8544,7 +8544,7 @@
   <border>
     <first>Donets</first>
     <second>Qırım</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Podillya</first>
@@ -8553,12 +8553,12 @@
   <border>
     <first>Amazonia~NW</first>
     <second>Amazonia~SW</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Golfe Persique</first>
     <second>Golfe de l’Indus</second>
-    <type>strait</type>
+    <type>STRAITS</type>
   </border>
   <border>
     <first>Dikoe Pole</first>
@@ -8595,7 +8595,7 @@
   <border>
     <first>Polacak</first>
     <second>Žemaitija</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Lena~NW</first>
@@ -8616,7 +8616,7 @@
   <border>
     <first>Baltarusija</first>
     <second>Severia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mešhed</first>
@@ -8625,12 +8625,12 @@
   <border>
     <first>Balaton</first>
     <second>Szlovákia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Nyasa~C</first>
     <second>Nyasa~N</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kenya~S</first>
@@ -8639,12 +8639,12 @@
   <border>
     <first>Lombardia</first>
     <second>Monferrato</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Kurland</first>
     <second>Polacak</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Ienisseï~SE</first>
@@ -8657,7 +8657,7 @@
   <border>
     <first>Bourgogne</first>
     <second>Franche-Comté</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Gibraltar</first>
@@ -8686,7 +8686,7 @@
   <border>
     <first>Franche-Comté</first>
     <second>Troyes</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer des Açores</first>
@@ -8703,7 +8703,7 @@
   <border>
     <first>Arizona~S</first>
     <second>California~S</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bayern</first>
@@ -8712,7 +8712,7 @@
   <border>
     <first>Hrvatska</first>
     <second>Magyarország</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Mer Tyrrhénienne</first>
@@ -8745,7 +8745,7 @@
   <border>
     <first>Bohème</first>
     <second>Sachsen</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>Palermo</first>
@@ -8754,7 +8754,7 @@
   <border>
     <first>an-Nīl</first>
     <second>Šallāl</second>
-    <type>pass</type>
+    <type>MOUNTAIN_PASS</type>
   </border>
   <border>
     <first>OberPfalz</first>
@@ -8779,7 +8779,7 @@
   <border>
     <first>Pécs</first>
     <second>Szlovákia</second>
-    <type>river</type>
+    <type>RIVER</type>
   </border>
   <border>
     <first>Bayern</first>
