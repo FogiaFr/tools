@@ -1,7 +1,5 @@
+Willem III	Alias already exist	monarque
 europe.utf	NOM already parsed for this block	NOM Xl 2297 3742 "{1}" N
-Don	Province has 2 owners	cosaquesdon	cosaquesdon	given to	cosaquesdon
-Donets	Province has 2 owners	cosaquesdon	cosaquesdon	given to	cosaquesdon
-Zaporizhzhya	Province has 2 owners	crimee	crimee	given to	crimee
 Golfe de Syrte	Border not consistent (ignored)	/path1383	(2712,993)	(2743,1016)	(3109,1189)
 Golfe de Syrte	Border not consistent (ignored)	/path1393	(2671,855)	(2712,993)	(3109,1189)
 Golfe de Syrte	Border not closed	/mer32	(2671,855)	(3109,1189)
@@ -24,7 +22,6 @@ Golfe Persique	Border not consistent (ignored)	/path1449	(8034,42)	(8359,42)	(73
 Golfe Persique	Border not closed	/path1422	(8034,42)	(7309,376)
 Côte du Pérou	Border not consistent (ignored)	/mer122	(1837,1564)	(1827,1551)	(1932,1179)
 Côte du Pérou	Border not closed	/mer119	(1714,1564)	(1932,1179)
-Kerkyra	Province has no owner
 as-Sūs	Border not closed	/path1389	(121,585)	(118,579)
 as-Sūs	Border not closed	/path0687	(3666,2439)	(3597,2438)
 Mer des Philippines	Border not consistent (ignored)	/mer199	(7504,1641)	(7504,1841)	(6871,1994)
@@ -117,7 +114,6 @@ Basarabia	Border not consistent (ignored)	/path0963	(4778,2666)	(4800,2706)	(493
 Basarabia	Border not closed	/path0743	(4778,2666)	(4935,2862)
 Sibérie~NE	Border not consistent (ignored)	/path0036	(5542,3389)	(5549,3384)	(5367,3546)
 Dalmacija	Border not closed	/path0899	(3274,2461)	(3252,2468)
-Dalmacija	Province has no owner
 Sibérie~E	Border not closed	/path0039	(5388,3381)	(5378,3339)
 Picardie	Border not consistent (ignored)	/path0680	(1793,3359)	(1797,3369)	(1766,3667)
 Hinterpommern	Border not closed	/path0280	(3643,4238)	(3643,4245)
@@ -243,7 +239,6 @@ Europe~Islas Canarias	Border not consistent (ignored)	/path0729	(3486,2391)	(344
 Europe~Islas Canarias	Border not consistent (ignored)	/path0719	(3504,2407)	(3486,2391)	(3394,2383)
 Europe~Islas Canarias	Border not closed	/mer032	(3504,2407)	(3394,2383)
 Caffa	Border not closed	/path0532	(5503,2822)	(5496,2813)
-Caffa	Province has no owner
 Balaton	Border not closed	/path0480	(3411,3045)	(3402,3046)
 Balaton	Border not closed	/path0873	(3480,2877)	(3477,2876)
 Šallāl	Border not closed	/path1436	(5003,288)	(4993,289)
@@ -263,7 +258,6 @@ Méditerrannée occidentale	Border not closed	/path1054	(1576,1660)	(1588,1710)
 Recife~W	Border not closed	/path1159	(2742,1597)	(2741,1590)
 Afghanistan~W	Border not consistent (ignored)	/path0613	(5427,2599)	(5427,2589)	(5343,2589)
 Sakhaline Island	Border not closed	/path0323	(7326,3126)	(7325,3113)
-Malta	Province has no owner
 Gonḍānā~S	Border not closed	/path1431	(5950,835)	(5943,805)
 Gonḍānā~S	Border not closed	/path0847	(5832,2212)	(5818,2215)
 Afghanistan~C	Border not closed	/path0602	(5453,2633)	(5443,2622)
@@ -319,7 +313,6 @@ Antalya	Border not consistent (enclave)	/path1289	(5206,1453)	(5091,1562)	(5061,
 Antalya	Border not closed	/path0931	(5097,1541)	(5206,1453)
 Poltava	Border not closed	/path0466	(4998,3611)	(4992,3577)
 Bosna	Border not closed	/path0986	(3723,2551)	(3722,2567)
-Bosna	Province has no owner
 Pskov	Border not closed	/path0135	(4682,4982)	(4685,4979)
 Kuban	Border not closed	/path0952	(5818,2685)	(5822,2691)
 Kamchatka	Border not closed	/path0113	(7864,3349)	(7852,3344)
@@ -371,9 +364,7 @@ Marche	Border not closed	/path1037	(2981,2402)	(2962,2417)
 al-’arabiyah	Border not closed	/path1437	(5652,254)	(5650,259)
 al-’arabiyah	Border not closed	/path0723	(4723,2407)	(4696,2404)
 Brega	Border not closed	/path0415	(686,4259)	(675,4265)
-Brega	Province has no owner
 Patagonia~NW	Border not closed	/path1542	(2112,843)	(2107,843)
-Kýpros	Province has no owner
 Atlantique ouest	Border not consistent (ignored)	/mer116	(1580,667)	(1580,475)	(1254,869)
 Atlantique ouest	Border not closed	/path1501	(1269,886)	(1254,869)
 Atlantique ouest	Border not consistent (ignored)	/mer056	(1882,2510)	(1886,2514)	(2053,2730)
@@ -384,7 +375,6 @@ Atlantique sud-est	Border not consistent (ignored)	/mer146	(3930,1004)	(3930,0)	
 Uladh	Border not consistent (enclave)	/path0373	(874,4418)	(906,4508)	(898,4515)	10.63014581273465	95.51963149007642
 Uladh	Border not consistent (ignored)	/path0394	(719,4345)	(711,4367)	(874,4418)
 Uladh	Border not closed	/path0351	(719,4345)	(874,4418)
-Uladh	Province has no owner
 Lake Hulun	Border not closed	/path0321	(6736,2990)	(6727,2986)
 Preußen	Border not closed	/path0243	(3935,4425)	(3937,4421)
 Baltique	Border not consistent (ignored)	/mer02	(4273,4906)	(4276,4900)	(3367,4644)
@@ -422,7 +412,6 @@ Patagonia~SW	Border not closed	/path1563	(2029,502)	(2025,488)
 Vorpommern	Border not closed	/path0428	(2954,4236)	(2950,4224)
 Kenya~S	Border not closed	/path0030	(4756,1631)	(4744,1602)
 Laighean	Border not closed	/path0451	(674,4155)	(658,4156)
-Laighean	Province has no owner
 Münster	Border not closed	/path0500	(2334,3995)	(2331,3993)
 Münster	Border not closed	/bord09	(0,5035)	(0,4893)
 Grands Lacs~N	Border not consistent (enclave)	/path1260	(462,1464)	(346,1509)	(333,1512)	13.341664064126334	124.42266674525185
@@ -462,8 +451,6 @@ Inca~SE	Border not closed	/path1031	(2241,1263)	(2243,1260)
 Đại Việt~C	Border not closed	/path0820	(6396,2143)	(6372,2121)
 Triangle des Bermudes	Border not closed	/mer018	(2504,2726)	(2354,2601)
 Valahia	Border not consistent (ignored)	/path0922	(4634,2745)	(4643,2740)	(4100,2630)
-Kreta	Province has no owner
-Montenegro	Province has no owner
 Kocaeli	Border not closed	/path1115	(4950,1869)	(4944,1881)
 Kocaeli	Border not closed	/path1117	(5219,2054)	(5214,2052)
 Quercy	Border not closed	/path0966	(1416,2645)	(1411,2648)
@@ -514,7 +501,6 @@ Baie de Botnie	Border not consistent (enclave)	/path0202	(4131,5133)	(3607,5159)
 Baie de Botnie	Border not consistent (enclave)	/path0219	(4141,5101)	(4142,5178)	(4131,5133)	46.32493928760188	77.00649323271382
 Baie de Botnie	Border not consistent (enclave)	/path0231	(3705,5039)	(4092,5082)	(4141,5101)	52.55473337388365	389.3815609399089
 Rosseló	Border not closed	/path0812	(1570,2347)	(1569,2353)
-Rosseló	Province has no owner
 Rocheuses~E	Border not closed	/path0363	(1089,3006)	(1091,3005)
 Doğu Rumeli	Border not consistent (ignored)	/path0974	(4726,2252)	(4716,2253)	(4731,2658)
 Puglia	Border not closed	/path1112	(3184,2110)	(3175,2116)
@@ -580,12 +566,10 @@ Plata~S	Border not closed	/path1510	(2347,807)	(2343,800)
 Bassin de Wharton	Border not consistent (ignored)	/mer186	(6316,1608)	(6330,1586)	(6626,1064)
 Bassin de Wharton	Border not consistent (ignored)	/mer214	(6553,1057)	(6542,1103)	(6626,1064)
 Bassin de Wharton	Border not closed	/path1312	(6625,1057)	(6626,1064)
-Moreas	Province has no owner
 Kosovo	Border not consistent (ignored)	/path1043	(4083,2152)	(4077,2149)	(3695,2341)
 Kosovo	Border not closed	/path0988	(3702,2343)	(3695,2341)
 Serbia	Border not consistent (ignored)	/path0995	(3844,2559)	(3851,2557)	(3723,2551)
 Serbia	Border not closed	/path0987	(3722,2567)	(3723,2551)
-Serbia	Province has no owner
 Nankin~SW	Border not closed	/path0641	(6455,2415)	(6454,2406)
 Bohème	Border not closed	/path0628	(3232,3613)	(3227,3619)
 Bam	Border not closed	/path1377	(7998,1051)	(7989,1059)
@@ -629,7 +613,6 @@ Connacht	Border not closed	/path0416	(664,4242)	(659,4236)
 Connacht	Border not consistent (ignored)	/path0415	(664,4242)	(659,4236)	(614,4345)
 Connacht	Border not consistent (ignored)	/path0431	(533,4203)	(501,4238)	(526,4331)
 Connacht	Border not closed	/path0350	(533,4203)	(526,4331)
-Connacht	Province has no owner
 Namibie~N	Border not closed	/path1013	(4122,1233)	(4115,1224)
 Atlantique nord-ouest	Border not closed	/path0420	(2322,2863)	(2319,2862)
 Atlantique nord-ouest	Border not consistent (ignored)	/mer213	(1871,1253)	(1912,1179)	(1656,1078)
@@ -663,7 +646,6 @@ Mer de Tasman	Border not consistent (ignored)	/path1592	(7474,529)	(7486,618)	(7
 Mer de Tasman	Border not consistent (enclave)	/path1570	(7212,746)	(7474,529)	(7375,637)	146.50938536489735	340.1955320106365
 Dikoe Pole	Border not closed	/path0464	(5416,4066)	(5411,4066)
 Małopolska	Border not closed	/path0513	(3939,3768)	(3924,3759)
-Kyklades	Province has no owner
 Pacifique ouest	Border not consistent (ignored)	/mer104	(7750,2557)	(7750,2005)	(7284,2577)
 Pacifique ouest	Border not closed	/path0532	(7279,2557)	(7284,2577)
 Bashkiria	Border not consistent (ignored)	/path0316	(8372,4158)	(8372,4150)	(8352,4809)
@@ -692,7 +674,6 @@ Granada	Border not consistent (ignored)	/path1230	(1187,1464)	(1172,1451)	(902,1
 Patagonia~E	Border not consistent (ignored)	/path1573	(2219,685)	(2221,676)	(2187,685)
 Patagonia~C	Border not closed	/path1601	(2076,528)	(2066,537)
 Hellas	Border not closed	/path1141	(3911,1857)	(3910,1846)
-Hellas	Province has no owner
 Patagonia~W	Border not closed	/path1575	(2083,696)	(2082,703)
 Würtemberg	Border not closed	/path0732	(2473,3386)	(2470,3389)
 Rocheuses~SE	Border not closed	/path0458	(1121,2944)	(1114,2943)
@@ -795,7 +776,6 @@ Malabāṟ~E	Border not closed	/path1538	(5727,517)	(5731,499)
 Malabāṟ~E	Border not closed	/path0908	(5697,2041)	(5692,2039)
 Illes Balears	Border not closed	/path1185	(1770,1725)	(1775,1726)
 Illes Balears	Border not closed	/path1180	(1868,1825)	(1872,1822)
-Illes Balears	Province has no owner
 Côte d’Or~E	Border not closed	/path0999	(3841,1881)	(3835,1879)
 Mişr	Border not closed	/path1407	(5245,517)	(5239,511)
 Mişr	Border not closed	/path1414	(5347,374)	(5343,375)
@@ -858,7 +838,6 @@ Birmanie~S	Terrain not consistent	kmarais	marais
 Alba	Border not consistent (enclave)	/path0331	(1071,4695)	(1073,4868)	(1056,4848)	26.248809496813376	173.0115603073968
 Alabania	Border not closed	/path1101	(3780,2175)	(3775,2177)
 Alabania	Border not closed	/path1046	(3871,1955)	(3873,1948)
-Alabania	Province has no owner
 Amour~N	Border not closed	/path0190	(7286,3381)	(7278,3376)
 California~C	Border not closed	/path0438	(821,2644)	(825,2637)
 Lucca	Border not closed	/path0981	(2618,2490)	(2612,2493)
@@ -1036,7 +1015,6 @@ Jämtland	Border not closed	/path0081	(3219,5600)	(3212,5600)
 Karnāṭaka~N	Border not closed	/path1586	(5971,626)	(5963,637)
 Karnāṭaka~N	Border not consistent (ignored)	/path0888	(5855,2073)	(5850,2069)	(5820,2114)
 Mumhan	Border not closed	/path0359	(565,4057)	(558,4058)
-Mumhan	Province has no owner
 Canal de Mozambique	Border not closed	/path1212	(4796,1503)	(4804,1490)
 Lena~E	Border not closed	/path0081	(6532,3487)	(6523,3484)
 Lena~C	Border not closed	/path0205	(6430,3398)	(6409,3390)
@@ -1192,7 +1170,6 @@ Hydārabad~S	Border not closed	/path1536	(5676,715)	(5673,709)
 Hydārabad~S	Border not closed	/path0788	(5698,2146)	(5691,2145)
 Angora	Border not consistent (ignored)	/path1135	(5745,1961)	(5748,1956)	(5323,1937)
 Tânger	Border not closed	/path1260	(740,1282)	(736,1283)
-Tânger	Province has no owner
 Savoia	Border not consistent (ignored)	/path0990	(2250,2605)	(2250,2613)	(2190,2817)
 Savoia	Border not closed	/path0889	(2197,2821)	(2190,2817)
 Corée~N	Border not closed	/path0121	(7060,2842)	(7046,2832)
@@ -1234,6 +1211,44 @@ Carolina~C	Border not closed	/path1580	(495,628)	(495,618)
 Carolina~C	Border not closed	/path0609	(1664,2601)	(1664,2600)
 Donets	Border not closed	/path0624	(5976,3671)	(5972,3676)
 Dauphiné	Border not closed	/path0778	(2034,2748)	(2031,2736)
+danemark	Can't parse country force	 1 \fortress in \region{Norvege}
+tripoli	Can't parse country force	\ND\ or \corsaire\facemoins
+tunisie	Can't parse country force	\ND\ or \corsaire\facemoins
+Don	Province has 2 owners	cosaquesdon	ukraine	given to	cosaquesdon
+Donets	Province has 2 owners	cosaquesdon	ukraine	given to	cosaquesdon
+Zaporozhye	Province has 2 owners	crimee	ukraine	given to	crimee
+gujarat	Can't parse country force	\LD\ on each \TP\ in \continent{Africa}
+ormus	Can't parse country force	Uses \pays{perse}\ forces
+Hboheme	Can't parse country force	 \fortress\ may be maintened in \ville{Prague}
+Hhongrie	Can't parse country force	 \fortress may be maintened in each province.
+Hmilan	Can't parse country force	 \fortress may be maintened in \ville{Milan}.
+Hnaples	Can't parse country force	 \fortress may be maintened in \ville{Napoli}.
+royalistes	Can't parse country force	None (played as a major country)
+parliament	Can't parse country force	None (played as a major country)
+natives	Can't parse country force	As written on the map
+pirates	Can't parse country force	Uses available \corsaire\ counters
+rebelles	Can't parse country force	Uses available rebel counters
+Kerkyra	Province has no owner
+Dalmacija	Province has no owner
+Caffa	Province has no owner
+Malta	Province has no owner
+Bosna	Province has no owner
+Brega	Province has no owner
+Kýpros	Province has no owner
+Uladh	Province has no owner
+Laighean	Province has no owner
+Kreta	Province has no owner
+Montenegro	Province has no owner
+Rosseló	Province has no owner
+Moreas	Province has no owner
+Serbia	Province has no owner
+Connacht	Province has no owner
+Kyklades	Province has no owner
+Hellas	Province has no owner
+Illes Balears	Province has no owner
+Alabania	Province has no owner
+Mumhan	Province has no owner
+Tânger	Province has no owner
 Västergotland	Duplicate borders	Svealand
 Østlandet	Duplicate borders	Bergslagen
 Västergotland	Duplicate borders	Svealand

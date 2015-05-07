@@ -1,33 +1,47 @@
 DD/MM/YYYY:
+translations.utf:
+ - ville:Hamburg removed
+ - granderegion:Chichimeca removed
+ - Calicut=[province]=>Kolikot removed
+ - province:Mures:Mureș -> province:Mures:Mureș:Marosz
+ - province:Nil:an-Nīl [ﻞﻴّﻨﻟا]:Nil ->province:Nil:ﻞﻴّﻨﻟا [an-Nīl]:Nil
+ - province:Suisse: -> province:Suisse:Schweiz
+ - province:Astragan -> province:Astragan:Astrakhan
+ - province:Souss:ﺱﻮﺴﻟﺍ:Souss -> province:Souss:ﺱﻮﺴﻟﺍ:Souss:as-Sūs
+
 engEntetesMineurs.tex:
- - boheme -> Hboheme (in Royaumes semi-independants Habsbourgs)
- - hongrie -> Hhongrie (in Royaumes semi-independants Habsbourgs)
- - milan -> Hmilan (in Royaumes semi-independants Habsbourgs)
- - naples -> Hnaples (in Royaumes semi-independants Habsbourgs)
- - ukraine -> Vukraine (in Mineurs creables par revoltes)
  - \minorcountry{grenade}{Kingdom of Granada}{Granada} -> minorcountryvirtual{grenade}{Kingdom of Granada}{Granada}
  - \minorcountry{courlande}{Duchy of Kurland}{Curlandia} -> \minorcountryvirtual{courlande}{Duchy of Kurland}{Curlandia}
  - \minorcountry{corse}{Independent Corsica}{Corsica} -> \minorcountryvirtual{corse}{Independent Corsica}{Corsica}
  - \minorcountry{transylvanie}{Voivodat of Transylvanie}{Transilvania} -> \minorcountryvirtual{transylvanie}{Voivodat of Transylvanie}{Transilvania}
- - \minorcountryvirtual{belgique} -> \minorcountryvirtual{Vbelgique}
- - \minorcountryvirtual{hollande} -> \minorcountryvirtual{Vhollande}
- - \minorcountryvirtual{catalogne} -> \minorcountryvirtual{Vcatalogne}
- - \minorcountryvirtual{eastprussia} -> \minorcountryvirtual{Veastprussia}
- - \minorcountryvirtual{finlande} -> \minorcountryvirtual{Vfinlande}
- - \minorcountryvirtual{irlande} -> \minorcountryvirtual{Virlande}
- - \minorcountryvirtual{lithuanie} -> \minorcountryvirtual{Vlithuanie}
- - \minorcountryvirtual{liflandie} -> \minorcountryvirtual{Vliflandie}
- - \minorcountryvirtual{norvege} -> \minorcountryvirtual{Vnorvege}
- - \minorcountryvirtual{pommeranie} -> \minorcountryvirtual{Vpommeranie}
+ - belgique -> Vbelgique (in Mineurs creables par revoltes)
+ - hollande -> Vhollande (in Mineurs creables par revoltes)
+ - catalogne -> Vcatalogne (in Mineurs creables par revoltes)
+ - eastprussia -> Vbelgique (in Mineurs creables par revoltes)
+ - belgique -> Veastprussia (in Mineurs creables par revoltes)
+ - finlande -> Vfinlande (in Mineurs creables par revoltes)
+ - irlande -> Virlande (in Mineurs creables par revoltes)
+ - lithuanie -> Vlithuanie (in Mineurs creables par revoltes)
+ - liflandie -> Vliflandie (in Mineurs creables par revoltes)
+ - norvege -> Vnorvege (in Mineurs creables par revoltes)
+ - pommeranie -> Vpommeranie (in Mineurs creables par revoltes)
+ - ukraine -> Vukraine (in Mineurs creables par revoltes)
+ - boheme -> Hboheme (in Royaumes semi-independants Habsbourgs)
+ - hongrie -> Hhongrie (in Royaumes semi-independants Habsbourgs)
+ - milan -> Hmilan (in Royaumes semi-independants Habsbourgs)
+ - naples -> Hnaples (in Royaumes semi-independants Habsbourgs)
 
 engCorpsMineurs.tex:
  - 16\corsaire -> 16 \corsaire
  - \minorforces{habsbourg}{4 \ARMY, 8 \LD} -> \minorforces{habsbourg}{4 \ARMY, 6 \LD, 2 \LDND}
+ - \minorbasicrenforts{brandebourg}{\LD or 2 \LD after \xeventref{pV:Kingdom Prussia}{V-13}} -> \minorbasicrenforts{brandebourg}{\LD, 2 \LD after \xeventref{pV:Kingdom Prussia}{V-13}}
  - \minorbasicforces{mamelouks}{2\ARMY\faceplus, \leader{Caliph}} -> \minorbasicforces{mamelouks}{2 \ARMY\faceplus, \leader{Caliph}}
  - \minorbasicforces{astrakhan}{\ARMY \faceplus} -> \minorbasicforces{astrakhan}{\ARMY\faceplus}
  - \minorbasicforces{crimee}{\ARMY \faceplus, \LD, \leader{Giray}} -> \minorbasicforces{crimee}{\ARMY\faceplus, \LD, \leader{Giray}}
  - \minorbasicforces{hesse}{\ARMY \facemoins, \LD} -> \minorbasicforces{hesse}{\ARMY\facemoins, \LD}
  - \minorbasicforces{ecosse}{\ARMY \faceplus} -> \minorbasicforces{ecosse}{\ARMY\faceplus}
+ -   \LeaderG\ (king)} ->   \LeaderG\(king)}
+ - added \minorprovince{suede}{Savo}2
  - \minorbasicforces{cyrenaique}{\ND, \corsaire \facemoins} -> \minorbasicforces{cyrenaique}{\ND, \corsaire\facemoins}
  - \minorbasicrenforts{damas}{1\LD} -> \minorbasicrenforts{damas}{\LD}
  - \minorbasicrenforts{danemark}{\LD or \ND} -> \minorbasicrenforts{danemark}{\LDND}
@@ -36,111 +50,8 @@ engCorpsMineurs.tex:
  - \minorbasicrenforts{suede}{\LD, \LD or \ND} -> \minorbasicrenforts{suede}{\LD, \LDND}
  - \minorbasicrenforts{chevaliers}{\corsaire\faceplus, 1 \NDE\ or 1 \NGD} -> \minorbasicrenforts{chevaliers}{\corsaire\faceplus, 1 \NDE}
  - \minorbasicrenforts{venise}{1 \NWD or 2 \NGD} -> \minorbasicrenforts{venise}{1 \ND}
- - \minorbasicrenforts{brandebourg}{\LD or 2 \LD after \xeventref{pV:Kingdom Prussia}{V-13}} -> \minorbasicrenforts{brandebourg}{\LD, 2 \LD after \xeventref{pV:Kingdom Prussia}{V-13}}
  - \minorbasicrenforts{genes}{1 \NGD\ or 1 \NDE or 1\NTD} -> \minorbasicrenforts{genes}{1 \NDE}
- -   \LeaderG\ (king)} ->   \LeaderG\(king)}
  - \n after a \minorXXX (mamelouks)
- - Nefud -> an-Nafūd
- - SidiIfni -> as-Sūs (and the income is 3 and not 1)
- - Ostlandet -> Østlandet (*2)
- - Nil -> an-Nīl
- - Hongrie -> Magyarország (*2)
- - Pars -> Pārs
- - Kranj -> Carniola (*2)
- - Osterreich -> Österreich
- - Kazan -> Kazan’
- - Silesie -> Silésie (*2)
- - Thuringen -> Thüringen
- - Koln -> Köln
- - Alep -> Ĥalab
- - Sinai -> Sīnā’
- - Karnten -> Kärnten
- - Tripoli -> Ṭarablūs (and the income is 4 and not 2)
- - JebelTubqal -> Jebel Tubqāl
- - Magrib -> al-Maġrib
- - Algerie -> al-Jaza’ir
- - Ryazan -> Ryazan’
- - Kordistan -> Kordistān
- - Rif -> er-Rif
- - Cyrenaique -> Barqah
- - Tobrouk -> Ṭubruq
- - Cataractes -> Šallāl
- - Erdely -> Erdély (*3)
- - Mures -> Marosz (*3)
- - Oran -> Wahrān
- - Franche-Comte -> Franche-Comté
- - Astragan -> Astrakhan
- - Arabie -> al-’arabiyah
- - Munster -> Münster
- - Zaporozhye -> Zaporizhzhya (*3)
- - Osnabruck -> Osnabrück
- - Isfahan -> Eşfahān
- - Jordanie -> al-Ā’urdunn
- - Crimee -> Qırım
- - Khadzhibei -> Hacıbey
- - Tunisie -> ’Afrīqiyah
- - Sjaelland -> Sjælland
- - Atlas -> al-’Aṭlas
- - Podolie -> Podillya (*2)
- - Vlaandern -> Vlaanderen (*2)
- - Ukrainya -> Ukraïnya (*2)
- - Boheme -> Bohème
- - Dagestan -> Daġestān
- - Aures -> ’Arīs
- - Nubie -> al-Nūbah
- - Wurtemberg -> Würtemberg
- - Syrie -> Sūriyah
- - Bassorah -> al-Başrah
- - Irak -> al-‛Irāq
- - Tigre -> Dijlah
- - Pecs -> Pécs (*2)
- - Kabylie -> al-Qaba’il
- - Annabah -> ‛Annābah
- - Azarbayadjan -> Azarbāyadjān
- - Van -> Wān
- - Shirvan -> Šīrwān
- - Kermanshah -> Kermānšāh
- - Meshhed -> Mešhed
- - Armenie -> Arménie
- - Delta -> Deltā
- - Egypte -> Mişr
- - Liege -> Liège
- - Trondelag -> Trøndelag (*2)
- - Vastergotland -> Västergotland
- - Skane -> Skåne
- - Croatie -> Hrvatska (*2)
- - Liban -> Lubnān
- - Step -> Step’
- - Tunis -> Tūnis
- - Jamtland -> Jämtland
- - Smaland -> Småland
- - Gastrikland -> Gästrikland
- - Szlovakia -> Szlovákia (*2)
- - Karpatok -> Kárpátok (*2)
- - Bolgars -> Idel Bolgarstany
- - Preussen -> Preußen (*2)
- - West Pommern -> Vorpommern
- - Ost Pommern -> Hinterpommern
- - Estland -> Eesti (*2)
- - Lubeck -> Lübeck (*2)
- - Suisse -> Schweiz
- - Georgie -> Géorgie
- - Saldigna -> Saldígna (*2)
- - Cordoba -> Córdoba
- - Neva -> Ingermanland
- - Lietuva -> Lietuvą
- - Zemaitija -> Žemaitija
- - Smolenska -> Smolenską
- - Prypec -> Prypeć
- - Rosselo -> Rosseló
- - Courlande -> Kurland
- - Bearn -> Béarn
- - Cevennes -> Cévennes
- - Dauphine -> Dauphiné
- - Orleanais -> Orléanais
- - Ile-de-France -> Île-de-France
- - Savo -> Kexholm
- - added \minorprovince{suede}{Kexholm}2
 
 europe.utf:
  - NOM -> ALTNOM (Kleve/Berg)

@@ -1,0 +1,917 @@
+% -*- coding: utf-8 -*-
+
+%Provinces with only ASCII letters
+province:Connacht
+province:Mumhan
+province:Laighean
+province:Brega
+province:Uladh
+province:Highlands
+province:Moray
+province:Alba
+province:Ayr
+province:Lothian
+province:Galloway
+province:Cumberland
+province:Durham
+province:Yorkshire
+province:Lancashire
+province:Cymru:Wales:Cymru
+province:Midlands
+province:Lincolnshire
+province:East Anglia
+province:Gloucester
+province:Cornwall
+province:Wessex
+province:Kent
+province:Beira
+province:Tejo
+province:Alentejo
+province:Algarve
+province:Galiza
+province:Salamanca
+province:Extremadura
+province:Huelva
+province:Gibraltar
+province:Granada
+province:Murcia
+province:La Mancha
+province:Toledo
+province:Castilla La Nueva
+province:Castilla La Vieja
+province:Asturias
+province:Vizcaya
+province:Navarra
+province:Pirineos
+province:Catalunya
+province:Armor
+province:Morbihan
+province:Poitou
+province:Limousin
+province:Touraine
+province:Maine
+province:Normandie
+province:Caux
+province:France
+province:Berry
+province:Auvergne
+province:Quercy
+province:Guyenne
+province:Languedoc
+province:Provence
+province:Lyonnais
+province:Bourgogne
+province:Troyes
+province:Champagne
+province:Picardie
+province:Calais
+province:Artois
+province:Flandre
+province:Vlaanderen
+province:Hainaut
+province:Brabant
+province:Limburg
+province:Luxemburg
+province:Zeeland
+province:Holland
+province:Utrecht
+province:Gelderland
+province:Overijssel
+province:Friesland
+province:Bresse
+province:Savoia
+province:Nice
+province:Monferrato
+province:Suisse:Schweiz
+province:Graubunden
+province:Liguria
+province:Corsica
+province:Lombardia
+province:Parma
+province:Lucca
+province:Trentino
+province:Modena
+province:Mantova
+province:Veneto
+province:Friuli
+province:Istria
+province:Toscana
+province:Siena
+province:Romagna
+province:Umbria
+province:Lazio
+province:Marche
+province:Abruzzo
+province:Campania
+province:Basilicata
+province:Puglia
+province:Calabria
+province:Sicilia
+province:Palermo
+province:Malta
+province:Trier
+province:Berg
+province:Oldenburg
+province:Hannover
+province:Braunschweig
+province:Hessen
+province:Nassau
+province:Franken
+province:Erfurt
+province:Mainz
+province:Pfalz
+province:Baden
+province:Schwaben
+province:Bremen
+province:Holstein
+province:Mecklenburg
+province:Vorpommern
+province:Hinterpommern
+province:Altmark
+province:Brandenburg
+province:Neumark
+province:Bayern
+province:OberPfalz
+province:Sachsen
+province:Anhalt
+province:Vestfold
+province:Jylland
+province:Slesvig
+province:Bergslagen
+province:Svealand
+province:Gotland
+province:Finland
+province:Tavastland
+province:Nyland
+province:Karelen
+province:Kexholm
+province:Tirol
+province:Salzburg
+province:Steiermark
+province:Slovenija
+province:Lausitz
+province:Morava
+province:Balaton
+province:Carniola
+province:Kapela
+province:Banat
+province:Bukovina
+province:Montenegro
+province:Dalmacija
+province:Bosna
+province:Serbia
+province:Valahia
+province:Basarabia
+province:Moldova
+province:Danzig
+province:Wielkopolska
+province:Lublin
+province:Mazowia
+province:Polacak
+province:Baltarusija
+province:Severia
+province:Livonija
+province:Memel
+province:Astragan:Astrakhan
+province:Terek
+province:Azov
+province:Caffa
+province:Alabania
+province:Makedonya
+province:Kosovo
+province:Bulgaristan
+province:Trakya
+province:Bursa
+province:Antalya
+province:Trabzon
+province:Angora
+province:Kocaeli
+province:Konya
+province:Anadolu
+province:Kilikya
+province:Terra Sancta
+province:Islas Canarias
+province:Illes Balears
+province:Cap Breton
+province:Sinop
+
+%Nonexistant province, for example only
+province:Norvege:Norge
+
+%Provinces with latin diacritics
+province:Leon:León
+province:Caceres:Cáceres
+province:Andalucia:Andalucía
+province:Cordoba:Córdoba
+province:Valencia:València
+province:Aragon:Aragón
+province:Finistere:Finistère
+province:Vendee:Vendée
+province:Orleanais:Orléanais
+province:Ile-de-France:Île-de-France
+province:Bearn:Béarn
+province:Cevennes:Cévennes
+province:Rosselo:Rosseló
+province:Dauphine:Dauphiné
+province:Franche-Comte:Franche-Comté
+province:Liege:Liège
+province:Saldigna:Saldígna
+province:Koln:Köln
+province:Munster:Münster
+province:Osnabruck:Osnabrück
+province:Lubeck:Lübeck
+province:Trondelag:Trøndelag
+province:Ostlandet:Østlandet
+province:Sjaelland:Sjælland
+province:Skane:Skåne
+province:Smaland:Småland
+province:Vastergotland:Västergotland
+province:Jamtland:Jämtland
+province:Gastrikland:Gästrikland
+province:Karnten:Kärnten
+province:Osterreich:Österreich
+province:Pecs:Pécs
+province:Mures:Mureș:Marosz
+province:Thuringen:Thüringen
+province:Erdely:Erdély
+province:Szlovakia:Szlovákia
+province:Karpatok:Kárpátok
+province:West Preussen:West Preußen
+province:Malopolska:Małopolska
+province:Wolyn:Wołyń
+province:Lietuva:Lietuvą
+province:Zemaitija:Žemaitija
+province:Smolenska:Smolenską
+province:Prypec:Prypeć
+province:Preussen:Preußen
+province:Rumeli:Doğu Rumeli
+province:Canakkale:Çanakkale Boğazı
+province:Izmir:İzmir
+province:Lubnan:Lubnān
+province:Acores:Açores
+province:Tras-os-Montes:Trás-os-Montes
+province:Magyarorszag:Magyarország
+province:Hacibey:Hacıbey
+province:Wurtemberg:Würtemberg
+
+%Provinces with special names
+province:Tanger:ﺔﺠﻨﻃ [Ṭanjah]:Tânger
+province:Souss:ﺱﻮﺴﻟﺍ:Souss:as-Sūs
+province:JebelTubqal:ﻝﺎﻘﺒﺗ ﻞﺒﺟ:Jebel Tubqāl
+province:Magrib:بﺮﻐﻤﻟا:al-Maġrib
+province:Rif:ﻒﻳﺮﻟ:er-Rif
+province:Atlas:ﺲﻠﻃﻷﺍ [al-’Aṭlas]:Atlas
+province:Oran:ﻥﺍﺮﻫﻭ [Wahrān]:Oran
+province:Kabylie:ﻞﺋﺎﺒﻘﻟا [al-Qaba’il]:Kabylie
+province:Algerie:ﺮﺋاﺰﺠﻟا [al-Jaza’ir]:Algérie
+province:Aures:ﺲﻳﺭﺃ [’Arīs]:Aurès
+province:Annabah:ﺔﺑﺎّﻨﻋ:‛Annābah
+province:Ifriqiya:ﺔﻴﻘﻳﺮﻓﺇ [’Afrīqiyah]:Ifriqiya
+province:Tunis:ﺲﻧﻮﺗ [Tūnis]:Tunis
+province:Tripoli:ﺲﻠﺑﺍﺮﻃ [Ṭarablūs]:Tripolitaine
+province:Cyrenaique:ﺔﻗﺮﺑ [Barqah]:Cyrénaïque
+province:Corfu:Κέρκυρα [Kerkyra]:Corfou
+province:Moreas:Μορέας:Moreas
+province:Hellas:̔Ελλάς:Hellas
+province:Kreta:Κρέτη:Kreta
+province:Cyclades:Κυκλάδες:Cyclades
+province:Rhodos:̔Ρόδος:Rhodos
+province:Chypre:Κύπρος [Kýpros]:Chypre
+province:Ingria:Ингрия:Ingermanland
+province:Onega:Онега:Onega
+province:Ladoga:Ладога:Ladoga
+province:Novgorod:Новгород:Novgorod
+province:Kaluga:Калуга:Kaluga
+province:Moskva:Москва:Moskva
+province:Yaroslavl:Ярославль:Yaroslavl’
+province:Vyatka:Вятка:Vyatka
+province:Pskov:Псков:Pskov
+province:Ryazan:Рязань:Ryazan’
+province:Kazan:Казань:Kazan’
+province:Bolgars:Идел Болгарстаны [Idel Bolgarstany]:Bolgars
+province:Cheboksary:Чебоксары:Cheboksary
+province:Mordoviya:Сызрань:Mordoviya
+province:Samara:Самара:Samara
+province:Tatarstan:Татарстан:Tatarstan
+province:Ural:Урал:Ural
+province:Bashkiria:Башкирия:Bashkiria
+province:Step:Степь:Step’
+province:Crimee:Qırım:Crimée
+province:Zaporozhye:Запоріжжя [Zaporizhzhya]:Zaporozhye
+province:Ukrainya:України:Ukraïnya
+province:Podolie:Поділля [Podillya]:Podolie
+province:Poltava:Полтава:Poltava
+province:Donets:Донец:Donets
+province:Don:Дон:Don
+province:Dikoe Pole:Дикое Поле:Dikoe Pole
+province:Alep:ﺐﻠﺣ [Ĥalab]:Alep
+province:Syrie:ﺔﻳﺭﻮﺳ [Sūriyah]:Syrie
+province:Tobrouk:ﻕﺮﺒﻃ [Ṭubruq]:Tobrouk
+province:Nil:ﻞﻴّﻨﻟا [an-Nīl]:Nil
+province:Delta:ﺎﺘﻟﺩ [Deltā]:Delta
+province:Nubie:ﺔﺑﻮﻨﻟا [al-Nūbah]:Nubie
+province:Sinai:ﺀﺎﻨﻴﺳ [Sīnā’]:Sinai
+province:Irak:ﻕﺍﺮﻌﻟا [al-‛Irāq]:Irak
+province:Bassorah:ﺓﺮﺼﺒﻟﺍ [al-Başrah]:Bassorah
+province:Jordanie:ّﻥﺩﺭﻷﺍ [al-Ā’urdunn]:Jordanie
+province:Arabie:ّﻥﺩﺭﻷﺍ [al-’arabiyah]:Arabie
+province:Nefud:ﺩﻮﻔّﻨﻟا [an-Nafūd]:Nefud
+province:Dagestan:ﻥﺎﺘﺴﻏﺍﺩ:Daġestān
+province:Van:ﺮﻴﺷ [Wān]:Van
+province:Shirvan:ﻥﺍﻮﺮﻴﺷ [Šīrwān]:Shirvan
+province:Kordistan:ﻥﺎﺘﺳﺩﺮﻛ:Kordistān
+province:Azarbayadjan:ﻥﺎﺠﻳﺎﺑﺭﺫﺁ:Azarbāyadjān
+province:Kermanshah:ﻩﺎﺸﻧﺎﻣﺮﻛ:Kermānšāh
+province:Pars:ﺱﺭﺎﭘ [Pārs]:Pars
+province:Isfahan:ﻥﺎﻬﻔﺻﺍ [Eşfahān]:Isfahan
+province:Meshhed:ﺪﻬﺸﻣ [Mešhed]:Meshhed
+province:Bam:ﻢﺑ:Bam
+
+%Provinces: French Language equivalents (name too far and too well known)
+%I do not know if these will be kept
+province:Kuban:ყუბან [Kuban]:Kuban
+province:Georgie:საქართველო [Sakartvelo]:Géorgie
+province:Egypte:ﺮﺼﻣ [Mişr]:Égypte
+province:Cataractes:ﻝّﻼﺷ [Šallāl]:Cataractes
+province:Tigre:ﺔﻠﺟﺩ [Dijlah]:Tigre
+province:Armenie:Հայաստան [Hayastan]:Arménie
+province:Croatie:Hrvatska:Croatie
+province:Lorraine:Lothringen:Lorraine
+province:Alsace:Elsaß:Alsace
+province:Estland:Eesti:Estland
+province:Kurland:Kurzeme:Kurland
+province:Silesie:Slezsko:Silésie
+province:Boheme:Čechy:Bohème
+
+%Provinces: ROTW
+province:Aden W:W ﻥﺪﻋ:W. Aden
+province:Aden E:E ﻥﺪﻋ:E. Aden
+province:Cabo Verde
+province:Delhi::Dellī
+province:Diu
+province:Edo:江戸:Edo
+province:Fernado Po
+province:Guadeloupe
+province:Goa
+province:Herat:ﺙﺍﺮﻫ:Herât
+province:Kenya S:S. Kenya
+province:Kolikot::Koḻikoṭ
+province:Kyoto:京都市:Kyōto
+province:Madagascar N:N. Madagascar
+province:Madagascar S:S. Madagascar
+province:Madras:Mađirās
+province:Malabar S:S. Malabāṟ
+province:Malabar N:N. Malabāṟ
+province:Malacca S:S. Malacca
+province:Malacca N:N. Malacca
+province:Mumbai:Mumbaī
+province:Nedj W:W ﺪﺟﺎﻧ:W. Nedj
+province:Nyasa N:N. Nyasa
+province:Oman W:W ﻥﺎﻤﻋ:W. Oman
+province:Oman E:E ﻥﺎﻤﻋ:E. Oman
+province:Ormus
+province:Pekin:北京:Pékin
+province:Pyongyang:평양:P'yǒngyang
+province:Seoul:서울:Seoul
+province:Siberie S:S. Sibérie
+province:Socotra:ﺓﺮﺗﻮﻘﺳ:Soqotra
+province:Sumatra N:N. Sumatra
+province:Sumatra C:Central Sumatra
+province:Trinidad
+province:Zanzibar
+
+Ormuz=[province]=>Ormus
+
+%Provinces: other cases
+Ragusa=[province]=>Montenegro
+Canarias=[province]=>Islas Canarias
+Baleares=[province]=>Illes Balears
+Grisons=[province]=>Graubunden
+Hongrie=[province]=>Magyarorszag
+Khadzhibei=[province]=>Hacibey
+Moscou=[province]=>Moskva
+Smyrne=[province]=>Izmir
+Liban=[province]=>Lubnan
+Calicut=[province]=>Kolikot
+Dardanelles=[province]=>Canakkale
+Kranj=[province]=>Carniola
+Connaught=[province]=>Connacht
+Leinster=[province]=>Laighean
+Ulster=[province]=>Uladh
+Vlaandern=[province]=>Vlaanderen
+Tunisie=[province]=>Ifriqiya% apparemment, changement de nom. (Numidie)
+West Pommern=[province]=>Vorpommern
+Ost Pommern=[province]=>Hinterpommern
+Bosnia=[province]=>Bosna
+Catalogne=[province]=>Catalunya
+Corfou=[province]=>Corfu
+Courlande=[province]=>Kurland
+Naples=[province]=>Campania
+Roussillon=[province]=>Rosselo
+Ukraine=[province]=>Ukrainya
+Savo=[province]=>Kexholm
+SidiIfni=[province]=>Souss
+Neva=[province]=>Ingria
+Ingermanland=[province]=>Ingria
+
+%Villes
+%%%Europe
+%     Péninsule ibérique
+%     France
+ville:Paris
+ville:La Rochelle
+%     Pays-Bas
+ville:Amsterdam
+%     HRE
+ville:Wien
+Vienne=[ville]=>Wien
+ville:Lubeck:Lübeck
+ville:Hamburg
+ville:Rostock
+ville:Salzburg
+ville:Mannheim
+ville:Prague:Praha
+ville:Munich:München
+ville:Freiburg
+ville:Strasbourg
+ville:Hannover
+ville:Kleve
+ville:Cassel
+ville:Magdeburg
+ville:Berlin
+ville:Dresden
+ville:Frankfurt
+ville:Brunswick:Braunschweig
+ville:Koln:Köln
+ville:Stuttgart
+ville:Ulm
+ville:Mainz
+ville:Trier
+ville:Munster:Münster
+ville:Erfurt
+ville:Speyer
+ville:Weimar
+%    Italie
+ville:Messina
+Messine=[ville]=>Messina
+ville:Napoli
+Naples=[ville]=>Napoli
+ville:Roma
+ville:Venezia
+ville:Milano
+Milan=[ville]=>Milano
+%    Suède, Baltique
+ville:Kobenhavn:København
+Copenhague=[ville]=>Kobenhavn
+%    Royaume-Uni
+ville:London
+Londres=[ville]=>London
+%    Russie
+ville:Astragan
+ville:Azov
+ville:Odessa
+ville:Saint-Petersbourg:Санкт-Петербург:S\up{t}-Petersburg
+ville:Sebastopol:Севастополь:Sebastopol
+ville:Moskva:Москва:Moskva
+Moscou=[ville]=>Moskva
+%    Europe Centrale
+ville:Krakow:Kraków
+Cracovie=[ville]=>Krakow
+ville:Warszawa
+Varsovie=[ville]=>Warszawa
+ville:Buda
+%    Afrique, Asie
+ville:Bam:ﻢﺑ:Bam
+ville:Herat:ﺙﺍﺮﻫ:Herāt
+ville:Alexandrie:ﺔﻳﺭﺪﻨﻜﺳﻹﺍ:al-’Āskandarīyah
+ville:Damas:ﻖﺸﻣﺩ:Dimašq
+ville:Izmir:Smyrna:İzmir
+Smyrna=[ville]=>Izmir
+%    Magrheb
+ville:Alger:ﺮﺋاﺰﺠﻟا:al-Jaza’ir
+%    Balkans
+ville:Ragusa:Dubrovnik:Ragusa
+
+
+%%%ROTW
+ville:Kyoto:京都市:Kyōto
+ville:Calcutta::Kalakātā
+ville:Diu
+ville:Jakarta:Jayakarta:Jakarta
+ville:Malacca
+ville:Tenochtitlan
+ville:Cusco
+Cuzco=[ville]=>Cusco
+ville:Goa
+% Not on the map
+ville:Mecca:ﺔﻜﻣ:Mecca
+
+%Monarchs
+%Generic monarchs names
+monarque:Doge:Doxe:Doge
+monarque:King
+monarque:Krol
+monarque:Rei
+monarque:Roi
+monarque:Sultan
+monarque:Tsar
+
+%Portugal monarchs
+monarque:Joao II:João II
+monarque:Manuel I:Manuel I
+
+%Sweden monarchs
+monarque:Gustav I:Vasa:Gustav I
+monarque:Eric XIV:Erik XIV
+monarque:Charles IX:Karl IX
+monarque:Gustav Adolf
+monarque:Charles XII:Karl XII
+Gustave Adolphe=[monarque]=>Gustav Adolf
+
+%Russia monarchs
+monarque:Ivan III:Ивана III Васильевич:Ivan III
+monarque:Ivan IV:Иоа́нн IV Васи́льевич Гро́зный:Ivan IV
+monarque:Boris Godunov:Бори́с Фёдорович Годуно́в:Boris Godunov
+monarque:Romanov:Михаил Фьодорович Романов:Romanov
+monarque:Dmitry:Дмитрий Иванович:Dmitry
+monarque:Peter the Great:Пётр I Алексеевич Вели́кий:Peter the Great
+monarque:Pierre II:Пётр II:Peter II
+monarque:Catherine II:Екатерина II Великая:Catherine II
+Peter=[monarque]=>Peter the Great
+Godunov=[monarque]=>Boris Godunov
+Dimitri=[monarque]=>Dmitry
+
+%England monarchs
+monarque:Henry VII
+monarque:Henry VIII
+monarque:Elisabeth I
+monarque:Parliament:The English Parliament:Parliament
+monarque:Cromwell:Oliver:Cromwell
+monarque:Willem III:of Oranje-Nassau:Willem III
+
+%France monarchs
+monarque:Charles VIII
+monarque:Francois I:François I\up{er}
+monarque:Henri III
+monarque:Henri IV
+monarque:Henri de Guise
+monarque:Henri de Navarre
+monarque:Louis XIV:le Roi Soleil:Louis XIV
+monarque:Convention
+monarque:Terror:Reign of Terror:Terror
+Terreur=[monarque]=>Terror
+
+%Spain monarchs
+monarque:Isabel and Ferdinand:Isabel I de Castilla y Fernando II de Aragón:Isabel and Fernando
+monarque:Charles V:Carlos I:Carlos V
+monarque:Felipe II:de Habsburgo:Felipe II
+
+%Turkey monarchs
+monarque:Bayezid II:ﻰﻧﺎﺛ ﺪﻳﺰﻳﺎﺑ:Bāyezīd-i sānī
+monarque:Selim I:ﻝﻭﹼﺍ ﻢﻴﻠﺳ:I. Selim
+monarque:Suleyman:ﻥﺎﻤﻴﻠﺳ:I. Süleyman
+
+%Venice monarchs
+monarque:Barbarigo:Agostino:Barbarigo
+
+%Holland monarchs
+monarque:Willem I:van Oranje-Nassau:Willem I
+monarque:Oldenbarnevelt:Johan van:Oldenbarnevelt
+monarque:Maurits:van Nassau:Maurits
+monarque:Frederik Hendrik:van Nassau:Frederik Hendrik
+monarque:Willem III:van Oranje-Nassau:Willem III
+Willem of Nassau=[monarque]=>Willem III
+
+%Austria and Habsbourg monarchs
+monarque:Ferdinand II
+monarque:Ferdinand III
+monarque:Maria Theresia
+
+%Poland monarchs
+monarque:John and Alexander:Jan I Olbracht and Aleksander Jagiellończyk:John and Alexander
+monarque:Zygmunt I:Stary:Zygmunt I
+monarque:Bathory:István:Báthory
+monarque:Sobiesky:Jan III Sobieski:Sobiesky
+monarque:Zygmunt III:Wasa:Zygmunt III
+monarque:August II:Mocny:August II
+monarque:Patkul:Jan Reinhold von:Patkul
+monarque:Stanislas:Stanisław Leszczńyski:Stanislas
+
+%Prussia monarchs
+monarque:Friedrich-Wilhelm:The Soldier King:Friedrich-Wilhelm
+monarque:Friedrich II
+
+%Continent
+continent:Africa
+continent:America
+continent:North America
+continent:Spanish World
+continent:Asia
+continent:Brazil
+Bresil=[continent]=>Brazil
+continent:Extreme Orient
+continent:India
+continent:Middle East
+continent:Siberia
+continent:Caraibes:Caribbean
+continent:Indonesia
+continent:Indochina
+South America=[continent]=>Spanish World
+
+%sea zones
+seazone:Caspienne:Mer Caspienne
+seazone:Noire E:Mer Noire orientale
+seazone:Noire W:Mer Noire occidentale
+seazone:Marmara
+seazone:Egee:Mer Égée
+seazone:Mediterranee E:Méditerranée orientale
+seazone:Adriatique
+seazone:Baltique
+seazone:Botnie:Baie de Botnie
+seazone:Oresund:Øresund
+seazone:Ionienne:Mer Ionienne
+seazone:Thyrrenienne:Mer Tyrrhénienne
+seazone:Syrte:Golfe de Syrte
+seazone:Lion:Golfe du Lion
+seazone:Alger:Baie d’Alger
+seazone:Mediterranee W:Méditerranée occidentale
+seazone:Cadix:Golfe de Cadix
+seazone:Gascogne:Golfe de Gascogne
+seazone:Nord:Mer du Nord
+seazone:Manche
+seazone:Irlande:Mer d’Irlande
+seazone:Western Approaches
+seazone:Norvege:Mer de Norvège
+seazone:Alaska:Mer d’Alaska
+seazone:Californie:Golfe de Californie
+seazone:Pacifique NE:Pacifique nord-est
+seazone:Pacifique SE:Pacifique sud-est
+seazone:Panama:Golfe de Panama
+seazone:Perou:Côte du Pérou
+seazone:Chili:Côte du Chili
+seazone:Horn:Cap Horn
+seazone:Patagonie:Côte de Patagonie
+seazone:Plata:Rio de la Plata
+seazone:Bahia:Mer de Bahia
+seazone:Recife:Mer de Recife
+seazone:Natal:Mer du Natal
+seazone:Amazonie:Golfe d'Amazonie
+seazone:Sous-le-vent:Îles sous-le-vent
+seazone:Caraibes:Caraïbes
+seazone:Mexique:Golfe du Mexique
+seazone:Cuba
+seazone:Puerto Rico
+seazone:Bermudes:Triangle des Bermudes
+seazone:Saint-Laurent
+seazone:Labrador:Mer du Labrador
+seazone:Hudson:Baie d’Hudson
+seazone:Groenland:Grœnland
+seazone:Acores:Mer des Açores
+seazone:Canarias:Mer des Canaries
+seazone:Atlantique N:Atlantique nord
+seazone:Atlantique
+seazone:Arguin:Banc d’Arguin
+seazone:Gambie:Baie de Gambie
+seazone:Guinee:Golfe de Guinée
+seazone:Angola:Côte d’Angola
+seazone:Atlantique S:Atlantique sud
+seazone:Atlantique SW:Atlantique sud-ouest
+seazone:Atlantique SE:Atlantique sud-est
+seazone:Atlantique W:Atlantique ouest
+seazone:Atlantique EQ:Atlantique équatorial
+seazone:Man:Île de Man
+seazone:Bonne-Esperance:Cap de Bonne-Espérance
+seazone:Tempetes:Cap des tempêtes
+seazone:Quarantiemes:Quarantièmes rugissants
+seazone:Mozambique:Canal de Mozambique
+seazone:Indien W:Océan Indien ouest
+seazone:Seychelles:Mer des Seychelles
+seazone:Rouge:Mer rouge
+seazone:Mascate:Côte de Mascate
+seazone:Indus:Golfe de l'Indus
+seazone:Oman:Mer d’Oman
+seazone:Maldives
+seazone:Malabar:Côte de Malabar
+seazone:Bengale:Mer du Bengale
+seazone:Indien:Océan Indien
+seazone:Malaisie:Détroit de Malaisie
+seazone:Java:Mer de Java
+seazone:Sawu:Mer de Sawu
+seazone:Indien S:Océan Indien sud
+seazone:Australienne:Grande Baie Australienne
+seazone:Tasman:Mer de Tasman
+seazone:Corail:Mer de Corail
+seazone:Pacifique SW:Pacifique sud-ouest
+seazone:Arafura:Mer d’Arafura
+seazone:Epices:Mer des Épices
+seazone:Philippines:Mer des Philippines
+seazone:Chine S:Mer de Chine sud
+seazone:Formose:Détroit de Formose
+seazone:Chine N:Mer de Chine nord
+seazone:Coree:Mer de Corée
+seazone:Japon:Mer du Japon
+seazone:Okhotsk:Mer d’Okhotsk
+seazone:Pacifique NW:Pacifique nord-ouest
+seazone:Pacifique W:Pacifique ouest
+seazone:Pacifique:Grand océan pacifique
+seazone:Persique:Golfe Persique
+seazone:Wharton:Bassin de Wharton
+Noire=[seazone]=>Noire W
+Canaries=[seazone]=>Canarias
+Mediterrannee E=[seazone]=>Mediterranee E
+Mediterrannee W=[seazone]=>Mediterranee W
+
+%Pays
+paysmajeur:Espagne:Hispania
+paysmajeur:France:Francia
+paysmajeur:Angleterre:Anglia
+paysmajeur:Russie:Russia
+paysmajeur:Turquie:Turcia
+paysmajeur:Suede:Suecia
+paysmajeur:Hollande:Hollandia
+paysmajeur:Pologne:Polonia
+paysmajeur:Lithuanie:Lituania
+paysmajeur:Portugal:Portugallia
+paysmajeur:Prusse:Prussia
+paysmajeur:Venise:Venetia
+paysmajeur:Autriche:Austria
+paysmajeur:Danemark:Dania
+
+
+%granderegion
+granderegion:Acadie
+granderegion:Aden:ﻥﺪﻋ:Aden
+granderegion:Afghanistan
+granderegion:Alaska
+granderegion:Amazonia
+granderegion:America
+granderegion:Amour:Амур:Amour
+granderegion:Angola
+granderegion:Antilles
+granderegion:Aoudh::Ayodhyā
+granderegion:Aral
+granderegion:Ayutthaya:อยุธยา:Ayutthaya
+Thailande=[granderegion]=>Ayutthaya
+granderegion:Azteca
+granderegion:Baikal:Baïkal
+granderegion:Balouchistan
+granderegion:Belem:Belém
+granderegion:Bengale::Bānglā
+granderegion:Birmanie:ဗမာ  :Birmanie
+granderegion:Borneo:Bornéo
+granderegion:Cabo Verde
+granderegion:Carolina
+granderegion:California
+granderegion:Cameroun
+granderegion:Canton:广东:Canton
+granderegion:Cap
+granderegion:Celebes:Célèbes
+granderegion:Ceylan::Singala
+granderegion:Chichimeca
+granderegion:Congo
+granderegion:Corea:조선:Chosǒn
+Coree=[granderegion]=>Corea
+granderegion:Cotedivoire:Côte d’Ivoire
+granderegion:Cotedor:Côte d’Or
+granderegion:Cuba
+granderegion:Dai Viet
+%:Đại Việt
+granderegion:Delhi::Dellī
+granderegion:Ecuador
+granderegion:Formose:台湾:Formose
+granderegion:Gabon
+granderegion:Gondwana::Gonḍānā
+granderegion:Grands Lacs
+granderegion:Gujarat::Gujarat
+granderegion:Guyana
+granderegion:Haiti:Haïti
+granderegion:Hudson
+granderegion:Hyderabad::Hydārabad
+granderegion:Iles aux epices:Îles aux épices
+granderegion:Iles de la Sonde:Îles de la Sonde
+Epices=[granderegion]=>Iles aux epices
+Sonde=[granderegion]=>Iles de la Sonde
+granderegion:Illinois
+granderegion:Inca
+granderegion:Indus:ﺪﻨﺳ:Indus
+granderegion:Japon:日本:Japon
+Japan=[granderegion]=>Japon
+granderegion:Java
+granderegion:Kamchatka:Камчатска:Kamchatka
+granderegion:Karnatika::Karnāṭaka
+granderegion:Kenya
+granderegion:Madagascar
+granderegion:Malabar::Malabāṟ
+granderegion:Malacca
+Malaisie=[granderegion]=>Malacca
+granderegion:Malouines
+granderegion:Mandchourie:滿洲:Mandchourie
+granderegion:Mascareignes
+granderegion:Mauritanie
+granderegion:Minas Gerais
+granderegion:Mumbai::Mumbaī
+granderegion:Nankin:南京:Nankin
+granderegion:Natal
+granderegion:Nyasa
+granderegion:Nedj:ﺪﺟﺎﻧ:Nedj
+granderegion:Oceania
+granderegion:Oman:ﻥﺎﻤﻋ:Oman
+granderegion:Oregon
+granderegion:Orissa::Orissā
+granderegion:Pacifique
+granderegion:Panama:Panamá
+granderegion:Pekin:北京:Pékin
+granderegion:Pendjab::Pãjāb
+granderegion:Perse:ﺱﺭﺎﭘ:Perse
+granderegion:Philippines
+granderegion:Quebec:Québec
+granderegion:Recife
+granderegion:Rio
+granderegion:Rocheuses
+granderegion:Sainte-Helene:Sainte-Hélène
+granderegion:Senegal:Sénégal
+granderegion:Seychelles
+granderegion:Siberie:Сибирь:Sibérie
+granderegion:Singala
+granderegion:Soudan
+granderegion:Terre-Neuve
+granderegion:Sumatra
+granderegion:Florida
+granderegion:Texas
+granderegion:Virginia
+granderegion:Kansas
+granderegion:Mississippi
+granderegion:Yucatan:Yucatán
+Equateur=[granderegion]=>Ecuador
+
+%Minor countries
+pays:habsbourg:Habsburgum
+pays:croises:Peregrini
+
+%Ministre
+ministre:Alberoni:Guilio:Alberoni
+ministre:Colbert:Jean-Baptiste:Colbert
+ministre:de Witt:Johann:de Witt
+ministre:Heinsius:Anthonie:Heinsius
+ministre:Kaunitz:Wenzel Anton:Kaunitz
+ministre:Koprulu:Köprülü
+ministre:Mazarin:Jules:Mazarin
+ministre:Olivares:Gaspar de Guzmán y Pimentel:Olivares
+ministre:Oxenstierna:Axel:Oxenstierna
+ministre:Pitt:William, 1st Earl of Chatham:Pitt
+ministre:Potemkine:Григо́рий Алекса́ндрович Потёмкин-Таври́ческий:Potemkin
+ministre:Richelieu:Armand Jean du Plessis de:Richelieu
+ministre:Sadrazam:Grand Vizier:Sadrazam
+ministre:Patkul:Jan Reinhold von:Patkul
+
+% Leaders (the non-automatic things)
+leader:random:random leader
+Eugene=[leader]=>Prinz Eugen
+Jean-Casimir=[leader]=>Johann Kasimir
+Grand Moghol=[leader]=>Great Mughal
+
+%Region
+region:Suede:Sweden
+region:Finlande:Finland
+region:Denmark:Denmark
+Danemark=[region]=>Denmark
+region:Norvege:Norway
+region:Duche de Prusse:Herzogtum Preußen:Duchy of Prussia
+region:Duche de Kurland:Herzogtum Kurland:Duchy of Courland
+region:Italie:Italy
+region:Baltique:Baltic Sea
+%region:Belgique:Spanish Netherlands:Belgium
+region:Belgique:Spanish Netherlands
+region:Irlande:Eire:Ireland
+region:Mediterranee:Mediterranean Sea
+region:Balkans
+region:Noire:Black Sea
+region:Ukraine
+region:Perse:Persian Core
+
+Mediterrannee=[region]=>Mediterranee
+
+%Bazar
+bazar:Aden:ﻥﺪﻋ:Aden
+bazar:Oman:ﻥﺎﻤﻋ:Oman
+bazar:Izmir:İzmir
+bazar:Potosi
+bazar:Masjid al-Haram:ﻡﺍﺮﺤﻟﺍ ﺪﺠﺴﻤﻟﺍ:Al-Masjid al-Haram
+bazar:Black Stone:ﺩﻮﺳﺎﻟﺍ ﺮﺠﺤﻟﺍ:Black Stone
+
+%Construction
+construction:Sebastopol:Севастополь:Sebastopol
+construction:Brazilie:Brazilië
+construction:Gibraltar
+construction:Saint-Petersbourg:Санкт-Петербург:S\up{t}-Petersburg
+% TP/COL
+construction:Ormus
+construction:Elmina:São Jorge da Mina:Elmina
+construction:Aden:ﻥﺪﻋ:Aden
+construction:Oman:ﻥﺎﻤﻋ:Oman
+construction:Zanzibar
+construction:Kutaraja
+construction:La Praya
+construction:Goa
+construction:Kongo
+construction:Kaaba:ﺔﺒﻌﻜﻟﺍ:Ka'aba

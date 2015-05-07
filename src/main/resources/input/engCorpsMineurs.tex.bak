@@ -17,13 +17,13 @@
 \minorpref{mamelouks}{\TUR, \VEN, \POL, \SPA, \AUS, \ENG, \POR, \FRA,
 \SUE, \RUS, \HOL, \PRU}
 \minorfid{mamelouks}{8}
-\minorprovince{mamelouks}{Tobrouk}0
-\minorprovince{mamelouks}{Nil}6
-\minorprovince{mamelouks}{Delta}3
-\minorprovince{mamelouks}{Nubie}1
-\minorcapital{mamelouks}{Egypte}9
-\minorprovince{mamelouks}{Sinai}0
-\minorprovince{mamelouks}{Cataractes}2
+\minorprovince{mamelouks}{Ṭubruq}0
+\minorprovince{mamelouks}{an-Nīl}6
+\minorprovince{mamelouks}{Deltā}3
+\minorprovince{mamelouks}{al-Nūbah}1
+\minorcapital{mamelouks}{Mişr}9
+\minorprovince{mamelouks}{Sīnā’}0
+\minorprovince{mamelouks}{Šallāl}2
 \minorfixedincome{mamelouks}0{Commercial center}{70}
 \minorspecial{mamelouks}{If not at war,\VEN\ earns the income of the
 commercial center.}
@@ -33,7 +33,8 @@ commercial center.}
 \minorforces{mamelouks}{2 \ARMY, \FLEET, 2 \LDND, 2 \LDENDE}
 \minorspecial{mamelouks}{Before \subeventref{pI:WRS:War Indian Sea}, cannot use its \FLEET. Afterwards, 1 \ARMY\ is lost and basic forces switch to \FLEET\facemoins, \ARMY\facemoins, \LD\ until destruction by \TUR.}
 \minorspecial{mamelouks}{Knows \seazone{Rouge} at the beginning of the
-game.}  \minorspecial{mamelouks}{Has a mandatory defensive alliance with
+game.}
+\minorspecial{mamelouks}{Has a mandatory defensive alliance with
 \pays{damas} and answers it with limited intervention. May go in
 \pays{damas} even if reinforcement where taken in defensive attitude.}
 \minorspecial{mamelouks}{May be entirely destroyed by \TUR\ if all its
@@ -48,12 +49,12 @@ armies are destroyed and the capital is taken.}
 \minordiplo{algerie}{6}{40}{1}{1}{2}{3}{10}
 \minorfid{algerie}{15}
 \minorgeo{algerie}{\TUR+1}
-\minorprovince{algerie}{Atlas}1
-\minorprovince{algerie}{Oran}4
-\minorprovince{algerie}{Kabylie}2
-\minorcapital{algerie}{Algerie}5
-\minorprovince{algerie}{Aures}1
-\minorprovince{algerie}{Annabah}4
+\minorprovince{algerie}{al-’Aṭlas}1
+\minorprovince{algerie}{Wahrān}4
+\minorprovince{algerie}{al-Qaba’il}2
+\minorcapital{algerie}{al-Jaza’ir}5
+\minorprovince{algerie}{’Arīs}1
+\minorprovince{algerie}{‛Annābah}4
 \minorarmyclass{algerie}{Islam}{II}
 \minorbasicforces{algerie}{\ARMY\facemoins, \FLEET\facemoins,
 \corsaire\faceplus}
@@ -86,9 +87,9 @@ armies are destroyed and the capital is taken.}
 \minorpref{arabie}{\TUR, \FRA, \SPA, \POR, \PRU, \POL, \RUS, \AUS,
 \ENG, \VEN, \HOL, \SUE}
 \minorfid{arabie}{17}
-\minorprovince{arabie}{Jordanie}3
-\minorprovince{arabie}{Nefud}1
-\minorcapital{arabie}{Arabie}3
+\minorprovince{arabie}{al-Ā’urdunn}3
+\minorprovince{arabie}{an-Nafūd}1
+\minorcapital{arabie}{al-’arabiyah}3
 \minorbasicforces{arabie}{\LD}
 \minorarmyclass{arabie}{Islam}{II}
 \minorforces{arabie}{2 \LD}
@@ -100,7 +101,7 @@ armies are destroyed and the capital is taken.}
   \HOL, \AUS, \POL, \RUS}
 \minorfid{astrakhan}{14}
 \minorprovince{astrakhan}{Terek}2
-\minorcapital{astrakhan}{Astragan}8
+\minorcapital{astrakhan}{Astrakhan}8
 \minorbasicforces{astrakhan}{\ARMY\faceplus}
 \minorarmyclass{astrakhan}{Islam}{I}
 \minorforces{astrakhan}{\ARMY, \LD}
@@ -132,8 +133,8 @@ armies are destroyed and the capital is taken.}
 \minorpref{boheme}{\HOL, \ENG, \FRA, \VEN, \PRU, \POL, \POR, \RUS,
 \SPA, \SUE, \TUR, \AUS}
 \minorfid{boheme}{15}
-\minorcapital{boheme}{Boheme}{14}
-\minorprovince{boheme}{Silesie}6
+\minorcapital{boheme}{Bohème}{14}
+\minorprovince{boheme}{Silésie}6
 \minorprovince{boheme}{Morava}5
 \minorprovince{boheme}{Lausitz}4
 \minorbasicforces{boheme}{\ARMY\faceplus}
@@ -188,13 +189,13 @@ become 3\ARMY\ and 5\LD.}
 \minorreligion{bourgogne}{catholique}
 \minordiplospecial{bourgogne}{Impossible}
 \minorpref{bourgogne}{\SPA, \AUS}
-\minorprovince{bourgogne}{Vlaandern}{10}
+\minorprovince{bourgogne}{Vlaanderen}{10}
 \minorprovince{bourgogne}{Flandre}5
 \minorprovince{bourgogne}{Hainaut}7
 \minorprovince{bourgogne}{Brabant}9
 \minorprovince{bourgogne}{Limburg}9
 \minorprovince{bourgogne}{Luxemburg}6
-\minorprovince{bourgogne}{Franche-Comte}5
+\minorprovince{bourgogne}{Franche-Comté}5
 \minorprovince{bourgogne}{Artois}5
 % (jym) Zeeland in provinces NE makes more sense.
 %\minorprovince{bourgogne}{Zeeland}9
@@ -217,8 +218,8 @@ become 3\ARMY\ and 5\LD.}
 \minorprovince{kazan}{Cheboksary}3
 \minorprovince{kazan}{Mordoviya}2
 \minorprovince{kazan}{Samara}2
-\minorcapital{kazan}{Kazan}5
-\minorprovince{kazan}{Bolgars}4
+\minorcapital{kazan}{Kazan’}5
+\minorprovince{kazan}{Idel Bolgarstany}4
 \minorbasicforces{kazan}{\ARMY\faceplus}
 \minorbasicrenforts{kazan}{\LD}
 \minorarmyclass{kazan}{Islam}{I}
@@ -243,7 +244,7 @@ become 3\ARMY\ and 5\LD.}
 \minorpref{cologne}{\SPA, \FRA, \AUS, \SUE, \POL, \PRU, \HOL, \ENG,
 \VEN, \POR, \RUS, \TUR}
 \minorfid{cologne}{12}
-\minorcapital{cologne}{Koln}5
+\minorcapital{cologne}{Köln}5
 \minorbasicforces{cologne}{\LD}
 \minorarmyclass{cologne}{Latin}{III}
 \minorHRE[Elector]{cologne}
@@ -269,9 +270,9 @@ become 3\ARMY\ and 5\LD.}
 \VEN, \HOL, \RUS, \POL}
 \minorfid{crimee}{10}
 \minorgeo{crimee}{\TUR +1}
-\minorprovince{crimee}{Khadzhibei}4
-\minorprovince{crimee}{Zaporozhye}4
-\minorcapital{crimee}{Crimee}4
+\minorprovince{crimee}{Hacıbey}4
+\minorprovince{crimee}{Zaporizhzhya}4
+\minorcapital{crimee}{Qırım}4
 %\minorprovince{crimee}{Caffa}2
 \minorprovince{crimee}{Azov}3
 %\minorprovince{crimee}{Kuban}4
@@ -304,7 +305,7 @@ protector by \eventref{pVI:Kurland}.}
 \AUS, \SUE, \ENG, \VEN, \HOL}
 \minorfid{cyrenaique}{16}
 \minorgeo{cyrenaique}{\TUR +1}
-\minorcapital{cyrenaique}{Cyrenaique}2
+\minorcapital{cyrenaique}{Barqah}2
 \minorbasicforces{cyrenaique}{\ND, \corsaire\facemoins}
 \minorbasicrenforts{cyrenaique}{\corsaire\facemoins\EUminorremark{ every other turn}{/2 turns}}
 \minorarmyclass{cyrenaique}{Islam}{II}
@@ -316,19 +317,19 @@ protector by \eventref{pVI:Kurland}.}
 \minorpref{danemark}{\ENG, \HOL, \RUS, \FRA, \POL, \PRU, \SPA,
 \AUS,\TUR, \VEN, \POR, \SUE}
 \minorfid{danemark}{10}
-\minorprovince{danemark}{Trondelag}2
+\minorprovince{danemark}{Trøndelag}2
 \minorprovince{danemark}{Vestfold}3
-\minorprovince{danemark}{Ostlandet}4
-\minorprovince{danemark}{Vastergotland}5
+\minorprovince{danemark}{Østlandet}4
+\minorprovince{danemark}{Västergotland}5
 \minorprovince{danemark}{Gotland}2
-\minorprovince{danemark}{Skane}5
+\minorprovince{danemark}{Skåne}5
 \minorprovince{danemark}{Slesvig}4
-\minorcapital{danemark}{Sjaelland}{12}
+\minorcapital{danemark}{Sjælland}{12}
 \minorprovince{danemark}{Jylland}5
 \minorfixedincome{danemark}0{\TradeFLEET\ lv. 3 in \stz{Baltique}}7
 \minorfixedincome{danemark}1{\TradeFLEET\ lv. 2 in \stz{Nord}}5
 \minorbasicforces{danemark}{\ARMY\faceplus, \FLEET\facemoins, 1 \fortress, 1 \fortress in \region{Norvege}, 2 \LD, 1 \LeaderG\EUminorremark{\ (either King or unnamed)}{}}
-\minorbasicrenforts{danemark}{\LD or \ND}
+\minorbasicrenforts{danemark}{\LDND}
 \minorarmyclass{danemark}{Latin}{III}
 \minorforces{danemark}{2 \ARMY, 1 Norwegian \ARMY, \FLEET, 4 \LDND, 2 \NDE, \NTD}
 \minorspecial{danemark}{May use the second \ARMY\ counter only if it has the rights over the Sund or if attacked; may lose this \ARMY\ counter at the end of \eventref{pIV:TYW}.}
@@ -359,9 +360,9 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorpref{teutoniques2}{\ENG, \HOL, \FRA, \VEN, \TUR, \SPA, \AUS,
 \RUS, \POR, \SUE, \POL, \PRU}
 \minorfid{teutoniques2}{14}
-\minorprovince{teutoniques2}{Preussen}6
-\minorprovince{teutoniques2}{Ost Pommern}5
-\minorprovince{teutoniques2}{West Pommern}5
+\minorprovince{teutoniques2}{Preußen}6
+\minorprovince{teutoniques2}{Hinterpommern}5
+\minorprovince{teutoniques2}{Vorpommern}5
 \minorbasicforces{teutoniques2}{\ARMY\faceplus}
 \minorarmyclass{teutoniques2}{Latin}{IIM}
 \minorforces{teutoniques2}{\ARMY, \LD, \LDND , 2 \NDE}
@@ -378,7 +379,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorpref{teutoniques1}{\ENG, \HOL, \FRA, \VEN, \TUR, \SPA, \AUS,
 \RUS, \POR, \SUE, \POL, \PRU}
 \minorfid{teutoniques1}{14}
-\minorprovince{teutoniques1}{Estland}4
+\minorprovince{teutoniques1}{Eesti}4
 \minorcapital{teutoniques1}{Livonija}5
 \minorprovince{teutoniques1}{Kurland}6
 %\minorprovince{teutoniques1}{Neva}3
@@ -414,7 +415,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorfixedincome{genes}1{\TradeFLEET\ lv. 2 in \stz{Ionienne}}4
 \minorfixedincome{genes}2{\TradeFLEET\ lv. 2 in \ctz{Espagne}}6
 \minorbasicforces{genes}{\FLEET\facemoins, \LD, 1 \LeaderA, 1 \fortress\EUminorremark{ in each province}{/prov.}}
-\minorbasicrenforts{genes}{1 \NGD\ or 1 \NDE or 1\NTD}
+\minorbasicrenforts{genes}{1 \NDE}
 \minorarmyclass{genes}{Latin}{III}
 \minorforces{genes}{\FLEET, 2 \LDND, 2 \NDE, \NTD}
 \minorspecial{genes}{No diplomacy allowed by \VEN.}
@@ -425,7 +426,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorpref{georgie}{\RUS, \POL, \AUS, \PRU, \VEN, \FRA, \SPA, \ENG,
 \SUE, \POR, \HOL}
 \minorfid{georgie}{14}
-\minorcapital{georgie}{Georgie}4
+\minorcapital{georgie}{Géorgie}4
 \minorprovince{georgie}{Kuban}4
 \minorbasicforces{georgie}{\LD}
 \minorarmyclass{georgie}{Orthodoxe}{IIM}
@@ -438,7 +439,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorprovince{grenade}{Granada}4
 \minorprovince{grenade}{La Mancha}1
 \minorprovince{grenade}{Murcia}3
-\minorprovince{grenade}{Cordoba}5
+\minorprovince{grenade}{Córdoba}5
 \minorbasicforces{grenade}{2 \LD}
 \minorarmyclass{grenade}{Islam}{II}
 \minorforces{grenade}{2 \LD}
@@ -453,9 +454,9 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \minorgeo{habsbourg}{\SPA +1}
 \minorprovince{habsbourg}{Tirol}4
 \minorprovince{habsbourg}{Salzburg}7
-\minorcapital{habsbourg}{Osterreich}9
+\minorcapital{habsbourg}{Österreich}9
 \minorprovince{habsbourg}{Steiermark}6
-\minorprovince{habsbourg}{Karnten}5
+\minorprovince{habsbourg}{Kärnten}5
 \minorprovince{habsbourg}{Slovenija}4
 \minorprovince{habsbourg}{Trentino}6
 \minorfixedincome{habsbourg}0{Gold mines}{60}
@@ -492,7 +493,7 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \POR, \VEN, \SPA, \TUR}
 \minorfid{hanovre}{15}
 \minorgeo{hanovre}{\ENG +1 in periods \period{VI} and \period{VII}}
-\minorprovince{hanovre}{Osnabruck}7
+\minorprovince{hanovre}{Osnabrück}7
 \minorcapital{hanovre}{Hannover}{11}
 \minorbasicforces{hanovre}{\ARMY\facemoins, \LD, 1 \LeaderG}
 \minorbasicrenforts{hanovre}{\LD}
@@ -507,13 +508,13 @@ on Swedish crone. Afterwards, pays{Danemark} has value of 10 for Annexion by \pa
 \RUS, \SPA, \SUE, \TUR}
 \minorfid{hanse}{14}
 \minorcapital{hanse}{Bremen}5
-\minorcapital{hanse}{Lubeck}3
+\minorcapital{hanse}{Lübeck}3
 \minorcapital{hanse}{Holstein}6
 \minorcapital{hanse}{Mecklenburg}6
 \minorspecial{hanse}{Annexes \province{West Pommern} and \province{Ost
 Pommern} during \eventref{pI:Fall Teutonic}.}
 \minorbasicforces{hanse}{\ND, \LDND}
-\minorbasicrenforts{hanse}{\LD or \ND}
+\minorbasicrenforts{hanse}{\LDND}
 \minorarmyclass{hanse}{Latin}{III}
 \minorHRE{hanse}
 \minorforces{hanse}{3 \LDND, 2 \NDE, \NTD}
@@ -540,7 +541,7 @@ Pommern} during \eventref{pI:Fall Teutonic}.}
 \AUS, \POR, \TUR, \VEN}
 \minorfid{suisse}{9}
 \minorprovince{suisse}{Graubunden}3
-\minorcapital{suisse}{Suisse}5
+\minorcapital{suisse}{Schweiz}5
 \minorbasicforces{suisse}{\ARMY\faceplus}
 \minorbasicrenforts{suisse}{\LD}
 \minorarmyclass{suisse}{Latin}{III}
@@ -557,18 +558,18 @@ Pommern} during \eventref{pI:Fall Teutonic}.}
 \SUE, \PRU, \HOL}
 \minorfid{hongrie}{17}
 \minorgeo{hongrie}{\SPA +1}
-\minorprovince{hongrie}{Szlovakia}3
-\minorprovince{hongrie}{Karpatok}1
+\minorprovince{hongrie}{Szlovákia}3
+\minorprovince{hongrie}{Kárpátok}1
 \minorprovince{hongrie}{Bukovina}1
 \minorprovince{hongrie}{Balaton}2
-\minorprovince{hongrie}{Pecs}6
-\minorprovince{hongrie}{Erdely}5
-\minorprovince{hongrie}{Mures}3
-\minorprovince{hongrie}{Kranj}5
-\minorprovince{hongrie}{Croatie}3
+\minorprovince{hongrie}{Pécs}6
+\minorprovince{hongrie}{Erdély}5
+\minorprovince{hongrie}{Marosz}3
+\minorprovince{hongrie}{Carniola}5
+\minorprovince{hongrie}{Hrvatska}3
 \minorprovince{hongrie}{Banat}3
 \minorprovince{hongrie}{Kapela}2
-\minorcapital{hongrie}{Hongrie}{10}
+\minorcapital{hongrie}{Magyarország}{10}
 \minorbasicforces{hongrie}{\ARMY\faceplus, 1 \LD, 1 \LeaderG}
 \minorbasicrenforts{hongrie}{\LD}
 \minorarmyclass{hongrie}{Latin}{IIM}
@@ -584,7 +585,7 @@ Pommern} during \eventref{pI:Fall Teutonic}.}
 \RUS, \HOL, \SUE}
 \minorfid{liege}{16}
 \minorgeo{liege}{\HAB +1}
-\minorcapital{liege}{Liege}8
+\minorcapital{liege}{Liège}8
 \minorbasicforces{liege}{\LD}
 \minorarmyclass{liege}{Latin}{III}
 \minorHRE{liege}  %pas mis sur la carte
@@ -640,10 +641,10 @@ dynasty who inherited \region{Belgique} after \eventref{pI:Habsburg Alliance}.}
 \minorpref{maroc}{\FRA, \TUR, \SPA, \ENG, \VEN, \HOL, \AUS, \RUS,
 \POL, \PRU, \POR, \SUE}
 \minorfid{maroc}{15}
-\minorprovince{maroc}{Magrib}6
-\minorprovince{maroc}{Rif}1
-\minorcapital{maroc}{JebelTubqal}4
-\minorprovince{maroc}{SidiIfni}1
+\minorprovince{maroc}{al-Maġrib}6
+\minorprovince{maroc}{er-Rif}1
+\minorcapital{maroc}{Jebel Tubqāl}4
+\minorprovince{maroc}{as-Sūs}3
 \minorbasicforces{maroc}{\ARMY\faceplus, \corsaire\facemoins}
 \minorbasicrenforts{maroc}{\corsaire\facemoins\EUminorremark{ every other turn}{/2 turns}}
 \minorarmyclass{maroc}{Islam}{II}
@@ -668,9 +669,9 @@ dynasty who inherited \region{Belgique} after \eventref{pI:Habsburg Alliance}.}
 \minorpref{irak}{\FRA, \TUR, \SPA, \ENG, \POL, \PRU, \AUS, \HOL, \RUS,
 \SUE, \POR, \VEN}
 \minorfid{irak}{6}
-\minorcapital{irak}{Irak}5
-\minorprovince{irak}{Bassorah}5
-\minorprovince{irak}{Tigre}5
+\minorcapital{irak}{al-‛Irāq}5
+\minorprovince{irak}{al-Başrah}5
+\minorprovince{irak}{Dijlah}5
 \minorbasicforces{irak}{\LD}
 \minorarmyclass{irak}{Islam}{II}
 \minorforces{irak}{2 \LD}
@@ -733,7 +734,7 @@ dynasty who inherited \region{Belgique} after \eventref{pI:Habsburg Alliance}.}
 \minorgeo{chevaliers}{\SPA +1}
 \minorcapital{chevaliers}{Rhodos}2
 \minorbasicforces{chevaliers}{\ND, \corsaire\faceplus,\EUminorremark{ \leader{Grand Maitre} (\LeaderG\ or \LeaderA) or \leader{La Valette}}{\LeaderG\ or \LeaderA}}
-\minorbasicrenforts{chevaliers}{\corsaire\faceplus, 1 \NDE\ or 1 \NGD}
+\minorbasicrenforts{chevaliers}{\corsaire\faceplus, 1 \NDE}
 \minorarmyclass{chevaliers}{Latin}{III}
 \minorforces{chevaliers}{\LD, \LDND, 2 \NDE, \NTD, \corsaire}
 \minorspecial{chevaliers}{Reinforcements for the \corsaire\faceplus\ switch to \corsaire\facemoins\ when leaving \province{Rhodos}}
@@ -776,17 +777,17 @@ dynasty who inherited \region{Belgique} after \eventref{pI:Habsburg Alliance}.}
 \HOL, \POR, \RUS}
 \minorfid{perse}{5}
 \minorspecial{perse}{No diplomacy allowed by \TUR.}
-\minorprovince{perse}{Dagestan}2
-\minorprovince{perse}{Van}1
-\minorprovince{perse}{Shirvan}2
-\minorprovince{perse}{Kordistan}4
-\minorprovince{perse}{Azarbayadjan}{10}
-\minorprovince{perse}{Kermanshah}7 % Abadan dans annexesPB
-\minorcapital{perse}{Pars}{12}
-\minorprovince{perse}{Isfahan}{11}
-\minorprovince{perse}{Meshhed}8
+\minorprovince{perse}{Daġestān}2
+\minorprovince{perse}{Wān}1
+\minorprovince{perse}{Šīrwān}2
+\minorprovince{perse}{Kordistān}4
+\minorprovince{perse}{Azarbāyadjān}{10}
+\minorprovince{perse}{Kermānšāh}7 % Abadan dans annexesPB
+\minorcapital{perse}{Pārs}{12}
+\minorprovince{perse}{Eşfahān}{11}
+\minorprovince{perse}{Mešhed}8
 \minorprovince{perse}{Bam}{12}
-\minorprovince{perse}{Armenie}3
+\minorprovince{perse}{Arménie}3
 \minorfixedincome{perse}0{Gold mine}{20}
 \minorbasicforces{perse}{\ARMY\faceplus, \ARMY\facemoins, \LD,
 \leader{Shah}}
@@ -821,7 +822,7 @@ Safavids}, has a third \ARMY and its technological level is the same as
 \AUS, \POR, \SUE}
 \minorfid{ryazan}{14}
 \minorspecial{ryazan}{No diplomacy allowed by \RUS.}
-\minorcapital{ryazan}{Ryazan}4
+\minorcapital{ryazan}{Ryazan’}4
 \minorbasicforces{ryazan}{\ARMY\facemoins, 1 \LeaderG}
 \minorarmyclass{ryazan}{Orthodoxe}{IIM}
 \minorforces{ryazan}{\ARMY, \LD}
@@ -912,11 +913,11 @@ a \CB\ to its diplomatic patron and the \SDCF.}
 \minorprovince{naples}{Calabria}1
 \minorprovince{naples}{Sicilia}4
 \minorprovince{naples}{Palermo}4
-\minorprovince{naples}{Saldigna}3
+\minorprovince{naples}{Saldígna}3
 \minorbasicforces{naples}{\ARMY\faceplus, \FLEET\facemoins} %?
 \minorarmyclass{naples}{Latin}{III}
 \minorforces{naples}{\ARMY, \FLEET, \LD, 2 \LDND, 2 \NDE, \NTD}
-\minorbasicrenforts{naples}{\LD or 2\NGD}
+\minorbasicrenforts{naples}{\LDND}
 \minorspecial{naples}{May be annexed by \SPA\ by
   \dynasticaction{A}{3}. May be recreated afterwards as a
   semi-independant Habsbourg state.}
@@ -927,21 +928,21 @@ a \CB\ to its diplomatic patron and the \SDCF.}
 \minordiplo{suede}{8}{40}{1}{2}{4}{*}{*}
 \minorpref{suede}{\POR, \ENG, \VEN, \POL, \FRA, \SPA, \RUS, \TUR}
 \minorfid{suede}{15}
-\minorprovince{suede}{Smaland}5
-\minorprovince{suede}{Jamtland}5
-\minorprovince{suede}{Gastrikland}5
+\minorprovince{suede}{Småland}5
+\minorprovince{suede}{Jämtland}5
+\minorprovince{suede}{Gästrikland}5
 \minorprovince{suede}{Bergslagen}8
 \minorcapital{suede}{Svealand}9
 \minorprovince{suede}{Finland}4
 \minorprovince{suede}{Tavastland}2
 \minorprovince{suede}{Nyland}4
 \minorprovince{suede}{Karelen}2
-\minorprovince{suede}{Savo}2
+\minorprovince{suede}{Kexholm}2
 \minorfixedincome{suede}0{Gold mines}{40}
 \minorfixedincome{suede}1{\TradeFLEET\ lv. 3 in \stz{Baltique}}{7}
 \minorbasicforces{suede}{\ARMY\facemoins, \LD, \FLEET\facemoins, 1
   \LeaderG\(king)}
-\minorbasicrenforts{suede}{\LD, \LD or \ND}
+\minorbasicrenforts{suede}{\LD, \LDND}
 \minorarmyclass{suede}{Latin}{IIIM}
 \minorforces{suede}{3 \ARMY, \FLEET, 5 \LD, 10 \LDND, 6 \NDE, 2 \NTD, \EUminorremark{a special }{}transport \FLEET}
 \minorspecial{suede}{As a member of Kalmar's union, is unified to
@@ -956,9 +957,9 @@ a \CB\ to its diplomatic patron and the \SDCF.}
 \SUE, \RUS, \HOL, \PRU}
 \minorfid{damas}{8}
 \minorprovince{damas}{Terra Sancta}7
-\minorprovince{damas}{Liban}2
-\minorprovince{damas}{Alep}6
-\minorcapital{damas}{Syrie}7
+\minorprovince{damas}{Lubnān}2
+\minorprovince{damas}{Ĥalab}6
+\minorcapital{damas}{Sūriyah}7
 \minorfixedincome{damas}0{Commercial center}{70}
 \minorspecial{damas}{If on the diplomatic track of \TUR, the income of
 the commercial center is gained by \TUR.}
@@ -979,7 +980,7 @@ armies are destroyed and the capital is taken.}
 \minorfid{steppes}{10}
 \minorprovince{steppes}{Ural}5
 \minorprovince{steppes}{Bashkiria}4
-\minorcapital{steppes}{Step}4
+\minorcapital{steppes}{Step’}4
 \minorfixedincome{steppes}0{Gold mine}{20}
 \minorbasicforces{steppes}{\ARMY\faceplus, \LD}
 \minorbasicrenforts{steppes}{\LD}
@@ -1035,8 +1036,8 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 \RUS, \POR, \FRA, \ENG}
 %\minorfid{transylvanie}{12}
 %\minorgeo{transylvanie}{\TUR +2}
-\minorprovince{transylvanie}{Erdely}{5}
-\minorprovince{transylvanie}{Mures}3
+\minorprovince{transylvanie}{Erdély}{5}
+\minorprovince{transylvanie}{Marosz}3
 \minorbasicforces{transylvanie}{\LD}
 \minorarmyclass{transylvanie}{Orthodoxe}{IIM}
 \minorforces{transylvanie}{2 \LD}
@@ -1064,7 +1065,7 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 \SUE, \SPA, \AUS, \ENG}
 \minorfid{tripoli}{8}
 \minorgeo{tripoli}{\TUR +1}
-\minorcapital{tripoli}{Tripoli}{2}
+\minorcapital{tripoli}{Ṭarablūs}{4}
 \minorbasicforces{tripoli}{\ND\ or \corsaire\facemoins}
 \minorbasicrenforts{tripoli}{\corsaire\facemoins\EUminorremark{ every other turn}{/2 turns}}
 \minorarmyclass{tripoli}{Islam}{II}
@@ -1076,8 +1077,8 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 \minorpref{tunisie}{\TUR, \VEN, \FRA, \HOL, \POR, \RUS, \POL, \PRU,
 \SUE, \SPA, \AUS, \ENG}
 \minorfid{tunisie}{8}
-\minorcapital{tunisie}{Tunis}5 %2 dans annexesPB
-\minorprovince{tunisie}{Tunisie}2 %5 dans annexesPB
+\minorcapital{tunisie}{Tūnis}5 %2 dans annexesPB
+\minorprovince{tunisie}{’Afrīqiyah}2 %5 dans annexesPB
 \minorbasicforces{tunisie}{\ND\ or \corsaire\facemoins}
 \minorbasicrenforts{tunisie}{\corsaire\facemoins\EUminorremark{ every other turn}{/2 turns}}
 \minorarmyclass{tunisie}{Islam}{II}
@@ -1090,7 +1091,7 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 \minorpref{thuringe}{\PRU,\SPA, \HOL, \ENG, \AUS, \SUE, \VEN, \POL,
 \FRA, \POR, \RUS, \TUR}
 \minorfid{thuringe}{14}
-\minorcapital{thuringe}{Thuringen}7
+\minorcapital{thuringe}{Thüringen}7
 \minorprovince{thuringe}{Franken}6
 \minorbasicforces{thuringe}{\LD}
 \minorarmyclass{thuringe}{Latin}{III}
@@ -1108,9 +1109,9 @@ conditions specified in \ruleref{chSpecific:Belgium} except
 \minorprovince{ukraine}{Don}6
 \minorprovince{ukraine}{Donets}4
 \minorprovince{ukraine}{Poltava}4
-\minorprovince{ukraine}{Ukrainya}6
-\minorprovince{ukraine}{Podolie}3
-\minorprovince{ukraine}{Zaporozhye}4
+\minorprovince{ukraine}{Ukraïnya}6
+\minorprovince{ukraine}{Podillya}3
+\minorprovince{ukraine}{Zaporizhzhya}4
 \minorbasicforces{ukraine}{\ARMY\facemoins, \LD, 1 \LeaderG}
 \minorbasicrenforts{ukraine}{\LD}
 \minorarmyclass{ukraine}{Orthodoxe}{I}
@@ -1164,7 +1165,7 @@ rebellion occurred.}
 \minorpref{oldenburg}{\ENG, \HOL, \SUE, \FRA, \AUS, \RUS, \POL, \PRU,
 \POR, \VEN, \SPA, \TUR}
 \minorfid{oldenburg}{12}
-\minorcapital{oldenburg}{Munster}6
+\minorcapital{oldenburg}{Münster}6
 \minorprovince{oldenburg}{Oldenburg}3
 \minorbasicforces{oldenburg}{\LD}
 \minorarmyclass{oldenburg}{Latin}{III}
@@ -1178,7 +1179,7 @@ rebellion occurred.}
 \minorpref{wurtemberg}{\SPA, \AUS, \FRA, \POL, \HOL, \VEN, \PRU, \ENG,
 \POR, \SUE, \RUS, \TUR}
 \minorfid{wurtemberg}{14}
-\minorcapital{wurtemberg}{Wurtemberg}7
+\minorcapital{wurtemberg}{Würtemberg}7
 \minorprovince{wurtemberg}{Schwaben}6
 \minorbasicforces{wurtemberg}{\LD}
 \minorarmyclass{wurtemberg}{Latin}{III}
@@ -1294,7 +1295,7 @@ trading posts left by the player.}
 %(2), Illyria (3), Ragusa (2), Corfu (2), Ionia (3), Creta (3), Cyprus
 %(4) = revenu de 45 + commerce
 \minorbasicforces{venise}{\FLEET\faceplus, 1 \LeaderA, 4 \fortress, 2 \VGD}
-\minorbasicrenforts{venise}{1 \NWD or 2 \NGD}
+\minorbasicrenforts{venise}{1 \ND}
 \minorarmyclass{venise}{Latin}{III}
 \minorforces{venise}{2 \ARMY, 2 \FLEET, 4 \LD, 6 \LDND, 4 \LDENDE, 2 \NTD}
 \minorspecial{venise}{Reference levels for commercial fleets are:
@@ -1314,7 +1315,7 @@ trading posts left by the player.}
 \minorreligion{Vbelgique}{catholique}
 \minorpref{Vbelgique}{\FRA, \HOL, \ENG, \AUS, \SPA, \SUE, \POR, \PRU, \POL, \VEN, \RUS, \TUR}
 \minorarmyclass{Vbelgique}{Latin}{III}
-\minorprovince{Vbelgique}{Vlaandern}{10}
+\minorprovince{Vbelgique}{Vlaanderen}{10}
 \minorprovince{Vbelgique}{Flandre}{5}
 \minorprovince{Vbelgique}{Hainaut}{7}
 \minorprovince{Vbelgique}{Brabant}{9}
@@ -1353,7 +1354,7 @@ trading posts left by the player.}
 \minorpref{Vcatalogne}{}
 \minorprovince{Vcatalogne}{Catalunya}7
 \minorprovince{Vcatalogne}{Pirineos}6
-\minorprovince{Vcatalogne}{Rosselo}4
+\minorprovince{Vcatalogne}{Rosseló}4
 \minorarmyclass{Vcatalogne}{Latin}{III}
 \minorspecial{Vcatalogne}{May be created at the end of \eventref{pV:WoSS}.}
 %\minorblason{Vcatalogne}{espagne}
@@ -1364,8 +1365,8 @@ trading posts left by the player.}
 \VEN, \RUS, \SUE, \TUR} %comme brandebourg
 \minorarmyclass{Veastprussia}{Latin}{III} %comme brandebourg
 \minorprovince{Veastprussia}{Memel}{5}
-\minorprovince{Veastprussia}{Preussen}{6}
-\minorprovince{Veastprussia}{Courlande}{6}
+\minorprovince{Veastprussia}{Preußen}{6}
+\minorprovince{Veastprussia}{Kurland}{6}
 \minorprovince{Veastprussia}{Danzig}{5}
 \minorindep{Veastprussia}{PRU}
 
@@ -1376,7 +1377,7 @@ trading posts left by the player.}
 \minorprovince{Vfinlande}{Tavastland}2
 \minorprovince{Vfinlande}{Nyland}4
 \minorprovince{Vfinlande}{Karelen}2
-\minorprovince{Vfinlande}{Savo}2
+\minorprovince{Vfinlande}{Kexholm}2
 \minorarmyclass{Vfinlande}{Latin}{IIIM}
 \minorindeptwo{Vfinlande}{SUE}{RUS}
 
@@ -1399,10 +1400,10 @@ trading posts left by the player.}
 \minorprovince{Vlithuanie}{Polacak}4
 \minorprovince{Vlithuanie}{Severia}4
 \minorprovince{Vlithuanie}{Baltarusija}7
-\minorprovince{Vlithuanie}{Lietuva}4
-\minorprovince{Vlithuanie}{Zemaitija}5
-\minorprovince{Vlithuanie}{Smolenska}5
-\minorprovince{Vlithuanie}{Prypec}2
+\minorprovince{Vlithuanie}{Lietuvą}4
+\minorprovince{Vlithuanie}{Žemaitija}5
+\minorprovince{Vlithuanie}{Smolenską}5
+\minorprovince{Vlithuanie}{Prypeć}2
 \minorarmyclass{Vlithuanie}{Latin}{IIM}
 \minorindeptwo{Vlithuanie}{POL}{RUS}
 
@@ -1410,8 +1411,8 @@ trading posts left by the player.}
 \minorreligion{Vliflandie}{protestant}
 \minorpref{Vliflandie}{\POL, \PRU, \HOL, \ENG, \AUS, \FRA, \TUR, \RUS,
 \POR, \VEN, \SUE}
-\minorprovince{Vliflandie}{Neva}3
-\minorprovince{Vliflandie}{Estland}4
+\minorprovince{Vliflandie}{Ingermanland}3
+\minorprovince{Vliflandie}{Eesti}4
 \minorprovince{Vliflandie}{Livonija}5
 \minorprovince{Vliflandie}{Kurland}6
 \minorprovince{Vliflandie}{Memel}5
@@ -1422,9 +1423,9 @@ trading posts left by the player.}
 \minorreligion{Vnorvege}{protestant}
 \minorpref{Vnorvege}{\HOL, \ENG, \RUS, \PRU, \POL, \FRA, \AUS, \POR,
 \VEN, \TUR, }
-\minorprovince{Vnorvege}{Trondelag}2
+\minorprovince{Vnorvege}{Trøndelag}2
 \minorprovince{Vnorvege}{Vestfold}3
-\minorprovince{Vnorvege}{Ostlandet}4
+\minorprovince{Vnorvege}{Østlandet}4
 \minorarmyclass{Vnorvege}{Latin}{III}
 \minorindep{Vnorvege}{SUE}
 \minorspecial{Vnorvege}{May be created as a vassal of \SUE\ if
@@ -1434,11 +1435,11 @@ trading posts left by the player.}
 \minorreligion{Vpommeranie}{protestant}
 \minorpref{Vpommeranie}{\HOL, \ENG, \PRU, \AUS, \SPA, \FRA, \POL,
 \SUE, \VEN, \POR, \RUS, \TUR}
-\minorprovince{Vpommeranie}{Lubeck}3
+\minorprovince{Vpommeranie}{Lübeck}3
 \minorprovince{Vpommeranie}{Holstein}6
 \minorprovince{Vpommeranie}{Mecklenburg}6
-\minorprovince{Vpommeranie}{West Pommern}5
-\minorprovince{Vpommeranie}{Ost Pommern}5
+\minorprovince{Vpommeranie}{Vorpommern}5
+\minorprovince{Vpommeranie}{Hinterpommern}5
 \minorprovince{Vpommeranie}{Danzig}6
 \minorarmyclass{Vpommeranie}{Latin}{III}
 %\minorHRE{Vpommeranie} %to be decided TODO
@@ -1451,9 +1452,9 @@ trading posts left by the player.}
 \minorprovince{Vukraine}{Don}6
 \minorprovince{Vukraine}{Donets}4
 \minorprovince{Vukraine}{Poltava}4
-\minorprovince{Vukraine}{Ukrainya}6
-\minorprovince{Vukraine}{Podolie}3
-\minorprovince{Vukraine}{Zaporozhye}4
+\minorprovince{Vukraine}{Ukraïnya}6
+\minorprovince{Vukraine}{Podillya}3
+\minorprovince{Vukraine}{Zaporizhzhya}4
 \minorarmyclass{Vukraine}{Orthodoxe}{I}
 \minorindeptwo{Vukraine}{POL}{RUS}
 \minorspecial{Vukraine}{If \pays{ukraine} exists, independently, \pays{Vukraine} is merged into it.}
@@ -1800,8 +1801,8 @@ is fought there.}
 %\minorcountryhab{boheme}{Habsburg kingdom of Bohemia}{Habsburgensis
 %Bohemia}
 \minorreligion{Hboheme}{protestant}
-\minorcapital{Hboheme}{Boheme}{14}
-\minorprovince{Hboheme}{Silesie}6
+\minorcapital{Hboheme}{Bohème}{14}
+\minorprovince{Hboheme}{Silésie}6
 \minorprovince{Hboheme}{Morava}5
 \minorprovince{Hboheme}{Lausitz}4
 \minorbasicforces{Hboheme}{\ARMY\facemoins, \fortress\ may be
@@ -1817,18 +1818,18 @@ belonging to either \pays{pologne} (with a solid or blurred
 %\minorcountryhab{hongrie}{Habsburg kingdom of Hungary}{Habsburgensis
 %Hungaria}
 \minorreligion{Hhongrie}{catholique}
-\minorprovince{Hhongrie}{Szlovakia}3
-\minorprovince{Hhongrie}{Karpatok}1
+\minorprovince{Hhongrie}{Szlovákia}3
+\minorprovince{Hhongrie}{Kárpátok}1
 \minorprovince{Hhongrie}{Bukovina}1
 \minorprovince{Hhongrie}{Balaton}2
-\minorprovince{Hhongrie}{Pecs}6
-\minorprovince{Hhongrie}{Erdely}5
-\minorprovince{Hhongrie}{Mures}3
-\minorprovince{Hhongrie}{Kranj}5
-\minorprovince{Hhongrie}{Croatie}3
+\minorprovince{Hhongrie}{Pécs}6
+\minorprovince{Hhongrie}{Erdély}5
+\minorprovince{Hhongrie}{Marosz}3
+\minorprovince{Hhongrie}{Carniola}5
+\minorprovince{Hhongrie}{Hrvatska}3
 \minorprovince{Hhongrie}{Banat}3
 \minorprovince{Hhongrie}{Kapela}2
-\minorcapital{Hhongrie}{Hongrie}{10}
+\minorcapital{Hhongrie}{Magyarország}{10}
 \minorbasicforces{Hhongrie}{2 \ARMY\faceplus, \fortress may be
 maintened in each province.}
 \minorarmyclass{Hhongrie}{Latin}{IIM}
@@ -1875,7 +1876,7 @@ if dissociated with \SPA.}
 \minorprovince{Hnaples}{Calabria}1
 \minorprovince{Hnaples}{Sicilia}4
 \minorprovince{Hnaples}{Palermo}4
-\minorprovince{Hnaples}{Saldigna}3
+\minorprovince{Hnaples}{Saldígna}3
 \minorbasicforces{Hnaples}{\ARMY\faceplus, \FLEET\facemoins, \fortress may be maintened in \ville{Napoli}.}
 \minorarmyclass{Hnaples}{Latin}{III}
 \minorforces{Hnaples}{\ARMY, \FLEET, 2 \LD, \LDND, 2 \NDE, \NTD}
@@ -1926,10 +1927,10 @@ after dissociation with \SPA.}
 \minorprovince{huguenots}{Poitou}7
 \minorprovince{huguenots}{Quercy}{8}
 \minorprovince{huguenots}{Guyenne}8
-\minorprovince{huguenots}{Bearn}5
+\minorprovince{huguenots}{Béarn}5
 \minorprovince{huguenots}{Languedoc}{11}
-\minorprovince{huguenots}{Cevennes}3
-\minorprovince{huguenots}{Dauphine}{10}
+\minorprovince{huguenots}{Cévennes}3
+\minorprovince{huguenots}{Dauphiné}{10}
 \minorarmyclass{huguenots}{Latin}{IV}
 \minorforces{huguenots}{2 \ARMY, 4 \LD}
 \minorbasicforces{huguenots}{See~\eventref{pIII:FWR}}
@@ -1957,8 +1958,8 @@ become ally either.}
 \minorprovince{sainte-ligue}{Lyonnais}{10}
 \minorprovince{sainte-ligue}{Berry}9
 \minorprovince{sainte-ligue}{Bourgogne}{9}
-\minorprovince{sainte-ligue}{Orleanais}{15}
-\minorprovince{sainte-ligue}{Ile-de-France}{18}
+\minorprovince{sainte-ligue}{Orléanais}{15}
+\minorprovince{sainte-ligue}{Île-de-France}{18}
 \minorprovince{sainte-ligue}{Champagne}9
 \minorarmyclass{sainte-ligue}{Latin}{IV}
 \minorforces{sainte-ligue}{2 \ARMY, 4 \LD}

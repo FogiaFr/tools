@@ -299,7 +299,7 @@ public class Country {
      * @param type   of the force.
      * @return the force.
      */
-    private Limit createForce(int number, String type) {
+    public Limit createForce(int number, String type) {
         String typeCounter;
         switch (type) {
             case "\\ARMY\\faceplus":

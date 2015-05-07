@@ -42,16 +42,12 @@ public final class MapGenerator {
         Map<String, List<Path>> specialBorders = new HashMap<>();
         Map<String, Province> provinces = new HashMap<>();
 
+        Map<String, Map<String, List<String>>> aliases = extractAliases(log);
+
         extractPaths(provinces, specialBorders, "input/europe.grid.ps", false, log);
         extractPaths(provinces, specialBorders, "input/rotw.grid.ps", true, log);
 
         extractProvinceData(provinces, log);
-
-        Map<String, Country> countries = createCountries(log);
-
-        extractCountriesData(countries, provinces, log);
-
-        crossProvincesCountries(provinces, countries, log);
 
         Map<String, Province> provs = new HashMap<>();
         for (String prov : provinces.keySet()) {
@@ -59,10 +55,16 @@ public final class MapGenerator {
             province.restructure();
             if (!StringUtils.isEmpty(province.getTerrain()) && !StringUtils.equals("noman", province.getTerrain())) {
                 provs.put(prov, province);
+            }
+        }
 
-                if (province.getInfo() != null && province.getInfo().getDefaultOwner() == null) {
-                    log.append(province.getName()).append("\tProvince has no owner\n");
-                }
+        Map<String, Country> countries = createCountries(log);
+
+        extractCountriesData(countries, provs, aliases, log);
+
+        for (Province province : provs.values()) {
+            if (province.getInfo() != null && province.getInfo().getDefaultOwner() == null) {
+                log.append(province.getName()).append("\tProvince has no owner\n");
             }
         }
 
@@ -478,6 +480,62 @@ public final class MapGenerator {
     }
 
     /**
+     * Extract the aliases.
+     *
+     * @param log log writer.
+     * @return the aliases.
+     * @throws Exception exception.
+     */
+    private static Map<String, Map<String, List<String>>> extractAliases(Writer log) throws Exception {
+        Map<String, Map<String, List<String>>> aliases = new HashMap<>();
+
+        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("input/translations.utf")));
+        while ((line = reader.readLine()) != null) {
+            if (line.trim().startsWith("%") || StringUtils.isEmpty(line)) {
+                continue;
+            }
+
+            Matcher m = Pattern.compile("(.*)=\\[(.*)\\]=>(.*)").matcher(line);
+            String type;
+            String key;
+            List<String> alias = new ArrayList<>(1);
+            if (m.matches()) {
+                type = m.group(2) + "Inv";
+                key = m.group(1);
+                String alt = m.group(3);
+                if (alt.contains("%")) {
+                    alt = alt.substring(0, alt.indexOf('%'));
+                }
+                alias.add(alt);
+            } else {
+                String[] split = line.split(":");
+                type = split[0];
+                key = split[1];
+                for (int i = 2; i < split.length; i++) {
+                    String alt = split[i];
+                    if (alt.contains("%")) {
+                        alt = alt.substring(0, alt.indexOf('%'));
+                    }
+                    alias.add(alt);
+                }
+            }
+
+            if (!aliases.containsKey(type)) {
+                aliases.put(type, new HashMap<>());
+            }
+
+            if (aliases.get(type).containsKey(key)) {
+                log.append(key).append("\tAlias already exist\t").append(type).append("\n");
+            }
+
+            aliases.get(type).put(key, alias);
+        }
+
+        return aliases;
+    }
+
+    /**
      * Create the countries from the header file of countries.
      *
      * @param log log writer.
@@ -591,10 +649,12 @@ public final class MapGenerator {
      *
      * @param countries to fill.
      * @param provinces gathered so far.
+     * @param aliases   the aliases.
      * @param log       log writer.
      * @throws Exception exception.
      */
-    private static void extractCountriesData(Map<String, Country> countries, Map<String, Province> provinces, Writer log) throws Exception {
+    private static void extractCountriesData(Map<String, Country> countries, Map<String, Province> provinces,
+                                             Map<String, Map<String, List<String>>> aliases, Writer log) throws Exception {
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("input/engCorpsMineurs.tex")));
         List<String> block = new ArrayList<>();
@@ -629,60 +689,23 @@ public final class MapGenerator {
                 } else if (minor.startsWith("\\minorfid")) {
                     country.setFidelity(Integer.parseInt(split[1]));
                 } else if (minor.startsWith("\\minorprovince")) {
-                    country.getProvinces().add(split[1]);
+                    String realProv = getRealProvince(country, split[1], provinces, aliases, log);
+                    if (realProv != null) {
+                        country.getProvinces().add(realProv);
+                    }
                 } else if (minor.startsWith("\\minorcapital")) {
-                    country.getCapitals().add(split[1]);
+                    String realProv = getRealProvince(country, split[1], provinces, aliases, log);
+                    if (realProv != null) {
+                        country.getCapitals().add(realProv);
+                    }
                 } else if (minor.startsWith("\\minorpref")) {
                     // TODO conception
                 } else if (minor.startsWith("\\minorbasicforces")) {
-                    String[] forces = ToolsUtil.split(split[1], ',', '{', '}');
-                    for (String force : forces) {
-                        int number = 0;
-                        String type = null;
-                        String[] details = force.trim().split(" ");
-                        if (details.length == 1) {
-                            if (StringUtils.equals("nothing", details[0])
-                                    || StringUtils.equals("None", details[0])
-                                    || details[0].startsWith("See")) {
-                                continue;
-                            }
-                            number = 1;
-                            if (details[0].charAt(0) != '\\') {
-                                log.append(country.getName()).append("\tCountry has error in minorbasicforces\t")
-                                        .append(minor);
-                            }
-                            type = details[0];
-                        } else if (details.length == 2) {
-                            number = Integer.parseInt(details[0]);
-                            type = details[1];
-                        } else {
-                            int a = 1;
-                            continue;
-                        }
-                        country.addBasicForce(number, type);
-                    }
+                    List<Country.Limit> forces = createForces(country, split[1], log);
+                    country.getBasicForces().addAll(forces);
                 } else if (minor.startsWith("\\minorbasicrenforts")) {
-                    String[] forces = ToolsUtil.split(split[1], ',', '(', ')');
-                    for (String force : forces) {
-                        int number = 0;
-                        String type = null;
-                        String[] details = force.trim().split(" ");
-                        if (details.length == 1) {
-                            number = 1;
-                            if (details[0].charAt(0) != '\\') {
-                                log.append(country.getName()).append("\tCountry has error in minorbasicrenforts\t")
-                                        .append(minor);
-                            }
-                            type = details[0];
-                        } else if (details.length == 2) {
-                            number = Integer.parseInt(details[0]);
-                            type = details[1];
-                        } else {
-                            int a = 1;
-                            continue;
-                        }
-                        country.addReinforcements(number, type);
-                    }
+                    List<Country.Limit> forces = createForces(country, split[1], log);
+                    country.getReinforcements().addAll(forces);
                 } else if (minor.startsWith("\\minorforces")) {
                     String[] forces = ToolsUtil.split(split[1], ',', '(', ')');
                     for (String force : forces) {
@@ -1041,7 +1064,121 @@ public final class MapGenerator {
         major.addLimit(2, "MNU_METAL");
         major.addLimit(1, "MNU_SALT");
         major.addLimit(1, "MNU_CLOTHES");
+    }
 
+    /**
+     * Retrieves the real name of the province.
+     *
+     * @param country   owner of the province.
+     * @param prov      name of the province.
+     * @param provinces list of the provinces.
+     * @param aliases   list of the aliases.
+     * @param log       log writer.
+     * @return the real name of the province.
+     * @throws Exception exception.
+     */
+    private static String getRealProvince(Country country, String prov, Map<String, Province> provinces,
+                                          Map<String, Map<String, List<String>>> aliases, Writer log) throws Exception {
+        String realProv = null;
+        Province province = isProvince(prov, provinces);
+
+        if (province == null) {
+            List<String> inv = aliases.get("provinceInv").get(prov);
+            if (inv != null && inv.size() == 1) {
+                prov = inv.get(0);
+                province = isProvince(prov, provinces);
+            }
+            if (province == null) {
+                for (String alias : aliases.get("province").get(prov)) {
+                    province = isProvince(alias, provinces);
+                    if (province != null) {
+                        break;
+                    }
+                }
+            }
+        }
+        if (province == null) {
+            log.append(country.getName()).append("\tProvince does not exist\t").append(prov).append("\n");
+        } else {
+            realProv = province.getName();
+            if (StringUtils.equals("MINOR", country.getType())
+                    || (StringUtils.equals("MINORMAJOR", country.getType()) && !StringUtils.equals("hollande", country.getName()))) {
+                if (!StringUtils.isEmpty(province.getInfo().getDefaultOwner())) {
+                    if (StringUtils.equals("ukraine", province.getInfo().getDefaultOwner())) {
+                        province.getInfo().setDefaultOwner(country.getName());
+                    }
+                    log.append(prov).append("\tProvince has 2 owners\t")
+                            .append(province.getInfo().getDefaultOwner()).append("\t").append(country.getName())
+                            .append("\tgiven to\t").append(province.getInfo().getDefaultOwner()).append("\n");
+                } else {
+                    province.getInfo().setDefaultOwner(country.getName());
+                }
+            }
+        }
+
+        return realProv;
+    }
+
+    /**
+     * Create forces (basic force as reinforcements).
+     *
+     * @param country       to give forces.
+     * @param stringToParse string to parse.
+     * @param log           log writer.
+     * @return the forces.
+     * @throws Exception exception.
+     */
+    private static List<Country.Limit> createForces(Country country, String stringToParse, Writer log) throws Exception {
+        List<Country.Limit> returnValue = new ArrayList<>();
+        String[] forces = ToolsUtil.split(stringToParse, ',', '{', '}');
+        for (String force : forces) {
+            int number = 0;
+            String type = null;
+            String[] details = force.trim().split(" ");
+            if (details.length == 1) {
+                if (StringUtils.equals("nothing", details[0])
+                        || StringUtils.equals("None", details[0])
+                        || details[0].startsWith("See")) {
+                    continue;
+                }
+                number = 1;
+                if (details[0].charAt(0) != '\\') {
+                    log.append(country.getName()).append("\tCountry has error in addForce\t")
+                            .append(stringToParse).append("\n");
+                }
+                type = details[0];
+            } else if (details.length == 2) {
+                number = Integer.parseInt(details[0]);
+                type = details[1];
+            } else {
+                if (StringUtils.equals("\\LD or \\ND", force.trim())) {
+                    number = 1;
+                    type = "\\LDND";
+                } else if (StringUtils.equals("1 \\NGD\\ or 1 \\NDE or 1\\NTD", force.trim())) {
+                    number = 1;
+                    type = "\\NDE";
+                } else if (StringUtils.equals("1 \\NDE\\ or 1 \\NGD", force.trim())) {
+                    number = 1;
+                    type = "\\NDE";
+                } else if (StringUtils.equals("\\LD or 2\\NGD", force.trim())) {
+                    number = 1;
+                    type = "\\LDND";
+                } else if (StringUtils.equals("1 \\NWD or 2 \\NGD", force.trim())) {
+                    number = 1;
+                    type = "\\ND";
+                } else {
+                    if (!force.contains("\\EUminorremark")
+                            && !force.contains(" if ")
+                            && !force.contains("event")) {
+                        log.append(country.getName()).append("\tCan't parse country force\t")
+                                .append(force).append("\n");
+                    }
+                    continue;
+                }
+            }
+            returnValue.add(country.createForce(number, type));
+        }
+        return returnValue;
     }
 
     /**
@@ -1050,6 +1187,7 @@ public final class MapGenerator {
      * @param string to transform.
      * @return encoded string.
      */
+
     private static String transformSpecialChars(String string) {
         String name = string;
 
@@ -1107,41 +1245,6 @@ public final class MapGenerator {
         }
 
         return Integer.parseInt(modValue);
-    }
-
-    /**
-     * Cross the info in the provinces with those in the countries.
-     *
-     * @param countries to fill.
-     * @param provinces gathered so far.
-     * @param log       log writer.
-     * @throws Exception exception.
-     */
-    private static void crossProvincesCountries(Map<String, Province> provinces, Map<String, Country> countries, Writer log) throws Exception {
-        for (Country country : countries.values()) {
-            List<String> provincesToTest = new ArrayList<>(country.getProvinces());
-            provincesToTest.addAll(country.getCapitals());
-            for (String prov : provincesToTest) {
-                Province province = provinces.get(prov);
-                if (province == null) {
-                    log.append(country.getName()).append("\tProvince does not exist\t").append(prov).append("\n");
-                } else {
-                    if (StringUtils.equals("MINOR", country.getType())
-                            || (StringUtils.equals("MINORMAJOR", country.getType()) && !StringUtils.equals("hollande", country.getName()))) {
-                        if (!StringUtils.isEmpty(province.getInfo().getDefaultOwner())) {
-                            if (StringUtils.equals("ukraine", province.getInfo().getDefaultOwner())) {
-                                province.getInfo().setDefaultOwner(country.getName());
-                            }
-                            log.append(prov).append("\tProvince has 2 owners\t")
-                                    .append(province.getInfo().getDefaultOwner()).append("\t").append(country.getName())
-                                    .append("\tgiven to\t").append(province.getInfo().getDefaultOwner()).append("\n");
-                        } else {
-                            province.getInfo().setDefaultOwner(country.getName());
-                        }
-                    }
-                }
-            }
-        }
     }
 
     /**

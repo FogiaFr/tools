@@ -1,0 +1,8 @@
+ - ville:Hamburg removed
+ - granderegion:Chichimeca removed
+ - Calicut=[province]=>Kolikot removed
+ - province:Mures:Mureș -> province:Mures:Mureș:Marosz
+ - province:Nil:an-Nīl [ﻞﻴّﻨﻟا]:Nil ->province:Nil:ﻞﻴّﻨﻟا [an-Nīl]:Nil
+ - province:Suisse: -> province:Suisse:Schweiz
+ - province:Astragan -> province:Astragan:Astrakhan
+ - province:Souss:ﺱﻮﺴﻟﺍ:Souss -> province:Souss:ﺱﻮﺴﻟﺍ:Souss:as-Sūs
