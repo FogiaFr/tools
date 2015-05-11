@@ -413,6 +413,7 @@ Savo=[province]=>Kexholm
 SidiIfni=[province]=>Souss
 Neva=[province]=>Ingria
 Ingermanland=[province]=>Ingria
+Kyklades=[province]=>Cyclades
 
 %Villes
 %%%Europe
@@ -669,6 +670,7 @@ seazone:Groenland:Grœnland
 seazone:Acores:Mer des Açores
 seazone:Canarias:Mer des Canaries
 seazone:Atlantique N:Atlantique nord
+seazone:Atlantique NO:Atlantique nord-ouest
 seazone:Atlantique
 seazone:Arguin:Banc d’Arguin
 seazone:Gambie:Baie de Gambie
@@ -683,10 +685,11 @@ seazone:Man:Île de Man
 seazone:Bonne-Esperance:Cap de Bonne-Espérance
 seazone:Tempetes:Cap des tempêtes
 seazone:Quarantiemes:Quarantièmes rugissants
+seazone:Fundy:Bay of Fundy
 seazone:Mozambique:Canal de Mozambique
 seazone:Indien W:Océan Indien ouest
 seazone:Seychelles:Mer des Seychelles
-seazone:Rouge:Mer rouge
+seazone:Rouge:Mer rouge:Mer Rouge
 seazone:Mascate:Côte de Mascate
 seazone:Indus:Golfe de l'Indus
 seazone:Oman:Mer d’Oman
@@ -707,6 +710,7 @@ seazone:Epices:Mer des Épices
 seazone:Philippines:Mer des Philippines
 seazone:Chine S:Mer de Chine sud
 seazone:Formose:Détroit de Formose
+seazone:Floride:Détroit de Floride
 seazone:Chine N:Mer de Chine nord
 seazone:Coree:Mer de Corée
 seazone:Japon:Mer du Japon
@@ -720,6 +724,7 @@ Noire=[seazone]=>Noire W
 Canaries=[seazone]=>Canarias
 Mediterrannee E=[seazone]=>Mediterranee E
 Mediterrannee W=[seazone]=>Mediterranee W
+Grønland=[seazone]=>Groenland
 
 %Pays
 paysmajeur:Espagne:Hispania
@@ -750,6 +755,7 @@ granderegion:Angola
 granderegion:Antilles
 granderegion:Aoudh::Ayodhyā
 granderegion:Aral
+granderegion:Arizona
 granderegion:Ayutthaya:อยุธยา:Ayutthaya
 Thailande=[granderegion]=>Ayutthaya
 granderegion:Azteca
@@ -768,16 +774,17 @@ granderegion:Cap
 granderegion:Celebes:Célèbes
 granderegion:Ceylan::Singala
 granderegion:Chichimeca
+granderegion:Chili
 granderegion:Congo
 granderegion:Corea:조선:Chosǒn
 Coree=[granderegion]=>Corea
 granderegion:Cotedivoire:Côte d’Ivoire
 granderegion:Cotedor:Côte d’Or
 granderegion:Cuba
-granderegion:Dai Viet
-%:Đại Việt
+granderegion:Dai Viet:Đại Việt
 granderegion:Delhi::Dellī
 granderegion:Ecuador
+granderegion:Ethiopie:Éthiopie
 granderegion:Formose:台湾:Formose
 granderegion:Gabon
 granderegion:Gondwana::Gonḍānā
@@ -787,6 +794,7 @@ granderegion:Guyana
 granderegion:Haiti:Haïti
 granderegion:Hudson
 granderegion:Hyderabad::Hydārabad
+granderegion:Ienissei:Ienisseï
 granderegion:Iles aux epices:Îles aux épices
 granderegion:Iles de la Sonde:Îles de la Sonde
 Epices=[granderegion]=>Iles aux epices
@@ -794,12 +802,15 @@ Sonde=[granderegion]=>Iles de la Sonde
 granderegion:Illinois
 granderegion:Inca
 granderegion:Indus:ﺪﻨﺳ:Indus
+granderegion:Iroquois
 granderegion:Japon:日本:Japon
 Japan=[granderegion]=>Japon
 granderegion:Java
 granderegion:Kamchatka:Камчатска:Kamchatka
 granderegion:Karnatika::Karnāṭaka
+granderegion:Labrador
 granderegion:Kenya
+granderegion:Lena
 granderegion:Madagascar
 granderegion:Malabar::Malabāṟ
 granderegion:Malacca
@@ -807,23 +818,31 @@ Malaisie=[granderegion]=>Malacca
 granderegion:Malouines
 granderegion:Mandchourie:滿洲:Mandchourie
 granderegion:Mascareignes
+granderegion:Manitoba
 granderegion:Mauritanie
 granderegion:Minas Gerais
 granderegion:Mumbai::Mumbaī
+granderegion:Namibie
 granderegion:Nankin:南京:Nankin
 granderegion:Natal
+granderegion:Nevada
 granderegion:Nyasa
 granderegion:Nedj:ﺪﺟﺎﻧ:Nedj
-granderegion:Oceania
+granderegion:Ob
+granderegion:Oceania:Océanie
 granderegion:Oman:ﻥﺎﻤﻋ:Oman
 granderegion:Oregon
 granderegion:Orissa::Orissā
+granderegion:Ormus
 granderegion:Pacifique
 granderegion:Panama:Panamá
+granderegion:Paraguay
+granderegion:Patagonia
 granderegion:Pekin:北京:Pékin
 granderegion:Pendjab::Pãjāb
 granderegion:Perse:ﺱﺭﺎﭘ:Perse
 granderegion:Philippines
+granderegion:Plata
 granderegion:Quebec:Québec
 granderegion:Recife
 granderegion:Rio
@@ -841,6 +860,8 @@ granderegion:Texas
 granderegion:Virginia
 granderegion:Kansas
 granderegion:Mississippi
+granderegion:Venezuela
+granderegion:Yakoutie
 granderegion:Yucatan:Yucatán
 Equateur=[granderegion]=>Ecuador
 

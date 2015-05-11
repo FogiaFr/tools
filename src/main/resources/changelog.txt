@@ -8,6 +8,33 @@ translations.utf:
  - province:Suisse: -> province:Suisse:Schweiz
  - province:Astragan -> province:Astragan:Astrakhan
  - province:Souss:ﺱﻮﺴﻟﺍ:Souss -> province:Souss:ﺱﻮﺴﻟﺍ:Souss:as-Sūs
+ - seazone:Rouge:Mer rouge -> seazone:Rouge:Mer rouge:Mer Rouge
+ - granderegion:Dai Viet -> granderegion:Dai Viet:Đại Việt
+ - granderegion:Oceania: -> granderegion:Oceania:Océanie
+ - addition of:
+   - Kyklades=[province]=>Cyclades
+   - granderegion:Nevada
+   - granderegion:Arizona
+   - granderegion:Manitoba
+   - granderegion:Labrador
+   - granderegion:Iroquois
+   - granderegion:Venezuela
+   - granderegion:Paraguay
+   - granderegion:Plata
+   - granderegion:Patagonia
+   - granderegion:Chili
+   - granderegion:Ob
+   - granderegion:Ienissei:Ienisseï
+   - granderegion:Lena
+   - granderegion:Yakoutie
+   - granderegion:Ormus
+   - granderegion:Namibie
+   - granderegion:Ethiopie:Éthiopie
+   - Grønland=[seazone]=>Groenland
+   - seazone:Atlantique NO:Atlantique nord-ouest
+   - seazone:Fundy:Bay of Fundy
+   - seazone:Floride:Détroit de Floride
+   -
 
 engEntetesMineurs.tex:
  - \minorcountry{grenade}{Kingdom of Granada}{Granada} -> minorcountryvirtual{grenade}{Kingdom of Granada}{Granada}
@@ -71,7 +98,22 @@ europe.grid.ps:
 rotw.grid.ps:
  - Aden~Socotra -> Aden~So
  - Philippines~W -> Philippines~C
- - Îles aux Épices~
+ - Europe~Méditerrannée -> Europe~Méditerranée
+ - Mississipi -> Mississippi (*10)
+ - Corée -> Coree (*3)
+ - Îles-sous-le-vent -> Îles sous-le-vent
+ - Golfe d’Amazonie -> Golfe d'Amazonie
+ - Golfe de l’Indus -> Golfe de l'Indus (*2)
+ - Cap des Tempêtes -> Cap des tempêtes
+ - Grande Baie australienne -> Grande Baie Australienne
+ - Malouines -> Malouines~I (*3: 2 prov + 1 carre)
+ - Kamchatka -> Kamchatka~I
+ - Formose -> Formose~I (*2: prov + carre)
+ - Singala -> Singala~I (*2: 2 prov, zoom and normal)
+ - Sainte-Hélène -> Sainte-Hélène~I (*2: prov + carre)
+ - Seychelles -> Seychelles~I (*2: prov + carre)
+ - Ambon Island -> -Îles aux Épices~A
+ - Îles aux Épices -> Îles aux épices (*2: 5 prov + 3 carre)
 
 18/04/2015:
 europe.grid.ps:
@@ -84,6 +126,9 @@ europe.grid.ps:
  - Aral W -> Aral~W (*3)
  - Nedj E -> Nedj~E
  - Mauritanie N -> Mauritanie~N
+ - Oman E -> Oman~E
+ - Méditerrannée orientale -> Méditerranée orientale
+ - Méditerrannée occidentale -> Méditerranée occidentale
 
 rotw.grid.ps:
  - Addition of 2 \n in the mountain pass special borders (before and after the /path0711 /path0899)

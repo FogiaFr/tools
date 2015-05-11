@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiPredicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Utility to generate various files for the EU Map whose the map in the format .geo.json.
@@ -44,35 +46,24 @@ public final class MapGenerator {
 
         Map<String, Map<String, List<String>>> aliases = extractAliases(log);
 
-        extractPaths(provinces, specialBorders, "input/europe.grid.ps", false, log);
-        extractPaths(provinces, specialBorders, "input/rotw.grid.ps", true, log);
+        extractPaths(provinces, specialBorders, aliases, "input/europe.grid.ps", false, log);
+        extractPaths(provinces, specialBorders, aliases, "input/rotw.grid.ps", true, log);
 
-        extractProvinceData(provinces, log);
-
-        Map<String, Province> provs = new HashMap<>();
-        for (String prov : provinces.keySet()) {
-            Province province = provinces.get(prov);
-            province.restructure();
-            if (!StringUtils.isEmpty(province.getTerrain()) && !StringUtils.equals("noman", province.getTerrain())) {
-                provs.put(prov, province);
-            }
-        }
+        extractProvinceData(provinces, aliases, log);
 
         Map<String, Country> countries = createCountries(log);
 
-        extractCountriesData(countries, provs, aliases, log);
+        extractCountriesData(countries, provinces, aliases, log);
 
-        for (Province province : provs.values()) {
+        for (Province province : provinces.values()) {
             if (province.getInfo() != null && province.getInfo().getDefaultOwner() == null) {
                 log.append(province.getName()).append("\tProvince has no owner\n");
             }
         }
 
-        createMapData(provs, log);
+        createMapData(provinces, log);
 
-        createProvincesData(provs, specialBorders, log);
-
-        createCountriesData(countries, log);
+        createProvincesData(provinces, specialBorders, countries, log);
 
         log.flush();
         log.close();
@@ -83,12 +74,14 @@ public final class MapGenerator {
      *
      * @param provinces      List of provinces shapes.
      * @param specialBorders List of special borders.
+     * @param aliases        the aliases.
      * @param inputFile      Name of the file to parse.
      * @param rotw           flag saying that the file is for the ROTW map.
      * @param log            log writer.
      * @throws IOException exception.
      */
-    private static void extractPaths(Map<String, Province> provinces, Map<String, List<Path>> specialBorders, String inputFile, boolean rotw, Writer log) throws IOException {
+    private static void extractPaths(Map<String, Province> provinces, Map<String, List<Path>> specialBorders,
+                                     Map<String, Map<String, List<String>>> aliases, String inputFile, boolean rotw, Writer log) throws IOException {
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream(inputFile)));
         Map<String, Path> paths = new HashMap<>();
@@ -117,7 +110,7 @@ public final class MapGenerator {
                     }
                 }
             } else if (line.startsWith("/prov")) {
-                addSubProvince(line, provinces, paths, rotw, zoomParsing, log);
+                addSubProvince(line, provinces, paths, aliases, rotw, zoomParsing, log);
             } else if (line.startsWith("%#%% Zoom")) {
                 zoomParsing = true;
             } else if (specialBordersParsing && StringUtils.equals("[", line.trim())) {
@@ -154,7 +147,7 @@ public final class MapGenerator {
                     }
                 }
             } else if (square.matcher(line).matches()) {
-                addSquare(line, provinces, paths, rotw, zoomParsing, log);
+                addSquare(line, provinces, paths, aliases, rotw, zoomParsing, log);
             }
         }
 
@@ -167,12 +160,14 @@ public final class MapGenerator {
      * @param line        to parse.
      * @param provinces   existing provinces.
      * @param paths       list of paths.
+     * @param aliases     the aliases.
      * @param rotw        flag saying that the subProvince is for the ROTW map.
      * @param zoomParsing flag saying that the subProvince is in a zoom (for Europe map).
      * @param log         log writer.
      * @throws IOException exception.
      */
-    private static void addSubProvince(String line, Map<String, Province> provinces, Map<String, Path> paths, boolean rotw, boolean zoomParsing, Writer log) throws IOException {
+    private static void addSubProvince(String line, Map<String, Province> provinces, Map<String, Path> paths,
+                                       Map<String, Map<String, List<String>>> aliases, boolean rotw, boolean zoomParsing, Writer log) throws IOException {
         Matcher m = Pattern.compile(".*\\((.*)\\) ?ppdef.*").matcher(line);
         if (!m.matches()) {
             return;
@@ -186,6 +181,10 @@ public final class MapGenerator {
         if (StringUtils.equals("Caption", provinceName) || StringUtils.equals("Special", provinceName) || StringUtils.isEmpty(provinceName)
                 || provinceName.startsWith("Zone") || StringUtils.equals("SaintEmpire", provinceName)
                 || StringUtils.equals("zone", line.split(" ")[2])) {
+            return;
+        }
+        provinceName = getRealProvinceName(provinceName, aliases, line.split(" ")[1], log);
+        if (provinceName == null) {
             return;
         }
         Province province = provinces.get(provinceName);
@@ -215,17 +214,106 @@ public final class MapGenerator {
     }
 
     /**
+     * Retrieve the real province name given an input.
+     * The format is 'T'name~suffix where
+     * <ul>
+     * <li>T is a character (p for europe, r for rotw and s for sea)</li>
+     * <li>name is the name which has to exist in the aliases</li>
+     * <li>~suffix is a rotw suffix (inexistant for province and sea)</li>
+     * </ul>
+     *
+     * @param input   base for the province name.
+     * @param aliases aliases that contain all the real names and their aliases.
+     * @param terrain terrain of the province/sea zone.
+     * @param log     log writer.
+     * @return the real province name given an input.
+     * @throws IOException exception.
+     */
+    private static String getRealProvinceName(String input,
+                                              Map<String, Map<String, List<String>>> aliases,
+                                              String terrain, Writer log) throws IOException {
+        if (StringUtils.equals("noman", terrain)) {
+            return null;
+        }
+
+        boolean seaZone = StringUtils.equals("lmer", terrain)
+                || StringUtils.equals("mer", terrain)
+                || StringUtils.equals("europemer", terrain);
+
+        boolean rotw = !seaZone && input.contains("~");
+        String realName = null;
+        String provinceName = input;
+        String aliasPrefix = "province";
+        String prefix = "e";
+        String suffix = "";
+        if (seaZone) {
+            aliasPrefix = "seazone";
+            prefix = "s";
+        } else if (rotw) {
+            aliasPrefix = "granderegion";
+            prefix = "r";
+            suffix = input.substring(input.indexOf('~'));
+            provinceName = input.substring(0, input.indexOf('~'));
+        }
+
+        if (aliases.get(aliasPrefix).containsKey(provinceName)) {
+            realName = provinceName;
+        } else if (aliases.get(aliasPrefix + "Inv").containsKey(provinceName)) {
+            realName = aliases.get(aliasPrefix + "Inv").get(provinceName).get(0);
+        } else {
+            for (String key : aliases.get(aliasPrefix).keySet()) {
+                for (String value : aliases.get(aliasPrefix).get(key)) {
+                    boolean found = StringUtils.equals(provinceName, value);
+
+                    if (!found) {
+                        found = value.contains("(") && value.contains(")")
+                                && StringUtils.equals(provinceName, value.substring(value.indexOf('(') + 1, value.lastIndexOf(')')));
+                    }
+
+                    if (!found) {
+                        found = value.contains("[") && value.contains("]")
+                                && StringUtils.equals(provinceName, value.substring(value.indexOf('[') + 1, value.lastIndexOf(']')));
+                    }
+
+                    if (found) {
+                        if (realName != null) {
+                            log.append(provinceName).append("\tCan't find root name: ambiguous values\t")
+                                    .append(realName).append("\t").append(key).append("\n");
+                        }
+                        realName = key;
+                    }
+                }
+            }
+        }
+
+        if (realName == null) {
+            if (seaZone) {
+                log.append(provinceName).append("\tSea zone not found in aliases\n");
+            } else if (rotw) {
+                log.append(provinceName).append("\tRegion not found in aliases\n");
+            } else {
+                log.append(provinceName).append("\tProvince not found in aliases\n");
+            }
+            return null;
+        }
+
+        return prefix + realName + suffix;
+    }
+
+    /**
      * Adds a portion to an existing province.
      *
      * @param line        to parse.
      * @param provinces   existing provinces.
      * @param paths       list of paths.
+     * @param aliases     the aliases.
      * @param rotw        flag saying that the subProvince is for the ROTW map.
      * @param zoomParsing flag saying that the subProvince is in a zoom (for Europe map).
      * @param log         log writer.
      * @throws IOException exception.
      */
-    private static void addSquare(String line, Map<String, Province> provinces, Map<String, Path> paths, boolean rotw, boolean zoomParsing, Writer log) throws IOException {
+    private static void addSquare(String line, Map<String, Province> provinces, Map<String, Path> paths,
+                                  Map<String, Map<String, List<String>>> aliases, boolean rotw, boolean zoomParsing, Writer log) throws IOException {
         Matcher m = Pattern.compile("\\s*(\\d{4}) (\\d{4}) \\d\\([^\\)]*\\)\\(([^\\)]*)\\)\\(([^\\)]*)\\) (true|false) carre\\s*").matcher(line);
         if (!m.matches()) {
             return;
@@ -234,6 +322,8 @@ public final class MapGenerator {
         int y = Integer.parseInt(m.group(2)) + 6 - SQUARE_SIZE / 2;
         String provinceName = m.group(3);
         String squareName = "carre" + m.group(4);
+        boolean plain = StringUtils.equals("true", m.group(5));
+        String terrain = plain ? "plaine" : "foret";
         boolean secondary = false;
         if (provinceName.startsWith("*")) {
             provinceName = provinceName.substring(1);
@@ -242,12 +332,16 @@ public final class MapGenerator {
         if (StringUtils.equals("Caption", provinceName)) {
             return;
         }
+        provinceName = getRealProvinceName(provinceName, aliases, terrain, log);
+        if (provinceName == null) {
+            return;
+        }
         Province province = provinces.get(provinceName);
         if (province == null) {
             province = new Province(provinceName, log);
             provinces.put(provinceName, province);
         }
-        SubProvince portion = new SubProvince("lac", secondary, rotw);
+        SubProvince portion = new SubProvince(terrain, secondary, rotw);
         Path squarePath = new Path(squareName, true, rotw);
         squarePath.getCoords().add(new ImmutablePair<>(x, y));
         squarePath.getCoords().add(new ImmutablePair<>(x + SQUARE_SIZE, y));
@@ -271,10 +365,11 @@ public final class MapGenerator {
      * Extract data about the provinces.
      *
      * @param provinces data gathered so far.
+     * @param aliases   the aliases.
      * @param log       log writer.
      * @throws Exception exception.
      */
-    private static void extractProvinceData(Map<String, Province> provinces, Writer log) throws Exception {
+    private static void extractProvinceData(Map<String, Province> provinces, Map<String, Map<String, List<String>>> aliases, Writer log) throws Exception {
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(MapGenerator.class.getClassLoader().getResourceAsStream("input/europe.utf")));
         List<String> block = new ArrayList<>();
@@ -286,7 +381,7 @@ public final class MapGenerator {
                 block.add(line);
             } else if (line.startsWith("; ---") || line.startsWith("; %%%")) {
                 if (!block.isEmpty()) {
-                    processBlock(block, provinces, log);
+                    processBlock(block, provinces, aliases, log);
                 }
                 block.clear();
             } else if (!block.isEmpty()) {
@@ -294,7 +389,7 @@ public final class MapGenerator {
             }
         }
         if (!block.isEmpty()) {
-            processBlock(block, provinces, log);
+            processBlock(block, provinces, aliases, log);
         }
     }
 
@@ -303,10 +398,11 @@ public final class MapGenerator {
      *
      * @param block     to parse.
      * @param provinces data gathered so far.
+     * @param aliases   the aliases.
      * @param log       log writer.
      * @throws Exception exception.
      */
-    private static void processBlock(List<String> block, Map<String, Province> provinces, Writer log) throws Exception {
+    private static void processBlock(List<String> block, Map<String, Province> provinces, Map<String, Map<String, List<String>>> aliases, Writer log) throws Exception {
         ProvinceInfo info = new ProvinceInfo();
         for (String line : block) {
             Matcher m = Pattern.compile("NOM [^\"]* \"(.*)\" .*").matcher(line);
@@ -350,7 +446,7 @@ public final class MapGenerator {
                 String string = m.group(1);
                 info.setPort(StringUtils.equals("anchor", string) || StringUtils.equals("anchor4", string));
                 info.setArsenal(StringUtils.equals("anchor2", string) || StringUtils.equals("anchor5", string));
-                info.setPraesidiable(StringUtils.equals("anchor3", string) || StringUtils.equals("anchor4", string));
+                info.setPraesidiable(StringUtils.equals("anchor4", string) || StringUtils.equals("anchor5", string));
                 continue;
             }
             if (line.startsWith("VALUE ")) {
@@ -395,10 +491,21 @@ public final class MapGenerator {
                     }
                 }
             }
+
+            if (found == null) {
+                String realProvinceName = deepSearchProvince(info, provinces, aliases);
+                found = isProvince(realProvinceName, provinces);
+            }
         }
 
         if (found != null) {
+            if (found.getInfo() != null) {
+                log.append(found.getName()).append("\tProvince has already info\t").append(info.getNameProvince())
+                        .append("\n");
+            }
             found.setInfo(info);
+        } else {
+            log.append(info.getNameProvince()).append("\tCan't find province\n");
         }
     }
 
@@ -466,17 +573,103 @@ public final class MapGenerator {
      * @return <code>true</code> if the name exists.
      */
     private static Province isProvince(String name, Map<String, Province> provinces) {
-        Province found = provinces.get(name);
+//        Province found = provinces.get('e' + name);
+//
+//        if (found == null) {
+//            if (name.contains("(") && name.contains(")")) {
+//                found = provinces.get('e' + name.substring(name.indexOf('(') + 1, name.lastIndexOf(')')));
+//            } else if (name.contains("[") && name.contains("]")) {
+//                found = provinces.get('e' + name.substring(name.indexOf('[') + 1, name.lastIndexOf(']')));
+//            }
+//        }
+//
+//        return found;
 
-        if (found == null) {
-            if (name.contains("(") && name.contains(")")) {
-                found = provinces.get(name.substring(name.indexOf('(') + 1, name.lastIndexOf(')')));
-            } else if (name.contains("[") && name.contains("]")) {
-                found = provinces.get(name.substring(name.indexOf('[') + 1, name.lastIndexOf(']')));
+        String realName = matchProvinceName(name, null, (s, s2) -> provinces.containsKey('e' + s));
+
+        return provinces.get('e' + realName);
+
+    }
+
+    private static String matchProvinceName(String name, String otherName, BiPredicate<String, String> filter) {
+        String realName = null;
+
+        if (filter.test(name, otherName)) {
+            realName = name;
+        } else if (name != null && name.contains("(") && name.contains(")")) {
+            String newName = name.substring(name.indexOf('(') + 1, name.lastIndexOf(')'));
+            if (filter.test(newName, otherName)) {
+                realName = newName;
+            } else if (otherName != null && otherName.contains("(") && otherName.contains(")")) {
+                String newOtherName = otherName.substring(otherName.indexOf('(') + 1, otherName.lastIndexOf(')'));
+                if (filter.test(newName, newOtherName)) {
+                    realName = newName;
+                }
+            }
+        } else if (name != null && name.contains("[") && name.contains("]")) {
+            String newName = name.substring(name.indexOf('[') + 1, name.lastIndexOf(']'));
+            if (filter.test(newName, otherName)) {
+                realName = newName;
+            } else if (otherName != null && otherName.contains("[") && otherName.contains("]")) {
+                String newOtherName = otherName.substring(otherName.indexOf('[') + 1, otherName.lastIndexOf(']'));
+                if (filter.test(newName, newOtherName)) {
+                    realName = newName;
+                }
             }
         }
 
-        return found;
+        return realName;
+    }
+
+    /**
+     * Retrieves the province related to the info.
+     *
+     * @param info      of the province.
+     * @param provinces List of known provinces.
+     * @param aliases   List of aliases.
+     * @return the province related to the info.
+     */
+    private static String deepSearchProvince(ProvinceInfo info, Map<String, Province> provinces, Map<String, Map<String, List<String>>> aliases) {
+        String province = null;
+
+        for (String provinceName : aliases.get("province").keySet()) {
+            List<String> alts = aliases.get("province").get(provinceName);
+            alts.addAll(aliases.get("provinceInv").keySet().stream().filter(alias -> aliases.get("provinceInv").get(alias).contains(provinceName)).collect(Collectors.toList()));
+
+            for (String alt : alts) {
+                String name = matchProvinceName(alt, info.getNameProvince(), StringUtils::equals);
+                if (StringUtils.isEmpty(name)) {
+                    for (String altInfo : info.getAltNameProvince()) {
+                        name = matchProvinceName(alt, altInfo, StringUtils::equals);
+                        if (!StringUtils.isEmpty(name)) {
+                            break;
+                        }
+                    }
+                }
+
+                if (StringUtils.isEmpty(name)) {
+                    if (info.getAltNameProvince().size() == 1) {
+                        String nameToTest = info.getNameProvince() + info.getAltNameProvince().get(0);
+                        name = matchProvinceName(alt, nameToTest, StringUtils::equals);
+                        if (StringUtils.isEmpty(name)) {
+                            nameToTest = info.getNameProvince() + " " + info.getAltNameProvince().get(0);
+                            name = matchProvinceName(alt, nameToTest, StringUtils::equals);
+                        }
+                    }
+                }
+
+                if (!StringUtils.isEmpty(name)) {
+                    province = provinceName;
+                    break;
+                }
+            }
+
+            if (!StringUtils.isEmpty(province)) {
+                break;
+            }
+        }
+
+        return province;
     }
 
     /**
@@ -1067,14 +1260,14 @@ public final class MapGenerator {
     }
 
     /**
-     * Retrieves the real name of the province.
+     * Retrieves the real province.
      *
      * @param country   owner of the province.
      * @param prov      name of the province.
      * @param provinces list of the provinces.
      * @param aliases   list of the aliases.
      * @param log       log writer.
-     * @return the real name of the province.
+     * @return the real province.
      * @throws Exception exception.
      */
     private static String getRealProvince(Country country, String prov, Map<String, Province> provinces,
@@ -1103,6 +1296,9 @@ public final class MapGenerator {
             realProv = province.getName();
             if (StringUtils.equals("MINOR", country.getType())
                     || (StringUtils.equals("MINORMAJOR", country.getType()) && !StringUtils.equals("hollande", country.getName()))) {
+                if (province.getInfo() == null) {
+                    int a = 1;
+                }
                 if (!StringUtils.isEmpty(province.getInfo().getDefaultOwner())) {
                     if (StringUtils.equals("ukraine", province.getInfo().getDefaultOwner())) {
                         province.getInfo().setDefaultOwner(country.getName());
@@ -1262,6 +1458,7 @@ public final class MapGenerator {
 
         for (String prov : provinces.keySet()) {
             Province province = provinces.get(prov);
+            province.restructure();
             if (!first) {
                 writer.append(",\n");
             } else {
@@ -1413,10 +1610,12 @@ public final class MapGenerator {
      *
      * @param provinces      data gathered by the input.
      * @param specialBorders rivers, moutain passes and straits.
+     * @param countries      list of countries.
      * @param log            log writer.
      * @throws Exception exception.
      */
-    private static void createProvincesData(Map<String, Province> provinces, Map<String, List<Path>> specialBorders, Writer log) throws Exception {
+    private static void createProvincesData(Map<String, Province> provinces, Map<String, List<Path>> specialBorders,
+                                            Map<String, Country> countries, Writer log) throws Exception {
         Map<Path, List<Province>> provincesByPath = new HashMap<>();
         for (Province province : provinces.values()) {
             for (SubProvince subProvince : province.getPortions()) {
@@ -1441,7 +1640,7 @@ public final class MapGenerator {
         Writer borderWriter = createFileWriter("src/main/resources/output/borders.xml", false);
         xstream.toXML(borders, borderWriter);
 
-        createDBInjection(provinces, borders, log);
+        createDBInjection(provinces, borders, countries, log);
     }
 
     /**
@@ -1493,18 +1692,28 @@ public final class MapGenerator {
     }
 
     /**
-     * Create a SQL injection script for provinces and borders.
+     * Create a SQL injection script for provinces, borders and countries.
      *
      * @param provinces list of provinces.
      * @param borders   list of borders.
+     * @param countries list of countries.
      * @param log       log writer.
      * @throws IOException exception.
      */
-    private static void createDBInjection(Map<String, Province> provinces, List<Border> borders, Writer log) throws IOException {
-        Writer sqlWriter = createFileWriter("src/main/resources/output/provinces_borders.sql", false);
+    private static void createDBInjection(Map<String, Province> provinces, List<Border> borders,
+                                          Map<String, Country> countries, Writer log) throws IOException {
+        Writer sqlWriter = createFileWriter("src/main/resources/output/provinces_countries.sql", false);
 
-        sqlWriter.append("DELETE FROM R_BORDER;\n").append("DELETE FROM R_PROVINCE_EU;\n")
-                .append("DELETE FROM R_PROVINCE_ROTW;\n").append("DELETE FROM R_PROVINCE;\n\n");
+        sqlWriter.append("DELETE FROM R_COUNTRY_PROVINCE_EU_CAPITALS;\n")
+                .append("DELETE FROM R_COUNTRY_PROVINCE_EU;\n")
+                .append("DELETE FROM R_LIMIT;\n")
+                .append("DELETE FROM R_BASIC_FORCE;\n")
+                .append("DELETE FROM R_REINFORCEMENTS;\n")
+                .append("DELETE FROM R_COUNTRY;\n")
+                .append("DELETE FROM R_BORDER;\n")
+                .append("DELETE FROM R_PROVINCE_EU;\n")
+                .append("DELETE FROM R_PROVINCE_ROTW;\n")
+                .append("DELETE FROM R_PROVINCE;\n\n");
 
         for (Province province : provinces.values()) {
             sqlWriter.append("INSERT INTO R_PROVINCE (NAME, TERRAIN)\n")
@@ -1552,6 +1761,8 @@ public final class MapGenerator {
                     .append(border.getFirst()).append("'));\n");
         }
 
+        createCountriesData(countries, sqlWriter, log);
+
         sqlWriter.flush();
         sqlWriter.close();
     }
@@ -1563,9 +1774,7 @@ public final class MapGenerator {
      * @param log       log writer.
      * @throws IOException exception.
      */
-    private static void createCountriesData(Map<String, Country> countries, Writer log) throws IOException {
-        Writer sqlWriter = createFileWriter("src/main/resources/output/countries.sql", false);
-
+    private static void createCountriesData(Map<String, Country> countries, Writer sqlWriter, Writer log) throws IOException {
         sqlWriter.append("DELETE FROM R_COUNTRY_PROVINCE_EU_CAPITALS;\n")
                 .append("DELETE FROM R_COUNTRY_PROVINCE_EU;\n")
                 .append("DELETE FROM R_LIMIT;\n")
@@ -1636,9 +1845,6 @@ public final class MapGenerator {
                         .append(");\n");
             }
         }
-
-        sqlWriter.flush();
-        sqlWriter.close();
     }
 
     /**
