@@ -457,7 +457,7 @@ public class DataExtractor {
             }
 
             if (found == null) {
-                String realProvinceName = deepSearchProvince(info, provinces, aliases);
+                String realProvinceName = deepSearchProvince(info, aliases);
                 found = isProvince(realProvinceName, provinces);
             }
         }
@@ -528,14 +528,13 @@ public class DataExtractor {
     }
 
     /**
-     * Retrieves the province related to the info.
+     * Retrieves the name of the province related to the info.
      *
      * @param info      of the province.
-     * @param provinces List of known provinces.
      * @param aliases   List of aliases.
      * @return the province related to the info.
      */
-    private static String deepSearchProvince(ProvinceInfo info, Map<String, Province> provinces, Map<String, Map<String, List<String>>> aliases) {
+    private static String deepSearchProvince(ProvinceInfo info, Map<String, Map<String, List<String>>> aliases) {
         String province = null;
 
         for (String provinceName : aliases.get("province").keySet()) {
@@ -579,22 +578,37 @@ public class DataExtractor {
     }
 
     /**
-     * Check if the name is a province.
+     * Check if the name is a province and returns it.
      * <p>
      * If province is 'PROV', name like 'PROV', 'toto (PROV)' or 'tutu [PROV]' will work.
+     * </p>
      *
      * @param name      to check.
      * @param provinces all the provinces.
-     * @return <code>true</code> if the name exists.
+     * @return the province found.
      */
     private static Province isProvince(String name, Map<String, Province> provinces) {
-
         String realName = matchProvinceName(name, null, (s, s2) -> provinces.containsKey('e' + s));
 
         return provinces.get('e' + realName);
-
     }
 
+    /**
+     * Check if the names matches.
+     * The first <code>true</code> test will return the match:
+     * <ul>
+     * <li>filter.test(name, otherName) and will return name</li>
+     * <li>filter.test(subName, otherName) and will return subName where name = toto (subName)</li>
+     * <li>filter.test(subName, subOtherName) and will return subName where name = toto (subName) and otherName = tutu (subOtherName)</li>
+     * <li>filter.test(subName, otherName) and will return subName where name = toto [subName]</li>
+     * <li>filter.test(subName, subOtherName) and will return subName where name = toto [subName] and otherName = tutu [subOtherName]</li>
+     * </ul>
+     *
+     * @param name      first string to test.
+     * @param otherName second string to test.
+     * @param filter    function used to test the strings.
+     * @return a matching name.
+     */
     private static String matchProvinceName(String name, String otherName, BiPredicate<String, String> filter) {
         String realName = null;
 
@@ -1339,9 +1353,6 @@ public class DataExtractor {
             realProv = province.getName();
             if (StringUtils.equals("MINOR", country.getType())
                     || (StringUtils.equals("MINORMAJOR", country.getType()) && !StringUtils.equals("hollande", country.getName()))) {
-                if (province.getInfo() == null) {
-                    int a = 1;
-                }
                 if (!StringUtils.isEmpty(province.getInfo().getDefaultOwner())) {
                     if (StringUtils.equals("ukraine", province.getInfo().getDefaultOwner())) {
                         province.getInfo().setDefaultOwner(country.getName());
@@ -1371,8 +1382,8 @@ public class DataExtractor {
         List<Country.Limit> returnValue = new ArrayList<>();
         String[] forces = ToolsUtil.split(stringToParse, ',', '{', '}');
         for (String force : forces) {
-            int number = 0;
-            String type = null;
+            int number;
+            String type;
             String[] details = force.trim().split(" ");
             if (details.length == 1) {
                 if (StringUtils.equals("nothing", details[0])
