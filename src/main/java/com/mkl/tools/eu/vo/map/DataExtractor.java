@@ -300,20 +300,7 @@ public class DataExtractor {
         } else {
             for (String key : aliases.get(aliasPrefix).keySet()) {
                 for (String value : aliases.get(aliasPrefix).get(key)) {
-                    boolean found = StringUtils.equals(provinceName, value);
-
-                    // TODO refactor
-                    if (!found) {
-                        found = value.contains("(") && value.contains(")")
-                                && StringUtils.equals(provinceName, value.substring(value.indexOf('(') + 1, value.lastIndexOf(')')));
-                    }
-
-                    if (!found) {
-                        found = value.contains("[") && value.contains("]")
-                                && StringUtils.equals(provinceName, value.substring(value.indexOf('[') + 1, value.lastIndexOf(']')));
-                    }
-
-                    if (found) {
+                    if (!StringUtils.isEmpty(matchProvinceName(value, provinceName, StringUtils::equals))) {
                         if (realName != null) {
                             log.append(provinceName).append("\tCan't find root name: ambiguous values\t")
                                     .append(realName).append("\t").append(key).append("\n");
