@@ -58,13 +58,13 @@ public final class MapGenerator {
 
         ClientGenerator.createMapData(provinces, specialBoxes, log);
 
-        List<Border> borders = ClientGenerator.createProvincesData(provinces, specialBorders, countries, log);
+        List<Border> borders = ClientGenerator.createProvincesData(provinces, specialBorders, log);
 
         Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/provinces_countries.sql", false);
 
-        DBGenerator.createDBInjection(provinces, borders, countries, sqlWriter, log);
+        DBGenerator.createDBInjection(provinces, borders, sqlWriter);
 
-        DBGenerator.createCountriesData(countries, sqlWriter, log);
+        DBGenerator.createCountriesData(countries, sqlWriter);
 
         sqlWriter.flush();
         sqlWriter.close();

@@ -22,13 +22,10 @@ public class DBGenerator {
      *
      * @param provinces list of provinces.
      * @param borders   list of borders.
-     * @param countries list of countries.
      * @param sqlWriter where to write the db instructions.
-     * @param log       log writer.
      * @throws IOException exception.
      */
-    public static void createDBInjection(Map<String, Province> provinces, List<Border> borders,
-                                         Map<String, Country> countries, Writer sqlWriter, Writer log) throws IOException {
+    public static void createDBInjection(Map<String, Province> provinces, List<Border> borders, Writer sqlWriter) throws IOException {
         sqlWriter.append("DELETE FROM R_COUNTRY_PROVINCE_EU_CAPITALS;\n")
                 .append("DELETE FROM R_COUNTRY_PROVINCE_EU;\n")
                 .append("DELETE FROM R_LIMIT;\n")
@@ -92,10 +89,9 @@ public class DBGenerator {
      *
      * @param countries list of countries.
      * @param sqlWriter where to write the db instructions.
-     * @param log       log writer.
      * @throws IOException exception.
      */
-    public static void createCountriesData(Map<String, Country> countries, Writer sqlWriter, Writer log) throws IOException {
+    public static void createCountriesData(Map<String, Country> countries, Writer sqlWriter) throws IOException {
         sqlWriter.append("DELETE FROM R_COUNTRY_PROVINCE_EU_CAPITALS;\n")
                 .append("DELETE FROM R_COUNTRY_PROVINCE_EU;\n")
                 .append("DELETE FROM R_LIMIT;\n")

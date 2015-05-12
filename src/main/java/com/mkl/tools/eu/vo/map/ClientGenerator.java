@@ -1,7 +1,6 @@
 package com.mkl.tools.eu.vo.map;
 
 import com.mkl.tools.eu.util.ToolsUtil;
-import com.mkl.tools.eu.vo.country.Country;
 import com.mkl.tools.eu.vo.province.*;
 import com.thoughtworks.xstream.XStream;
 import org.apache.commons.lang3.StringUtils;
@@ -175,8 +174,7 @@ public class ClientGenerator {
      * @param log            log writer.
      * @throws Exception exception.
      */
-    public static List<Border> createProvincesData(Map<String, Province> provinces, Map<String, List<Path>> specialBorders,
-                                                   Map<String, Country> countries, Writer log) throws Exception {
+    public static List<Border> createProvincesData(Map<String, Province> provinces, Map<String, List<Path>> specialBorders, Writer log) throws Exception {
         Map<Path, List<Province>> provincesByPath = new HashMap<>();
         for (Province province : provinces.values()) {
             for (SubProvince subProvince : province.getPortions()) {
