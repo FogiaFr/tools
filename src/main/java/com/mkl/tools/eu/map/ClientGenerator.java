@@ -1,4 +1,4 @@
-package com.mkl.tools.eu.vo.map;
+package com.mkl.tools.eu.map;
 
 import com.mkl.tools.eu.util.ToolsUtil;
 import com.mkl.tools.eu.vo.province.*;
