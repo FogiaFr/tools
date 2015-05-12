@@ -1,5 +1,6 @@
 package com.mkl.tools.eu.util;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,37 @@ public final class ToolsUtil {
 
     /** No instance. */
     private ToolsUtil() {
+    }
+
+    /**
+     * Creates a FileWriter given a path. If parent directory does not exist, will attempt to create it and then retry.
+     *
+     * @param fileName the path
+     * @param append   true to writes at the end of the file.
+     * @return a FileWriter
+     * @throws java.io.IOException erreur de lecture.
+     */
+    public static Writer createFileWriter(final String fileName, final boolean append) throws IOException {
+        Writer writer;
+        try {
+            writer = new FileWriter(fileName, append);
+        } catch (FileNotFoundException e) {
+            // if parent directory does not exist then
+            // attempt to create it and try to create file
+            String parentName = new File(fileName).getParent();
+            if (parentName != null) {
+                File parentDir = new File(parentName);
+                if (!parentDir.exists() && parentDir.mkdirs()) {
+                    writer = new FileWriter(fileName, append);
+                } else {
+                    throw e;
+                }
+            } else {
+                throw e;
+            }
+        }
+
+        return writer;
     }
 
     /**
