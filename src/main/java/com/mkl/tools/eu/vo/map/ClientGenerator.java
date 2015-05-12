@@ -170,7 +170,6 @@ public class ClientGenerator {
      *
      * @param provinces      data gathered by the input.
      * @param specialBorders rivers, moutain passes and straits.
-     * @param countries      list of countries.
      * @param log            log writer.
      * @throws Exception exception.
      */
