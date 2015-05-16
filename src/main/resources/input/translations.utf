@@ -766,7 +766,7 @@ granderegion:Bengale::Bānglā
 granderegion:Birmanie:ဗမာ  :Birmanie
 granderegion:Borneo:Bornéo
 granderegion:Cabo Verde
-granderegion:Carolina
+granderegion:Carolina:Caroline
 granderegion:California
 granderegion:Cameroun
 granderegion:Canton:广东:Canton
@@ -855,9 +855,9 @@ granderegion:Singala
 granderegion:Soudan
 granderegion:Terre-Neuve
 granderegion:Sumatra
-granderegion:Florida
+granderegion:Florida:Floride
 granderegion:Texas
-granderegion:Virginia
+granderegion:Virginia::Virginie
 granderegion:Kansas
 granderegion:Mississippi
 granderegion:Venezuela

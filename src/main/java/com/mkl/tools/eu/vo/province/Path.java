@@ -21,7 +21,7 @@ public class Path {
     /** Flag saying that this SubProvince is located in the ROTW map. */
     private boolean rotw;
     /** Coordinates of the path. */
-    private List<Pair<Integer, Integer>> coords = new ArrayList<>();
+    private List<Pair<Double, Double>> coords = new ArrayList<>();
 
     /**
      * Constructor.
@@ -52,7 +52,7 @@ public class Path {
     }
 
     /** @return the coords. */
-    public List<Pair<Integer, Integer>> getCoords() {
+    public List<Pair<Double, Double>> getCoords() {
         return coords;
     }
 
@@ -61,8 +61,8 @@ public class Path {
      *
      * @return the inverted coords of the path.
      */
-    public List<Pair<Integer, Integer>> getInvertedCoords() {
-        List<Pair<Integer, Integer>> invertedCoords = new ArrayList<>(coords);
+    public List<Pair<Double, Double>> getInvertedCoords() {
+        List<Pair<Double, Double>> invertedCoords = new ArrayList<>(coords);
         Collections.reverse(invertedCoords);
 
         return invertedCoords;

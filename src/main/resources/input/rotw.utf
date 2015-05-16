@@ -1,0 +1,241 @@
+﻿;; -*- coding: utf-8 -*-
+;
+;XXX CANARIES ET AÇORES XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+NOM hL "La Playa" N
+CITE 3423 2378 ville1
+IMG 3454 2428 anchor2
+IMG 3479 2370 drapeauplaine
+PROVCURVE 3443 2413 80 -85 115 "Islas Canarias" J
+VALUE X 3480 2396 2 J
+ECU X 3423 2328 protoespagne 
+; ----------------------------------------------------
+NOM gD "Saõ Miguel" N
+CITE 3206 2638 ville1
+ECU X 3168 2680 protoportugal
+IMG 3129 2661 drapeauplaine
+IMG 3244 2658 anchor
+PROVCURVE 3168 2647 80 -25 50 "Açores" J
+VALUE X 3155 2588 2 J
+; ----------------------------------------------------
+; Cap vert
+IMG 3252 2038 drapeauplaine
+IMG 3225 2098 anchor3
+; ----------------------------------------------------
+NOM dU "Herāt" N
+ALTNOM dD "(ﺙﺍﺮﻫ)" N
+CITE 5343 2477 ville1
+;ECU X 5390 2431 protoperse
+;PROV 5400 2505 "(ﺙﺍﺮﻫ)" N
+;ALTPROV H "Herāt" N
+;VALUE X 5353 2510 2 B
+; ----------------------------------------------------
+NOM Xc 1373 2164 "Tenochtitlan" N
+CITE 1386 2134 ville1
+; ----------------------------------------------------
+NOM h "Cusco" N
+CITE 2067 1318 ville1
+; ----------------------------------------------------
+NOM hH  "哈尔滨" N
+ALTNOM h  "Hā'ěrbīn" N
+CITE 6955 2904 villechine1
+; ----------------------------------------------------
+NOM dU  "瀋陽" N
+ALTNOM dD  "Shěnyáng" N
+CITE 6890 2758 villechine1
+; ----------------------------------------------------
+NOM gU  "大连" J
+ALTNOM gD  "Dalian" J
+CITE 6841 2683 villechine1
+; ----------------------------------------------------
+NOM gU  "北京" N
+ALTNOM gD  "Běijīng" N
+CITE 6702 2667 villechine2
+; ----------------------------------------------------
+NOM dU  "青岛" J
+ALTNOM dD  "Qīngdǎo" J
+CITE 6803 2606 villechine1
+; ----------------------------------------------------
+NOM gU  "평양" J
+ALTNOM gD  "P'yǒngyang" J
+CITE 6934 2668 villechine1
+; ----------------------------------------------------
+NOM gU  "서울" J
+ALTNOM gD  "Seoul" J
+CITE 6963 2590 villechine1
+; ----------------------------------------------------
+NOM gU  "廣州" L
+ALTNOM gD  "Guǎngzhōu" L
+CITE 6607 2220 villechine1
+; ----------------------------------------------------
+NOM gU  "福州" J
+ALTNOM gD  "Fuzhōu" L
+CITE 6744 2292 villechine1
+; ----------------------------------------------------
+NOM gU  "杭州" J
+ALTNOM gD  "Hángzhōu" J
+CITE 6797 2398 villechine1
+; ----------------------------------------------------
+NOM gU  "上海" J
+ALTNOM gD  "Shànghǎi" J
+CITE 6808 2443 villechine1
+; ----------------------------------------------------
+NOM gU  "南京" L
+ALTNOM gD  "Nánjīng" L
+CITE 6758 2493 villechine1
+
+
+; ----------------------------------------------------
+NOM dU  "札幌市" J
+ALTNOM dD  "Sapporo" J
+CITE 7352 2801 villechine1
+; ----------------------------------------------------
+NOM g  "Edo 江戸" J
+;ALTNOM gD  "Edo" J
+CITE 7281 2584 villechine1
+; ----------------------------------------------------
+NOM gU  "京都市" J
+ALTNOM gD  "Kyōto" J
+CITE 7176 2559 villechine1
+; ----------------------------------------------------
+NOM dU  "長崎市" J
+ALTNOM dD  "Nagasaki" J
+CITE 7037 2506 villechine1
+; ----------------------------------------------------
+NOM h  "อยุธยา" N
+ALTNOM hH  "Ayutthaya" L
+CITE 6298 2018 villeinde1
+
+; ----------------------------------------------------
+NOM hL  "" J
+ALTNOM hHL  "Phnum Pénh" J
+CITE 6395 1956 villeinde1
+; ----------------------------------------------------
+NOM dH "Ava" N
+ALTNOM d "" N
+CITE 6202 2170 villeinde1
+; ----------------------------------------------------
+NOM b "Pegu" N
+ALTNOM bB "" N
+CITE 6201 2088 villeinde1
+
+; ----------------------------------------------------
+; Unicode F421 = Calcutta
+NOM hH  "" J
+ALTNOM h  "Kalakātā" J
+CITE 6381 0835 villeinde1
+; ----------------------------------------------------
+; Unicode F423 = Delhi
+NOM dU  "" N
+ALTNOM dD  "Dellī" N
+CITE 5807 1189 villeinde2
+; ----------------------------------------------------
+NOM hH "" N
+ALTNOM h  "Kanda" N
+CITE 5967 0077 villeinde1
+; ----------------------------------------------------
+NOM dU "Jayakarta" J
+CITE 6456 1503 ville1
+; ----------------------------------------------------
+NOM dH "" N
+ALTNOM d "Goā" N
+CITE 5648 0473 villeinde1
+; ----------------------------------------------------
+NOM dD "" N
+ALTNOM dU "Mumbaī" N
+CITE 5585 0701 villeinde1
+; ----------------------------------------------------
+NOM hH "Diu" J
+ALTNOM h "()" J
+CITE 5491 0772 villeinde1
+; ----------------------------------------------------
+; Madras
+NOM hH "" N
+ALTNOM h "Mađirās" N
+CITE 5930 0511 villeinde1
+; ----------------------------------------------------
+; Calicut
+NOM gBRB "" J
+ALTNOM gB "Koḻikoṭ" J
+CITE 5720 0312 villeinde1
+; ----------------------------------------------------
+NOM dU "" N
+ALTNOM dD "Mysūru" N
+CITE 5766 0365 villeinde1
+; ----------------------------------------------------
+NOM h "Sài Gòn" N
+CITE 6466 1922 villechine1
+; ----------------------------------------------------
+NOM b "Huế" N
+CITE 6461 2081 villechine1
+; ----------------------------------------------------
+NOM g "Hà Nội" J
+CITE 6443 2196 villechine1
+
+; Hu\x{1EBF} Sài Gòn Hà N\x{1ED9}i
+
+
+; Mandchourie 滿洲 \x{6EFF}\x{6D32}
+; Hā'ěrbīn 哈尔滨\x{54C8}\x{5C14}\x{6EE8} (Mandchourie N)
+; Lüshunkou 旅顺口 (\x{65C5}\x{987A}\x{53E3}) (Mandchourie S)
+; or Dalian 大连 (\x{5927}\x{8FDE})
+; Shěnyáng 瀋陽 \x{700B}\x{967D} (Mandchourie C)
+
+; Province Běijīng
+; Běijīng 北京 \x{5317}\x{4EAC} (Pékin)
+; Qīngdǎo 青岛 \x{9752}\x{5C9B} (Pékin E)
+; Golfe de bó hǎi 渤海 \x{6E24}\x{6D77}
+
+; Province Nánjīng
+; Nánjīng  南京 \x{5357}\x{4EAC} (Nanjing NW)
+; Shànghăi 上海 \x{4E0A}\x{6D77} (Nanjing NE)
+; Hángzhōu 杭州 \x{676D}\x{5DDE} (Nanjing SE)
+
+; Province Gǔangdōng  广东 \x{5E7F}\x{4E1C} (Canton)
+; Guǎngzhōu 廣州 \x{5EE3}\x{5DDE} (Canton S)
+; Fuzhou     福州 \x{798F}\x{5DDE} (Canton E)
+
+; Province Táiwān
+; Táiwān 台湾 \x{81FA}\x{7063} ou \x{53F0}\x{6E7E}
+
+; Province Chosǒn 조선 \x{C870}\x{C120}
+; Séoul  서울 \x{C11C}\x{C6B8} (N ou S)
+; Busan  부산 \x{BD80}\x{C0B0} (S)
+; P'yǒngyang 평양 \x{D3C9}\x{C591} (N)
+
+; Province Nihon 日本 \x{65E5}\x{672C}
+; Edo      江戸 \x{6C5F}\x{6238}
+; Kyōto    京都市 \x{4EAC}\x{90FD}\x{5E02}
+; Sapporo  札幌市 \x{672D}\x{5E4C}\x{5E02}
+; Nagasaki 長崎市 \x{9577}\x{5D0E}\x{5E02}
+; ---------------- Îles
+IMG 1881 1896 drapeauforet
+IMG 6824 1685 drapeauforet
+IMG 6985 1570 drapeauforet
+IMG 6804 1451 drapeauforet
+IMG 6945 1448 drapeauforet
+IMG 6825 2075 drapeauforet
+IMG 6844 1932 drapeauforet
+IMG 6905 1843 drapeauforet
+IMG 6912 1947 drapeauforet
+IMG 6813 2258 drapeauplaine
+IMG 5160 1974 drapeauplaine
+IMG 5198 1550 drapeauplaine
+IMG 2392 0265 drapeauforet
+IMG 3688 1266 drapeauplaine
+IMG 1832 1195 drapeauforet
+RAW [(banda)(ternate)(puertorico)(stmartin)(guadeloupe)(martinique)(barbade)(trinidad)] {carredict exch get 1 2 getinterval aload pop /iy exch def /ix exch def (img:rocher) ix 3 sub iy 3 sub putsymbol (img:drapeauforet) ix 17 sub iy 2 sub putsymbol}forall
+RAW [(hawai)(mariannes)(tahiti)(zanzibar)(fernandopo)(maurice)(reunion)] {carredict exch get 1 2 getinterval aload pop /iy exch def /ix exch def (img:rocher) ix 3 sub iy 3 sub putsymbol (img:drapeauplaine) ix 15 sub iy 2 sub putsymbol}forall
+RAW (q 1 1 0 rg\n)out(Ormus) 5384 2136 300 24 (FontArialNarrow-Bold) centertext(Q\n)out
+RAW (q 0 0 0 RG 0 0 0 rg )out(12 MP to reach or leave Kamchatka) 7874 3522 400 20 an centertextbbox(through this area to any) 7874 3502 400 20 an centertextbbox(adjacent province \(all included\)) 7874 3482 400 20 an centertextbbox(Q\n)out
+
+
+; ---------------------------
+IMG 0573 3134 drapeauforet
+IMG 1848 2226 drapeauforet
+IMG 1928 2113 drapeauforet
+IMG 1952 2178 drapeauforet
+IMG 2014 2121 drapeauforet
+IMG 2089 2139 drapeauforet
+IMG 5381 2209 rocher
+IMG 5384 2212 drapeauplaine
+;IMG 5227 2358 anchor4

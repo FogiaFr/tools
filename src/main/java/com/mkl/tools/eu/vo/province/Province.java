@@ -17,12 +17,18 @@ public class Province {
     private String name;
     /** Terrain derived from the portions. */
     private String terrain;
-    /** Additional info. */
+    /** Additional info for european province. */
     private ProvinceInfo info;
+    /** Additional info for rotw province. */
+    private RotwInfo rotwInfo;
+    /** Additional info for sea zone. */
+    private SeaInfo seaInfo;
+    /** Additional info for trade zone. */
+    private TradeZone tradeInfo;
     /** Portions of the province. */
     private List<SubProvince> portions = new ArrayList<>();
     /** Restructuring of the coordinates for the geo.json export. */
-    private List<Pair<List<List<Pair<Integer, Integer>>>, Boolean>> coords;
+    private List<Pair<List<List<Pair<Double, Double>>>, Boolean>> coords;
     /** Log writer. */
     private Writer log;
 
@@ -35,6 +41,10 @@ public class Province {
     public Province(String name, Writer log) {
         this.name = name;
         this.log = log;
+        if (name.contains("~")) {
+            setRotwInfo(new RotwInfo());
+            getRotwInfo().setRegion(name.substring(1, name.indexOf('~')));
+        }
     }
 
     /** @return the name. */
@@ -57,13 +67,43 @@ public class Province {
         this.info = info;
     }
 
+    /** @return the rotwInfo. */
+    public RotwInfo getRotwInfo() {
+        return rotwInfo;
+    }
+
+    /** @param rotwInfo the rotwInfo to set. */
+    public void setRotwInfo(RotwInfo rotwInfo) {
+        this.rotwInfo = rotwInfo;
+    }
+
+    /** @return the seaInfo. */
+    public SeaInfo getSeaInfo() {
+        return seaInfo;
+    }
+
+    /** @param seaInfo the seaInfo to set. */
+    public void setSeaInfo(SeaInfo seaInfo) {
+        this.seaInfo = seaInfo;
+    }
+
+    /** @return the tradeInfo. */
+    public TradeZone getTradeInfo() {
+        return tradeInfo;
+    }
+
+    /** @param tradeInfo the tradeInfo to set. */
+    public void setTradeInfo(TradeZone tradeInfo) {
+        this.tradeInfo = tradeInfo;
+    }
+
     /** @return the portions. */
     public List<SubProvince> getPortions() {
         return portions;
     }
 
     /** @return the coords. */
-    public List<Pair<List<List<Pair<Integer, Integer>>>, Boolean>> getCoords() {
+    public List<Pair<List<List<Pair<Double, Double>>>, Boolean>> getCoords() {
         return coords;
     }
 
@@ -94,29 +134,24 @@ public class Province {
         if (terrain != null) {
             switch (terrain) {
                 case "desert":
-                case "kdesert":
                     terrain = "DESERT";
                     break;
                 case "foret":
-                case "kforet":
                     terrain = "DENSE_FOREST";
                     break;
                 case "foreto":
                     terrain = "SPARSE_FOREST";
                     break;
                 case "marais":
-                case "kmarais":
                     terrain = "SWAMP";
                     break;
                 case "mer":
                     terrain = "SEA";
                     break;
                 case "monts":
-                case "kmonts":
                     terrain = "MOUNTAIN";
                     break;
                 case "plaine":
-                case "kplaine":
                     terrain = "PLAIN";
                     break;
                 default:

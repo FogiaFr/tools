@@ -58,6 +58,11 @@ public class Border {
         return type;
     }
 
+    /** @param type the type to set. */
+    public void setType(String type) {
+        this.type = type;
+    }
+
     /** {@inheritDoc} */
     @Override
     public int hashCode() {
@@ -75,8 +80,10 @@ public class Border {
         if (obj instanceof Border) {
             Border border = (Border) obj;
 
-            equals = StringUtils.equals(first, border.getFirst())
-                    && StringUtils.equals(second, border.getSecond());
+            equals = (StringUtils.equals(first, border.getFirst())
+                    && StringUtils.equals(second, border.getSecond()))
+                    || (StringUtils.equals(second, border.getFirst())
+                    && StringUtils.equals(first, border.getSecond()));
         }
 
         return equals;

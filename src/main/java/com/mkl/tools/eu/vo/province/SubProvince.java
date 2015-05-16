@@ -33,13 +33,17 @@ public class SubProvince {
      * @param rotw      flag saying that the object is in the rotw map.
      */
     public SubProvince(String terrain, boolean secondary, boolean rotw) {
-        if (terrain.startsWith("l") && !StringUtils.equals("lac", terrain)) {
+        if (terrain != null && terrain.startsWith("l") && !StringUtils.equals("lac", terrain)) {
             this.terrain = terrain.substring(1);
             light = true;
         } else {
             this.terrain = terrain;
         }
-        if (terrain.startsWith("europe")) {
+        if (this.terrain != null && this.terrain.startsWith("k")) {
+            this.terrain = this.terrain.substring(1);
+        }
+
+        if (terrain != null && terrain.startsWith("europe")) {
             light = true;
         }
         this.secondary = secondary;
@@ -79,12 +83,12 @@ public class SubProvince {
      * @return the restructurated coords of the province.
      * @throws Exception exception.
      */
-    public Pair<List<List<Pair<Integer, Integer>>>, Boolean> getStructuratedCoords(Province province, Writer log) throws Exception {
-        List<List<Pair<Integer, Integer>>> coordsPortion = new ArrayList<>();
+    public Pair<List<List<Pair<Double, Double>>>, Boolean> getStructuratedCoords(Province province, Writer log) throws Exception {
+        List<List<Pair<Double, Double>>> coordsPortion = new ArrayList<>();
         coordsPortion.add(new ArrayList<>());
         boolean sawBeginPath = false;
         for (DirectedPath path : getPaths()) {
-            List<Pair<Integer, Integer>> pathValues;
+            List<Pair<Double, Double>> pathValues;
             if (path.isInverse()) {
                 pathValues = path.getPath().getInvertedCoords();
             } else {
@@ -98,7 +102,7 @@ public class SubProvince {
 
             if (path.getPath().isBegin()) {
                 // if path is a begin path, we must check if it is en enclave or a continuation from last coords.
-                Pair<Integer, Integer> lastCoords;
+                Pair<Double, Double> lastCoords;
                 if (!lastElement(coordsPortion).isEmpty()) {
                     lastCoords = lastElement(lastElement(coordsPortion));
                 } else {
@@ -202,7 +206,7 @@ public class SubProvince {
      * @param polygone to check.
      * @return the distance that is needed in order to close the polygone. Returns 0 if the polygone is closed.
      */
-    private static double distanceToClosePolygone(List<Pair<Integer, Integer>> polygone) {
+    private static double distanceToClosePolygone(List<Pair<Double, Double>> polygone) {
         return distance(firstElement(polygone), lastElement(polygone));
     }
 
@@ -213,7 +217,7 @@ public class SubProvince {
      * @param second another point.
      * @return the distance between the two points.
      */
-    private static double distance(Pair<Integer, Integer> first, Pair<Integer, Integer> second) {
+    private static double distance(Pair<Double, Double> first, Pair<Double, Double> second) {
         if (first == null || second == null) {
             return 0;
         }

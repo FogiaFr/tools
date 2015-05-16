@@ -1,4 +1,19 @@
 DD/MM/YYYY:
+ressource:
+ - Mississipi -> Mississippi
+ - Amérique -> America
+ - Grands-Lacs -> Grands Lacs
+ - Côte d'Ivoire -> Côte d’Ivoire
+ - Côte d'Or -> Côte d’Or
+ - Cape Verde -> Cabo Verde
+ - Saint-Hélène -> Sainte-Hélène
+ - Daï Viet -> Dai Viet
+ - Iles aux Épices -> Iles aux epices
+ - Corée -> Coree
+ - Grand Pacifique -> Pacifique
+ - Ceylan -> Singala
+ - deletion of '        <gnm:Cell Row="14" Col="19" ValueType="10"></gnm:Cell>'
+
 translations.utf:
  - ville:Hamburg removed
  - granderegion:Chichimeca removed
@@ -11,6 +26,9 @@ translations.utf:
  - seazone:Rouge:Mer rouge -> seazone:Rouge:Mer rouge:Mer Rouge
  - granderegion:Dai Viet -> granderegion:Dai Viet:Đại Việt
  - granderegion:Oceania: -> granderegion:Oceania:Océanie
+ - granderegion:Virginia -> granderegion:Virginia:Virginie
+ - granderegion:Carolina -> granderegion:Carolina:Caroline
+ - granderegion:Florida -> granderegion:Florida:Floride
  - addition of:
    - Kyklades=[province]=>Cyclades
    - granderegion:Nevada
@@ -80,6 +98,17 @@ engCorpsMineurs.tex:
  - \minorbasicrenforts{genes}{1 \NGD\ or 1 \NDE or 1\NTD} -> \minorbasicrenforts{genes}{1 \NDE}
  - \n after a \minorXXX (mamelouks)
 
+source.eps:
+ - Méditerrannée orientale -> Méditerranée orientale
+ - Méditerrannée occidentale -> Méditerranée occidentale
+
+source.eps (rotw):
+ - Grand océan Pacifique -> Grand océan pacifique
+ - Golfe de l’Indus -> Golfe de l'Indus
+ - Golfe persique -> Golfe Persique
+ - (img:orage4) 2205 2874 () true orage %(Saint-Laurent) -> (img:orage4) 2205 2874 (Saint-Laurent) true orage %(Saint-Laurent)
+ - (img:orage4) 4788 2035 () true orage %(Mer rouge) -> (img:orage4) 4788 2035 (Mer rouge) true orage %(Mer rouge)
+
 europe.utf:
  - NOM -> ALTNOM (Kleve/Berg)
  - ""ﻥﺎﻬﻔﺻﺍ" -> "ﻥﺎﻬﻔﺻﺍ" (Isfahan)
@@ -94,6 +123,7 @@ europe.grid.ps:
  - Wurtemberg -> Würtemberg
  - *Isfahan -> *Eşfahān
  - *Sjaelland -> *Sjælland
+ - Bam -> Ormus~I (/prov342)
 
 rotw.grid.ps:
  - Aden~Socotra -> Aden~So
@@ -114,6 +144,17 @@ rotw.grid.ps:
  - Seychelles -> Seychelles~I (*2: prov + carre)
  - Ambon Island -> -Îles aux Épices~A
  - Îles aux Épices -> Îles aux épices (*2: 5 prov + 3 carre)
+ - Europe~Mers du Nord -> Mer du Nord
+ - Europe~Île de Man -> Île de Man
+ - Europe~Islas Canarias -> Islas Canarias
+ - Europe~Açores -> Açores
+ - Ormus -> Ormus~I (/prov538)
+ - Cabo Verde -> Cabo Verde~I (*4)
+ - /prov179 foret -> /prov179 noman
+ - /prov181 foret -> /prov181 noman
+ - /prov184 foret -> /prov184 noman
+ - /prov599 foret -> /prov599 plaine
+ - /prov744 marais -> /prov744 foret
 
 18/04/2015:
 europe.grid.ps:

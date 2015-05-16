@@ -22,6 +22,10 @@ public class ProvinceInfo {
     private String defaultOwner;
     /** Flag saying that the province is a capital. */
     private boolean capital = false;
+    /** X coordinate of the fortress. */
+    private int x;
+    /** Y coordinate of the fortress. */
+    private int y;
     /** Level of the natural fortress. */
     private int fortress = 0;
     /** Flag saying that the province has a natural port. */
@@ -89,6 +93,26 @@ public class ProvinceInfo {
     /** @param capital the capital to set. */
     public void setCapital(boolean capital) {
         this.capital = capital;
+    }
+
+    /** @return the y. */
+    public int getY() {
+        return y;
+    }
+
+    /** @param y the y to set. */
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    /** @return the x. */
+    public int getX() {
+        return x;
+    }
+
+    /** @param x the x to set. */
+    public void setX(int x) {
+        this.x = x;
     }
 
     /** @return the fortress. */

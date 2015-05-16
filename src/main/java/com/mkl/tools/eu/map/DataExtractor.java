@@ -5,6 +5,7 @@ import com.mkl.tools.eu.vo.country.Country;
 import com.mkl.tools.eu.vo.province.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,13 +27,191 @@ import java.util.stream.Collectors;
  */
 public class DataExtractor {
     /** Size of a square. */
-    private static final int SQUARE_SIZE = 113;
+    private static final double SQUARE_SIZE = 112.5;
+
+    /**
+     * Extract the aliases.
+     *
+     * @param log log writer.
+     * @return the aliases.
+     * @throws Exception exception.
+     */
+    public static Map<String, Map<String, List<String>>> extractAliases(Writer log) throws Exception {
+        Map<String, Map<String, List<String>>> aliases = new HashMap<>();
+
+        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/translations.utf")));
+        while ((line = reader.readLine()) != null) {
+            if (line.trim().startsWith("%") || StringUtils.isEmpty(line)) {
+                continue;
+            }
+
+            Matcher m = Pattern.compile("(.*)=\\[(.*)\\]=>(.*)").matcher(line);
+            String type;
+            String key;
+            List<String> alias = new ArrayList<>(1);
+            if (m.matches()) {
+                type = m.group(2) + "Inv";
+                key = m.group(1);
+                String alt = m.group(3);
+                if (alt.contains("%")) {
+                    alt = alt.substring(0, alt.indexOf('%'));
+                }
+                alias.add(alt);
+            } else {
+                String[] split = line.split(":");
+                type = split[0];
+                key = split[1];
+                for (int i = 2; i < split.length; i++) {
+                    String alt = split[i];
+                    if (alt.contains("%")) {
+                        alt = alt.substring(0, alt.indexOf('%'));
+                    }
+                    alias.add(alt);
+                }
+            }
+
+            if (!aliases.containsKey(type)) {
+                aliases.put(type, new HashMap<>());
+            }
+
+            if (aliases.get(type).containsKey(key)) {
+                log.append(key).append("\tAlias already exist\t").append(type).append("\n");
+            }
+
+            aliases.get(type).put(key, alias);
+        }
+
+        return aliases;
+    }
+
+    /**
+     * Extract the regions.
+     *
+     * @param aliases the aliases.
+     * @param log     log writer.
+     * @return the regions.
+     * @throws Exception exception.
+     */
+    public static Map<String, Region> extractRegions(Map<String, Map<String, List<String>>> aliases, Writer log) throws Exception {
+        Map<String, Region> regions = new HashMap<>();
+        Map<Integer, Region> regionsByRow = new HashMap<>();
+
+        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/ressources.txt")));
+        while ((line = reader.readLine()) != null) {
+            if (line.contains("%")) {
+                line = line.substring(0, line.indexOf('%'));
+            }
+            line = line.trim();
+
+            Matcher m = Pattern.compile("<gnm:Cell Row=\"(\\d*)\" Col=\"(\\d*)\" ValueType=\"\\d*\">(.*)</gnm:Cell>").matcher(line);
+            if (m.matches()) {
+                int row = Integer.parseInt(m.group(1));
+                int col = Integer.parseInt(m.group(2));
+                String value = m.group(3);
+
+                if (StringUtils.equals("TOTAL", value)) {
+                    break;
+                }
+
+                if (col == 0) {
+                    String realName = findInAliases(value, "granderegion", aliases, log);
+                    if (StringUtils.isEmpty(realName)) {
+                        log.append(value).append("\tRegion not found.\n");
+                    } else {
+                        Region region = new Region(realName);
+                        regionsByRow.put(row, region);
+                        regions.put(realName, region);
+                    }
+                } else {
+                    Region region = regionsByRow.get(row);
+                    if (region == null) {
+                        if (row > 0) {
+                            log.append(Integer.toString(row)).append("\tCan't find region.\n");
+                        }
+                    } else {
+                        switch (col) {
+                            case 1:
+                                region.setNumber(Integer.parseInt(value));
+                                break;
+                            case 2:
+                                region.setIncome(Integer.parseInt(value));
+                                break;
+                            case 3:
+                                region.setDifficulty(Integer.parseInt(value));
+                                break;
+                            case 4:
+                                region.setTolerance(Integer.parseInt(value));
+                                break;
+                            case 5:
+                                float number = Float.parseFloat(value);
+                                if (number < 1) {
+                                    region.setNativesType("DE");
+                                    region.setNativesNumber((int) ((number + 0.1) * 3));
+                                } else {
+                                    region.setNativesType("DT");
+                                    region.setNativesNumber((int) number);
+                                }
+                                break;
+                            case 6:
+                                String resourceName = "PO";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 7:
+                                resourceName = "SP";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 8:
+                                resourceName = "PA";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 9:
+                                resourceName = "SU";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 10:
+                                resourceName = "SUBR";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 11:
+                                resourceName = "SL";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 12:
+                                resourceName = "CO";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 13:
+                                resourceName = "COAS";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 14:
+                                resourceName = "FUR";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 15:
+                                resourceName = "FISH";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 16:
+                                resourceName = "SALT";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 17:
+                                resourceName = "SILK";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                            case 18:
+                                resourceName = "WOOD";
+                                region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
+                            case 19:
+                                region.setColdArea(Integer.parseInt(value) - 1);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return regions;
+    }
 
     /**
      * Extract the paths data in order to have the provinces shapes and borders.
      *
      * @param provinces      List of provinces shapes.
      * @param specialBorders List of special borders.
+     * @param regions        List of regions.
      * @param aliases        the aliases.
      * @param inputFile      Name of the file to parse.
      * @param rotw           flag saying that the file is for the ROTW map.
@@ -40,7 +219,8 @@ public class DataExtractor {
      * @throws IOException exception.
      */
     public static void extractPaths(Map<String, Province> provinces, Map<String, List<Path>> specialBorders,
-                                    Map<String, Map<String, List<String>>> aliases, String inputFile, boolean rotw, Writer log) throws IOException {
+                                    Map<String, Region> regions, Map<String, Map<String, List<String>>> aliases,
+                                    String inputFile, boolean rotw, Writer log) throws IOException {
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream(inputFile)));
         Map<String, Path> paths = new HashMap<>();
@@ -63,13 +243,13 @@ public class DataExtractor {
                 String[] coords = line.split(" ");
                 for (int i = 0; i < line.length() - 1; i = i + 2) {
                     try {
-                        currentPath.getCoords().add(new ImmutablePair<>(Integer.parseInt(coords[i]), Integer.parseInt(coords[i + 1])));
+                        currentPath.getCoords().add(new ImmutablePair<>(Double.parseDouble(coords[i]), Double.parseDouble(coords[i + 1])));
                     } catch (NumberFormatException e) {
                         break;
                     }
                 }
             } else if (line.startsWith("/prov")) {
-                addSubProvince(line, provinces, paths, aliases, rotw, zoomParsing, log);
+                addSubProvince(line, provinces, paths, regions, aliases, rotw, zoomParsing, log);
             } else if (line.startsWith("%#%% Zoom")) {
                 zoomParsing = true;
             } else if (specialBordersParsing && StringUtils.equals("[", line.trim())) {
@@ -84,16 +264,16 @@ public class DataExtractor {
                 specialBorders.get("RIVER").addAll(pathsBorder);
                 pathsBorder = new ArrayList<>();
             } else if (line.endsWith("change pathtype to pass")) {
-                if (!specialBorders.containsKey("MOUNTAIN_PASS")) {
-                    specialBorders.put("MOUNTAIN_PASS", new ArrayList<>());
+                if (!specialBorders.containsKey("PASS")) {
+                    specialBorders.put("PASS", new ArrayList<>());
                 }
-                specialBorders.get("MOUNTAIN_PASS").addAll(pathsBorder);
+                specialBorders.get("PASS").addAll(pathsBorder);
                 pathsBorder = new ArrayList<>();
             } else if (line.endsWith("change pathtype to strait")) {
-                if (!specialBorders.containsKey("STRAITS")) {
-                    specialBorders.put("STRAITS", new ArrayList<>());
+                if (!specialBorders.containsKey("STRAIT")) {
+                    specialBorders.put("STRAIT", new ArrayList<>());
                 }
-                specialBorders.get("STRAITS").addAll(pathsBorder);
+                specialBorders.get("STRAIT").addAll(pathsBorder);
                 pathsBorder = new ArrayList<>();
             } else if (specialBordersParsing && multiPath.matcher(line).matches()) {
                 String[] specialsBorder = line.trim().split(" ");
@@ -106,7 +286,7 @@ public class DataExtractor {
                     }
                 }
             } else if (square.matcher(line).matches()) {
-                addSquare(line, provinces, aliases, rotw, zoomParsing, log);
+                addSquare(line, provinces, regions, aliases, rotw, zoomParsing, log);
             }
         }
 
@@ -119,6 +299,7 @@ public class DataExtractor {
      * @param line        to parse.
      * @param provinces   existing provinces.
      * @param paths       list of paths.
+     * @param regions     List of regions (rotw).
      * @param aliases     the aliases.
      * @param rotw        flag saying that the subProvince is for the ROTW map.
      * @param zoomParsing flag saying that the subProvince is in a zoom (for Europe map).
@@ -126,7 +307,8 @@ public class DataExtractor {
      * @throws IOException exception.
      */
     private static void addSubProvince(String line, Map<String, Province> provinces, Map<String, Path> paths,
-                                       Map<String, Map<String, List<String>>> aliases, boolean rotw, boolean zoomParsing, Writer log) throws IOException {
+                                       Map<String, Region> regions, Map<String, Map<String, List<String>>> aliases,
+                                       boolean rotw, boolean zoomParsing, Writer log) throws IOException {
         Matcher m = Pattern.compile(".*\\((.*)\\) ?ppdef.*").matcher(line);
         if (!m.matches()) {
             return;
@@ -142,7 +324,15 @@ public class DataExtractor {
                 || StringUtils.equals("zone", line.split(" ")[2])) {
             return;
         }
-        provinceName = getRealProvinceName(provinceName, aliases, line.split(" ")[1], log);
+        String terrain = line.split(" ")[1];
+        // Exception for Acores, Islas Canarias, Cabo Verde and Ormus
+        if (StringUtils.equals("Açores", provinceName)
+                || StringUtils.equals("Islas Canarias", provinceName)
+                || StringUtils.equals("Ormus~I", provinceName)
+                || StringUtils.equals("Cabo Verde~I", provinceName)) {
+            terrain = "plaine";
+        }
+        provinceName = getRealProvinceName(provinceName, regions, aliases, terrain, log);
         if (provinceName == null) {
             return;
         }
@@ -151,7 +341,7 @@ public class DataExtractor {
             province = new Province(provinceName, log);
             provinces.put(provinceName, province);
         }
-        SubProvince portion = new SubProvince(line.split(" ")[1], secondary, rotw);
+        SubProvince portion = new SubProvince(terrain, secondary, rotw);
         m = Pattern.compile("(/path\\d+ AR?)|(/bord\\d+ AR?)|(/mer\\d+ AR?)|(carre[a-zA-Z]+ AR?)").matcher(line);
         while (m.find()) {
             String string = m.group();
@@ -177,20 +367,21 @@ public class DataExtractor {
      *
      * @param line        to parse.
      * @param provinces   existing provinces.
+     * @param regions     List of regions (rotw).
      * @param aliases     the aliases.
      * @param rotw        flag saying that the subProvince is for the ROTW map.
      * @param zoomParsing flag saying that the subProvince is in a zoom (for Europe map).
      * @param log         log writer.
      * @throws IOException exception.
      */
-    private static void addSquare(String line, Map<String, Province> provinces,
+    private static void addSquare(String line, Map<String, Province> provinces, Map<String, Region> regions,
                                   Map<String, Map<String, List<String>>> aliases, boolean rotw, boolean zoomParsing, Writer log) throws IOException {
         Matcher m = Pattern.compile("\\s*(\\d{4}) (\\d{4}) \\d\\([^\\)]*\\)\\(([^\\)]*)\\)\\(([^\\)]*)\\) (true|false) carre\\s*").matcher(line);
         if (!m.matches()) {
             return;
         }
-        int x = Integer.parseInt(m.group(1)) - SQUARE_SIZE / 2;
-        int y = Integer.parseInt(m.group(2)) + 6 - SQUARE_SIZE / 2;
+        double x = Integer.parseInt(m.group(1)) - SQUARE_SIZE / 2;
+        double y = Integer.parseInt(m.group(2)) - SQUARE_SIZE / 2;
         String provinceName = m.group(3);
         String squareName = "carre" + m.group(4);
         boolean plain = StringUtils.equals("true", m.group(5));
@@ -203,11 +394,11 @@ public class DataExtractor {
         if (StringUtils.equals("Caption", provinceName)) {
             return;
         }
-        provinceName = getRealProvinceName(provinceName, aliases, terrain, log);
+        provinceName = getRealProvinceName(provinceName, regions, aliases, terrain, log);
         if (provinceName == null) {
             return;
         }
-        createSquare(provinceName, squareName, x, y, terrain, zoomParsing, rotw, secondary, provinces, log);
+        createSquare(provinceName, squareName, x, y, SQUARE_SIZE, terrain, zoomParsing, rotw, secondary, provinces, log);
     }
 
     /**
@@ -217,15 +408,39 @@ public class DataExtractor {
      * @param squareName   name of the square.
      * @param x            coordinate x of the square.
      * @param y            coordinate y of the square.
+     * @param size         of the square.
      * @param terrain      terrain of the square.
      * @param zoomParsing  flag saying that the square is in a zoom.
      * @param rotw         flag saying that the square is in the rotw map.
      * @param secondary    flag saying that the square is secondary.
      * @param provinces    existing provinces.
      * @param log          log writer.
+     * @return the created province.
      */
-    private static void createSquare(String provinceName, String squareName, int x, int y, String terrain, boolean zoomParsing,
-                                     boolean rotw, boolean secondary, Map<String, Province> provinces, Writer log) {
+    private static Province createSquare(String provinceName, String squareName, double x, double y, double size, String terrain, boolean zoomParsing,
+                                         boolean rotw, boolean secondary, Map<String, Province> provinces, Writer log) {
+        return createRectangle(provinceName, squareName, x, y, size, size, terrain, zoomParsing, rotw, secondary, provinces, log);
+    }
+
+    /**
+     * Add a rectangle.
+     *
+     * @param provinceName name of the province related to this rectangle.
+     * @param squareName   name of the rectangle.
+     * @param x            coordinate x of the rectangle.
+     * @param y            coordinate y of the rectangle.
+     * @param xSize        width of the rectangle.
+     * @param ySize        height of the rectangle.
+     * @param terrain      terrain of the rectangle.
+     * @param zoomParsing  flag saying that the rectangle is in a zoom.
+     * @param rotw         flag saying that the rectangle is in the rotw map.
+     * @param secondary    flag saying that the rectangle is secondary.
+     * @param provinces    existing provinces.
+     * @param log          log writer.
+     * @return the created province.
+     */
+    private static Province createRectangle(String provinceName, String squareName, double x, double y, double xSize, double ySize, String terrain, boolean zoomParsing,
+                                            boolean rotw, boolean secondary, Map<String, Province> provinces, Writer log) {
         Province province = provinces.get(provinceName);
         if (province == null) {
             province = new Province(provinceName, log);
@@ -234,9 +449,9 @@ public class DataExtractor {
         SubProvince portion = new SubProvince(terrain, secondary, rotw);
         Path squarePath = new Path(squareName, true, rotw);
         squarePath.getCoords().add(new ImmutablePair<>(x, y));
-        squarePath.getCoords().add(new ImmutablePair<>(x + SQUARE_SIZE, y));
-        squarePath.getCoords().add(new ImmutablePair<>(x + SQUARE_SIZE, y + SQUARE_SIZE));
-        squarePath.getCoords().add(new ImmutablePair<>(x, y + SQUARE_SIZE));
+        squarePath.getCoords().add(new ImmutablePair<>(x + xSize, y));
+        squarePath.getCoords().add(new ImmutablePair<>(x + xSize, y + ySize));
+        squarePath.getCoords().add(new ImmutablePair<>(x, y + ySize));
         squarePath.getCoords().add(new ImmutablePair<>(x, y));
         portion.getPaths().add(new DirectedPath(squarePath, false));
 
@@ -248,6 +463,8 @@ public class DataExtractor {
         } else {
             province.getPortions().add(portion);
         }
+
+        return province;
     }
 
     /**
@@ -260,13 +477,14 @@ public class DataExtractor {
      * </ul>
      *
      * @param input   base for the province name.
+     * @param regions List of regions (rotw).
      * @param aliases aliases that contain all the real names and their aliases.
      * @param terrain terrain of the province/sea zone.
      * @param log     log writer.
      * @return the real province name given an input.
      * @throws IOException exception.
      */
-    private static String getRealProvinceName(String input,
+    private static String getRealProvinceName(String input, Map<String, Region> regions,
                                               Map<String, Map<String, List<String>>> aliases,
                                               String terrain, Writer log) throws IOException {
         if (StringUtils.equals("noman", terrain)) {
@@ -278,7 +496,6 @@ public class DataExtractor {
                 || StringUtils.equals("europemer", terrain);
 
         boolean rotw = !seaZone && input.contains("~");
-        String realName = null;
         String provinceName = input;
         String aliasPrefix = "province";
         String prefix = "e";
@@ -293,16 +510,52 @@ public class DataExtractor {
             provinceName = input.substring(0, input.indexOf('~'));
         }
 
-        if (aliases.get(aliasPrefix).containsKey(provinceName)) {
-            realName = provinceName;
-        } else if (aliases.get(aliasPrefix + "Inv").containsKey(provinceName)) {
-            realName = aliases.get(aliasPrefix + "Inv").get(provinceName).get(0);
+        String realName = findInAliases(provinceName, aliasPrefix, aliases, log);
+
+        if (realName == null) {
+            boolean needToLog = terrain != null
+                    && !StringUtils.equals("lac", terrain)
+                    && !StringUtils.equals("noman", terrain)
+                    && !StringUtils.equals("europe", terrain);
+            if (seaZone && needToLog) {
+                log.append(provinceName).append("\tSea zone not found in aliases\n");
+            } else if (rotw && needToLog) {
+                log.append(provinceName).append("\tRegion not found in aliases\n");
+            } else if (needToLog) {
+                log.append(provinceName).append("\tProvince not found in aliases\n");
+            }
+            return null;
+        }
+
+        if (rotw && !regions.containsKey(realName)) {
+            log.append(provinceName).append("\tRegion not parsed so far.\t").append(realName).append("\n");
+        }
+
+        return prefix + realName + suffix;
+    }
+
+    /**
+     * Find a name in the aliases and return the internal code.
+     *
+     * @param name    input value.
+     * @param prefix  prefix in aliases.
+     * @param aliases the aliases.
+     * @param log     log writer.
+     * @return the internal code.
+     * @throws IOException exception.
+     */
+    private static String findInAliases(String name, String prefix, Map<String, Map<String, List<String>>> aliases, Writer log) throws IOException {
+        String realName = null;
+        if (aliases.get(prefix).containsKey(name)) {
+            realName = name;
+        } else if (aliases.get(prefix + "Inv") != null && aliases.get(prefix + "Inv").containsKey(name)) {
+            realName = aliases.get(prefix + "Inv").get(name).get(0);
         } else {
-            for (String key : aliases.get(aliasPrefix).keySet()) {
-                for (String value : aliases.get(aliasPrefix).get(key)) {
-                    if (!StringUtils.isEmpty(matchProvinceName(value, provinceName, StringUtils::equals))) {
+            for (String key : aliases.get(prefix).keySet()) {
+                for (String value : aliases.get(prefix).get(key)) {
+                    if (!StringUtils.isEmpty(matchProvinceName(value, name, StringUtils::equals))) {
                         if (realName != null) {
-                            log.append(provinceName).append("\tCan't find root name: ambiguous values\t")
+                            log.append(name).append("\tCan't find root name: ambiguous values\t")
                                     .append(realName).append("\t").append(key).append("\n");
                         }
                         realName = key;
@@ -310,19 +563,7 @@ public class DataExtractor {
                 }
             }
         }
-
-        if (realName == null) {
-            if (seaZone) {
-                log.append(provinceName).append("\tSea zone not found in aliases\n");
-            } else if (rotw) {
-                log.append(provinceName).append("\tRegion not found in aliases\n");
-            } else {
-                log.append(provinceName).append("\tProvince not found in aliases\n");
-            }
-            return null;
-        }
-
-        return prefix + realName + suffix;
+        return realName;
     }
 
     /**
@@ -330,22 +571,25 @@ public class DataExtractor {
      *
      * @param provinces data gathered so far.
      * @param aliases   the aliases.
+     * @param file      name of the file to parse.
+     * @param rotw      flag saying that the file is for the ROTW map.
      * @param log       log writer.
      * @throws Exception exception.
      */
-    public static void extractProvinceData(Map<String, Province> provinces, Map<String, Map<String, List<String>>> aliases, Writer log) throws Exception {
+    public static void extractProvinceData(Map<String, Province> provinces, Map<String, Map<String, List<String>>> aliases,
+                                           String file, boolean rotw, Writer log) throws Exception {
         String line;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/europe.utf")));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream(file)));
         List<String> block = new ArrayList<>();
         while ((line = reader.readLine()) != null) {
             if (line.startsWith("NOM ")) {
                 if (!block.isEmpty()) {
-                    log.append("europe.utf\tNOM already parsed for this block\t").append(line).append("\n");
+                    log.append(file).append("\tNOM already parsed for this block\t").append(line).append("\n");
                 }
                 block.add(line);
             } else if (line.startsWith("; ---") || line.startsWith("; %%%")) {
                 if (!block.isEmpty()) {
-                    processBlock(block, provinces, aliases, log);
+                    processBlock(block, provinces, aliases, rotw, log);
                 }
                 block.clear();
             } else if (!block.isEmpty()) {
@@ -353,7 +597,7 @@ public class DataExtractor {
             }
         }
         if (!block.isEmpty()) {
-            processBlock(block, provinces, aliases, log);
+            processBlock(block, provinces, aliases, rotw, log);
         }
     }
 
@@ -363,10 +607,12 @@ public class DataExtractor {
      * @param block     to parse.
      * @param provinces data gathered so far.
      * @param aliases   the aliases.
+     * @param rotw      flag saying that the file is for the ROTW map.
      * @param log       log writer.
      * @throws Exception exception.
      */
-    private static void processBlock(List<String> block, Map<String, Province> provinces, Map<String, Map<String, List<String>>> aliases, Writer log) throws Exception {
+    private static void processBlock(List<String> block, Map<String, Province> provinces, Map<String, Map<String, List<String>>> aliases,
+                                     boolean rotw, Writer log) throws Exception {
         ProvinceInfo info = new ProvinceInfo();
         for (String line : block) {
             Matcher m = Pattern.compile("NOM [^\"]* \"(.*)\" .*").matcher(line);
@@ -397,15 +643,17 @@ public class DataExtractor {
                 info.getAltNameProvince().add(purifyName(m.group(1)));
                 continue;
             }
-            m = Pattern.compile("CITE \\d{4} \\d{4} (.*)").matcher(line);
+            m = Pattern.compile("CITE (\\d{4}) (\\d{4}) (.*)").matcher(line);
             if (m.matches()) {
-                String string = m.group(1);
+                String string = m.group(3);
                 string = string.replace("jaune", "");
                 info.setCapital(string.contains("capitale"));
                 info.setFortress(Integer.parseInt(string.substring(string.length() - 1)));
+                info.setX(Integer.parseInt(m.group(1)));
+                info.setY(Integer.parseInt(m.group(2)));
                 continue;
             }
-            m = Pattern.compile("IMG \\d{4} \\d{4} (.*)").matcher(line);
+            m = Pattern.compile("IMG \\d{4} \\d{4} (anchor\\d?)").matcher(line);
             if (m.matches()) {
                 String string = m.group(1);
                 info.setPort(StringUtils.equals("anchor", string) || StringUtils.equals("anchor4", string));
@@ -469,7 +717,13 @@ public class DataExtractor {
             }
             found.setInfo(info);
         } else {
-            log.append(info.getNameProvince()).append("\tCan't find province\n");
+            if (rotw && StringUtils.isEmpty(info.getNameProvince())) {
+                Province province = findProvinceAtCoordinates(provinces, null,
+                        info.getX(), info.getY(), true);
+                province.getRotwInfo().transfertFromProvinceInfo(info);
+            } else {
+                log.append(info.getNameProvince()).append("\tCan't find province\n");
+            }
         }
     }
 
@@ -494,10 +748,10 @@ public class DataExtractor {
     }
 
     /**
-     * Transform a blason to a Major trigramme.
+     * Transform a blason to a Major name.
      *
      * @param blason to check.
-     * @return the major trigramme.
+     * @return the major name.
      */
     private static String toMajorName(String blason) {
         String major = null;
@@ -530,8 +784,8 @@ public class DataExtractor {
     /**
      * Retrieves the name of the province related to the info.
      *
-     * @param info      of the province.
-     * @param aliases   List of aliases.
+     * @param info    of the province.
+     * @param aliases List of aliases.
      * @return the province related to the info.
      */
     private static String deepSearchProvince(ProvinceInfo info, Map<String, Map<String, List<String>>> aliases) {
@@ -594,6 +848,22 @@ public class DataExtractor {
     }
 
     /**
+     * Check if the name is a sea zone and returns it.
+     * <p>
+     * If sea zone is 'PROV', name like 'PROV', 'toto (PROV)' or 'tutu [PROV]' will work.
+     * </p>
+     *
+     * @param name      to check.
+     * @param provinces all the provinces.
+     * @return the sea zone found.
+     */
+    private static Province isSeaZone(String name, Map<String, Province> provinces) {
+        String realName = matchProvinceName(name, null, (s, s2) -> provinces.containsKey('s' + s));
+
+        return provinces.get('s' + realName);
+    }
+
+    /**
      * Check if the names matches.
      * The first <code>true</code> test will return the match:
      * <ul>
@@ -643,81 +913,408 @@ public class DataExtractor {
      * Create the special boxes on the maps.
      *
      * @param log log writer.
-     * @return the special boxes.
      */
-    public static Map<String, Province> createSpecialBoxes(Writer log) {
-        Map<String, Province> specialBoxes = new HashMap<>();
-        // Military rounds tiles
-        int roundXBegin = 1550;
-        int roundYBegin = 32;
+    public static void createSpecialBoxes(Map<String, Province> provinces, Writer log) {
+        // Military rounds track
+        double xBegin = 1550;
+        double yBegin = 32;
         for (int i = 0; i <= 5; i++) {
-            createSquare("MR_W" + i, "MR_W" + i, roundXBegin + 2 * i * SQUARE_SIZE, roundYBegin,
-                    "lac", false, false, false, specialBoxes, log);
-            String name = "MR_S" + (i + 1);
+            createSquare("B_MR_W" + i, "B_MR_W" + i, xBegin + 2 * i * SQUARE_SIZE, yBegin, SQUARE_SIZE,
+                    null, false, false, false, provinces, log);
+            String name = "B_MR_S" + (i + 1);
             if (i == 5) {
-                name = "MR_End";
+                name = "B_MR_End";
             }
-            createSquare(name, name, roundXBegin + 2 * i * SQUARE_SIZE, roundYBegin + 2 * SQUARE_SIZE,
-                    "lac", false, false, false, specialBoxes, log);
+            createSquare(name, name, xBegin + 2 * i * SQUARE_SIZE, yBegin + 2 * SQUARE_SIZE, SQUARE_SIZE,
+                    null, false, false, false, provinces, log);
         }
 
-        return specialBoxes;
+        // Turn track
+        double turnSize = 185;
+        xBegin = 8187 - 43 * turnSize;
+        yBegin = 3550;
+        for (int i = 1; i <= 42; i++) {
+            createSquare("B_Turn_" + i, "B_Turn_" + i, xBegin + i * turnSize, yBegin, turnSize,
+                    null, false, true, false, provinces, log);
+        }
+        xBegin = 8187;
+        for (int i = 0; i <= 19; i++) {
+            createSquare("B_Turn_" + (43 + i), "B_Turn_" + (43 + i), xBegin, yBegin - i * turnSize, turnSize,
+                    null, false, true, false, provinces, log);
+        }
+
+        // Prices track
+        xBegin = 30;
+        yBegin = 3765;
+        for (int i = 0; i <= 19; i++) {
+            int value = i / 2;
+            if (i == 19) {
+                value = 10;
+            }
+            String suffix = "G";
+            if (i % 2 == 1) {
+                suffix = "D";
+            }
+            if (i >= 18) {
+                suffix = "";
+            }
+            String name = "B_PB_" + Integer.toString(value) + suffix;
+            createRectangle(name, name, xBegin + 2 * SQUARE_SIZE * i, yBegin, 2 * SQUARE_SIZE, SQUARE_SIZE,
+                    null, false, true, false, provinces, log);
+            name = "B_PH_" + Integer.toString(value) + suffix;
+            createRectangle(name, name, xBegin + 2 * SQUARE_SIZE * i, yBegin + SQUARE_SIZE, 2 * SQUARE_SIZE, SQUARE_SIZE,
+                    null, false, true, false, provinces, log);
+        }
+
+        // Production track
+        xBegin = 30 - SQUARE_SIZE;
+        yBegin = yBegin + 2 * SQUARE_SIZE + 84;
+        for (int i = 1; i <= 40; i++) {
+            String name = "B_PROD40_" + i;
+            createSquare(name, name, xBegin + SQUARE_SIZE * i, yBegin, SQUARE_SIZE,
+                    null, false, true, false, provinces, log);
+        }
+        yBegin += SQUARE_SIZE;
+        for (int i = 1; i <= 30; i++) {
+            String name = "B_PROD30_" + i;
+            createSquare(name, name, xBegin + SQUARE_SIZE * i, yBegin, SQUARE_SIZE,
+                    null, false, true, false, provinces, log);
+        }
+        yBegin += SQUARE_SIZE;
+        for (int i = 1; i <= 20; i++) {
+            String name = "B_PROD20_" + i;
+            createSquare(name, name, xBegin + SQUARE_SIZE * i, yBegin, SQUARE_SIZE,
+                    null, false, true, false, provinces, log);
+        }
+
+        // Great orient income track
+        xBegin = 5500;
+        yBegin = 2750;
+        for (int i = 0; i <= 9; i++) {
+            String name = "B_GOI_-" + (10 * i);
+            createSquare(name, name, xBegin + SQUARE_SIZE * i, yBegin, SQUARE_SIZE,
+                    null, false, true, false, provinces, log);
+        }
+
+        // Technology track
+        xBegin = 30;
+        yBegin = 4460;
+        for (int i = 0; i <= 69; i++) {
+            String name = "B_TECH_" + (i + 1);
+            int row = 5 - i / 12;
+            int col = i % 12;
+            createSquare(name, name, xBegin + 2 * SQUARE_SIZE * col, yBegin + 2 * SQUARE_SIZE * row, 2 * SQUARE_SIZE,
+                    null, false, true, false, provinces, log);
+        }
+
+        // Stability track
+        double stabSize = 245;
+        xBegin = 2800;
+        yBegin = 4420;
+        for (int i = 0; i < 7; i++) {
+            String name = "B_STAB_" + (i - 3);
+            createSquare(name, name, xBegin + stabSize * i, yBegin, stabSize,
+                    null, false, true, false, provinces, log);
+        }
+
+        // Diplomacy rotw track
+        xBegin = 2800;
+        yBegin = 4460 + 3 * SQUARE_SIZE;
+        String[][] diplomacyRotw = new String[4][4];
+        diplomacyRotw[0][0] = "gujarat";
+        diplomacyRotw[1][0] = "aden";
+        diplomacyRotw[2][0] = "oman";
+        diplomacyRotw[3][0] = "soudan";
+        diplomacyRotw[0][1] = "hyderabad";
+        diplomacyRotw[1][1] = "mysore";
+        diplomacyRotw[2][1] = "vijayanagar";
+        diplomacyRotw[3][1] = "mogol";
+        diplomacyRotw[0][2] = "chine";
+        diplomacyRotw[1][2] = "iroquois";
+        diplomacyRotw[2][2] = "azteque";
+        diplomacyRotw[3][2] = "inca";
+        diplomacyRotw[0][3] = "japon";
+        diplomacyRotw[1][3] = "ormus";
+        diplomacyRotw[2][3] = "afghans";
+        diplomacyRotw[3][3] = "siberie";
+        for (int row = 0; row < diplomacyRotw.length; row++) {
+            for (int col = 0; col < diplomacyRotw[row].length; col++) {
+                String name = "B_DR_" + diplomacyRotw[row][col];
+                createRectangle(name, name, xBegin + 4.5 * SQUARE_SIZE * col, yBegin + 2 * SQUARE_SIZE * row, 4.5 * SQUARE_SIZE, 2 * SQUARE_SIZE,
+                        null, false, true, false, provinces, log);
+            }
+        }
+
+        // Diplomacy europe track
+        double diplomacySize = 168;
+        // I think the file and the map are not synchronized. The file has no mention of 165.5
+        double diplomacyHeight = 165.5;
+        xBegin = 5347;
+        yBegin = 3765;
+        createRectangle("B_DE_NEUTRALS", "B_DE_NEUTRALS", 4900, yBegin, xBegin - 4900, 12 * diplomacyHeight,
+                null, false, true, false, provinces, log);
+        String[] levels = new String[7];
+        levels[0] = "RM";
+        levels[1] = "SUB";
+        levels[2] = "MA";
+        levels[3] = "EX";
+        levels[4] = "EW";
+        levels[5] = "VA";
+        levels[6] = "AN";
+        String[] countries = new String[12];
+        countries[0] = "suede";
+        countries[1] = "portugal";
+        countries[2] = "espagne";
+        countries[3] = "habsbourg";
+        countries[4] = "hollande";
+        countries[5] = "venise";
+        countries[6] = "prusse";
+        countries[7] = "pologne";
+        countries[8] = "angleterre";
+        countries[9] = "turquie";
+        countries[10] = "france";
+        countries[11] = "russie";
+        for (int row = 0; row < countries.length; row++) {
+            for (int col = 0; col < levels.length; col++) {
+                String name = "B_DE_" + countries[row] + "-" + levels[col];
+                createRectangle(name, name, xBegin + 2 * diplomacySize * col, yBegin + diplomacyHeight * row, 2 * diplomacySize, diplomacyHeight,
+                        null, false, true, false, provinces, log);
+            }
+        }
     }
 
     /**
-     * Extract the aliases.
+     * Extract data about the seas.
      *
-     * @param log log writer.
-     * @return the aliases.
+     * @param provinces data gathered so far.
+     * @param countries the countries.
+     * @param boorders  existing borders.
+     * @param aliases   the aliases.
+     * @param rotw      flag to know if europe or rotw part is being parsed.
+     * @param log       log writer.
      * @throws Exception exception.
      */
-    public static Map<String, Map<String, List<String>>> extractAliases(Writer log) throws Exception {
-        Map<String, Map<String, List<String>>> aliases = new HashMap<>();
-
+    public static void extractSeaData(Map<String, Province> provinces, Map<String, Country> countries, List<Border> borders,
+                                      Map<String, Map<String, List<String>>> aliases, String file,
+                                      boolean rotw, Writer log) throws Exception {
         String line;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/translations.utf")));
+        Province lastSeazone = null;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream(file)));
         while ((line = reader.readLine()) != null) {
-            if (line.trim().startsWith("%") || StringUtils.isEmpty(line)) {
-                continue;
+            if (line.contains("%")) {
+                line = line.substring(0, line.indexOf('%')).trim();
             }
-
-            Matcher m = Pattern.compile("(.*)=\\[(.*)\\]=>(.*)").matcher(line);
-            String type;
-            String key;
-            List<String> alias = new ArrayList<>(1);
-            if (m.matches()) {
-                type = m.group(2) + "Inv";
-                key = m.group(1);
-                String alt = m.group(3);
-                if (alt.contains("%")) {
-                    alt = alt.substring(0, alt.indexOf('%'));
-                }
-                alias.add(alt);
-            } else {
-                String[] split = line.split(":");
-                type = split[0];
-                key = split[1];
-                for (int i = 2; i < split.length; i++) {
-                    String alt = split[i];
-                    if (alt.contains("%")) {
-                        alt = alt.substring(0, alt.indexOf('%'));
+            if (line.startsWith("(img:orage")) {
+                Matcher m = Pattern.compile("\\(img:orage(\\d)\\) \\d{4} \\d{4} \\(([^\\)]*)\\).*").matcher(line);
+                if (m.matches()) {
+                    int difficulty = Integer.parseInt(m.group(1));
+                    String name = m.group(2);
+                    String realName = findInAliases(name, "seazone", aliases, log);
+                    lastSeazone = isSeaZone(realName, provinces);
+                    if (lastSeazone != null) {
+                        lastSeazone.setSeaInfo(new SeaInfo());
+                        lastSeazone.getSeaInfo().setDifficulty(difficulty);
+                    } else {
+                        log.append(name).append("\tSea zone not found.\n");
                     }
-                    alias.add(alt);
+                } else {
+                    log.append("Seazone can't be parsed\t").append(line).append("\n");
+                }
+            } else if (line.endsWith("risque")) {
+                if (lastSeazone != null && lastSeazone.getSeaInfo() != null) {
+                    int penalty = Integer.parseInt(line.split(" ")[0]);
+                    lastSeazone.getSeaInfo().setPenalty(penalty);
+                } else {
+                    log.append("Risque can't be  linked to a seazone\t").append(line).append("\n");
+                }
+
+            } else if (line.endsWith("zm")
+                    || line.endsWith("zmshieldup")
+                    || line.endsWith("zp")
+                    || line.endsWith("zpshield")
+                    || line.endsWith("zmshield")) {
+                Integer monopoly = null;
+                Integer presence = null;
+                String country = null;
+                Integer x = null;
+                Integer y = null;
+                String type = "ZP";
+                if (line.contains("zm")) {
+                    type = "ZM";
+                }
+
+                Matcher m = Pattern.compile("\\((\\d*)\\) (\\d) (\\d{4}) (\\d{4}) .*").matcher(line);
+                if (m.matches()) {
+                    monopoly = Integer.parseInt(m.group(1));
+                    presence = Integer.parseInt(m.group(2));
+                    x = Integer.parseInt(m.group(3));
+                    y = Integer.parseInt(m.group(4));
+                }
+
+                m = Pattern.compile("\\w* \\w* (\\d*) (\\d) \\([^\\)]*\\) \\w* \\(([^\\)]*)\\) (\\d*) (\\d*) .*").matcher(line);
+                if (m.matches()) {
+                    monopoly = Integer.parseInt(m.group(1));
+                    presence = Integer.parseInt(m.group(2));
+                    country = m.group(3);
+                    x = Integer.parseInt(m.group(4));
+                    y = Integer.parseInt(m.group(5));
+                }
+
+                m = Pattern.compile("\\w* \\w* (\\d*) (\\d) \\([^\\)]*\\) @ (\\d*) (\\d*) .*").matcher(line);
+                if (m.matches()) {
+                    monopoly = Integer.parseInt(m.group(1));
+                    presence = Integer.parseInt(m.group(2));
+                    x = Integer.parseInt(m.group(3));
+                    y = Integer.parseInt(m.group(4));
+                }
+
+                if (monopoly != null) {
+                    TradeZone tradeZone = new TradeZone();
+                    tradeZone.setMonopoly(monopoly);
+                    tradeZone.setPresence(presence);
+                    tradeZone.setType(type);
+                    Province seaZone = findProvinceAtCoordinates(provinces, "SEA", x, y, rotw);
+                    if (seaZone != null) {
+                        tradeZone.setSeaZone(seaZone.getName());
+                    } else {
+                        log.append("Can't find sea zone\t").append(line).append("\n");
+                    }
+                    String realCountry = transformMajorName(country);
+                    if (!countries.containsKey(realCountry) && !StringUtils.isEmpty(country)) {
+                        log.append(country).append("\tCountry not found.\n");
+                    }
+                    tradeZone.setCountryName(realCountry);
+                    String name;
+                    if (!StringUtils.isEmpty(tradeZone.getCountryName())) {
+                        name = type + tradeZone.getCountryName();
+                    } else {
+                        name = type + tradeZone.getSeaZone().substring(1);
+                    }
+
+                    Province square = createSquare(name, name, x, y, SQUARE_SIZE, null, false, rotw, false, provinces, log);
+                    square.restructure();
+                    square.setTradeInfo(tradeZone);
+                } else {
+                    log.append("Can't parse ZM/ZP\t").append(line).append("\n");
+                }
+            } else if (line.endsWith(" detroit")) {
+                Matcher m = Pattern.compile("\\[(\\d+) (\\d+) *\\-?\\d+ (\\d+) (\\d+) \\d+ \\d+\\.?\\d*\\] detroit").matcher(line);
+                if (m.matches()) {
+                    int x1 = Integer.parseInt(m.group(1));
+                    int y1 = Integer.parseInt(m.group(2));
+                    int x2 = Integer.parseInt(m.group(3));
+                    int y2 = Integer.parseInt(m.group(4));
+
+                    Province provA = findProvinceAtCoordinates(provinces, null, x1, y1, rotw);
+                    Province provB = findProvinceAtCoordinates(provinces, null, x2, y2, rotw);
+                    if (provA != null && provB != null && provA != provB) {
+                        Border border = new Border(provA, provB, "STRAIT");
+                        if (!borders.contains(border)) {
+                            borders.add(border);
+                        }
+                    }
+                } else {
+                    log.append("Can't parse strait\t").append(line).append("\n");
                 }
             }
+        }
+    }
 
-            if (!aliases.containsKey(type)) {
-                aliases.put(type, new HashMap<>());
+    /**
+     * Find the province at the given coordinates.
+     *
+     * @param provinces data gathered so far.
+     * @param terrain   terrain to filter search.
+     * @param x         coordinate.
+     * @param y         coordinate.
+     * @param rotw      search must be done on rotw provinces.
+     */
+    private static Province findProvinceAtCoordinates(Map<String, Province> provinces, String terrain, int x, int y, boolean rotw) {
+        Province province = null;
+        for (Province prov : provinces.values()) {
+            if (terrain == null || StringUtils.equals(terrain, prov.getTerrain())) {
+                for (Pair<List<List<Pair<Double, Double>>>, Boolean> coord : prov.getCoords()) {
+                    if (coord.getRight() == rotw) {
+                        for (List<Pair<Double, Double>> points : coord.getLeft()) {
+                            if (isInside(x, y, points)) {
+                                if (!StringUtils.equals("SEA", prov.getTerrain()) &&
+                                        !StringUtils.equals("SEA", terrain)) {
+                                    return prov;
+                                } else {
+                                    province = prov;
+                                }
+                            }
+                        }
+                    }
+                }
             }
-
-            if (aliases.get(type).containsKey(key)) {
-                log.append(key).append("\tAlias already exist\t").append(type).append("\n");
-            }
-
-            aliases.get(type).put(key, alias);
         }
 
-        return aliases;
+        return province;
+    }
+
+    /**
+     * Checks whether the position is within the border of the coordinates.
+     * <p>
+     * Uses a polygon containment algorithm described here:
+     * http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
+     *
+     * @param checkX The x position to check if inside.
+     * @param checkY The y position to check if inside.
+     * @param coords The coordinates of the polygon
+     * @return True if inside, false otherwise.
+     */
+    private static boolean isInside(float checkX, float checkY, List<Pair<Double, Double>> coords) {
+        boolean inside = false;
+        for (int i = 0, j = coords.size() - 1; i < coords.size(); j = i++) {
+            Pair<Double, Double> pi = coords.get(i);
+            Pair<Double, Double> pj = coords.get(j);
+            if ((((pi.getRight() <= checkY) && (checkY < pj.getRight())) || ((pj.getRight() <= checkY) && (checkY < pi.getRight())))
+                    && (checkX < (pj.getLeft() - pi.getLeft()) * (checkY - pi.getRight()) / (pj.getRight() - pi.getRight()) + pi.getLeft())) {
+                inside = !inside;
+            }
+        }
+        return inside;
+    }
+
+    /**
+     * Transform a name in ZP/ZM to a Major name.
+     *
+     * @param name to transform.
+     * @return the major real name.
+     */
+    private static String transformMajorName(String name) {
+        String major = null;
+
+        if (name != null) {
+            switch (name) {
+                case "Turcia":
+                    major = "turquie";
+                    break;
+                case "Russia":
+                    major = "russie";
+                    break;
+                case "Hollandia":
+                    major = "hollande";
+                    break;
+                case "Anglia":
+                    major = "angleterre";
+                    break;
+                case "Francia":
+                    major = "france";
+                    break;
+                case "Hispania":
+                    major = "espagne";
+                    break;
+                case "Venetia":
+                    major = "venise";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        return major;
     }
 
     /**

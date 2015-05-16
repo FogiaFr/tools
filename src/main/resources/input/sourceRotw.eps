@@ -1,0 +1,897 @@
+﻿%!PS
+BOOTFILE (r) file run
+/clipping false def
+systemdict /CLIP known {/compress false def /clipping true def}if
+/translation true def
+/globalscale 72 180 div def
+/pagewidth 8425 def
+/pageheight 5840 def
+clipping {/pagewidth 1300 def /pageheight 1300 def}if
+HOMEDIR(/library/library.eps)! include
+HOMEDIR(/library/libcarte.eps)! include
+FONTDIR(/champion.eps)! include
+CURRENTDIR(/images.eps)! include
+CURRENTDIR(/activation.eps)! include
+/xfact 40955 3500 sub 8425 0 sub div def
+/yfact 29465 3500 sub 5840 0 sub div def
+/xbase 3500 0 xfact mul sub .5 add def
+/ybase 31945 0 yfact mul sub .5 add def
+(ROTWSource) inittrace
+
+/translationdict<<
+    translationdict{}forall
+    (Avant 1560)	(Before 1560)
+    (Avant 1615)	(Before 1615)
+    (Avant 1700)	(Before 1700)
+    (inexistant)	(unavailable)
+    (inexistants)	(unavailable)
+    (Tour de jeu)	(Game turn)
+    (Ressources exotiques)	(Exotic resources)
+    (\(Rappel\))	(\(for memory\))
+    (Évolution des prix \(conjecture économique\)) (Price evolution \(economic situation\))
+    (Prix & Valeurs)	(Initial and minimal)
+    (minimales et initiales)	(prices & values)
+    (Inflation &)	(Maximal values)
+    (Valeurs maximales)	(& Inflation)
+    (Mariage royal +1)	(Royal Marriage +1)
+    (Subsides +1)	(Subsidies +1)
+    (Alliance militaire +2)	(Military Alliance +2)
+    (Corps Exp. +2)	(Exp. Corps +2)
+    (Entrée en guerre +3)	(Entry in War +3)
+    (Vassal +3)	dup
+    (Annexion +3)	dup
+    (% revenu) (% income)
+    (+1 survie) (+1 survival)
+    (Stabilité)	(Stability)
+    (Diplomatie avec les mineurs hors-Europe)	(Diplomacy with ROTW minors)
+    (Charte diplomatique européenne) (European diplomatic chart)
+    ((Carte Hors-Europe)) ((ROTW Map))
+    (soudan)	(Sudania)
+    (oman)	(Ayman)
+    (aden)	(Aden)
+    (gujarat)	(Guzarate/Aceh)
+    (mogol)	(Mogolis Imp.)
+    (vijayanagar)	(Bisinagar)
+    (mysore)	(Mysuria)
+    (hyderabad)	(Hyderabada)
+    (inca)	(Inca)
+    (azteque)	(Azteca)
+    (iroquois)	(Iroquois)
+    (chine)	(China)
+    (siberie)	(Siberia)
+    (afghans)	(Durranis Imp.)
+    (perse)	(Persia)
+    (japon)	(Iaponia)
+>>def
+
+<< /Title ((Carte Hors-Europe))@ >> infochunk
+begindocument
+beginpage
+clipping{(q\n1 0 0 1 00000 00000 cm 00000 00000 01300 01300%Clipping info\nre W n\n)out}if
+(fonddecarte.clp) copymap
+
+%%%%%%%%% TEMPETES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(img:orage6) 0240 3040 (Mer d’Alaska) true orage
+(img:orage5) 0430 2800 (Golfe de Californie) false orage
+(img:orage7) 0366 2150 (Pacifique nord-est) true orage
+1 risque
+(img:orage8) 0366 1835 (Pacifique sud-est) true orage
+1 risque
+(img:orage8) 1390 0050 (Pacifique sud-est) true orage
+1 risque
+(img:orage6) 1181 1861 (Golfe de Panama) true orage
+(img:orage5) 1702 0623 (Côte du Pérou) true orage
+(img:orage5) 1636 0197 (Côte du Chili) true orage
+(img:orage8) 1842 0014 (Cap Horn) true orage
+2 risque
+(img:orage6) 2387 0359 (Côte de Patagonie) true orage
+(img:orage4) 2695 0750 (Rio de la Plata) false orage
+(img:orage4) 2860 0851 (Mer de Bahia) true orage
+(img:orage5) 2964 1187 (Mer de Recife) true orage
+(img:orage6) 2935 1935 (Atlantique équatorial) false orage
+(img:orage5) 2696 1645 (Golfe d'Amazonie) true orage
+(img:orage6) 2546 2229 (Îles sous-le-vent) false orage
+(img:orage6) 2150 1965 (Caraïbes) false orage
+(img:orage6) 1490 2240 (Golfe du Mexique) false orage
+(img:orage6) 1992 2206 (Cuba) true orage
+(img:orage6) 2254 2244 (Puerto Rico) false orage
+(img:orage7) 2386 2472 (Triangle des Bermudes) false orage
+(img:orage5) 2355 2716 (Atlantique nord-ouest) true orage
+(img:orage6) 2338 3354 (Mer du Labrador) false orage
+(img:orage6) 1638 3265 (Baie d’Hudson) true orage
+2 risque
+(img:orage5) 2964 3228 (Grœnland) false orage
+(img:orage6) 3230 2780 (Mer des Açores) false orage
+(img:orage5) 3293 2507 (Mer des Canaries) true orage
+(img:orage6) 2735 2660 (Atlantique nord) false orage
+(img:orage6) 2735 2380 (Atlantique) false orage
+(img:orage5) 3260 2130 (Banc d’Arguin) true orage
+(img:orage5) 3323 1667 (Baie de Gambie) false orage
+(img:orage6) 3552 1427 (Golfe de Guinée) true orage
+(img:orage5) 3837 1302 (Côte d’Angola) false orage
+(img:orage7) 3298 1188 (Atlantique sud) false orage
+(img:orage6) 2972 0621 (Atlantique sud-ouest) true orage
+1 risque
+(img:orage6) 3654 0621 (Atlantique sud-est) true orage
+1 risque
+(img:orage7) 4001 0621 (Cap de Bonne-Espérance) true orage
+1 risque
+(img:orage7) 4726 0621 (Cap des tempêtes) true orage
+1 risque
+(img:orage6) 5243 0064 (Quarantièmes rugissants) false orage
+1 risque
+(img:orage5) 4753 1048 (Canal de Mozambique) true orage
+(img:orage6) 5127 1247 (Océan Indien ouest) true orage
+(img:orage5) 5002 1514 (Mer des Seychelles) true orage
+(img:orage4) 5251 1980 (Côte de Mascate) true orage
+(img:orage5) 5248 1815 (Mer d’Oman) true orage
+(img:orage5) 5472 1584 (Maldives) true orage
+(img:orage5) 5963 1658 (Océan Indien) true orage
+1 risque
+(img:orage5) 6032 1844 (Détroit de Malaisie) true orage
+(img:orage4) 6405 1669 (Mer de Java) false orage
+(img:orage5) 6670 1204 (Mer de Sawu) true orage
+(img:orage5) 6493 1254 (Bassin de Wharton) true orage
+(img:orage5) 6435 0064 (Océan Indien sud) false orage
+(img:orage6) 6873 0064 (Grande Baie Australienne) false orage
+(img:orage6) 7598 0064 (Mer de Tasman) false orage
+1 risque
+(img:orage6) 7793 0842 (Mer de Corail) true orage
+1 risque
+(img:orage6) 7839 1284 (Pacifique sud-ouest) true orage
+(img:orage4) 7449 1262 (Mer d’Arafura) false orage
+(img:orage4) 7351 1697 (Mer des Épices) false orage
+(img:orage5) 7645 1684 (Mer des Philippines) true orage
+(img:orage6) 6546 1822 (Mer de Chine sud) false orage
+(img:orage6) 6648 2106 (Détroit de Formose) false orage
+(img:orage5) 7150 2230 (Mer de Chine nord) false orage
+(img:orage4) 6885 2392 (Mer de Corée) false orage
+(img:orage4) 7130 2667 (Mer du Japon) false orage
+(img:orage6) 7430 3020 (Mer d’Okhotsk) false orage
+(img:orage7) 7745 2830 (Pacifique nord-ouest) true orage
+(img:orage8) 7485 2310 (Pacifique ouest) true orage
+(img:orage8) 7920 2530 (Grand océan pacifique) true orage
+2 risque
+(img:orage6) 0554 0032 (Détroit de Floride) true orage
+(img:orage6) 1434 0523 (Atlantique ouest) true orage
+
+(img:orage5) 1548 0835 (Bay of Fundy) false orage
+(img:orage4) 5298 0517 (Golfe de l'Indus) true orage
+(img:orage4) 5368 0340 (Côte de Malabar) true orage
+(img:orage4) 6131 0240 (Mer du Bengale) true orage
+
+%%Clip%%
+(q 3 w 0 0 0 RG\n) out
+CURRENTDIR(/clip1.clp)! include 1 index out out
+(\nW n\n) out
+(img:orage4) 5098 2263 (Golfe Persique) true orage
+out ( S\nQ\n) out
+%(Golfe) 5280 2280 300 24 (FontArialNarrow-Bold) centertext
+%(Persique) 5280 2260 300 24 (FontArialNarrow-Bold) centertext
+(q )out -50 dup cos display space dup sin display space dup sin -1 mul display space dup cos display ( 5056 2368 cm\n)out
+(Golfe) 0 10 300 28.35 (FontArialNarrow-Bold) centertext
+(Persique) 0 -10 300 28.35 (FontArialNarrow-Bold) centertext
+(Q\n)out
+(q 1 1 0 rg\n) out
+(Ormus) 5384 2136 300 24 (FontArialNarrow-Bold) centertext
+(Q\n)out
+
+
+%%Clip%%
+(q 3 w 0 0 0 RG\n) out
+CURRENTDIR(/clip2.clp)! include 1 index out out
+(\nW n\n) out
+(img:orage4) 2205 2874 (Saint-Laurent) true orage %(Saint-Laurent)
+out ( S\nQ\n) out
+(Saint-) 2222 2984 300 28.35 (FontArialNarrow-Bold) centertext
+(Laurent) 2313 2984 300 28.35 (FontArialNarrow-Bold) lefttext
+
+%%Clip%%
+(q 3 w 0 0 0 RG\n) out
+CURRENTDIR(/clip3.clp)! include exch out
+(W n\n) out
+(img:orage4) 4788 2035 (Mer rouge) true orage %(Mer rouge)
+out (S\nQ\n) out
+(Mer rouge) 5021 1962 300 28.35 (FontArialNarrow-Bold) centertext
+
+%%%%%%%%% ILES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CURRENTDIR(/carres.eps)! include
+/carretext 24 def
+0.8 beginalpha
+(1 1 0 rg\n) out
+carredict {carre pop}forall
+endalpha
+
+%%%%%%%%% NOMS ORNES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[[(Europa Universa)f1][(1)f2][(li)f3][(s )f2]] 3935 2940 256 multitext
+
+%%%%%%%%% ZP/ZM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(20) 4 1183 0312 [7 6] zm %Amérique
+( ) ( ) 2007 2521 [] zm %Amérique
+(10) 2 1839 0818 [9 7] zm %Pérou
+(10) 2 2367 0482 [9 6] zm%Patagonie
+(20) 4 1950 1955 [8 6 4] zm %Antilles
+(15) 3 3672 1502 [8 7] zm %Guinée
+(20) 4 5352 1801 [6] zm %Oman
+(30) 6 5745 1634 [5] zm %Indien
+% Bottom-left corner is on the border with Mer de Chine Sud.
+(20) 4 6549 1936 [4] (img:chineespagne) zmshieldup %Chine
+(10) 2 4656 0260 [9 7] zm %Tempêtes
+(20) 4 3078 2421 [9] zm %Canaries
+(10) 2 2998 1438 [9 8 7] zm %Recife
+CURRENTDIR(/portsandmines.eps)! include
+CURRENTDIR(/text.eps)! include
+
+% Grandes régions
+CURRENTDIR(/ressource.eps)! include
+
+/resspos <<
+    (perse)		[4938 2603 true(Ormus (ﺱﺭﺎﭘ)){0.75 5224 2352 link}]
+    (alaska)		[0327 3490 true (Alaska)]
+    (oregon)		[0625 2960 false(Oregon)]
+    (californie)	[0620 2720 false(California)]
+    (arizona)		[0700 2550 false (Arizona){1.5 1180 2550 link}]
+    (nevada)		[0925 2745 true (Nevada)]
+    (texas)		[1535 2517 true (Texas)]
+    (rocheuses)		[0862 3266 true (Rocheuses)]
+    (kansas)		[1603 2746 true (Kansas)]
+    (manitoba)		[1129 3439 false(Manitoba)]
+    (hudson)		[1176 3527 true (Hudson)]
+    (labrador)		[2030 3285 true (Labrador)]
+    (terre-neuve)	[2570 3020 true (Terre-Neuve)]
+    (siberie)		[5000 3500 false(Sibérie\n(Сибирь)){1.5 5286 3420 link}]
+    (ob)		[5425 3121 true (Ob (Оби))]
+    (ienissei)		[5710 2977 true (Ienisseï (Енисей))]
+    (lena)		[6103 2991 true (Lena (Лена))]
+    (yakoutie)		[7333 3508 true (Yakoutie (Якутия))]
+%    (baikal)		[6532 3187 true (Baïkal (Байкал))]
+    (baikal)		[6560 3200 true (Baïkal (Байкал))]
+    (amour)		[7263 3243 true (Amour (Амур))]
+    (japon)		[7345 2730 true (Japon (日本))]
+    (kamchatka)		[7874 3322 false(Kamchatka\n(Камчатска))]
+    (mandchourie)	[6450 2961 true (Mandchourie (滿洲))]
+    (coree)		[7024 2427 true (Corée (조선)\nChosǒn){3 6984 2545 link}]
+    (pekin)		[6290 2740 true(Pékin (北京))]
+    (shangai)		[5918 2730 true (Nankin (南京)){1 6390 2518 link}]
+    (canton)		[5876 2640 true (Canton (广东)){1 6358 2345 link}]
+    (formose)		[6935 2342 false(Formose\n(Táiwān)\n(台湾))]
+    (vietnam)		[5816 2550 true (Đại Việt) {1 6354 2238 link}]
+    (thailande)		[5716 2460 true (Ayutthaya (อยุธยา)){1 6296 2262 link}]
+    (birmanie)		[5796 2330 true (Birmanie (ဗမာ))]
+    (malaisie)		[5865 2070 true (Malacca){1.5 6243 1872 link}]
+    (aral)		[5445 2986 false(Aral)]
+    (cuba)		[1700 2430 true (Cuba){0.5 1880 2242 link}]
+    (haiti)		[2001 2542 true (Haïti){0.5 2103 2170 link}]
+    (antilles)		[2550 2050 true (Antilles)]
+    (capvert)		[3025 2240 false(Cabo Verde)]
+    (mauritanie)	[3551 2291 true (Mauritanie)]
+    (senegal)		[3611 2191 true (Sénégal){0.0 3549 1986 link}]
+    (cotedivoire)	[3661 2091 true (Côte d’Ivoire){0.25 3646 1867 link}]
+    (cotedor)		[3781 1991 true (Côte d’Or){0.25 3831 1893 link}]
+    (cameroun)		[4041 1955 true (Cameroun)]
+    (gabon)		[4223 1764 true (Gabon)]
+    (congo)		[4239 1618 true (Congo)]
+    (angola)		[4285 1463 false(Angola)]
+    (namibie)		[4297 1278 false(Namibie)]
+    (sthelene)		[3692 1181 false(Sainte-Hélène)]
+    (cap)		[4344 1116 true (Cap)]
+    (natal)		[4458 1290 false(Natal){0.75 4584 1028 link}]
+    (madagascar)	[4879 0956 false(Madagascar)]
+    (mascareignes)	[4937 0732 true (Mascareignes)]
+    (seychelles)	[5279 1650 false(Seychelles)]
+    (nyasa)		[4531 1505 false(Nyasa)]
+    (kenya)		[4483 1737 true (Kenya)]
+    (ethiopie)		[4595 1952 false(Éthiopie)]
+    (soudan)		[4340 2186 true (Soudan (ﻥﺍﺩﻮّﺴﻟا))]
+    (nedj)		[4729 2485 false(Nedj\n(ﺪﺟﺎﻧ))]
+    (aden)		[4420 2066 true (Aden (ﻥﺪﻋ)){1.5 4896 2022 link}]
+    (oman)		[4940 2221 true (Oman (ﻥﺎﻤﻋ))]
+    (afghan)		[5720 2747 false(Afghanistan)]
+    (balouchie)		[5506 2402 false(Balouchistan)]
+    (chichimeca)	[0845 2324 true (Chichimeca)]
+    (azteca)		[0970 2124 true (Azteca)]
+    (yucatan)		[1492 1992 false(Yucatán)]
+    (borneo)		[6569 1744 false(Bornéo)]
+    (sulawesi)		[6808 1326 false(Célèbes){2.5 6859 1604 link}]
+    (java)		[6729 1160 false(Java){3 6538 1450 link}]
+    (sumatra)		[6075 1753 false(Sumatra)]
+    (oceanie)		[7093 1028 true (Océanie)]
+    (ilessonde)		[7037 1441 false(Îles de\nla Sonde)]
+    (philippines)	[7273 1964 true (Philippines)]
+    (ilesepices)	[7103 1658 false(Îles aux\népices)]
+    (pacifique)		[7946 2340 true (Pacifique)]
+    (bengale)		[6319 0755 true (Bānglā ()){2.5 6540 0837 link}]
+    (orissa)		[6107 0623 false(Orissā\n())]
+    (gondwana)		[6250 0660 false(Gonḍānā\n()){3 6160 0829 link}]
+    (karnatika)		[5960 0500 false(Karnāṭaka\n())]
+    (ceylan)		[6035 0160 true (Singala ())]
+    (malabar)		[5460 0126 true (Malabāṟ ())]
+    (hyderabad)		[5480 0420 false(Hydārabad\n()){1.75 5757 0561 link}]
+    (mumbai)		[5427 0757 false(Mumbaī\n())]
+    (gujarat)		[5242 0891 false(Gujarat\n())]
+    (aoudh)		[6242 1411 false (Ayodhyā\n())]
+    (pendjab)		[5938 1385 true (Pãjāb ()){3.5 5746 1266 link}]
+    (delhi)		[5910 1489 true (Dellī ())]
+    (indus)		[5612 1644 true (Indus (ﺪﻨﺳ)){0 5534 1397 link}]
+    (quebec)		[0749 1702 false(Québec)]
+    (grandslacs)	[0316 1656 true(Grands Lacs)]
+    (acadie)		[1678 1092 false(Acadie)]
+    (america)		[1406 1057 false(America)]
+    (virginia)		[1187 0847 false(Virginia)]
+    (illinois)		[0110 1022 true (Illinois)]
+    (iroquois)		[0070 0880 true (Iroquois){1.5 0500 0676 link}]
+    (louisiane)		[0233 0208 false(Mississipi)]
+    (caroline)		[1012 0509 false(Carolina)]
+    (floride)		[0906 0121 true (Florida)]
+    (panama)		[1694 1834 true (Panamá)]
+    (ecuador)		[1698 1744 false(Ecuador)]
+    (venezuela)		[2040 1751 true (Venezuela)]
+    (guyana)		[2551 1900 true (Guyana)]
+    (amazonia)		[2034 1552 true (Amazonia)]
+    (paraguay)		[2205 1064 false(Paraguay)]
+    (belem)		[2471 1496 true (Belém)]
+    (minasgerais)	[2430 1344 true (Minas Gerais)]
+    (recife)		[2984 1438 true (Recife)]
+    (rio)		[2855 1160 true (Rio)]
+    (inca)		[1921 1137 false(Inca){2.5 2027 1292 link}]
+    (chili)		[1850 0808 true (Chili)]
+    (patagonia)		[2225 0483 false(Patagonia)]
+    (plata)		[2518 0777 false(Plata)]
+    (malouines)		[2446 0271 true (Malouines)]
+>> def
+
+resspos {exch 1 index 2 get province dup length 5 eq {4 get cvx exec}{pop}ifelse}forall
+
+% tordesillas reminder: shared areas
+% America
+(img:tordesillas) (amazonia)  tordesillasdown
+(img:tordesillas) (minasgerais)  tordesillasdown
+(img:tordesillas) (guyana)  tordesillasdown
+% Asia
+(img:tordesillas) (philippines)  tordesillasdown
+(img:tordesillas) (kamchatka)  tordesillas
+(img:tordesillas) (formose)  tordesillas
+% China
+(img:tordesillas) (mandchourie)  tordesillasdown
+(img:tordesillas) (pekin)  tordesillasdown
+(img:tordesillas) (shangai)  tordesillasdown
+(img:tordesillas) (canton)  tordesillasdown
+(img:tordesillas) (coree)  tordesillasdown
+% Japan
+(img:tordesillas) (japon)  tordesillasdown
+
+% tordesillas reminder: Portuguese areas in America
+(img:portugal) (belem)  tordesillas
+(img:portugal) (recife)  tordesillas
+(img:portugal) (rio)  tordesillas
+
+% Manilla Galleon reminder
+(img:chineespagne) (philippines)  tordesillasup
+
+% Nerchinsk reminder
+(img:protochine) (amour) tordesillas
+(img:protochine) (baikal) tordesillas
+
+% Spanish World reminder
+(img:protoespagne) (chichimeca) tordesillas
+(img:protoespagne) (azteca) tordesillasup
+(img:protoespagne) (yucatan) tordesillas
+(img:protoespagne) (panama) tordesillas
+(img:protoespagne) (venezuela) tordesillas
+(img:protoespagne) (ecuador) tordesillas
+(img:protoespagne) (guyana) tordesillasup
+(img:protoespagne) (amazonia) tordesillasup
+(img:protoespagne) (inca) 10 tordesillasoffset
+(img:protoespagne) (minasgerais) tordesillasup
+(img:protoespagne) (paraguay) tordesillas
+(img:protoespagne) (chili) tordesillas
+(img:protoespagne) (plata) tordesillas
+(img:protoespagne) (patagonia) tordesillas
+
+% --- [BLP] ---
+% Caraibes reminder.
+(img:caraibes) (antilles) tordesillas
+(img:caraibes) (cuba) tordesillas
+(img:caraibes) (haiti) tordesillas
+(img:caraibes) (floride) tordesillas
+
+% ROTW minor ownership/interest. Often may use the natives in the area.
+% ownership if valid for all game.
+% Interest if valid for part of the game
+% Vijayanar/Moghol not here because there are counters.
+(img:oman) (oman) tordesillas % Oman has a COL in Oman
+% Zanzibar in noms.utf
+(img:aden) (aden) tordesillas % Aden has a COL in Aden
+(img:protoaceh) (sumatra) tordesillas % Aceh may be anywhere in Sumatra
+(img:protoazteque) (azteca) tordesillasdown
+% China
+(img:chine) (pekin) tordesillasup
+(img:chine) (shangai) tordesillasup
+(img:chine) (canton) tordesillasup
+(img:chine) (mandchourie) tordesillasup
+(img:protochine) (coree) tordesillasup
+(img:protoafghans) (afghan) tordesillasup % Afghanistan is created late
+(img:protogujarat) (gujarat) tordesillas % Exists in 1492
+(img:protogujarat) (malaisie) tordesillas % Exists in 1492
+(img:protohyderabad) (hyderabad) tordesillas % Created late
+% Mysore only owns one province. See noms.utf
+(img:japon) (japon) tordesillasup
+%(img:protojapon) (coree) tordesillasup % Expedition in pIII
+(img:protoinca) (inca) tordesillas % Exists in 1492
+(img:iroquois) (iroquois) tordesillas % Always here
+(img:perse) (perse) tordesillas % Persia owns Ormus
+(img:protoperse) (afghan) tordesillasdown % May be annexed
+(img:protosiberie) (siberie) tordesillas % Exists in 1492
+(img:soudan) (soudan) tordesillas % Always here
+
+
+
+begindetroit
+[7061 2478 0 7173 2530 225 2] detroit
+[7297 2682 120 7330 2826 210 3] detroit
+[5353 2233 135 5232 2360 270 3] detroit
+[5353 2185 165 5271 2213 330 1] detroit
+[4920 2050 250 4862 1943 70 2] detroit
+[7883 3377 45 7874 3462 0 3] detroit
+enddetroit
+(q 0 0 0 RG 0 0 0 rg )out
+(12 MP to reach or leave Kamchatka) 7874 3522 400 20 an centertext
+(through this area to any) 7874 3502 400 20 an centertext
+(adjacent province \(all included\)) 7874 3482 400 20 an centertext
+(Q\n)out
+
+% Mogol area progression
+/i 0 def
+[
+    [(0 0 0) 5786 1431]
+    [(0 0 0) 5560 2640]
+    [(0 0 0) 6014 1074]
+    [(1 1 0) 6434 1024]
+    [(0 0 0) 5608 0925]
+    [(0 0 0) 5665 1106]
+    [(0 0 0) 5525 1326]
+    [(0 0 0) 5431 2356]
+    [(1 1 0) 6214 0786]
+    [(0 0 0) 6025 0775]
+    [(0 0 0) 5822 0820]
+    [(0 0 0) 5808 0593]
+    [(0 0 0) 5799 0459]
+    [(0 0 0) 5848 0218]
+]{/i i 1 add def aload pop 1 3 1 roll begints dup out( rg )out out( RG )out
+newpath 30 0 moveto 0 0 30 0 360 arc closepath (h S\n) exporttopdf
+i 2 string cvs 0 -20 50 40 an centertext
+endts}forall
+
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [-1 -1 11 16]  /Matrix [3 0 0 3 10 125]/Resources << >>#DICT#q 4 0 m 4 9 l 0 9 l 0 11 l 4 11 l 4 15 l 6 15 l 6 11 l 10 11 l 10 9 l 6 9 l 6 0 l 4 0 l B Q\n) (catholique) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [-1 -1 11 16]  /Matrix [3 0 0 3 142 125]/Resources << >>#DICT#q 4 -1 m 4 3 l 2.5 3.5 l 2.5 5.5 l 4 5 l 4 8.5 l 0 8.5 l 0 10.5 l 4 10.5 l 4 12 l 2.5 12 l 2.5 13.5 l 4 13.5 l 4 15 l 6 15 l 6 13.5 l 7.5 13.5 l 7.5 12 l 6 12 l 6 10.5 l 10 10.5 l 10 8.5 l 6 8.5 l 6 4.5 l 7.5 4 l 7.5 2 l 6 2.5 l 6 -1 l 4 -1 l B Q\n) (orthodoxe) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [-1 -1 11 16]  /Matrix [3 0 0 3 54 125]/Resources << >>#DICT#q 9.33 12.5 m 8.437 14.047 6.786 15 5 15 c 2.239 15 0 12.761 0 10 c 0 7.238 2.239 5 5 5 c 6.786 5 8.437 5.953 9.33 7.5 c 9.33 7.5 l 8.697 6.91 7.865 6.582 7 6.582 c 5.113 6.582 3.582 8.112 3.582 10 c 3.582 11.887 5.113 13.417 7 13.417 c 7.865 13.417 8.697 13.089 9.33 12.5 c h B Q\n) (sunnite) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [-1 -1 11 16]  /Matrix [3 0 0 3 98 125]/Resources << >>#DICT#q 1.5 w 10 10 m 10 12.761 7.761 15 5 15 c 2.239 15 0 12.761 0 10 c 0 7.238 2.239 5 5 5 c 7.761 5 10 7.238 10 10 c s 0.5 w 5 5 m 7.761 5 10 7.238 10 10 c 10 12.761 7.761 15 5 15 c 5 15 l 3.619 15 2.5 13.88 2.5 12.5 c 2.5 11.119 3.619 10 5 10 c 5 10 l 6.38 10 7.5 8.881 7.5 7.5 c 7.5 6.119 6.38 5 5 5 c B 0 0 0 RG 10 10 m 10 12.761 7.761 15 5 15 c 2.239 15 0 12.761 0 10 c 0 7.238 2.239 5 5 5 c 7.761 5 10 7.238 10 10 c s Q\n) (autrereligion) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 20 20]  /Matrix [1 0 0 1 0 0]/Resources << >>#DICT#q 0 20 m 0 0 l 20 10 l h f Q\n) (rtriangle) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 20 20]  /Matrix [1 0 0 1 0 0]/Resources << >>#DICT#q 20 0 m 20 20 l 0 10 l h f Q\n) (ltriangle) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 20 20]  /Matrix [1 0 0 1 0 0]/Resources << >>#DICT#q 0 0 m 20 0 l 10 20 l h f Q\n) (utriangle) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 20 20]  /Matrix [1 0 0 1 0 0]/Resources << >>#DICT#q 0 20 m 20 20 l 10 0 l h f Q\n) (dtriangle) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 20 20]  /Matrix [1 0 0 1 0 0]/Resources << >>#DICT#q 17 10 m 17 13.865 13.865 17 10 17 c 6.134 17 3 13.865 3 10 c 3 6.134 6.134 3 10 3 c 13.865 3 17 6.134 17 10 c 17 13.865 13.865 17 10 17 c 6.134 17 3 13.865 3 10 c 3 6.134 6.134 3 10 3 c 13.865 3 17 6.134 17 10 c f Q\n) (circle) futureobj
+
+/yearcount {/i exch i add def
+    (Turn:) i 2 string cvs ! xtrace ytrace xsize size writetrace
+    (1 w 1 1 1 RG 0 0 0 rg\n)out
+    /TextRenderingMode 2 def
+    i 2 string cvs size 0.5 mul 30 size size 60 sub (FontArialNarrow-Bold) centertext
+    /TextRenderingMode 0 def
+    (q 0.5 w 0 0 0 rg 0.3 1 1 RG )out
+    i 2 mod 0 eq{(catholique)xobject}if
+    i 5 mod 1 eq i 1 eq not and{(sunnite)xobject}if
+    i 10 mod 1 eq i 1 eq not and{(autrereligion)xobject}if
+    i 4 mod 3 eq{(orthodoxe)xobject}if
+    (Q\n)out
+    1490 i 5 mul add dup i 1 eq{3}{5}ifelse sub 4 string cvs (-)! exch 4 string cvs ! size 0.5 mul 4 size 30(FontArialNarrow) centertext
+} def
+
+/size 185 def
+zpor zpor2 8187 size 42 mul sub 3550 6 size{0 yearcount}hshade
+ztur ztur2 xstart ystart 8 size{6 yearcount}hshade
+zspa zspa2 xstart ystart 11 size{14 yearcount}hshade
+zhol zhol2 xstart ystart 9  size{25 yearcount}hshade
+zfra zfra2 xstart ystart 8  size{34 yearcount}hshade
+zrus zrus2 xstart ystart 10 size{42 yearcount}yshade
+zeng zeng2 xstart ystart 10 size{52 yearcount}yshade
+(0 0 0 rg 0 0 0 RG\n) out
+(Tour de jeu)@ 8187 size 42 mul sub 2 div 3580 1 index 10 sub 2 mul 110 ab centertext
+
+(\(Rappel\))@ 1444 0022 300 28(FontArialNarrow-Bold) centertext
+
+(q 10 w 0000 3750 m 8425 3750 l s Q\n)out
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% COMPTEUR DE PRODUCTION
+
+/prodcounta {/i exch i add def
+    i 2 string cvs shadename 1 index ! xtrace ytrace xsize size writetrace xsize 0.5 mul 0 xsize xsize (FontArialNarrow-Bold) centertext
+}def
+/shadepen (0 0 0) def
+%/shaderatio 0.5 def
+/dim {dup [ exch {0.8 mul}forall]}def
+/printres {{xstart ystart 16.25 add presenteproduit /xstart xstart 80 add def}forall}def
+/printtri {2 xstart 40 add ystart 36.25 add begints xobject endts/xstart xstart 90 add def}def
+
+% Frise de prix des produits exotiques
+/xstart 0030 def
+/ystart 3765 def
+/shadepen (0.8 0.8 0.8) def
+/shaderatio 2 def
+[0.5 0 0][0 0 1] xstart ystart 20 112.5 {
+    i 10 le {
+	[5 5 5 10 10 10 20 20 25 33] i 1 sub get 2 string cvs (%)!
+	10 size 0.25 mul size size 2 div ai lefttext
+    }if
+    i 1 sub 2 idiv
+    dup i 1 sub 2 div ne {1 string cvs (R)!}{2 string cvs (L)!} ifelse
+    i 20 eq {pop (10)}if i 19 eq {pop (9)}if
+    (Inflation:)exch ! xtrace ytrace xsize size writetrace
+    [[][][][][][][][][][(inflation)][][(peche)][][][(america)(sel)][(coton)(peaux)][(esclaves)][(epices)][(sucre)][(orient)(soie)]] i 1 sub get dup length 0 gt {
+	dup length 1 eq {
+	    0 get 72.5 i 10 eq{pop 122}if 16.25 presenteproduit
+	}{
+	    dup
+	    0 get  22 16.25 presenteproduit
+	    1 get 124 16.25 presenteproduit
+	   }ifelse
+    }{pop}ifelse
+}hshade
+(Inflation &)@ xstart 30 add ystart size 0.4 mul add 1000 55 an lefttext
+(Valeurs maximales)@ xstart 30 add ystart 1000 55 an lefttext
+
+[0.5 0 0][0 0 1]0030 ystart size add 20 112.5 {
+    i 1 sub 2 idiv
+    dup i 1 sub 2 div ne {1 string cvs (R)!}{2 string cvs (L)!} ifelse
+    i 20 eq {pop (10)}if i 19 eq {pop (9)}if
+    (Prices:)exch ! xtrace ytrace xsize size writetrace
+    i 1 sub 2 idiv i 20 eq {1 add}if 2 string cvs xsize 5 sub 0 130 size ab righttext
+    [[(america)][(sucre)(inflation)][(peche)][(sel)][(coton)][(esclaves)(peaux)][][][(epices)][][][(soie)][(orient)][][][][][][][]] i 1 sub get dup length 0 gt {
+	dup length 1 eq {
+	    0 get 72.5 16.25 presenteproduit
+	}{
+	    dup
+	    0 get 5 16.25 presenteproduit
+	    1 get 85 16.25 presenteproduit
+	   }ifelse
+    }{pop}ifelse
+}hshade
+(Prix & Valeurs)@ xstart 30 add ystart size 0.4 mul add 1000 55 an lefttext
+(minimales et initiales)@ xstart 30 add ystart 1000 55 an lefttext
+/shadepen (0 0 0) def
+/shaderatio 1 def
+
+
+
+% Légende prix ressources
+%/shaderatio 1 def
+/xstart 0030 def
+/ystart ystart size add def
+(pVII)@
+(pIV)@
+(Availability of resources: pIII)@
+[
+%    [(soie)(orient)(epices)(peaux)(esclaves)(peche)(sel)(cotonas)]
+    [(sucrebr)]
+    [(sucre)(america)]
+    [(coton)]
+]{
+    exch
+    xstart ystart 12 add 1000 55 ab lefttext
+    /xstart xstart Textwidth add 15 add def
+    {
+	xstart ystart 2 add presenteproduit
+	/xstart xstart 75 add def
+    } forall
+    /xstart xstart 25 add def
+} forall
+/xstart xstart 100 add def
+[(soie)(orient)(epices)(esclaves)(sel)(sucre)(sucrebr)(america)(coton)(cotonas)(peche)(peaux)(bois)(inflation)] {
+    xstart ystart 2 add presenteproduit
+    j 4 get @ xstart 90 add ystart 12 add 250 55 an lefttext
+    /xstart xstart 80 add Textwidth add 25 add def
+} forall
+
+% Frise de production de ressources
+/shadename (Resources40:) def
+/ystart ystart 84 add def
+[0 1 0]dim 0030 ystart 5 size{0 prodcounta}hshade
+[0 1 1]dim xstart ystart  5 size{ 5 prodcounta}hshade
+[1 1 1]dim xstart ystart 10 size{10 prodcounta}hshade
+[1 0 1]dim xstart ystart 10 size{20 prodcounta}hshade
+[1 1 0]dim xstart ystart  5 size{30 prodcounta}hshade
+[1 0 0][0.8 0 0] xstart ystart 5 size {35 prodcounta}hshade
+/shadename (Resources30:) def
+/memy ystart 84 sub def
+/memx xstart 10 add def
+[0 1 0]dim 0030 ystart size add 5 size{0 prodcounta}hshade
+[0 1 1]dim xstart ystart 5 size{ 5 prodcounta}hshade
+[1 1 1]dim xstart ystart 5 size{10 prodcounta}hshade
+[1 0 1]dim xstart ystart 5 size{15 prodcounta}hshade
+[1 1 0]dim xstart ystart 5 size{20 prodcounta}hshade
+[1 0 0]dim xstart ystart 5 size{25 prodcounta}hshade
+(ltriangle) printtri
+[(peche)(coton)]printres
+/xstart xstart 50 add def
+(dtriangle) printtri
+[(orient)(epices)(peaux)(sucre)(esclaves)]printres
+/shadename (Resources20:) def
+[0 1 0]dim 0030 ystart size add 3 112.5{ 0 prodcounta}hshade
+[0 1 1]dim xstart ystart 4 size{ 3 prodcounta}hshade
+[1 1 1]dim xstart ystart 4 size{ 7 prodcounta}hshade
+[1 0 1]dim xstart ystart 4 size{11 prodcounta}hshade
+[1 1 0]dim xstart ystart 4 size{15 prodcounta}hshade
+[1 0 0]dim xstart ystart 1 size{19 prodcounta}hshade
+(ltriangle) printtri
+[(america)(sel)(soie)]printres
+(Ressources exotiques)@ xstart 50 add ystart 800 110 (FontArialNarrow-Bold) lefttext
+
+% Table d'évolution des prix
+/xstart xstart size 1.5 mul add 110 add def
+/ddc {i 1 sub get dup 2 string cvs exch 0 gt {(+) exch !}if xsize 2 div dup 2 div xsize size 2 div ai centertext} def
+
+
+[0 1 0]dim exch memx memy 3 size {[0 2 2]ddc} hshade
+[0 1 1]dim exch memx ystart size add 3 size {[0 1 2]ddc} hshade
+[1 1 1]dim exch memx ystart size add 3 size {[-1 1 2]ddc} hshade
+[1 0 1]dim exch memx ystart size add 3 size {[-1 1 1]ddc} hshade
+[1 1 0]dim exch memx ystart size add 3 size {[-1 0 1]ddc} hshade
+[1 0 0]dim exch memx ystart size add 3 size {[-2 0 1]ddc} hshade
+
+(1-3) memx 0.5 size mul add memy size 6 mul add 120 size 2 div an centertext
+(4-7) memx 1.5 size mul add memy size 6 mul add 120 size 2 div an centertext
+(8-10) memx 2.5 size mul add memy size 6 mul add 120 size 2 div an centertext
+
+(Economic situation) memx size 1.5 mul add memy 6.5 size mul add 1000 55 ab centertext
+
+
+/asiaincome {
+    [1 1 1][.5 .5 .5]5500 2750 10 112.5 {
+        i 1 sub 10 mul 2 string cvs (GreatOrient) 1 index ! xtrace ytrace xsize
+        size writetrace xsize 0.5 mul xsize 0.5 mul xsize xsize 0.5 mul
+        (FontArialNarrow) centertext
+        [()(Ormus)(Soqotra)(Sumatra/Malacca)(non-Eur TP/COL)(Chr TP/COL)(Chr OMAN/INDIEN)(TUR/Persia war)()()()]
+            i get xsize 0.5 mul xsize 0.25 mul xsize xsize 0.2 mul
+            (FontArialNarrow) centertext
+        [()(+10)(+10)(+10)(+10 per 3)(-10 per 5)(-10, max -50)(-50)()()()]
+            i get xsize 0.5 mul xsize 0 mul xsize xsize 0.2 mul
+            (FontArialNarrow) centertext
+    }hshade
+    (Great Orient Income) 6100 2860 330 xsize 0.5 mul (FontArialNarrow-Bold) lefttext
+}def
+asiaincome
+
+% Close the fiesta
+
+%%%%%%%%%%%%%%%%%%%%%% PISTE DE TECHNOLOGIE %%%%%%%%%%%%%%%%%%%
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [-30 5 30 65]  /Matrix [1 0 0 1 30 -5]/Resources << >>#DICT#q 2 w 0 50 m 2.761 50 5 52.239 5 55 c 5 57.761 2.761 60 0 60 c 0 50 m -2.761 50 -5 52.239 -5 55 c -5 57.761 -2.761 60 0 60 c S 4 w 0 50 m 0 10 l s 3 w -15 40 m 15 40 l s 1 J 5 w 12 40 m 15 40 l -12 40 m -15 40 l S -17.5 14.689 m -17.5 14.689 l -12.179 11.617 -6.144 10 0 10 c 6.144 10 12.179 11.617 17.5 14.689 c S 18.366 15.189 m 18.268 9.359 l 24.428 18.689 l 13.268 18.019 l h -18.366 15.189 m -18.268 9.359 l -24.428 18.689 l -13.268 18.019 l f Q\n) (ancremarine) futureobj
+(/Type /XObject /Subtype /Form /FormType 1 /BBox [0 0 60 60]  /Matrix [1 0 0 1 0 0]/Resources << >>#DICT#q 6 w 1 J 5 5 m 47 47 l 55 5 m 13 47 l S 3 w 7 23 m 23 7 l 53 23 m 37 7 l S 49.121 44.879 m 44.879 49.121 l 52.657 52.657 l h 10.879 44.879 m 15.121 49.121 l 7.343 52.657 l h f Q\n) (epees) futureobj
+
+/techcount {/i exch i add def
+    i 2 string cvs size 0.5 mul size 3 div size size 3 div (FontArialNarrow-Bold) centertext
+    [
+	[1 false (Great Ship)][1 true (Médiéval)][10 true (Renaissance)]
+	[11 false (Caraque)][16 true (Tercios)]
+	[21 true (Arquebuse)][17 false (Não Galeón)][24 false (Galion)]
+	[26 false (Galéasse)][30 true (Mousquet)]
+	[40 true (Baroque)][34 false (Batterie)][43 false (Vaisseau)]
+	[51 true (Manœuvre)][58 false (Three-Decker)][67 true (Dentelle)]
+	[68 false(Seventy-four)]
+    ]
+    {dup 0 get i eq {
+	dup 1 get /terre exch def 2 get @
+	1 15 15 terre{135 add}if begints
+	terre{(epees)}{(ancremarine)}ifelse xobject
+	70 7.5 size 90 sub 45 an lefttext
+	endts
+    }{pop}ifelse
+    }forall
+}def
+/techcount {/i exch i add def
+    (Tech:) i 2 string cvs ! xtrace ytrace xsize size writetrace
+    i 2 string cvs size 0.5 mul size 3 div size size 3 div (FontArialNarrow-Bold) centertext
+} def
+[0 1 1][0 0 1]0030 4460 10 225 {60 techcount} hshade
+(Technology) xstart 80 add ystart size 0.5 mul add 3 size mul 80 sub 110 ab lefttext
+(Track) xstart 80 add ystart 3 size mul 80 sub 110 ab lefttext
+2 xstart 20 add ystart size 0.5 mul add 20 sub begints (ltriangle)xobject endts
+[0 1 0]col0 0030 ystart size add 12 size {48 techcount} hshade
+[1 1 0]col0 0030 ystart size add 12 size {36 techcount} hshade
+[1 0 0]col0 0030 ystart size add 12 size {24 techcount} hshade
+[1 0 1]col0 0030 ystart size add 12 size {12 techcount} hshade
+[1 1 1]col0 0030 ystart size add 12 size { 0 techcount} hshade
+
+% Tables diplo
+%/shaderatio 9 def
+/shaderatio 2.25 def
+/shadepen (0.5 0.5 0.5) def
+/centerincell {%
+    dup @ (Diplomacy:) exch ! xtrace ytrace xsize size writetrace
+    (0 0 0 rg\n)out dup @ xsize 2 div 2 xsize 110 an centertext
+    dup activationdict exch get (Activation if <) exch !
+    xsize 2 div 10 sub 142 xsize 0.67 mul 50 an centertext
+    (img:) exch ! 2 400 100 begints useimage endts
+}def
+/ystart ystart 112.5 add def /memy ystart def
+[(soudan)(oman)(aden)(gujarat)]
+{
+    [1 1 0.5][0.75 0.75 0]2800 ystart size sub 1 225
+    {centerincell (0.5 w 0 0 0 RG 2 0 0 2 -35 -140 cm )out(sunnite)xobject}
+    hshade
+}forall
+
+/memx xstart def
+/ystart memy def
+(Diplomatie avec les mineurs hors-Europe)@
+2800 ystart 2 add xsize 4 mul 110 ab lefttext
+2 2800 Textwidth add 20 add ystart 20 add begints (dtriangle) xobject endts
+[(mogol)(vijayanagar)(mysore)(hyderabad)]
+{
+    [0.5 1 1][0 0.75 0.75]memx ystart size sub 1 225
+    {centerincell}hshade
+}forall
+
+/memx xstart def
+/ystart memy def
+[(inca)(azteque)(iroquois)]
+{
+    [1 1 1][0.75 0.75 0.75]memx ystart size sub 1 225{centerincell}hshade
+}forall
+
+[(chine)]
+{
+    [1 0.5 1][0.75 0 0.75]memx ystart size sub 1 225{centerincell}hshade
+}forall
+/memx xstart def
+/ystart memy def
+[(siberie)(afghans)(perse)]
+{
+    [1 0.5 0.5][0.75 0 0]memx ystart size sub 1 225{centerincell}hshade
+}forall
+[(japon)]
+{
+    [1 0.5 1][0.75 0 0.75]memx ystart size sub 1 225{centerincell}hshade
+}forall
+
+/ducats {
+    /ig exch def /ie exch 1 add def
+    /ix 2780 2.25 ig mul 0.25 add 225 mul add def
+    /iy memy ie 225 mul sub 112.5 add def
+    (D) ix iy 2 add 225 110 an centertext (5 w\n)out
+    ix 6 sub display space iy 22 add display ( m )out
+    ix 6 sub display space iy 92.5 add display ( l S\n)out
+    ix 6 add display space iy 22 add display ( m )out
+    ix 6 add display space iy 92.5 add display ( l S\n)out
+}def
+3 0 ducats 0 1 ducats 0 2 ducats 1 2 ducats 3 2 ducats 1 3 ducats 3 3 ducats
+
+/shadepen (0.5 0.5 0.5) def
+/shaderatio 2 def
+/shadeskip 1 def
+/size 168 def
+/ystart 3765 size sub def
+/majorsdiploname <<
+    (sue) (Suecia)
+    (por) (Portugallia)
+    (spa) (Hispania)
+    (hab) (Austria)
+    (hol) (Hollandia)
+    (ven) (Venetia)
+    (pru) (Prussia)
+    (pol) (Polonia)
+    (eng) (Anglia)
+    (tur) (Turcia)
+    (fra) (Francia)
+    (rus) (Russia)
+>> def
+/majorsdiplolevels [(RM) (Su) (MA) (EC) (EW) (Va) (An)] def
+[(sue)(por)(spa)(hab)(hol)(ven)(pru)(pol)(eng)(tur)(fra)(rus)]{
+    /pays exch def /level 0 def
+    (z) pays ! dup cvx exec exch (2) ! cvx exec exch
+    5347 ystart size add 9 size
+    {level 6 le {(Diplomacy:) majorsdiplolevels level get ! (:) ! majorsdiploname pays get ! xtrace ytrace xsize size writetrace}if /level level 1 add def}
+    hshade
+    1 xstart xsize 2 mul sub ystart begints
+	(1 w 1 1 1 RG 0 0 0 rg\n)out
+	/TextRenderingMode 2 def
+	countrynames pays get 553 2 div 29 553 110 ab centertext
+	/TextRenderingMode 0 def
+	(img:) ecunames pays get ! 2 560 19 begints useimage endts
+    endts
+}forall
+(q 5 w )out shadepen out( RG 0 0 0 rg )out
+(5347 3765 m )out
+(4900 3765 l )out%5160
+(4900 )out ystart size sub display( l )out
+(4900 )out ystart size sub display( l )out
+(4900 )out ystart size add display( l )out
+(5347 )out ystart size add display( l h S 0 1 -1 0 5267 3765 cm\n)out
+(Neutres)@ ystart size add 3765 sub 2 div 28 1 index 2 mul 110 ab centertext
+(Diplomacy:Neutrals) 4900 3765 5347 4900 sub size 12 mul writetrace
+(Neutrals)@ ystart size add 3765 sub 2 div 28 1 index 2 mul 110 ab centertext
+
+
+(Q\n)out
+/shadepen (0 0 0) def
+/shaderatio 1 def
+/shadeskip 0 def
+/j 0 def
+[(Mariage royal +1)(Subsides +1)(Alliance militaire +2)(Corps Exp. +2)(Entrée en guerre +3)(Vassal +3)(Annexion +3)]
+	{@ 5347 j 0.5 add xsize mul add ystart size add xsize 55 ab centertext /j j 1 add def}forall
+
+(Charte diplomatique européenne)@ 4820 memy 2000 110 ab righttext
+2 4840 memy 37.5 add begints (rtriangle) xobject endts
+[1 0 0][0 1 1]2800 4420 7 245 {
+    i 4 sub 2 string cvs i 4 gt{(+) exch !}if
+    (Stability:) 1 index ! xtrace ytrace xsize size writetrace
+    size 2 div size 4 div size size 2 div ab centertext
+    i 4 lt {
+	0.5 beginalpha
+	(1 1 1 rg 61.25 9 122.5 36 re f\n)out
+	endalpha
+	(+1 survie)@ size 2 div 9 size 36 an centertext
+    }if
+    % Do not print the ancient income modifier
+    i 7 eq i 4 le or pop false {
+	[()(-50)(-33)(-25)(-10)()()(+10)]i get (% revenu)@ !
+	size 2 div 168 size 36 an centertext
+    }if
+}hshade%vshade
+(Stabilité)@ xstart size 3.5 mul sub ystart size add 330 110 ab centertext
+
+%\x{FEDD}\x{FEEE}\x{FED0}\x{FEE3}
+
+clipping {(Q\n) out}
+endpage
+enddocument
+finishtrace
+% ArialNarrow et Bold:
+% U+F420: Calcutta
+% U+F421: Calcutta (autre écriture)
+% U+F422: Bengale (Bengali)
+% U+F423: Delhĩ (Devanagari)
+% U+F424: Gonḍānā (Devanagari)
+% U+F425: Ayodhyā (Aoudh) (Devanagari)
+% U+F426: Mumbaĩ (Devanagari)
+% U+F427: Pãjāb (Gurmukhi)
+% U+F428: Govā (Devanagari)
+% U+F430: Orissa en oriya
+% U+F431: Sinhala (Ceylan) en cinghalais
+% U+F432: Kanda en cinghalais
+% U+F433: Gujaraata en gujarati
+% U+F434: Koḻikoṭ (malayalam)
+% U+F435: Malabāṟ (malayalam)
+% U+F436: Mysūru (kannada)
+% U+F437: Vijayanagara (kannada)
+% U+F438: Karnāṭaka (Telugu)
+% U+F439: Hydārabad (Kannada) ÝêDpÖÏÖ{Ò
+% U+F43A: Diu (Gujarati)
+% U+F43B: Madras (Tamoul) \u0bae\u0ba4\u0bbf\u0bb0\u0bbe\u0bb8\u0bcd
+%Caractères non-utilisés dans les cartes:
+% F400 F401 F403 F404 F437?
+
+% À créer
+
+
+% À trouver
+% Goa (urdu)
+% Kochi (urdu)
+% Calicut (urdu)
