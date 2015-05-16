@@ -85,10 +85,6 @@ public final class MapGenerator {
             }
         }
 
-        ClientGenerator.createMapData(provinces, log);
-
-        ClientGenerator.createBorderData(borders, provinces, specialBorders, log);
-
         for (Region region : regions.values()) {
             int nbReal = 0;
             for (String province : provinces.keySet()) {
@@ -103,6 +99,10 @@ public final class MapGenerator {
                         .append("\n");
             }
         }
+
+        ClientGenerator.createMapData(provinces, log);
+
+        ClientGenerator.createBorderData(borders, provinces, specialBorders, log);
 
         Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/provinces_countries.sql", false);
 

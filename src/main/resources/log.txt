@@ -1206,13 +1206,6 @@ eAlabania	Province has no owner
 eAcores	Province has no owner
 eLaighean	Province has no owner
 eTanger	Province has no owner
-eSvealand	Duplicate borders	eVastergotland
-eBergslagen	Duplicate borders	eOstlandet
-eSvealand	Duplicate borders	eVastergotland
-eBresse	Duplicate borders	eSavoia
-eAstragan	Duplicate borders	eTerek
-eTavastland	Duplicate borders	eKexholm
-eTavastland	Duplicate borders	eKexholm
 Aden	Region has wrong number of provinces.	2	3
 Virginia	Region has wrong number of provinces.	5	4
 Cuba	Region has wrong number of provinces.	3	2
@@ -1223,3 +1216,10 @@ Haiti	Region has wrong number of provinces.	3	4
 Dai Viet	Region has wrong number of provinces.	4	3
 America	Region has wrong number of provinces.	4	5
 Cameroun	Region has wrong number of provinces.	2	3
+eSvealand	Duplicate borders	eVastergotland
+eBergslagen	Duplicate borders	eOstlandet
+eSvealand	Duplicate borders	eVastergotland
+eBresse	Duplicate borders	eSavoia
+eAstragan	Duplicate borders	eTerek
+eTavastland	Duplicate borders	eKexholm
+eTavastland	Duplicate borders	eKexholm
