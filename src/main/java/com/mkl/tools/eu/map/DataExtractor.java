@@ -1611,6 +1611,30 @@ public class DataExtractor {
             }
         }
 
+        Country minor = countries.get("ecosse");
+        minor.addLimit(1, "TF");
+        minor = countries.get("danemark");
+        minor.addLimit(2, "TF");
+        minor = countries.get("hanse");
+        minor.addLimit(2, "TF");
+        minor = countries.get("genes");
+        minor.addLimit(3, "TF");
+        minor = countries.get("oman");
+        minor.addLimit(1, "TF");
+        minor.addLimit(1, "COL");
+        minor.addLimit(1, "TP");
+        minor = countries.get("aden");
+        minor.addLimit(1, "TF");
+        minor.addLimit(1, "COL");
+        minor = countries.get("gujarat");
+        minor.addLimit(3, "TF");
+        minor = countries.get("japon");
+        minor.addLimit(1, "TF");
+        minor = countries.get("chine");
+        minor.addLimit(2, "TF");
+        minor = countries.get("siberie");
+        minor.addLimit(1, "TP");
+
         Country major = countries.get("france");
         major.addLimit(6, "ARMY");
         major.addLimit(5, "FLEET");
@@ -1710,15 +1734,19 @@ public class DataExtractor {
         major.addLimit(1, "PIRATE");
         major.addLimit(10, "LDND");
         major.addLimit(10, "LD");
+        major.addLimit(4, "LD_KOZAK");
+        major.addLimit(4, "LDE_KOZAK");
         major.addLimit(2, "NTD");
         major.addLimit(8, "LDENDE");
         major.addLimit(4, "FORT12");
         major.addLimit(4, "FORT23");
         major.addLimit(3, "FORT34");
         major.addLimit(1, "FORT45");
-        // TODO St Petersburg
         major.addLimit(10, "FORT");
-        major.addLimit(1, "ARS23");
+        major.addLimit(1, "ARS01_ST_PETER");
+        major.addLimit(1, "ARS23_ST_PETER");
+        major.addLimit(1, "ARS45_ST_PETER");
+        major.addLimit(1, "ARS23_SEBASTOPOL");
         major.addLimit(11, "COL");
         major.addLimit(5, "TP");
         major.addLimit(7, "TF");

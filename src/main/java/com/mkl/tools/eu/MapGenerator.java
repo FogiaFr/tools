@@ -1,8 +1,7 @@
 package com.mkl.tools.eu;
 
 
-import com.mkl.tools.eu.map.ClientGenerator;
-import com.mkl.tools.eu.map.DBGenerator;
+import com.mkl.tools.eu.map.CounterGenerator;
 import com.mkl.tools.eu.map.DataExtractor;
 import com.mkl.tools.eu.util.ToolsUtil;
 import com.mkl.tools.eu.vo.country.Country;
@@ -100,18 +99,23 @@ public final class MapGenerator {
             }
         }
 
-        ClientGenerator.createMapData(provinces, log);
+        CounterGenerator.moveExistingCounter(countries,
+                "D:\\dev\\upide\\old-lipn.univ-paris13.fr\\~dubacq\\europa\\pions\\0.6\\",
+                "D:\\dev\\workspace\\eu\\front\\eu-front-client\\data\\counters\\v2\\",
+                log);
 
-        ClientGenerator.createBorderData(borders, provinces, specialBorders, log);
-
-        Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/provinces_countries.sql", false);
-
-        DBGenerator.createDBInjection(provinces, borders, regions, sqlWriter);
-
-        DBGenerator.createCountriesData(countries, sqlWriter);
-
-        sqlWriter.flush();
-        sqlWriter.close();
+//        ClientGenerator.createMapData(provinces, log);
+//
+//        ClientGenerator.createBorderData(borders, provinces, specialBorders, log);
+//
+//        Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/provinces_countries.sql", false);
+//
+//        DBGenerator.createDBInjection(provinces, borders, regions, sqlWriter);
+//
+//        DBGenerator.createCountriesData(countries, sqlWriter);
+//
+//        sqlWriter.flush();
+//        sqlWriter.close();
 
         log.flush();
         log.close();

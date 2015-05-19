@@ -223,8 +223,10 @@ public class Country {
             case "LDND_TIMAR":
             case "LD":
             case "LD_TIMAR":
+            case "LD_KOZAK":
             case "LDENDE":
             case "LDE":
+            case "LDE_KOZAK":
             case "NDE":
             case "NTD":
             case "PIRATE":
@@ -236,9 +238,13 @@ public class Country {
             case "FORT34":
             case "FORT45":
             case "FORT":
+            case "ARS01_ST_PETER":
             case "ARS23":
             case "ARS23_GIBRALTAR":
+            case "ARS23_SEBASTOPOL":
+            case "ARS23_ST_PETER":
             case "ARS34":
+            case "ARS45_ST_PETER":
             case "MISSION":
             case "SEPOY":
             case "SEPOY_EXPLORATION":

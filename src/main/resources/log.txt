@@ -1216,10 +1216,21 @@ Haiti	Region has wrong number of provinces.	3	4
 Dai Viet	Region has wrong number of provinces.	4	3
 America	Region has wrong number of provinces.	4	5
 Cameroun	Region has wrong number of provinces.	2	3
-eSvealand	Duplicate borders	eVastergotland
-eBergslagen	Duplicate borders	eOstlandet
-eSvealand	Duplicate borders	eVastergotland
-eBresse	Duplicate borders	eSavoia
-eAstragan	Duplicate borders	eTerek
-eTavastland	Duplicate borders	eKexholm
-eTavastland	Duplicate borders	eKexholm
+german-empire	Country counter not found.	Ownership_saint-empire.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+german-empire	Country counter not found.	Control_saint-empire.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+teutoniques2	Country counter not found.	Diplomacy_*teutoniques2_F*_recto.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+teutoniques2	Country counter not found.	Diplomacy_*teutoniques2_F*_verso.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+royalistes	Country counter not found.	Ownership_royalistes.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+royalistes	Country counter not found.	Control_royalistes.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+venise	Country counter not found.	Fort_venise_0_recto.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+Veastprussia	Country counter not found.	Ownership_eastprussia.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+Veastprussia	Country counter not found.	Control_eastprussia.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+Veastprussia	Country counter not found.	Diplomacy_*eastprussia_F*_recto.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+Veastprussia	Country counter not found.	Diplomacy_*eastprussia_F*_verso.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+Veastprussia	Country counter not found.	Army_eastprussia_*_recto.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+Veastprussia	Country counter not found.	Army_eastprussia_*_verso.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+Veastprussia	Country counter not found.	LD_eastprussia_*.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+espagne	Country counter not found.	Privateer_espagne_recto.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+espagne	Country counter not found.	Privateer_espagne_verso.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+mazovie	Country counter not found.	Diplomacy_*mazovie_F*_recto.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+mazovie	Country counter not found.	Diplomacy_*mazovie_F*_verso.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]

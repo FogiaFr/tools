@@ -96,6 +96,9 @@ engCorpsMineurs.tex:
  - \minorbasicrenforts{chevaliers}{\corsaire\faceplus, 1 \NDE\ or 1 \NGD} -> \minorbasicrenforts{chevaliers}{\corsaire\faceplus, 1 \NDE}
  - \minorbasicrenforts{venise}{1 \NWD or 2 \NGD} -> \minorbasicrenforts{venise}{1 \ND}
  - \minorbasicrenforts{genes}{1 \NGD\ or 1 \NDE or 1\NTD} -> \minorbasicrenforts{genes}{1 \NDE}
+ - \minorforces{chine}{2 \ARMY, 4 \LD, 6 \LDE} -> \minorforces{chine}{2 \ARMY, 4 \LDND, 6 \LDENDE}
+ - \minorforces{japon}{2 \ARMY, 4 \LD, 4 \LDE} -> \minorforces{japon}{2 \ARMY, 4 \LDND, 4 \LDENDE}
+ - \minorforces{suede}{3 \ARMY, \FLEET, 5 \LD, 10 \LDND, 6 \NDE, 2 \NTD, \EUminorremark{a special }{}transport \FLEET} -> \minorforces{suede}{3 \ARMY, \FLEET, 5 \LD, 10 \LDND, 6 \LDENDE, 2 \NTD, \EUminorremark{a special }{}transport \FLEET}
  - \n after a \minorXXX (mamelouks)
 
 source.eps:
