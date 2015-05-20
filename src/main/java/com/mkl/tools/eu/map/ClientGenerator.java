@@ -23,8 +23,8 @@ public class ClientGenerator {
     /**
      * Create the geo.json file used by the application.
      *
-     * @param provinces    data gathered by the input.
-     * @param log          log writer.
+     * @param provinces data gathered by the input.
+     * @param log       log writer.
      * @throws Exception exception.
      */
 
@@ -138,23 +138,8 @@ public class ClientGenerator {
                 } else {
                     firstCoord = false;
                 }
-                double x;
-                double y;
-                /*
-                The map is linear on the X axis but not on the Y axis.
-                I have no idea of the real function on the Y axis.
-                 */
-                if (polygons.getRight()) {
-                    x = 4.659 + coord.getLeft() * 12.484 / 8183;
-//                    y = 11.409 + coord.getRight() * 5.251 / 3546;
-                    double factor = 0.001499 - 0.00000519 * (coord.getRight() / 1000);
-                    y = 11.409 + coord.getRight() * factor;
-                } else {
-                    x = 4.658 + coord.getLeft() * 12.859 / 8425;
-//                    y = 2.109 + coord.getRight() * 8.845 / 5840;
-                    double factor = 0.001525 - 0.00000179 * (coord.getRight() / 1000);
-                    y = 2.109 + coord.getRight() * factor;
-                }
+                double x = getXMapCoordinate(coord.getLeft(), polygons.getRight());
+                double y = getYMapCoordinate(coord.getRight(), polygons.getRight());
                 writer.append("[").append(Double.toString(x)).append(", ").append(Double.toString(y)).append("]");
             }
 
@@ -163,9 +148,51 @@ public class ClientGenerator {
     }
 
     /**
+     * Transform a client x coordinate to a map x coordinate.
+     *
+     * @param xCoordinate client x coordinate.
+     * @param rotw        flag saying that the coordinate is in the rotw map.
+     * @return the map x coordinate.
+     */
+    private static double getXMapCoordinate(double xCoordinate, boolean rotw) {
+        double x;
+        if (rotw) {
+            x = 4.659 + xCoordinate * 12.484 / 8183;
+        } else {
+            x = 4.658 + xCoordinate * 12.859 / 8425;
+        }
+
+        return x;
+    }
+
+    /**
+     * Transform a client y coordinate to a map y coordinate.
+     *
+     * @param yCoordinate client y coordinate.
+     * @param rotw        flag saying that the coordinate is in the rotw map.
+     * @return the map y coordinate.
+     */
+    private static double getYMapCoordinate(double yCoordinate, boolean rotw) {
+        double y;
+        /*
+            The map is linear on the X axis but not on the Y axis.
+            I have no idea of the real function on the Y axis.
+         */
+        if (rotw) {
+            double factor = 0.001499 - 0.00000519 * (yCoordinate / 1000);
+            y = 11.409 + yCoordinate * factor;
+        } else {
+            double factor = 0.001525 - 0.00000179 * (yCoordinate / 1000);
+            y = 2.109 + yCoordinate * factor;
+        }
+
+        return y;
+    }
+
+    /**
      * Create provinces neighbour file used by the application.
      *
-     * @param borders existing borders.
+     * @param borders        existing borders.
      * @param provinces      data gathered by the input.
      * @param specialBorders rivers, moutain passes and straits.
      * @param log            log writer.
@@ -200,7 +227,7 @@ public class ClientGenerator {
     /**
      * Create borders object from arranged provinces by paths.
      *
-     * @param borders existing borders.
+     * @param borders         existing borders.
      * @param provincesByPath provinces arranged by paths.
      * @param specialBorders  rivers, moutain passes and straits.
      * @param log             log writer.
