@@ -487,7 +487,7 @@ public class DataExtractor {
     private static String getRealProvinceName(String input, Map<String, Region> regions,
                                               Map<String, Map<String, List<String>>> aliases,
                                               String terrain, Writer log) throws IOException {
-        if (StringUtils.equals("noman", terrain)) {
+        if (StringUtils.equals("noman", terrain) || StringUtils.equals("lac", terrain)) {
             return null;
         }
 
@@ -653,9 +653,11 @@ public class DataExtractor {
                 info.setY(Integer.parseInt(m.group(2)));
                 continue;
             }
-            m = Pattern.compile("IMG \\d{4} \\d{4} (anchor\\d?)").matcher(line);
+            m = Pattern.compile("IMG (\\d{4}) (\\d{4}) (anchor\\d?)").matcher(line);
             if (m.matches()) {
-                String string = m.group(1);
+                info.setXPort(Integer.parseInt(m.group(1)));
+                info.setYPort(Integer.parseInt(m.group(2)));
+                String string = m.group(3);
                 info.setPort(StringUtils.equals("anchor", string) || StringUtils.equals("anchor4", string));
                 info.setArsenal(StringUtils.equals("anchor2", string) || StringUtils.equals("anchor5", string));
                 info.setPraesidiable(StringUtils.equals("anchor4", string) || StringUtils.equals("anchor5", string));
@@ -1088,7 +1090,7 @@ public class DataExtractor {
      *
      * @param provinces data gathered so far.
      * @param countries the countries.
-     * @param boorders  existing borders.
+     * @param borders  existing borders.
      * @param aliases   the aliases.
      * @param rotw      flag to know if europe or rotw part is being parsed.
      * @param log       log writer.

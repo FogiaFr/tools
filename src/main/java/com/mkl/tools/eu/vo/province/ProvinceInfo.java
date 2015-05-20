@@ -28,6 +28,10 @@ public class ProvinceInfo {
     private int y;
     /** Level of the natural fortress. */
     private int fortress = 0;
+    /** X coordinate of the fortress. */
+    private int xPort;
+    /** Y coordinate of the fortress. */
+    private int yPort;
     /** Flag saying that the province has a natural port. */
     private boolean port = false;
     /** Flag saying that the port has a natural arsenal. */
@@ -113,6 +117,26 @@ public class ProvinceInfo {
     /** @param x the x to set. */
     public void setX(int x) {
         this.x = x;
+    }
+
+    /** @return the xPort. */
+    public int getXPort() {
+        return xPort;
+    }
+
+    /** @param xPort the xPort to set. */
+    public void setXPort(int xPort) {
+        this.xPort = xPort;
+    }
+
+    /** @return the yPort. */
+    public int getYPort() {
+        return yPort;
+    }
+
+    /** @param yPort the yPort to set. */
+    public void setYPort(int yPort) {
+        this.yPort = yPort;
     }
 
     /** @return the fortress. */
