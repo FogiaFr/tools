@@ -23,15 +23,15 @@ public class ProvinceInfo {
     /** Flag saying that the province is a capital. */
     private boolean capital = false;
     /** X coordinate of the fortress. */
-    private int x;
+    private Integer x;
     /** Y coordinate of the fortress. */
-    private int y;
+    private Integer y;
     /** Level of the natural fortress. */
     private int fortress = 0;
     /** X coordinate of the fortress. */
-    private int xPort;
+    private Integer xPort;
     /** Y coordinate of the fortress. */
-    private int yPort;
+    private Integer yPort;
     /** Flag saying that the province has a natural port. */
     private boolean port = false;
     /** Flag saying that the port has a natural arsenal. */
@@ -100,42 +100,42 @@ public class ProvinceInfo {
     }
 
     /** @return the y. */
-    public int getY() {
+    public Integer getY() {
         return y;
     }
 
     /** @param y the y to set. */
-    public void setY(int y) {
+    public void setY(Integer y) {
         this.y = y;
     }
 
     /** @return the x. */
-    public int getX() {
+    public Integer getX() {
         return x;
     }
 
     /** @param x the x to set. */
-    public void setX(int x) {
+    public void setX(Integer x) {
         this.x = x;
     }
 
     /** @return the xPort. */
-    public int getXPort() {
+    public Integer getXPort() {
         return xPort;
     }
 
     /** @param xPort the xPort to set. */
-    public void setXPort(int xPort) {
+    public void setXPort(Integer xPort) {
         this.xPort = xPort;
     }
 
     /** @return the yPort. */
-    public int getYPort() {
+    public Integer getYPort() {
         return yPort;
     }
 
     /** @param yPort the yPort to set. */
-    public void setYPort(int yPort) {
+    public void setYPort(Integer yPort) {
         this.yPort = yPort;
     }
 

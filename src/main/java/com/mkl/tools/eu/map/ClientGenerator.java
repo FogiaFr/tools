@@ -52,12 +52,30 @@ public class ClientGenerator {
             if (province.getInfo() != null) {
                 writer
                         .append(",\"income\":\"").append(Integer.toString(province.getInfo().getIncome())).append("\"")
+                        .append(",\"owner\":\"").append(province.getInfo().getDefaultOwner()).append("\"")
                         .append(",\"fortress\":\"").append(Integer.toString(province.getInfo().getFortress())).append("\"")
                         .append(",\"capital\":\"").append(Boolean.toString(province.getInfo().isCapital())).append("\"")
                         .append(",\"port\":\"").append(Boolean.toString(province.getInfo().isPort())).append("\"")
                         .append(",\"arsenal\":\"").append(Boolean.toString(province.getInfo().isArsenal())).append("\"")
                         .append(",\"praesidiable\":\"").append(Boolean.toString(province.getInfo().isPraesidiable())).append("\"")
                         .append(",\"metadata\":\"").append(String.join(";;", province.getInfo().getMetadata(province.getName()))).append("\"");
+
+                if (province.getInfo().getX() != null) {
+                    double coordinate = getXMapCoordinate(province.getInfo().getX(), province.getPortions().get(0).isRotw());
+                    writer.append(",\"xFortress\":\"").append(Double.toString(coordinate)).append("\"");
+                }
+                if (province.getInfo().getY() != null) {
+                    double coordinate = getYMapCoordinate(province.getInfo().getY(), province.getPortions().get(0).isRotw());
+                    writer.append(",\"yFortress\":\"").append(Double.toString(coordinate)).append("\"");
+                }
+                if (province.getInfo().getXPort() != null) {
+                    double coordinate = getXMapCoordinate(province.getInfo().getXPort(), province.getPortions().get(0).isRotw());
+                    writer.append(",\"xPort\":\"").append(Double.toString(coordinate)).append("\"");
+                }
+                if (province.getInfo().getYPort() != null) {
+                    double coordinate = getYMapCoordinate(province.getInfo().getYPort(), province.getPortions().get(0).isRotw());
+                    writer.append(",\"yPort\":\"").append(Double.toString(coordinate)).append("\"");
+                }
             } else if (province.getRotwInfo() != null) {
                 writer.append(",\"region\":\"").append(province.getRotwInfo().getRegion()).append("\"");
                 if (province.getRotwInfo().getFortress() != null) {
