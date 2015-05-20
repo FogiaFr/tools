@@ -1234,3 +1234,10 @@ espagne	Country counter not found.	Privateer_espagne_recto.png	[counter_3, count
 espagne	Country counter not found.	Privateer_espagne_verso.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
 mazovie	Country counter not found.	Diplomacy_*mazovie_F*_recto.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
 mazovie	Country counter not found.	Diplomacy_*mazovie_F*_verso.png	[counter_3, counter_4, counter_5, counter_6, counter_7, counter_8]
+eSvealand	Duplicate borders	eVastergotland
+eBergslagen	Duplicate borders	eOstlandet
+eSvealand	Duplicate borders	eVastergotland
+eBresse	Duplicate borders	eSavoia
+eAstragan	Duplicate borders	eTerek
+eTavastland	Duplicate borders	eKexholm
+eTavastland	Duplicate borders	eKexholm
