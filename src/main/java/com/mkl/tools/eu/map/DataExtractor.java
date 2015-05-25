@@ -1138,8 +1138,8 @@ public class DataExtractor {
                 Integer monopoly = null;
                 Integer presence = null;
                 String country = null;
-                Integer x = null;
-                Integer y = null;
+                Double x = null;
+                Double y = null;
                 String type = "ZP";
                 if (line.contains("zm")) {
                     type = "ZM";
@@ -1149,8 +1149,8 @@ public class DataExtractor {
                 if (m.matches()) {
                     monopoly = Integer.parseInt(m.group(1));
                     presence = Integer.parseInt(m.group(2));
-                    x = Integer.parseInt(m.group(3));
-                    y = Integer.parseInt(m.group(4));
+                    x = Double.parseDouble(m.group(3));
+                    y = Double.parseDouble(m.group(4));
                 }
 
                 m = Pattern.compile("\\w* \\w* (\\d*) (\\d) \\([^\\)]*\\) \\w* \\(([^\\)]*)\\) (\\d*) (\\d*) .*").matcher(line);
@@ -1158,19 +1158,21 @@ public class DataExtractor {
                     monopoly = Integer.parseInt(m.group(1));
                     presence = Integer.parseInt(m.group(2));
                     country = m.group(3);
-                    x = Integer.parseInt(m.group(4));
-                    y = Integer.parseInt(m.group(5));
+                    x = Double.parseDouble(m.group(4));
+                    y = Double.parseDouble(m.group(5));
                 }
 
                 m = Pattern.compile("\\w* \\w* (\\d*) (\\d) \\([^\\)]*\\) @ (\\d*) (\\d*) .*").matcher(line);
                 if (m.matches()) {
                     monopoly = Integer.parseInt(m.group(1));
                     presence = Integer.parseInt(m.group(2));
-                    x = Integer.parseInt(m.group(3));
-                    y = Integer.parseInt(m.group(4));
+                    x = Double.parseDouble(m.group(3));
+                    y = Double.parseDouble(m.group(4));
                 }
 
                 if (monopoly != null) {
+                    x += SQUARE_SIZE / 6;
+                    y += SQUARE_SIZE / 5;
                     TradeZone tradeZone = new TradeZone();
                     tradeZone.setMonopoly(monopoly);
                     tradeZone.setPresence(presence);
@@ -1231,7 +1233,7 @@ public class DataExtractor {
      * @param y         coordinate.
      * @param rotw      search must be done on rotw provinces.
      */
-    private static Province findProvinceAtCoordinates(Map<String, Province> provinces, String terrain, int x, int y, boolean rotw) {
+    private static Province findProvinceAtCoordinates(Map<String, Province> provinces, String terrain, double x, double y, boolean rotw) {
         Province province = null;
         for (Province prov : provinces.values()) {
             if (terrain == null || StringUtils.equals(terrain, prov.getTerrain())) {
@@ -1266,7 +1268,7 @@ public class DataExtractor {
      * @param coords The coordinates of the polygon
      * @return True if inside, false otherwise.
      */
-    private static boolean isInside(float checkX, float checkY, List<Pair<Double, Double>> coords) {
+    private static boolean isInside(double checkX, double checkY, List<Pair<Double, Double>> coords) {
         boolean inside = false;
         for (int i = 0, j = coords.size() - 1; i < coords.size(); j = i++) {
             Pair<Double, Double> pi = coords.get(i);
