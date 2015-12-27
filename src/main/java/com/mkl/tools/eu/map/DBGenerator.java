@@ -71,10 +71,11 @@ public class DBGenerator {
                     .append(");\n");
 
             if (province.getInfo() != null) {
-                sqlWriter.append("INSERT INTO R_PROVINCE_EU (ID, INCOME, FORTRESS, CAPITAL, PORT, ARSENAL, PRAESIDIABLE, METADATA)\n")
+                sqlWriter.append("INSERT INTO R_PROVINCE_EU (ID, INCOME, FORTRESS, R_COUNTRY, CAPITAL, PORT, ARSENAL, PRAESIDIABLE, METADATA)\n")
                         .append("    VALUES (").append(" (SELECT ID FROM R_PROVINCE WHERE NAME = '").append(province.getName()).append("')")
                         .append(", ").append(integerToString(province.getInfo().getIncome()))
                         .append(", ").append(integerToString(province.getInfo().getFortress()))
+                        .append(", ").append(stringToString(province.getInfo().getDefaultOwner()))
                         .append(", ").append(booleanToBit(province.getInfo().isCapital()))
                         .append(", ").append(booleanToBit(province.getInfo().isPort()))
                         .append(", ").append(booleanToBit(province.getInfo().isArsenal()))

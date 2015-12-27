@@ -2,6 +2,7 @@ package com.mkl.tools.eu;
 
 
 import com.mkl.tools.eu.map.ClientGenerator;
+import com.mkl.tools.eu.map.DBGenerator;
 import com.mkl.tools.eu.map.DataExtractor;
 import com.mkl.tools.eu.util.ToolsUtil;
 import com.mkl.tools.eu.vo.country.Country;
@@ -108,14 +109,14 @@ public final class MapGenerator {
 
         ClientGenerator.createBorderData(borders, provinces, specialBorders, log);
 
-//        Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/provinces_countries.sql", false);
-//
-//        DBGenerator.createDBInjection(provinces, borders, regions, sqlWriter);
-//
-//        DBGenerator.createCountriesData(countries, sqlWriter);
-//
-//        sqlWriter.flush();
-//        sqlWriter.close();
+        Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/provinces_countries.sql", false);
+
+        DBGenerator.createDBInjection(provinces, borders, regions, sqlWriter);
+
+        DBGenerator.createCountriesData(countries, sqlWriter);
+
+        sqlWriter.flush();
+        sqlWriter.close();
 
         log.flush();
         log.close();
