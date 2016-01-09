@@ -182,26 +182,26 @@ public class CounterGenerator {
         types.add(new ImmutablePair<>("TRADE_CENTER_INDIAN.png", "TradeCentre_Indian.png"));
 
         // Exotic resources
-        types.add(new ImmutablePair<>("SPICES_PRICE.png", "Price_Spices.png"));
-        types.add(new ImmutablePair<>("SPICES_PRODUCTION.png", "Production_Spices.png"));
-        types.add(new ImmutablePair<>("SUGAR_PRICE.png", "Price_Sugar.png"));
-        types.add(new ImmutablePair<>("SUGAR_PRODUCTION.png", "Production_Sugar.png"));
+        types.add(new ImmutablePair<>("SP_PRICE.png", "Price_Spices.png"));
+        types.add(new ImmutablePair<>("SP_PRODUCTION.png", "Production_Spices.png"));
+        types.add(new ImmutablePair<>("SU_PRICE.png", "Price_Sugar.png"));
+        types.add(new ImmutablePair<>("SU_PRODUCTION.png", "Production_Sugar.png"));
         types.add(new ImmutablePair<>("FISH_PRICE.png", "Price_Fish.png"));
         types.add(new ImmutablePair<>("FISH_PRODUCTION.png", "Production_Fish.png"));
-        types.add(new ImmutablePair<>("PRODUCTS_OF_AMERICA_PRICE.png", "Price_PA.png"));
-        types.add(new ImmutablePair<>("PRODUCTS_OF_AMERICA_PRODUCTION.png", "Production_PA.png"));
+        types.add(new ImmutablePair<>("PA_PRICE.png", "Price_PA.png"));
+        types.add(new ImmutablePair<>("PA_PRODUCTION.png", "Production_PA.png"));
         types.add(new ImmutablePair<>("SILK_PRICE.png", "Price_Silk.png"));
         types.add(new ImmutablePair<>("SILK_PRODUCTION.png", "Production_Silk.png"));
         types.add(new ImmutablePair<>("SALT_PRICE.png", "Price_Salt.png"));
         types.add(new ImmutablePair<>("SALT_PRODUCTION.png", "Production_Salt.png"));
-        types.add(new ImmutablePair<>("COTTON_PRICE.png", "Price_Cotton.png"));
-        types.add(new ImmutablePair<>("COTTON_PRODUCTION.png", "Production_Cotton.png"));
-        types.add(new ImmutablePair<>("FURS_PRICE.png", "Price_Furs.png"));
-        types.add(new ImmutablePair<>("FURS_PRODUCTION.png", "Production_Furs.png"));
-        types.add(new ImmutablePair<>("PRODUCTS_OF_ORIENT_PRICE.png", "Price_PO.png"));
-        types.add(new ImmutablePair<>("PRODUCTS_OF_ORIENT_PRODUCTION.png", "Production_PO.png"));
-        types.add(new ImmutablePair<>("SLAVES_PRICE.png", "Price_Slaves.png"));
-        types.add(new ImmutablePair<>("SLAVES_PRODUCTION.png", "Production_Slaves.png"));
+        types.add(new ImmutablePair<>("CO_PRICE.png", "Price_Cotton.png"));
+        types.add(new ImmutablePair<>("CO_PRODUCTION.png", "Production_Cotton.png"));
+        types.add(new ImmutablePair<>("FUR_PRICE.png", "Price_Furs.png"));
+        types.add(new ImmutablePair<>("FUR_PRODUCTION.png", "Production_Furs.png"));
+        types.add(new ImmutablePair<>("PO_PRICE.png", "Price_PO.png"));
+        types.add(new ImmutablePair<>("PO_PRODUCTION.png", "Production_PO.png"));
+        types.add(new ImmutablePair<>("SL_PRICE.png", "Price_Slaves.png"));
+        types.add(new ImmutablePair<>("SL_PRODUCTION.png", "Production_Slaves.png"));
 
         // Technology
         types.add(new ImmutablePair<>("TECH_RENAISSANCE.png", "TechnologyGoal_Renaissance.png"));

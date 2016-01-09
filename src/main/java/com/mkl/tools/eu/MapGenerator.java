@@ -2,6 +2,7 @@ package com.mkl.tools.eu;
 
 
 import com.mkl.tools.eu.map.ClientGenerator;
+import com.mkl.tools.eu.map.CounterGenerator;
 import com.mkl.tools.eu.map.DBGenerator;
 import com.mkl.tools.eu.map.DataExtractor;
 import com.mkl.tools.eu.util.ToolsUtil;
@@ -100,10 +101,10 @@ public final class MapGenerator {
             }
         }
 
-//        CounterGenerator.moveExistingCounter(countries,
-//                "D:\\dev\\upide\\old-lipn.univ-paris13.fr\\~dubacq\\europa\\pions\\0.6\\",
-//                "D:\\dev\\workspace\\eu\\front\\eu-front-client\\data\\counters\\v2\\",
-//                log);
+        CounterGenerator.moveExistingCounter(countries,
+                "D:\\dev\\upide\\old-lipn.univ-paris13.fr\\~dubacq\\europa\\pions\\0.6\\",
+                "D:\\dev\\workspace\\eu\\front\\eu-front-client\\data\\counters\\v2\\",
+                log);
 
         ClientGenerator.createMapData(provinces, log);
 
