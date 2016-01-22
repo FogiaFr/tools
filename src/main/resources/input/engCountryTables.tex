@@ -1,0 +1,1390 @@
+% -*- mode: LaTeX; -*-
+%%%%%%%%%%%%% AIDES DE JEU PAR PAYS %%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% PORTUGAL %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\PortugalPeriod}{
+  \stdPeriod{
+    1492-1519 I & 3 & 2/5\xxa & 3 & 8 & 12 & 12 & 2/1 & 4/1 & 2  & \CAIII\\
+    1520-1559 II& 5 & 3/5\xxa & 4 & 8 & 12 & 15 & 2/1 & 4/1& 3 & \CAIII \\
+    1560-1614 III& 5 & 3 & 4 & 12 & 12 & 15 & 2/1 & 4/1& 3 & \CAIII \\
+  }
+  \GTlegend{
+    \xxa\ The \FTI right value is for all actions in the \ROTW
+  }
+}
+
+\newcommand{\PortugalTurn}{%
+  \stdTurn{
+    1492--1519 I& 2 & 1 & 1 & 2 & 2 & \FLEET\facemoins 3\GD & 4\ND / 2\LD & 1\LeaderG/1\LeaderA/1\LeaderC/1\LeaderE\\
+    1520--1559 II& 1 & 1 & 2 & 2 & 2 & \FLEET\faceplus 2\GD & 4\ND / 3\LD & 1\LeaderG/1\LeaderA/1\LeaderC/1\LeaderE\\
+    1560-1614 III& 1 & 1 & 2 & 1 & 2 & \FLEET\faceplus 2\GD & 4\ND / 3\LD & 1\LeaderG/1\LeaderA/1\LeaderC/1\LeaderE\\
+  }
+}
+
+\newcommand{\PortugalPurchase}{
+  \stdPurchase{
+    \TMED & 10 & 20 &  6/4 &  8/4  & 20/10 &  9 & 12 & 30 \\
+    \TREN & 12 & 24 &  8/5 & 15/10 & 30/20 & 12 & 22 & 40 \\
+    \TARQ & 15 & 30 & 10/6 & 25/15 & 40/30 & 14 & 30 & 55 \\
+    \TMUS & 19 & 38 & 11/7 & 28/18 & 45/30 & 16 & 36 & 60 \\
+  }{
+    \TCAR & 35  & 80  & --- & --- & 40 & 15 & 25 & 55 \\
+    \TGLN & 35  & 90  & --- & --- & 40 & 15 & 30 & 70 \\
+    \TLS  & 40  & 105 & --- & --- & 40 & 20 & 35 & 80 \\
+    \TBAT & 50  & 120 & --- & --- & 40 & 25 & 40 & 90 \\
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%% SUEDE %%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\SuedePeriod}{
+  \expPeriod[\#\ARMY]{
+    1520-1559 II & 2 & 2 & 2\xxa& 1   & 1   & 2 & 10 & 2/1 & 4/1 & 2 & \CAIIIM\\
+    1560-1614 III& 3 & 3 & 2\xxa& 2   & 2   & 2(3\xxb\xxd) & 12 & 2/1 & 4/1 & 3 & \CAIIIM\\
+    1615-1664 IV & 4 & 4 & 3\xxa& 2\xxc & 2\xxc & 2(3\xxb\xxd) & 15 & 2/1 & 5/2 & 4 & \CAIIIM\\
+    1665-1699 V  & 4 & 4 & 4    & 2\xxc & 2\xxc & 2(3\xxb\xxd) & 18 & 2/1 & 5/2 & 4 & \CAIIIM\\
+    1700-1749 VI & 4 & 4 & 4    & 2\xxc & 2\xxc & 2(3\xxe\xxd) & 18 & 3/1 & 5/2 & 5 & \CAIIIM\\
+    1750-1799 VII& 5 & 5 & 5    & 2\xxc & 2\xxc & 2(3\xxe\xxd) & 15 & 3/1 & 6/2 & 5 & \CAIIIM\\
+  }
+  \GTlegend[caption=captiona,text width=55mm]{
+    \xxa\ +1 If strongly protestant\\
+    \xxc\ +2 if ``Overseas expansion'' is selected.
+  }
+  \GTlegend[east north=captiona,text width=80mm]{
+    \xxb\ in Europe if ``Dominus Marii Baltici'' selected\\
+    \xxd\ in \ROTW if  ``Overseas expansion'' selected\\
+    \xxe\ control of 5 provinces not in Sweden, Finland or Denmark
+  }
+}
+
+\newcommand{\SuedeTurn}{
+  \specTurn
+  \stdTurn{
+    1520-1559 II & 1 & 0\xxa & 0    & 0     & 1 & \ARMY\facemoins\xxb \FLEET\facemoins Tr\FLEET\faceplus & 3\ND/4\LD & 2\LeaderG/1\LeaderA\\
+    1560-1614 III& 2 & 1\xxa & 0    & \f    & 1 & \ARMY\facemoins\xxb \FLEET\facemoins Tr\FLEET\faceplus & 3\ND/4\LD & 2\LeaderG/1\LeaderA/(1\LeaderE\xxc) \\
+    1615-1664 IV & 3 & 1\xxa &\f    & 1     & 1 & \ARMY\faceplus\xxb \FLEET\facemoins Tr\FLEET\faceplus  & 4\ND/4\LD & 2\LeaderG/1\LeaderA/1\LeaderE/(1\LeaderC\xxc) \\
+    1665-1699 V  & 3 & 2     & 1    & 1     & 1 & \ARMY\faceplus\xxb \FLEET\facemoins Tr\FLEET\faceplus  & 4\ND/3\LD & 2\LeaderG/1\LeaderA/1\LeaderGov\xxc\\
+    1700-1749 VI & 3 & 1\xxc &\f\xxd&1 & 1 & \ARMY\facemoins\xxb \FLEET\facemoins Tr\FLEET\faceplus & 3\ND/3\LD & 2\LeaderG/1\LeaderA/1\LeaderGov\xxc \\
+    1750-1799 VII& 3 & 1\xxc &\f\xxd&\f\xxd & 1 & \ARMY\facemoins\xxb \FLEET\facemoins Tr\FLEET\faceplus & 3\ND/3\LD & 1\LeaderG/1\LeaderA/1\LeaderGov\xxc \\
+  }
+  \GTlegend[caption=captiona,text width=55mm]{
+    \up{(1)/(2)} Choose freely between \COL and \TP\\
+    \xxa\ Add 1 if kings strongly protestant\\
+    \xxb\ Add \ARMY\facemoins (or \ARMY\faceplus if \MIL\geq7) if at war
+  }
+  \GTlegend[south east,text width=88mm]{
+    \up{(2)} if ``Overseas expansion'' is selected\hspace*{2mm}\xxd\ Only for existing counters\\
+    \xxc\ +1 action in \stz{Baltique} if at least 3 ports on that sea\\
+    \f\ One action every two turns (not consecutive turns)
+  }
+}
+
+
+\newcommand{\SuedePurchase}{
+  \stdPurchase{
+    \TMED &  8 & 16 &  8/4 &  10/5 & 25/15 & 12 & 15 & 35 \\
+    \TREN &  9 & 18 &  9/5 & 15/10 & 30/20 & 14 & 22 & 45 \\
+    \TARQ & 11 & 22 & 10/6 & 20/12 & 35/25 & 15 & 30 & 50 \\
+    \TMUS & 13 & 26 & 11/7 & 25/15 & 40/30 & 16 & 35 & 50 \\
+    \TBAR & 20 & 40 & 12/7 & 30/20 & 50/35 & 18 & 45 & 70 \\
+    \TMAN & 30 & 60 & 15/8 & 40/25 & 70/40 & 22 & 60 & 100\\
+    \TL   & 47 & 94 & 20/9 & 50/30 & 80/50 & 30 & 75 & 120\\
+  }{
+    \TCAR & 35 & 70  & 10 &  50 & 50 & 15 & 25 &  55 \\
+    \TGLN & 40 & 80  & 10 &  60 & 50 & 17 & 35 &  80 \\
+    \TLS  & 50 & 120 & 15 &  70 & 50 & 20 & 40 &  90 \\
+    \TBAT & 55 & 150 & 15 &  90 & 50 & 25 & 45 & 100 \\
+    \TVE  & 60 & 190 & 20 & 100 & 50 & 30 & 50 & 110 \\
+    \TTD  & 70 & 230 & 20 & 120 & 50 & 35 & 60 & 130 \\
+  }
+}
+
+
+%%%%%%%%%%%%%%%%%%% RUSSIE  %%%%%%%%%%%%%%%%%%
+\newcommand{\RussiePeriod}{
+  \stdPeriod{
+    1492-1519 I  & 1     & 1\xxa/3\xxb & 1 &  0 & 0 &  1 & --- & --- & 1 & \CAIM \\
+    1520-1559 II & 1     & 1\xxa/3\xxb & 2 &  2 & 0 &  2 & 1/1 & 2/1 & 1  & \CAIM\\
+    1560-1614 III& 1     & 1\xxa/4\xxb & 3 &  4 & 1 &  4 & 2/1 & 3/1 & 1 & \CAIM \\
+    1615-1664 IV & 1     & 1\xxa/4\xxb & 3 &  6 & 2 &  7 & 2/1 & 5/2 & 2(3\xxd) & \CAIM \\
+    1665-1699 V  & 1\xxc & 1\xxa/5\xxb & 4 &  8 & 3 & 10 & 2/1 & 5/2 & 3(4\xxd) & \CAIM \\
+    1700-1749 VI & 1\xxc &     2/5\xxb & 5 & 10 & 4 & 16 & 3/1 & 6/2 & 4(6\xxd) & \CAIM  \\
+    1750-1799 VII& 2\xxc & 2\xxc/5\xxb & 6 & 11 & 5 & 22 & 3/1 & 7/2 & 4(6\xxd) & \CAIM \\
+  }
+  \GTlegend[caption=captiona,text width=64mm]{
+    \xxc\ +1 after fundation of \shortville{Saint-Petersbourg}\\
+    \xxa\ +1 if tolerant or Archangelsk with \TradeFLEET\faceplus inside\\
+  }
+  \GTlegend[south east,text width=54mm]{
+    \xxd\ after the military reform\\
+    \xxb\ Special \FTI applies to TP/COL actions
+  }
+}
+
+\newcommand{\RussieTurn}{
+  \stdTurn{
+    1492-1519 I  &1\xxb& 0   & 0 & 0 & 0     & 2\ARMY\faceplus                  & 1\ND/4\LD     & 2\LeaderG \\
+    1520-1559 II &2\xxb& 0   & 0 & 0 & 0     & 2\ARMY\faceplus                  & 1\ND/4\LD     & 2\LeaderG \\
+    1560-1614 III&2\xxb&1\xxc& 1 & 1 & 0 & \ARMY\faceplus\ARMY\facemoins 2\GD   & 1\ND/4\LD     & 3\LeaderG/1\LeaderC \\
+    1615-1664 IV &2\xxb& 1   & 2 & 1 & 0 & 2\ARMY\faceplus1\GD              & 1\ND\xxa/4\LD\xxd & 3\LeaderG/2\LeaderC \\
+    1665-1699 V  & 3   & 1   & 2 & 1 & 0\xxa & 2\ARMY\faceplus2\GD              & 1\ND\xxa/4\LD\xxd & 3\LeaderG/1\LeaderC \\
+    1700-1779 VI & 3   & 1   & 2 & 1 & 0\xxa & 2\ARMY\faceplus\FLEET\facemoins2\GD & 2\ND\xxa/4\LD\xxd & 3\LeaderG/1\LeaderA/1\LeaderC \\
+    1750-1799 VII& 3   & 1   & 2 & 1 & 0\xxa & 3\ARMY\faceplus\FLEET\faceplus3\GD  & 3\ND\xxa/4\LD\xxd & 3\LeaderG/1\LeaderA/1\LeaderC \\
+  }
+  \GTlegend[caption=captiona,text width=44mm]{
+    \xxb\ +1 if tolerant\\
+    \xxc\ only if Archangelsk created
+  }
+  \GTlegend[south east,text width=84mm]{
+    \xxd\ -1 \LD after the military reform\\
+    \xxa\ Add 1 concurrence/+2\ND after the fundation of \shortville{Saint-Petersbourg}
+  }
+}
+
+\newcommand{\RussiePurchase}{
+  \stdPurchase{
+    \TMED &  4 & 8  &  2/1 &  8/4  & 20/10 &  3 & 12 & 30 \\
+    \TREN &  6 & 20 &  3/1 & 15/5  & 30/15 &  5 & 20 & 40 \\
+    \TARQ &  9 & 30 &  4/2 & 20/12 & 40/25 &  6 & 25 & 50 \\
+    \TMUS & 12 & 35 &  5/2 & 25/15 & 45/30 &  8 & 30 & 60 \\
+    \TBAR & 18 & 45 &  7/3 & 35/20 & 60/40 & 10 & 40 & 80 \\
+    \TMAN & 30 & 60  & 10/4 & 45/25 & 70/40 & 15 & 60 & 100\\
+    \TL   & 45 & 90  & 15/5 & 70/40 & 90/60 & 25 & 90 & 120\\
+  }{
+    \TCAR & 50 &  80 & 10 & 40 & 40 & 20 & 30 &  75 \\
+    \TGLN & 55 &  90 & 10 & 50 & 40 & 25 & 45 & 110 \\
+    \TLS  & 60 & 150 & 10 & 60 & 40 & 25 & 50 & 115 \\
+    \TBAT & 65 & 170 & 10 & 70 & 40 & 30 & 60 & 130 \\
+    \TVE  & 70 & 225 & 15 & 90 & 40 & 35 & 65 & 140 \\
+    \TTD  & 80 & 270 & 20 &110 & 40 & 40 & 70 & 160 \\
+  }
+}
+%%%%%%%%%%%%%%%%%% ANGLETERRE %%%%%%%%%%%%%%%
+\newcommand{\AngleterrePeriod}{
+  \stdPeriod{
+    1492-1519 I  & 2 & 2     & 3 & 2    & 1        &  8 & 2/1 & 4/1 & 2 & \CAIVM\\
+    1520-1559 II & 3 & 3     & 4 & 3    & 2        & 12 & 2/1 & 4/1 & 2 & \CAIVM\\
+    1560-1614 III& 3 & 3\xxa & 5 & 5    & 3\xxa    & 18 & 2/1 & 5/1 & 3 & \CAIVM\\
+    1615-1664 IV & 4 & 3\xxa & 6 & 6\xxc& 5\xxa\xxc& 24 & 2/1 & 5/2 & 4 & \CAIVM\\
+    1665-1699 V  & 4 & 4\xxa & 7 &12\xxc& 10\xxc   & 30 & 3/1 & 6/2 & 4 & \CAIVM\\
+    1700-1749 VI & 5 & 5     & 8 & 15   & 10       & 36 & 3/1 & 7/2 & 6 & \CAIVM\\
+    1750-1799 VII& 5 & 5     &10 & 17   & 10       & 42 & 3/1 & 7/2 & 6 & \CAIVM\\
+  }
+  \GTlegend[caption=captiona,text width=40mm]{
+    \xxc\ -2 if Counter-Reform
+  }
+  \GTlegend[south east,text width=74mm]{
+    \xxa\ +1 after the creation of the \emph{East Indian Company}
+  }
+}
+
+\newcommand{\AngleterreTurn}{
+  \stdTurn{
+    1492-1519 I  & 1 & 1 & 1\xxa & 1\xxa & 1 & \ARMY\facemoins\xxd\FLEET\faceplus & 3\ND/3\LD & 1\LeaderG/2\LeaderA \\
+    1520-1559 II & 2 & 1 & 1\xxa & 1\xxa & 1 & \ARMY\facemoins\xxd\FLEET\faceplus & 4\ND/4\LD & 1\LeaderG/2\LeaderA/(1\LeaderE\xxb) \\
+    1560-1614 III& 3 & 2 & 1\xxc & 1\xxa\xxe & 1 & \ARMY\facemoins\xxd\FLEET\faceplus & 4\ND/3\LD & 1\LeaderG/1\LeaderA/1\LeaderE \\
+    1615-1664 IV & 2 & 2 & 2\xxc & 2\xxa & 2 & \ARMY\facemoins\FLEET\faceplus & 6\ND/3\LD & 1\LeaderG/2\LeaderA/1\LeaderC \\
+% [BLP] : 2A -> 3A
+    1665-1699 V  & 4 & 3 & 2\xxc & 2\xxc & 2 & \ARMY\facemoins\FLEET\faceplus\FLEET\facemoins & 6\ND/3\LD & 1\LeaderG/3\LeaderA/1\LeaderC \\
+% [BLP] : 2A -> 4A
+    1700-1749 VI & 5 & 4 & 2     & 2     & 3 & \ARMY\facemoins2\FLEET\faceplus& 7\ND/3\LD & 1\LeaderG/4\LeaderA/1\LeaderGov \\
+% [BLP] : 2A -> 5A
+    1750-1799 VII& 6 & 5 & 2     & 2     & 3 & \ARMY\faceplus2\FLEET\faceplus & 7\ND/3\LD & 1\LeaderG\xxf/5\LeaderA/1\LeaderC$\!$@ \\
+  }
+  \GTlegend[caption=captiona,text width=59mm]{
+    \xxc\ -1 if Counter-Reform\hspace*{3mm}
+    \xxa\ -1 if Catholic\\
+    \xxb\ only if \PROTANG
+  }
+  \GTlegend[south east,text width=71mm]{
+    \xxe\ +1 after the creation of the \emph{East Indian Company}\\
+    \xxd\ \ARMY\faceplus if Counter-Reform\hspace*{3mm}
+    \xxf At least 1\LeaderG in Europe
+  }
+}
+
+
+\newcommand{\AngleterrePurchase}{
+  \stdPurchase{
+    \TMED &  9 & 18 &  8/4  & 10/5  & 25/15 & 10 & 15 &  30 \\
+    \TREN & 11 & 22 &  9/5  & 15/10 & 30/20 & 12 & 20 &  40 \\
+    \TARQ & 13 & 26 & 10/6  & 20/12 & 35/25 & 14 & 26 &  50 \\
+    \TMUS & 16 & 32 & 11/7  & 25/15 & 40/30 & 16 & 30 &  55 \\
+    \TBAR & 18 & 36 & 12/8  & 30/20 & 50/35 & 18 & 35 &  65 \\
+    \TMAN & 30 & 60 & 15/10 & 40/25 & 70/40 & 25 & 55 & 100 \\
+    \TL   & 45 & 90 & 20/10  & 50/30 & 80/50 & 30 & 75 & 120 \\
+  }{
+    \TCAR & 30 &  60 & --- & --- & 40 & 12 & 20 &  45 \\
+    \TGLN & 35 &  70 & --- & --- & 40 & 15 & 30 &  70 \\
+    \TLS  & 40 & 100 & --- & --- & 40 & 18 & 35 &  80 \\
+    \TBAT & 50 & 130 & --- & --- & 40 & 20 & 40 &  90 \\
+    \TVE  & 55 & 160 & --- & --- & 40 & 25 & 45 & 100 \\
+    \TTD  & 60 & 200 & --- & --- & 40 & 30 & 55 & 120 \\
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%% FRANCE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\FrancePeriod}{
+  \stdPeriod{
+    1492-1519 I& 2   & 1    & 2   & 1     & 1   & 8  & 2/1 & 4/1 & 2 & \CAIV\\
+    1520-1559 II& 2\xxa  & 2\xxa   & 3\xxa  & 3\xxa    & 2\xxa  & 12  & 2/1 & 4/1 & 3 & \CAIV\\
+    1560-1614 III& 2\xxa  & 3\xxa   & 4\xxa  & 4\xxa    & 3\xxa  & 14+2  & 2/1 & 5/1 & 3  & \CAIV\\
+    1615-1664 IV& 2\xxa & 3\xxa  & 5\xxa & 5\xxa   & 4\xxa & 18+6\xxb & 2/1 & 5/1 & 4 & \CAIV\\
+    1665-1699 V& 2\xxa & 4\xxa  & 7\xxa & 8\xxa\xxc & 5\xxa\xxc & 26+6\xxb & 3/1 & 6/2 & 5 &\CAIV \\
+    1700-1749 VI& 3\xxa & 4\xxa  & 7\xxa & 10\xxa\xxc\llap{\raisebox{-1ex}{\xxc}} & 6\xxa\xxc & 30+6\xxb & 3/1 & 7/2 & 6 & \CAIV \\
+    1750-1799 VII& 4\xxa & 4\xxa & 8\xxa & 12\xxa\xxc\llap{\raisebox{-1ex}{\xxc}} & 7\xxa\xxc\llap{\raisebox{-1ex}{\xxc}} & 38 & 3/1 & 7/2& 6 & \CAIV \\
+  }
+  \GTlegend{
+    \xxa\ +1 if protestant or \terme{Colbertian Mercantilism}\hspace*{3mm}
+    \xxc\ +1 if \terme{Colbertian Mercantilism} (cumulative)\\
+    \xxb\ Add right value to the \ND limit if \terme{Colbertian Mercantilism} or protestant
+  }
+}
+
+\newcommand{\FranceTurn}{
+  \stdTurn{
+% [BLP] Add 1A
+    1492-1519 I  & 2 & 1     & 0\xxa  & 0       & 1    & \ARMY\faceplus1\GD       & 2\ND/4\LD & 2\LeaderG/1\LeaderA \\
+% [BLP] Add 1A
+    1520-1559 II & 3 & 1     & 0\xxa  & 0       & 1    & \ARMY\faceplus\ARMY\facemoins\GD\xxe  & 3\ND/4\LD & 3\LeaderG/1\LeaderA/(1\LeaderE\xxb) \\
+% [BLP] Add 1A
+    1560-1614 III& 2 & 1     & 0\xxa\xxe  & 0       & 1    & \ARMY\faceplus\ARMY\facemoins\GD\xxe  & 4\ND/4\LD & 2\LeaderG/1\LeaderA/(1\LeaderE\xxb) \\
+    1615-1664 IV & 3 & 2     & 1\xxa  & 1\xxa   & 1\xxc& \ARMY\faceplus\ARMY\facemoins\FLEET\facemoins\xxd & 5\ND/4\LD & 3\LeaderG/1\LeaderA/1\LeaderC/(1\LeaderE\xxb) \\
+% [BLP] : 2A -> 2A
+    1665-1699 V  & 5 & 2\xxc&1\xxa\xxc&1\xxa\xxc& 2\xxc& 2\ARMY\faceplus\ARMY\facemoins\FLEET\faceplus\xxd& 6\ND/4\LD & 3\LeaderG/2\LeaderA/1\LeaderC/1\LeaderE \\
+% [BLP] : 2A -> 3A
+    1700-1749 VI & 6 & 3\xxc & 1      &1\xxa\xxc& 2\xxc& 2\ARMY\faceplus\FLEET\faceplus\FLEET\facemoins    & 7\ND/4\LD & 3\LeaderG/3\LeaderA \\
+% [BLP] : 2A -> 4A
+    1750-1799 VII& 6 & 3\xxc & 1      & 1\xxa   & 2\xxc&
+    2\ARMY\faceplus\FLEET\faceplus\FLEET\facemoins    & 7\ND/4\LD & 3\LeaderG/4\LeaderA/1\LeaderC$\!$@ \\
+  }
+  \GTlegend[caption=captiona,text width=63mm]{
+    If \terme{Colbertian Mercantilism}:\ \xxc\ +1 and \null\xxd\ add \FLEET\facemoins\\
+    \xxe\ +1 if Conciliant\hspace*{10mm}\xxb\ only if protestant
+  }
+  \GTlegend[south east,text width=71mm]{
+    \xxe\ During \xeventref{pIII:FWR}{III-D}: \ARMY\facemoins\LD in period II, \ARMY\facemoins in period III\\
+    \xxa\ +1 if protestant (not cumulative with Colbert)
+  }
+}
+
+\newcommand{\FrancePurchase}{
+  \stdPurchase{
+    \TMED &  8 & 16 &  6/3 &  8/5  & 15/10 &  8 & 12 & 25\\
+    \TREN & 13 & 26 &  7/4 & 12/8  & 20/12 & 10 & 18 & 30\\
+    \TARQ & 18 & 36 &  8/4 & 15/10 & 25/15 & 12 & 25 & 40\\
+    \TMUS & 23 & 46 &  9/5 & 20/12 & 30/18 & 15 & 30 & 45\\
+    \TBAR & 35 & 70 & 10/6 & 25/15 & 40/20 & 16 & 40 & 60\\
+    \TMAN & 40 & 80 & 12/7 & 30/20 & 50/25 & 18 & 45 & 75\\
+    \TL   & 45 & 90 & 15/8 & 40/25 & 60/35 & 25 & 60 & 90\\
+  }{
+    \TCAR & 35 &  70 & 10 &  50 & 40 & 15 & 25 &  55 \\
+    \TGLN & 40 &  85 & 15 &  60 & 40 & 17 & 35 &  80 \\
+    \TLS  & 45 & 110 & 20 &  80 & 40 & 20 & 40 &  90 \\
+    \TBAT & 55 & 140 & 20 &  90 & 40 & 25 & 45 & 100 \\
+    \TVE  & 60 & 180 & 25 & 120 & 40 & 30 & 50 & 110 \\
+    \TTD  & 65 & 220 & 25 & 140 & 40 & 35 & 60 & 130 \\
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%% ESPAGNE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\EspagneTurn}{
+  \stdTurn{
+    1492-1519 I  & 3 & 1              & 2          & 0    & 1 & \ARMY\faceplus 3\GD & 4\ND/5\LD & 1\LeaderG/1\LeaderA/1\LeaderC/1\LeaderE \\
+% [BLP] : 1A for flotta del oro.
+    1520-1559 II & 3 & 1              & 2          & \xxd & 1 & 2\ARMY\faceplus 3\GD\xxe & 6\ND/5\LD & 2\LeaderG/1\LeaderA\xxc/1\LeaderC/1\LeaderE  \\
+% [BLP] : 1A for flotta del oro.
+    1560-1614 III& 4 & 1{\bf[+1]}\xxa & 2{\bf[+2]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus\xxe & 7\ND/5\LD & 2\LeaderG/2\LeaderA\xxc/1\LeaderC \\
+% [BLP] : 1A for flotta del oro.
+    1615-1664 IV & 4 & 1{\bf[+1]}\xxa & 1{\bf[+2]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus\xxe & 7\ND/5\LD & 2\LeaderG/2\LeaderA\xxc \\
+% [BLP] : 2A -> 2A
+% [BLP] : 1A for flotta del oro.
+    1665-1699 V  & 4 & 1\xxb\xxa      & 1{\bf[+1]} & \xxd & 1 & 2\ARMY\faceplus \FLEET\faceplus & 5\ND/4\LD & 2\LeaderG/2\LeaderA\xxc\\
+% [BLP] : 1A -> 2A
+% [BLP] : 1A for flotta del oro.
+    1700-1749 VI & 3 & 1\xxb          & 1 {\bf[+1]}         & 1    & 1 & \ARMY\faceplus \ARMY\facemoins \FLEET\faceplus & 4\ND/3\LD & 1\LeaderG/2\LeaderA\xxc/\LeaderG$\!$\$ \\
+% [BLP] : 1A -> 3A
+    1750-1799 VII& 2 & 1              & 1  {\bf[+1]}         & 1    & 1 &\ARMY\faceplus \FLEET\faceplus1\GD& 4\ND/3\LD & 1\LeaderG/3\LeaderA/1\LeaderG$\!$\$ \\
+  }
+  \GTlegend{
+    Use \textbf{[X]} only for \pays{Portugal}, while in annexion; add basic force \textbf{[3\GD{}]} and purchase \textbf{[1\LD/1{\ND}]}\\
+    \xxa\ +1 if conciliant\hspace*{4mm}
+    \xxe\ Add \FLEET\facemoins if \province{Campania} is controlled.\hspace*{4mm}
+    \xxb\ +1 as long as the \terme{Asiento} remains Spanish\\
+    \xxd\ 1 \COL may serve as 1 \TP per turn (either for \SPA or \pays{portugal})\hspace*{4mm}
+    \xxc\ +\LeaderA for Flota de oro
+  }
+}
+
+\newcommand{\EspagnePeriod}{
+  \stdPeriod{
+    1492-1519 I  & 1        & 2/4\xxa     & 2 & 8  & 1 & 12 & 2/1 & 4/1 & 2 & \CAIII\\
+    1520-1559 II & 2        & 3\xxe/5\xxa & 2 & 21  & 3 & 15 & 2/1 & 4/2 & 3 & \CAIII\\
+    1560-1614 III& 3\xxe    & 3\xxe/5\xxa & 3 & 28  & 3 & 30 & 2/1 & 5/2 & 4 & \CAIII\\
+    1615-1664 IV & 3\xxe\xxc& 3\xxe\xxc   & 4 & 29  & 4 & 26 & 3/1 & 6/1 & 4 & \CAIII\\
+    1665-1699 V  & 3\xxe\xxc& 3\xxe\xxc   & 4 & 30  & 4 & 24 & 3/1 & 6/2 & 4 & \CAIII\\
+    1700-1749 VI & 3\xxc    & 4           & 5 & 30  & 5 & 24 & 3/1 & 6/2 & 5 & \CAIII\\
+    1750-1799 VII& 4\xxc    & 4           & 6 & 32  & 7 & 24 & 3/1 & 6/2 & 5 & \CAIII\\
+  }
+  \GTlegend{
+    \xxe\ Maximum \FTI and \DTI is 2 if \terme{Expulsion} took place, until \longxeventref{pIV:Olivares}{IV-2 (1) (Olivares)} takes place\\
+    \xxc\ +1 if conciliant\hspace*{1cm}
+    \xxa\ Special \FTI applies to COL actions
+  }
+}
+
+\newcommand{\EspagnePurchase}{
+  \stdPurchase{
+    \TMED &  8 & 16 &  6/3 &  8/5  & 15/10 &  8 & 12 &  30 \\
+    \TREN & 12 & 24 &  7/4 & 12/8  & 20/12 & 12 & 25 &  45 \\
+    \TARQ & 15 & 30 &  8/4 & 15/10 & 25/15 & 15 & 30 &  60 \\
+    \TMUS & 20 & 40 &  9/5 & 20/12 & 30/18 & 16 & 35 &  65 \\
+    \TBAR & 25 & 50 & 10/6 & 25/15 & 40/20 & 18 & 45 &  75 \\
+    \TMAN & 35 & 70 & 15/8 & 40/25 & 70/40 & 25 & 60 & 100 \\
+    \TL   & 45 & 90 & 20/9 & 50/30 & 80/50 & 30 & 75 & 120 \\
+  }{
+    \TCAR & 35 &  70 & 10 &  50 & 40 & 14 & 25 &  55 \\
+    \TGLN & 40 &  80 & 10 &  60 & 40 & 17 & 35 &  80 \\
+    \TLS  & 50 & 120 & 15 &  80 & 40 & 20 & 40 & 100 \\
+    \TBAT & 55 & 150 & 20 &  90 & 40 & 25 & 50 & 110 \\
+    \TVE  & 60 & 190 & 20 & 100 & 40 & 30 & 55 & 120 \\
+    \TTD  & 65 & 220 & 20 & 120 & 40 & 35 & 60 & 140 \\
+  }
+}
+
+%%%%%%%%%%%%%% TURQUIE %%%%%%%%%%%%%%%%%%%%%
+\newcommand{\TurquiePeriod}{
+  \stdPeriod{
+    1492-1519 I  & 3 & 2 & 2 & 1 & 2 & 12 & 2/1 & 4/1 & 1\xxa & \CAI\\
+    1520-1559 II & 3 & 3 & 3 & 3 & 6 & 15 & 2/1 & 5/1 & 2\xxa & \CAI\\
+    1560-1614 III& 3 & 3 & 4 & 4 & 4 & 30 & 2/1 & 5/1 & 3\xxa & \CAI\\
+    1615-1664 IV & 3 & 3 & 5 & 6 & 6 & 26 & 3/1 & 5/2 & 4     & \CAI\\
+    1665-1699 V  & 3 & 3 & 5 & 6 & 6 & 24 & 3/1 & 5/2 & 4     & \CAI\\
+    1700-1749 VI & 4 & 4 & 6 & 6 & 6 & 22 & 3/1 & 6/2 & 4     & \CAI\\
+    1750-1799 VII& 5 & 4 & 6 & 6 & 6 & 18 & 3/1 & 6/2 & 4     & \CAI\\
+  }
+  \GTlegend{
+    \xxa\ +1 for \Janissaire\ army before reform M-1a
+  }
+}
+
+\newcommand{\TurquieTurn}{
+  \def\Jan{\emph{Jan}}
+  \def\Tim{\emph{Tim}}
+  \expTurn{\Tim}{\Jan}{\FLEET}{
+% [BLP] : 2G -> 1G
+    1492-1519 I  & 3 & 1  & 0   & 0   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb&\FLEET\facemoins    & 5\ND/4\LD\xxc & 1\LeaderG\xxd/1\LeaderA\\
+% [BLP] : 3G -> 1G
+    1520-1559 II & 4 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET \faceplus& 7\ND/4\LD\xxc & 1\LeaderG\xxd/2\LeaderA/1\LeaderE\\
+% [BLP] : 4G -> 2G
+    1560-1614 III& 3 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& 2\FLEET\faceplus& 9\ND/5\LD\xxc & 2\LeaderG\xxd/3\LeaderA\\
+% [BLP] : 3G -> 1G
+    1615-1664 IV & 3 & 1  & 1   & 1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus\FLEET\facemoins & 9\ND/5\LD\xxc & 1\LeaderG\xxd/2\LeaderA\\
+% [BLP] : 3G -> 1G
+    1665-1699 V  & 3 & 1  &1\xxa &1   & 1 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus   & 8\ND/4\LD\xxc & 1\LeaderG\xxd/2\LeaderA\\
+% [BLP] : 3G -> 1G
+    1700-1749 VI & 3 & 1  & 0   & 1 \xxa   & 2 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus     & 6\ND/4\LD\xxc & 1\LeaderG\xxd/1\LeaderA\\
+% [BLP] : 2G -> 1G
+    1750-1799 VII& 2 & 1  & 0   & 0   & 2 & 3\ARMY\faceplus\xxb& A\facemoins\xxb& \FLEET\faceplus & 5\ND/4\LD\xxc & 1\LeaderG\xxd/1\LeaderA\\
+  }
+  \GTlegend{
+    \xxa  Only for existing counters\hspace*{5mm}
+    \ARMY \Jan/\Tim available: 1492: 2/4; M-1a: 4/2; M-2: 6/0\hspace*{5mm}
+    \xxc\ reform M-1a: -1\LD\\
+    \xxb\ reform M-1a = \Tim: -\ARMY\faceplus and \Jan: +\ARMY\facemoins;
+    reform M-1b = \Tim: -\ARMY\faceplus; reform M-2 = no \Tim;\hspace*{4mm}
+    \xxd M-2: +2\LeaderG
+  }
+}
+
+\newcommand{\TurquiePurchase}{\def\peacechain{\textbf{Peace Maintenance}}
+  \stdPurchase{
+    \TMED &  9 & 18 &  4/2 & 12/6  & 30/10 &  6 & 15 &  30 \\
+    \TREN & 20 & 40 &  5/2 & 20/10 & 40/20 &  8 & 20 &  40 \\
+    \TARQ & 23 & 46 &  8/3 & 30/15 & 50/30 & 12 & 40 &  70 \\
+    \TMUS & 25 & 50 &  9/3 & 35/20 & 55/35 & 13 & 50 &  85 \\
+    \TBAR & 30 & 60 & 10/4 & 40/25 & 60/35 & 15 & 60 &  90 \\
+    \TMAN & 35 & 70 & 12/5 & 50/30 & 70/45 & 18 & 65 & 105 \\
+    \TL   & 45 & 90 & 15/6 & 70/40 & 90/60 & 20 & 90 & 135\\
+  }{
+    \TCAR & 50 &  80 & 15 & 50 & 50 & 10 & 40 &  80 \\
+    \TGLN & 55 & 110 & 15 & 50 & 50 & 20 & 45 & 100 \\
+    \TLS  & 60 & 155 & 15 & 60 & 50 & 25 & 50 & 110 \\
+    \TBAT & 65 & 175 & 15 & 70 & 50 & 30 & 55 & 115 \\
+    \TVE  & 70 & 200 & 15 & 90 & 50 & 35 & 60 & 125 \\
+    \TTD  & 80 & 220 & 15 & 90 & 50 & 40 & 65 & 180 \\
+  }
+}
+
+%%%%%%%%%%%%%%% VENISE %%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\VenisePeriod}{
+  \stdPeriod{
+    1492-1519 I  & 4 & 4 & 3 & 0     & 0     & 12 & 2/1 & 4/1 & 2 & \CAIII \\
+    1520-1559 II & 5 & 4 & 4 & 0     & 0     & 15 & 2/1 & 5/1 & 3 & \CAIII \\
+    1560-1614 III& 5 & 4 & 4 & 0     & 2\xxa & 18 & 2/1 & 5/1 & 3 & \CAIII \\
+    1560-1614 IV & 5 & 4 & 4 & 1\xxa & 4\xxa & 18 & 2/1 & 5/2 & 3 & \CAIII \\
+  }
+  \GTlegend{
+    \xxa\ Only if \pays{venise} is still a \MAJ
+  }
+}
+
+\newcommand{\VeniseTurn}{
+  \stdTurn{
+% [BLP] 2nd G only if Italia e San Marco
+    1492-1519 I  & 1 & 1  & 0  & 0     & 2     & \FLEET\facemoins3\GD & 4\ND/4\LD & 1\LeaderG\xxb/1\LeaderA\\
+% [BLP] 2nd G if Italia e San Marco
+    1520-1559 II & 3 & 1  & 0  & 0     & 2     & \FLEET\faceplus3\GD  & 6\ND/5\LD & 1\LeaderG\xxb/2\LeaderA\\
+    1560-1614 III& 3 & 1  & 0  & 1\xxa   & 1\xxa & \FLEET\faceplus3\GD  & 6\ND/4\LD & 1\LeaderG/1\LeaderA/1 \LeaderA (or \LeaderE\xxa)\\
+    1615-1664 IV & 2 & 1  & 0  & 1\xxa & 1\xxa & \FLEET\faceplus2\GD  & 6\ND/3\LD & 1\LeaderG/1\LeaderA/1 \LeaderA (or \LeaderE\xxa)\\
+  }
+  \GTlegend{
+    \xxa\ Only if \pays{venise} is still a \MAJ \quad \xxb +1 \LeaderG
+    if Policy of Italian Dominance is active
+  }
+}
+
+\newcommand{\VenisePurchase}{
+  \stdPurchase{
+    \TMED &  8 & 16 &  6/4 &  8/4  & 20/10 &  9 & 12 & 25 \\
+    \TREN & 12 & 24 &  8/5 & 15/10 & 30/20 & 12 & 22 & 45 \\
+    \TARQ & 15 & 30 & 10/6 & 25/15 & 40/30 & 14 & 30 & 55 \\
+    \TMUS & 20 & 40 & 12/7 & 35/25 & 50/35 & 16 & 40 & 65 \\
+  }{
+    \TCAR & 45 &  75 & 10 & 30 & 40 & 16 & 30 &  60 \\
+    \TGLN & 50 &  90 & 10 & 30 & 40 & 20 & 35 &  90 \\
+    \TLS  & 55 & 120 & 15 & 45 & 40 & 30 & 40 & 100 \\
+    \TBAT & 60 & 150 & 15 & 60 & 40 & 30 & 50 & 110 \\
+  }
+}
+\newcommand{\VenisePurchaseCaption}{
+  One \VGD costs twice the cost of 1 \NGD and counts as 2 \ND for the construction limits.
+}
+
+%%%%%%%%%%%%%%%%%%%%% HOLLANDE %%%%%%%%%%%%%%
+\newcommand{\HollandePeriod}{
+  \stdPeriod{
+    1560-1614 III& 4 & 3/5\xxa & 4 &  3 &  6 & 28 & 2/1 & 4/1 & 4  & \CAIII\\
+    1615-1664 IV & 5 & 4/5\xxa & 5 & 10 & 12 & 34 & 3/1 & 5/1 & 4  & \CAIII\\
+    1665-1699 V  & 5 & 5       & 6 & 10 & 12 & 36 & 3/1 & 6/1 & 5  & \CAIII\\
+    1700-1749 VI & 5 & 5       & 7 & 10 & 12 & 30 & 3/1 & 6/2 & 5  & \CAIII\\
+    1750-1799 VII& 5 & 5       & 7 & 10 & 12 & 25 & 3/1 & 6/2 & 5  & \CAIII\\
+  }
+  \GTlegend{
+    \xxa\ Special \FTI applies to all actions in the \ROTW after the \terme{creation of the VOC}.
+  }
+}
+\newcommand{\HollandeTurn}{
+  \expTurn{}{\terme{Stadhouder}}{\terme{Parliament}}{
+    1560-1614 III& 4 & 2\xxc & 1    & 1/2\xxa & 2\xxc & &\ARMY\faceplus\FLEET\facemoins1\GD\corsaire& \FLEET\faceplus1\GD& 8\ND/5\LD & 1\LeaderG\xxe/2\LeaderA/1\LeaderE/(1\LeaderC\xxa) \\
+    1615-1664 IV & 4 & 2\xxc & 2    & 2       & 2\xxc & &\ARMY\faceplus\FLEET\facemoins1\GD\corsaire& \FLEET\faceplus1\GD & 7\ND/4\LD & 1\LeaderG\xxe/2\LeaderA/1\LeaderE/1\LeaderC \\
+% [BLP] : 1A -> 1A
+    1665-1699 V  & 5 & 2\xxc & 1    & 2       & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD\corsaire& \FLEET\faceplus2\GD & 7\ND/3\LD & 1\LeaderG\xxe/2\LeaderA\xxe/1\LeaderE/1\LeaderC\\
+% [BLP] : 1A -> 2A
+    1700-1749 VI & 3 & 2\xxc & 1\xxd& 1\xxd   & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD& \FLEET\faceplus2\GD & 5\ND/3\LD & 1\LeaderG\xxe/3\LeaderA\xxe/1\LeaderGov \\
+% [BLP] : 1A -> 2A
+    1750-1799 VII& 2 & 2\xxc & 1\xxd& 1\xxd   & 2\xxc & &\ARMY\faceplus\FLEET\faceplus1\GD& \FLEET\faceplus2\GD  & 5\ND/3\LD & 1\LeaderG/2\LeaderA/1\LeaderGov \\
+  }
+  \GTlegend[caption=captiona,text width=83mm]{
+    \xxc\ +1 if \terme{Parliament} government (in CC Indian if VOC created)\\
+    \xxe\ +1\LeaderG if \terme{Stadhouder} government; +1\LeaderA if \terme{Parliament} government
+  }
+  \GTlegend[south east,text width=73mm]{
+    \xxa\ If VOC created\hspace*{5mm}\xxd\ Only if \pays{Hollande} is still a \MAJ\\
+    \corsaire = 1 \corsaire\faceplus maintained or bought for free\\
+  }
+}
+
+\newcommand{\HollandePurchase}{
+  \stdPurchase{
+    \TREN & 10 &  20 & 8/5 & 15/10 & 30/20 & 10 & 20 &  35 \\
+    \TARQ & 12 &  24 & 10/6 & 20/12 & 35/25 & 13 & 25 &  45 \\
+    \TMUS & 15 &  30 & 11/7 & 25/15 & 40/30 & 15 & 30 &  50 \\
+    \TBAR & 20 &  40 & 12/7 & 35/25 & 50/35 & 16 & 40 &  65 \\
+    \TMAN & 35 &  70 & 15/8 & 40/25 & 70/40 & 20 & 55 &  90 \\
+    \TL   & 50 & 100 & 20/9 & 50/30 & 80/50 & 30 & 70 & 110 \\
+  }{
+    \TGLN & 35 &  70 & --- & --- & 40 & 15 & 30 &  60 \\
+    \TLS  & 40 & 105 & --- & --- & 40 & 20 & 35 &  75 \\
+    \TBAT & 50 & 135 & --- & --- & 40 & 25 & 40 &  90 \\
+    \TVE  & 55 & 170 & --- & --- & 40 & 30 & 50 & 110 \\
+    \TTD  & 60 & 210 & --- & --- & 40 & 35 & 60 & 130 \\
+  }
+}
+
+%%%%%%%%%%%%%%%%%%% HABSBOURG %%%%%%%%%%%%%%%%%%%%%
+\newcommand{\HabsbourgPeriod}{
+  \stdPeriod{
+    1492-1519 I& 2 & 1 & 2 & 0 & 0 & 1+3\xxa & 2/1 & 4/1 & 2 & \CAIII \\
+    1520-1559 II & 2 & 2 & 2 & 0 & 0 & 1+3\xxa & 2/1 & 4/1 & 2 & \CAIII \\
+    1560-1614 III& 3 & 2 & 3 & 0 & 0 & 1+3\xxa & 2/1 & 4/1 & 3 & \CAIII/\CAIV\xxc  \\
+    1615-1664 IV & 3 & 3 & 3 & 0 & 0 & 1+3\xxa & 2/1 & 4/1 & 4 & \CAIII/\CAIV\xxc \\
+    1665-1699 V  & 3 & 4 & 4 & 0 & 0 & 1+3\xxa & 2/1 & 4/1 & 4 & \CAIII/\CAIV\xxc \\
+    1700-1749 VI & 4 & 5 & 5 & 0 & 0 & 1+3\xxa & 2/1 & 4/1 & 5 & \CAIV \\
+    1750-1799 VII& 5 & 5 & 6 & 0 & 0 & 2+6\xxa & 2/1 & 5/2 & 6 & \CAIV \\
+  }
+  \GTlegend[caption=captiona,text width=48mm]{
+    \xxa\ Add the right value if \HAB controls at least one port of the \pays{hanse}.
+  }
+  \GTlegend[south east,text width=68mm]{
+    \xxc\ Becomes \CAIV\ after \longxeventref{pV:Montecuccoli to Eugen}{V-9 (From Montecuccoli to Prinz Eugen)} or full Habsburg Dissociation (V-5).
+  }
+}
+
+\newcommand{\HabsbourgTurn}{
+  \stdTurn{
+    1492-1519 I& 2 & 0    & 0 & 0 & 0 & \ARMY\faceplus\LD\xxc & 0\ND\xxa/3\LD & 2\LeaderG \\
+    1520-1559 II& 2 & 0    & 0 & 0 & 0 & \ARMY\faceplus\ARMY\facemoins\xxc & 0\ND\xxa/3\LD & 2\LeaderG \\
+    1560-1614 III& 2 & 0    & 0 & 0 & 0 & \ARMY\faceplus\ARMY\facemoins\xxc & 0\ND\xxa/3\LD & 2\LeaderG \\
+    1615-1664 IV & 3 & 0\xxa    & 0 & 0 & 0 & 2\ARMY\faceplus\xxc & 0\ND\xxa/3\LD & 2\LeaderG \\
+    1665-1699 V  & 3 & 0\xxa    & 0 & 0 & 0 & 2\ARMY\faceplus\xxc  & 0\ND\xxa/4\LD & 3\LeaderG \\
+    1700-1749 VI & 4 & 0\xxa& 0 & 0 & 0 & 2\ARMY\faceplus\ARMY\facemoins\xxc & 0\ND\xxa/4\LD & 3\LeaderG \\
+    1750-1799 VII& 4 & 0\xxa& 0 & 0 & 0 & 2\ARMY\faceplus\ARMY\facemoins\GD\xxc& 0\ND\xxa/4\LD & 4\LeaderG \\
+  }
+  \GTlegend{
+    \xxa\ +1 or 1\ND if \HAB controls at least one port of the \pays{hanse}.
+    \hspace*{5mm}
+    \xxc\ If \pays{Hhongrie} not autonomous, add \ARMY\faceplus if \longxeventref{pI:Habsburg Hungary}{I-D (Habsburgs Inheritance of Hungary)} was activated or
+    has 10+ provinces of \pays{Hongrie}, else \ARMY\facemoins (after \longxeventref{pI:Fall Hungary}{I-E (Downfall of Hungary)} or none of these events).
+  }
+}
+
+\newcommand{\HabsbourgPurchase}{
+  \stdPurchase{
+    \TMED &  8 & 16 &  6/3 &  8/5  & 15/10 &  8 & 12 & 25 \\
+    \TREN & 12 & 24 &  7/4 & 12/8  & 20/12 & 10 & 18 & 30 \\
+    \TARQ & 20 & 40 &  8/4 & 15/10 & 25/15 & 12 & 25 & 40 \\
+    \TMUS & 25 & 50 &  9/5 & 20/12 & 30/18 & 15 & 30 & 45 \\
+    \TBAR & 35 & 70 & 10/6 & 25/15 & 40/20 & 16 & 40 & 60 \\
+    \TMAN & 40 & 80 & 12/7 & 30/20 & 50/25 & 18 & 45 & 75 \\
+    \TL   & 45 & 90 & 15/8 & 40/25 & 60/35 & 25 & 60 & 90 \\
+  }{
+    \TCAR & 50 &  80 & 15 & 50 & 50 & 15 & 25 &  55 \\
+    \TGLN & 55 & 110 & 15 & 50 & 50 & 17 & 35 &  80 \\
+    \TLS  & 60 & 155 & 20 & 60 & 50 & 20 & 40 &  90 \\
+    \TBAT & 65 & 175 & 20 & 70 & 50 & 25 & 45 & 100 \\
+    \TVE  & 70 & 200 & 25 & 90 & 50 & 30 & 50 & 110 \\
+    \TTD  & 80 & 220 & 25 & 90 & 50 & 40 & 60 & 130 \\
+  }
+}
+
+%%%%%%%%%%%%%% POLOGNE %%%%%%%%%%%%%%%
+\newcommand{\PolognePeriod}{
+  \expPeriod[\#\FLEET]{
+    1492-1519 I  & 2     & 1\xxa & 2     & 0    & 0    & 0(1) & 1(2) & 1/1 & 2/1 & 1  & \CAIIM\\
+    1520-1559 II & 2     & 2\xxa & 3     & 0[1] & 0[1] & 0(1) & 2(4) & 1/1 & 3/1 & 2  & \CAIIM\\
+    1560-1614 III& 2\xxa & 2\xxa & 3\xxa & 1[3] & 1[3] & 1    & 4(6) & 1/1 & 3/1 & 3  & \CAIIM \\
+    1615-1664 IV & 2\xxa & 2\xxa & 3\xxa & 1[4] & 1[4] & 1    & 4(6) & 2/1 & 4/1 & 3  & \CAIIM \\
+    1665-1699 V  & 3\xxa & 2\xxa & 4\xxa & 2[4] & 2[4] & 1    & 6    & 2/1 & 4/1 & 4  & \CAIIM\\
+    1700-1749 VI & 4     & 3     & 5     & 2[4] & 2[4] & 1    & 7    & 2/1 & 5/2 & 4  & \CAIIM\\
+    1750-1799 VII& 5     & 3     & 5     & 2[4] & 2[4] & 1    & 7    & 2/1 & 5/2 & 4  & \CAIIM\\
+  }
+  \GTlegend{
+    \xxa Add 1 if \terme{Lublin Union} is in effect or protestant\\
+    (X) apply this for protestant\hspace*{1cm}
+    [X] apply this if orthodox or protestant
+  }
+}
+
+\newcommand{\PologneTurn}{
+  \specTurn
+  \expTurn{\pays{Pologne}}{\pays{Lithuanie}}{\pays{Ukraine}}{
+    1492-1519 I  & 2\xxa & 0\xxb & 0\xxb &0&0&
+    1\LeaderG; \ARMY\faceplus & 1\LeaderG; \ARMY\faceplus & \ARMY\facemoins & 0\ND/4\LD & \\
+    1520-1559 II & 2\xxa & 0\xxb & 0\xxb & \f &0&
+    1\LeaderG; \ARMY\faceplus(\GD) & 1\LeaderG; \ARMY\faceplus & \ARMY\facemoins(\LD) & 0\ND\xxb/4\LD &  \\
+    1560-1614 III& 2\xxa & 0\xxb & 0\xxb\xxc &1&\f&
+    1\LeaderG; \ARMY\faceplus(\GD) & 2\LeaderG; \ARMY\faceplus& \ARMY\facemoins(---) & 1\ND/4\LD & [1\LeaderC](1\LeaderE)\\
+    1615-1664 IV & 3\xxa & 1 & 0\xxb\xxc &1&1&
+    1\LeaderG; \ARMY\faceplus(\FLEET\facemoins) & 1\LeaderG; \ARMY\faceplus &\ARMY\facemoins(---) & 1\ND/4\LD & [1\LeaderC](1\LeaderE) \\
+    1665-1699 V  & 3 & 1 & 0\xxb\xxc &1&1&
+    1\LeaderG; \ARMY\faceplus(\FLEET\facemoins) & 1\LeaderG; \ARMY\faceplus&\ARMY\facemoins(---) & 1\ND/3\LD &[(1\LeaderC)] \\
+    1700-1749 VI & 2 & 1 & 1\xxc &0&0&
+    1\LeaderG; \ARMY\faceplus(\FLEET\facemoins) & 1\LeaderG; \ARMY\faceplus& \LD(---) & 1\ND/3\LD &  \\
+    1750-1799 VII& 2 & 1 & 1\xxc &0&0&
+    1\LeaderG; \ARMY\faceplus(\FLEET\facemoins) & 1\LeaderG; \ARMY\faceplus& \LD(---) & 1\ND/3\LD & \\
+  }
+  \GTlegend[caption=captiona,text width=79mm]{
+    \up{(1)/(2)} Choose freely between \COL and \TP\\
+    \up{(1)} Apply this for Orthodox\hspace*{7mm}
+    \up{(2)} Apply this for Protestant\\
+    \xxa\ -1 if protestant, +1 if conciliant\hspace*{1cm}
+    \xxb\ +1 if protestant
+  }
+  \GTlegend[south east,text width=84mm]{
+    [X]: apply this for orthodox\hspace*{1cm}
+    (X): apply this for protestant\\
+    \xxc\ +1 action in \stz{Baltique} if at least 3 ports on that sea\\
+    \f\ One action every two turns (not consecutive turns)
+  }
+}
+
+\newcommand{\PolognePurchase}{
+  \stdPurchase{
+    \TMED &  8 & 16 &  2/1 &  8/4  & 20/10 &  3 & 12 &  30 \\
+    \TREN & 10 & 20 &  3/1 & 15/5  & 30/15 &  5 & 20 &  40 \\
+    \TARQ & 13 & 26 &  4/2 & 20/12 & 40/25 &  6 & 25 &  50 \\
+    \TMUS & 18 & 36 &  5/2 & 30/15 & 50/30 &  8 & 35 &  70 \\
+    \TBAR & 23 & 46 &  7/3 & 40/20 & 60/40 & 12 & 45 &  80 \\
+    \TMAN & 28 & 56 & 10/4 & 50/25 & 70/40 & 15 & 55 & 100 \\
+    \TL   & 35 & 70 & 15/5 & 60/40 & 90/60 & 25 & 70 & 120 \\
+  }{
+    \TCAR & 50 &  80 & 15 & 50 & 50 & 15 & 25 &  55 \\
+    \TGLN & 55 & 110 & 15 & 50 & 50 & 17 & 35 &  80 \\
+    \TLS  & 60 & 155 & 15 & 60 & 50 & 20 & 40 &  90 \\
+    \TBAT & 65 & 175 & 20 & 70 & 50 & 25 & 45 & 100 \\
+    \TVE  & 70 & 200 & 20 & 90 & 50 & 30 & 50 & 110 \\
+    \TTD  & 80 & 220 & 20 & 90 & 50 & 40 & 60 & 130 \\
+  }
+}
+
+%%%%%%%%%%%%%%% PRUSSE %%%%%%%%%%%%%%%%%%%
+\newcommand{\PrussePeriod}{
+  \stdPeriod{
+    1700-1749 VI & 5 & 5 & 3 & 1 & 1 & 1 & --- & --- & 6 & \CAIV\\
+    1750-1799 VII& 5 & 5 & 4 & 2 & 2 & 2 & --- & --- & 6 & \CAIV\\
+  }
+}
+
+\newcommand{\PrusseTurn}{
+  \stdTurn{
+    1700-1749 VI & 3 & 0\xxc     & 0 & 0 & 0\xxc & 2\ARMY\faceplus & 1\ND/3\LD & 3\LeaderG \\
+    1750-1799 VII& 3 & 0\xxc & 0 & 0 & 0\xxc & 2\ARMY\faceplus & 1\ND/3\LD & 3\LeaderG \\
+  }
+  \GTlegend{
+    \xxc\ +1 action in \stz{Baltique} if at least 3 ports on that sea
+  }
+}
+
+
+\newcommand{\PrussePurchase}{
+  \stdPurchase{
+    \TBAR & 23 & 46  & 7/3 & 30/18 & 50/35 & 11 & 40 &  70 \\
+    \TMAN & 30 & 60 & 10/4 & 40/20 & 60/40 & 15 & 50 &  85 \\
+    \TL   & 30 & 60 & 12/5 & 50/25 & 70/50 & 18 & 60 & 100 \\
+  }{
+    \TCAR & 50 &  80 & 15 & 50 & 50 & 15 & 25 &  55 \\
+    \TGLN & 55 & 110 & 15 & 50 & 50 & 17 & 35 &  80 \\
+    \TLS  & 60 & 155 & 15 & 60 & 50 & 20 & 40 &  90 \\
+    \TBAT & 65 & 175 & 20 & 70 & 50 & 25 & 45 & 100 \\
+    \TVE  & 70 & 200 & 20 & 90 & 50 & 30 & 50 & 110 \\
+    \TTD  & 80 & 220 & 20 & 90 & 50 & 40 & 60 & 130 \\
+  }
+}
+
+
+
+%%%% PORTUGAL
+\newcommand{\PortugalSpecial}{%
+  % \def\helpSpace{52pt}
+  \helpBox{kings}{Named Kings}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\shortmonarque{Joao II}: at start.}
+      \GTitem{\shortmonarque{Manuel I}: Successor of \shortmonarque{Joao II}.}
+    }
+  }
+  \simpleHelpBox{rotw}{ROTW effects}{
+    \GTheader{Colonial militias}
+    \GTitem{1\LDE/level (plus one \LDE if there is a mission), always veteran.}
+    \GTheader{Exclusivity}
+    \GTitem{\POR cannot give \TP, \COL, discoveries or authorisation of trade in \STZ.}
+    \GTheader{Gold in \shortconstruction{Elmina}}
+    \GTitem{40 \ducats exploitable as European gold and only by \POR.}
+  }
+  \simpleHelpBox{missions}{Missions}{
+    \GTitem{Missionaries appear at fixed turns}
+    \GTitem{-10 \PV at end of each period per \COL without mission out of \continent{Brazil} or \granderegion{Cabo Verde}.}
+    \begin{modlist}
+    \item[+2/+1] to \TP placement in the same area in/out
+      \continent{Asia}.
+    \item[+2/+1] to \COL placement in the same area in/out
+      \continent{Brazil}.
+    \item[+1] to tests of reaction of minors and natives in the same
+      area.
+    \end{modlist}
+  }
+  \simpleHelpBox{viceroys}{Viceroys}{
+    \GTitem{\shortleader{Da Gama}, \shortleader{Almeida},
+      \shortleader{Albuquerque}, \shortleader{Albergaria}, \shortleader{de
+        Castro}}
+    \GTitem{Give free overseas \CB against \ROTW countries.}
+    \GTitem{+2 to \CONC in the same region.}
+    \GTitem{Allow to raise Exceptional Taxes in Oversea war.}
+    \GTitem{Allow to do Exceptional Levies in Overseas war or War in ROTW:}
+    \GTitemitem{at -1 \STAB cost if land/naval defeat or no cost if Major defeat;}
+    \GTitemitem{troops raised only in \ROTW but reinforcement limit is not divided.}
+    \GTitem{Possible occupation of \pays{Aden} and \pays{Oman}.}
+    \GTitem{Facilitate the transformation of \TP to \COL.}
+    \GTitem{1\up{st} time: increase diplomacy with \pays{Ormus}.}
+  }
+  \simpleHelpBox{doubleside}{Double-sided Leaders}{
+    \GTitem{Can switch side at any time.}
+    \GTitem{Are counted as their * side (for limits).}
+  }
+  \def\helpSpace{2pt}
+  \EffectOfWood
+  \ROTWRecruitment
+}
+
+%%%% SUEDE
+\newcommand{\SuedeSpecial}{%
+  \helpBox{kings}{Named Kings}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\shortmonarque{Gustav I}: during \longxeventref{pII:End Kalmar}{II-4 (End of the union of Kalmar)}.}
+      \GTitem{\shortmonarque{Eric XIV}: at start (otherwise).}
+      \GTitem{\shortmonarque{Charles IX}: during \longxeventref{pIII:Union Poland Sweden}{III-13 (Union between \paysmajeur{Pologne} and \paysmajeur{Suede})}.}
+      \GTitem{\shortmonarque{Gustav Adolf}: due to \longxeventref{pIV:TYW}{IV-A (Thirty Years' War)}.}
+      \GTitem{\shortmonarque{Charles XII}: after the death of the heir of \shortmonarque{Gustav Adolf},}
+      \GTitemitem{if \MIL \geq 8;}
+      \GTitemitem{if at war and 1d10 \leq 3.}
+      \GTitemitem{After first death in battle, hides for one turn.}
+
+    }
+  }
+  \simpleHelpBox{swedishconscription}{Swedish Conscription}{
+    \GTitem{Troops recruited below limit are veterans.}
+    \GTitem{Exceptional recruitment after major defeat is without losing 1 \STAB.}
+    \GTitem{1 free major campaign each turn (2 major or 1 multiple if \MIL\geq7).}
+    \GTitem{If at war, add \ARMY\facemoins to basic forces (\ARMY\faceplus if \MIL\geq7).}
+    \GTitem{+1 to the die roll for Fire and Shock of the king.}
+  }
+  \simpleHelpBox{swedishpolicy}{Swedish Policy}{
+    \GTheader[mark off the not-chosen policy]{Global policy}
+    \begin{modlist}
+    \item[\terme{Dominus Marii Baltici}] Can annex any province bordering \seazone{Baltique}
+    \item[\terme{Overseas Expansion}] Modified limits (see above)
+    \end{modlist}
+    \GTheader{Trading Fleets}
+    \GTitem{{\bf  Can only use 6 \TradeFLEET} unless Strictly Protestant (\textrightarrow 10\TradeFLEET are available).}
+  }
+  \OresundTaxes[kings]
+  \EffectOfWood
+  \ROTWRecruitment
+  \simpleMarkerBox[period]{religion}{Religion}{5cm}{Catholic\Xcatholique, Tolerant\Xprotestant, Strictly protestant\Xprotestant}
+  \simpleMarkerBox{policy}{Global policy}{5cm}{Overseas expansion/Dominus Marii Baltici}
+}
+
+
+%%%% RUSSIE
+\newcommand{\RussieSpecial}{%
+  \helpBox{kings}{Named Tsars}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\longmonarque{Ivan III}: at start.}
+      \GTitem{\longmonarque{Ivan IV}: first tsar of period II.}
+      \GTitem{\monarque{Boris Godunov}/\monarque{Romanov}/\monarque{Dimitri}: during \longxeventref{pIV:Times of Troubles}{IV-17 (1) (Time of Troubles)}.}
+      \GTitem{\longmonarque{Peter the Great}:}
+      \GTitemitem{in period V+, if \ADM\geq8 and sum of values \geq 18.}
+      \GTitemitem{or by event \longxeventref{pV:Peter the Great}{V-11 (Peter the Great)}.}
+      \GTitem{\longmonarque{Pierre II}: first monarch of period VII. Lasts one turn.}
+      \GTitem{\longmonarque{Catherine II}: replaces \monarque{Pierre II}.}
+    }
+  }
+  \simpleHelpBox{boyars}{Boyars Army}{
+    \GTheader{Wastelands}
+    \GTitem{Wastelands-native \textrightarrow not hampered for movement and LOS.}
+    \GTitem{Recruiting out of \province{Moskva} or \ville{Saint-Petersbourg} costs double.}
+    \GTheader{Before the reform}
+    \GTitem{Only 5\ARMY and 1\FLEET.}
+    \GTitem{Surrenders if 3 turn at -3 \STAB.}
+    \GTitem{Tech. marker no further than Orthodox marker.}
+    \GTheader[diplomatic phase]{The reform}
+    \GTitem{If \monarque{Peter the Great} tsar, roll for 1 revolt.}
+    \GTitem{Else, 3 revolts and -1 \STAB.}
+    \GTheader{After the reform}
+    \GTitem{6\ARMY, 3\FLEET, increased artillery, decreased recruitment.}
+    \GTitem{Surrenders if 2 turns at -3 \STAB.}
+    \GTitem{Regular tech marker (no Orthodox limit).}
+  }
+  \simpleHelpBox[kings]{cossacks}{Cossacks}{
+    \GTitem{Only available if owns 1 province of \pays{ukraine}
+      or conquered\\ all of either \pays{kazan} or \pays{astrakhan}.}
+    \GTitem{Adds 2\LD (conscript) to basic forces and one \LD to
+      purchase limit for Cossacks \LD (raised in these provinces only).}
+    \GTitem{In periods III and IV, gain one free simple campaign per
+      turn in \granderegion{Siberie}.}
+  }
+  \simpleHelpBox{fluvialfleet}{Fluvial fleet}{
+    \GTitem{Starting with \shortmonarque{Peter the Great}, 1 \FLEET
+      can be built and stored:}
+    \GTitemitem{on the Donets river (in \province{Donets}) or the Don river (in \province{Don}) acting as a port on \seazone{Noire W} only;}
+    \GTitemitem{on the Dniepr river (in \province{Zaporozhye}) acting as a port on \seazone{Noire E} only;}
+    \GTitemitem{or  on the Volga river (in \province{Samara}) acting as a port on \seazone{Caspienne} only.}
+    \GTitem{This \FLEET can only go in the target sea zone for naval interceptions and battles or put blockade on \ville{Azov}, \ville{Odessa} or \ville{Astragan} until it gains a regular port.}
+  }
+  \EffectOfWood
+  \ROTWRecruitment
+  \helpBox[period]{St Petersbourg}{St Petersbourg}{
+    \GTcontent{
+      \begin{tabular}{c|c|c|c}
+        \multicolumn{3}{c|}{Building}&Income\\\hline
+        100\ducats (F0) & 100\ducats (F1) & 100\ducats (F2)&\\
+      \end{tabular}
+    }
+    \GTlegend{Starting with period V, city controlled in either \shortprovince{Karelen}, \shortprovince{Neva},
+      \shortprovince{Estland}, \shortprovince{Livonija} and \shortprovince{Kurland}.}
+    \GTdecorate
+  }
+  \simpleMarkerBox{religion}{Religion}{3cm}{Champion\Xorthodoxe, Tolerant\Xorthodoxe}
+  \simpleMarkerBox[religion]{reform}{Reform}{2cm}\null
+}
+
+
+
+%%%% ANGLETERRE
+\newcommand{\AngleterreSpecial}{%
+  \helpBox{kings}{Named Kings}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\shortmonarque{Henry VII}: at start.}
+      \GTitem{\shortmonarque{Henry VIII}: follows \shortmonarque{Henry VII}; At death: \longxeventref{pII:Act Supremacy}{II-1 (1) (Act of Supremacy).}}
+      \GTitem{\shortmonarque{Elisabeth I}: comes through \longxeventref{pII:Act Supremacy}{II-1 (1) (Act of Supremacy)}}
+      \GTitem{\shortmonarque{Parliament}/\shortmonarque{Cromwell}: during
+        \longxeventref{pIV:English Civil War}{IV-7 (1) (English Civil War)}.}
+      \GTitem{\shortmonarque{Willem III}: due to \longxeventref{pV:Glorious Revolution}{V-3 (The Glorious Revolution)}.}
+    }
+  }
+  \simpleHelpBox{albion}{Perfidious Albion}{%
+    \GTitem{May sign limited offensive alliances.}
+    \GTitem{May use \corsaire in limited intervention.}
+    \GTitem{May uses forces of \VASSAL in limited intervention.}
+    \GTitem{ May send forces of \VASSAL in the \ROTW, this costs 1 \STAB per \VASSAL per period.}
+  }
+  \simpleHelpBox{loan}{Loan treaties}{%
+    \GTitem{May loan up to 150\ducats per turn.}
+    \GTitem{Add 100\ducats after \longxeventref{pIV:London Stock Exchange}{IV-8 (1) (Creation of the London Stock Exchange)}.}
+    \GTitem{Starting with period IV, no penalty to lend money to \MAJ having a different Religion.}
+  }
+  \simpleHelpBox{seahounds}{Sea hounds}{%
+    \GTitem{\shortleader{Drake}, \shortleader{Hawkins}, \shortleader{Cavendish} and \shortleader{Frobisher}}
+    \GTitem{May attack Convoys, \COL, \TP of one player per turn without declaring war. Must remain with \corsaire is doing so.}
+    \GTitem{May all be used as explorers.}
+  }
+  \simpleHelpBox[kings]{missions}{Missions}{%
+    \GTitem{Appear at even-numbered turns from period III onward.}
+    \GTitem{Only 1 available if not Anglican.}
+    \GTitem{-5\PV s each time a mission is destroyed.}
+    \GTitem{Bonuses can be used on \faceplus settlements.}
+    \begin{modlist}
+    \item[+1] to \COL/\TP placement in the same area.
+    \item[+1] to tests of reaction of minors and natives in the same area.
+    \item[-2] to \COL/\TP placement of other countries in the same area if Protestant or Anglican.
+    \end{modlist}
+  }
+  \simpleHelpBox{cipayes}{Army of India}{%
+    \Cipayes{Sepoys}
+    \GTheader{Conquistadors}
+    \GTitem{\shortleader{Clive} may use the table of conquistadors in \continent{India} and never cause activation of natives in \continent{India}.}
+    \GTitem{If not in play, the minimum \LeaderC@ of period VII may use the table of conquistadors in \continent{India}.}
+  }
+  \EffectOfWood
+  \ROTWRecruitment
+  \simpleMarkerBox[period]{religion}{Religion}{7cm}{Conciliant\Xcatholique, Counter-Reform\Xcatholique, Protestant\Xprotestant, Anglican\Xprotestant}
+  \simpleMarkerBox{acts}{Acts}{7cm}{EIC,Navigation,LSE,Union,Bill of test...}
+}
+
+%%%% FRANCE
+\newcommand{\FranceSpecial}{%
+  \helpBox{kings}{Named Kings}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\shortmonarque{Charles VIII}: at start.}
+      \GTitem{\shortmonarque{Francois I}: first king after \longxeventref{pI:War Italy Napoli}{I-3 (1) (Wars in Italy (Napoli))}.}
+      \GTitem{\shortmonarque{Henri IV} or \shortmonarque{Henri de Guise}: at end of \longxeventref{pIII:FWR}{III-11 (Wars of religion in France)}.}
+      \GTitem{\shortmonarque{Louis XIV}: after event \ministre{Richelieu} or \longxeventref{pIV:Fronde}{IV-16 (La Fronde)}.}
+    }
+  }
+  \simpleHelpBox{guerredecourse}{Guerre de Course}{%
+    Only one \corsaire can be used except:\\
+    \GTheader{Bucaneers}
+    \GTitem{One \corsaire\facemoins (\faceplus) can be raised in \stz{Caraibes} if no \COL\faceplus starting with period II (III).}
+    \GTheader{Corsaires du Roi}
+    \GTitem{Up to 3 licenses, after  \ministre{Colbert} or \shortmonarque{Louis XIV}.}
+    \GTitem{Each license gives one free \corsaire counter and one \corsaire admiral.}
+    \GTitem{Each license lowers recruitment by 2 \ND and basic forces by \FLEET\facemoins.}
+  }
+  \simpleHelpBox{militia}{Militia}{%
+    \GTitem{Militias (1\LDE/2 levels, +1\LDE for mission) are Veterans.}
+  }
+  \simpleHelpBox{loan}{Budget}{%
+    \GTheader{Loan treaties}
+    \GTitem{If Conciliatory, no penalty to lend money to \MAJ of different Religion.}
+    \GTheader{Versailles}
+    \GTitem{During \shortmonarque{Louis XIV}, receives 150\% of \VPs from prestige.}
+    \GTheader{Colbertian mercantilism}
+    \GTitem{\FRA has overseas/normal \CB vs \MAJ with \TradeFLEET\facemoins/\faceplus in \ctz{France}.}
+    \GTitem{+5 for all \FRA competition in \ctz{France}.}
+    \GTitem{10\ducats to be paid for each level in \ctz{France}.}
+  }
+  \simpleHelpBox[kings]{missions}{Missions}{%
+    \GTitem{Appear at even-numbered turns from period III/IV onward.}
+    \GTitem{4/2 available if Catholic/Protestant.}
+    \begin{modlist}
+    \item[+1] to \COL/\TP placement (if \facemoins) in the same area.
+    \item[+1] to tests of reaction of minors and natives in the same area.
+    \item[+2] to diplomacy on ROTW countries.
+    \end{modlist}
+  }
+  \simpleHelpBox{cipayes}{Arm\'ee des Indes}{%
+    \Cipayes{Cipayes}
+    \GTheader{Conquistadors}
+    \GTitem{\shortleader{Dupleix}/\shortleader{Bussy} may use the table of conquistadors in \continent{India} and never cause activation of natives in \continent{India}.}
+    \GTitem{If not in play and up to turn 58, the minimum \LeaderC@ of period VII may use the table of conquistadors in \continent{India}.}
+    \GTitem{\terme{Cipayes} raised or maintained with \shortleader{Dupleix} are always Veterans.}
+  }
+  \simpleHelpBox{indians}{Indian Allies}{%
+    \GTitem{Never cause reactions of natives.}
+    \GTitem{One \LD can be raised each turn in \granderegion{Quebec} and \granderegion{Grands Lacs}.}
+    \GTitem{Raised if 1d10+MAN(+2 if Mission)-\#(\TP\faceplus or \COL other)\geq 7.}
+    \GTitem{Always have at least 5 in \Man.}
+    \GTitem{Not affected by terrain if alone in attack.}
+  }
+  \EffectOfWood
+  \ROTWRecruitment
+  \simpleMarkerBox[period]{religion}{Religion}{65mm}{Conciliant\Xcatholique, Counter-Reform\Xcatholique, Protestant\Xprotestant}
+  \simpleMarkerBox{acts}{Doctrine}{65mm}{Colbertian Mercantilism}
+}
+
+%%%% ESPAGNE
+\newcommand{\EspagneSpecial}{%
+  \helpBox{kings}{Named Kings}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\monarque{Isabel and Ferdinand}: at start.}
+      \GTitem{\monarque{Charles V}: first king after \longxeventref{pI:Habsburg Alliance}{I-A (Dynastic Alliance of the Habsburgs)}.}
+      \GTitem{\monarque{Felipe II}: successor of \monarque{Charles V}.}
+    }
+  }
+  \simpleHelpBox{recruitment}{Recruitment}{%
+    \GTitem{\textbf{La Valette}: period III+ or out of \province{Rhodos}, 1d10\geq 4.}
+    \GTheader{Area of recruitment}
+    \GTitem{\shortprovince{Castilla La Nueva}, \shortprovince{Andalucia}, \shortprovince{Campania} and \shortprovince{Lombardia}.}
+    \GTitem{Plus \pays{hollande} and \pays{provincesne} with \terme{Spanish road}.}
+    \GTheader{Privateers}
+    \GTitem{First \corsaire can only be raised in \shortprovince{Calais}, \shortprovince{Flandre}, \shortprovince{Vlaanderen} or \province{Zeeland}; it cannot leave Europe.}
+    \GTitem{Second \corsaire can only be raised after \ministre{Olivares} or \ministre{Alberoni}}
+    \GTitem{Neither can go in \STZ of the \CCs{Mediterranean}.}
+  }
+  \simpleHelpBox{missions}{Missions}{%
+    \GTitem{Each turn in periods I-III, then each even numbered turn.}
+    \GTitem{Makes Colonial Militia (1\LDE/2 levels + 1\LDE if mission) Veteran.}
+    \begin{modlist}
+    \item[+1] to \COL/\TP placement (if \facemoins) in the same area.
+    \item[+1] to tests of reaction of minors and natives in the same area.
+    \item[-5\PV] per destroyed mission.
+    \item[-5\PV] per area with \COL and no mission at the end of each period.
+    \end{modlist}
+  }
+  \simpleHelpBox{autonomousstates}{Autonomous States}{%
+    \small
+    \GTitem{\pays{HMilan}: \ARMY\faceplus[\region{Italie}+{\HIS}+{\AUS}]/\bbold{f}}
+    \GTitem{\pays{HNaples}: \ARMY\facemoins[\region{Italie}]/\FLEET\facemoins[Med.]/\bbold{f}[\shortprovince{Campania}]}
+    \GTitem{\pays{HHongrie}: 1/2\ARMY\faceplus[\AUS to {\TUR}]/\bbold{f}[in \pays{Hongrie}]}
+    \GTitem{\pays{HBoheme}: \ARMY\faceplus[HRE to \pays{Pologne} to \pays{Hongrie}]/\bbold{f}[\shortprovince{Boheme}]}
+  }
+  \simpleHelpBox[kings]{asiento}{Asiento}{%
+    \GTitem{\textbf{Exclusive}}
+    \GTitemitem{Cannot give authorisation of trade in \STZ.}
+    \GTitemitem{Cannot use slaves from other countries.}
+    \GTitemitem{Free concurrence action against \STZ bordering one \COL.}
+    \GTitem{\textbf{Weakened} (periods IV-VII)}
+    \GTitemitem{First time, lose 20\PV and 1 \STAB.}
+    \GTitemitem{Can use slaves from contraband or other countries.}
+    \GTitemitem{Can give authorisation of trade (cost 10\PV).}
+    \GTitemitem{Switching back to exclusive gives overseas \CB.}
+    \GTitem{\textbf{Conceded} to one country: Same as weakened plus}
+    \GTitemitem{Can be taken as a peace condition.}
+    \GTitemitem{(Overseas) \CB against owner of Asiento.}
+    \GTitemitem{Must use slaves from owner, may require 0 to 4 each turn.}
+    \GTitemitem{Owner gains 20\VP +1\VP/turn unless slaves are not provided.}
+  }
+  \simpleHelpBox{colonialpolicy}{Colonial Policy}{%
+    \GTitem{Conquistadors can be named Viceroys.}
+    \GTitem{Viceroys cannot leave the area but provide a free extra \COL placement each turn.}
+    \GTitem{\COL must be placed near gold mines before period IV.}
+    \GTitem{\terme{Gold flow} if exploits \geq40\ducats per turn.}
+    \GTitem{Can use \terme{Flota de Oro} and \terme{Flota de Pacifico} each worth 5\NTD.}
+  }
+  \simpleHelpBox{economy}{Economy}{%
+    \GTitem{Expulsions: +10\% national loan, +1 bankruptcy}
+    \GTitem{\shortprovince{Vlaanderen} \MNU destroyed when \HOL,\FRA and \ANG have one}
+  }
+  \thanksforallthefishtrue
+  \ROTWRecruitment[turn]
+  \EffectOfWood[purchase]
+  \helpBox{spanishtax}{Spanish Tax}{%
+    \GTtextcontent[eastpoint]{
+      Mark off turns where\\\pays{hollande} is taxed.\\
+      \centerline{
+        \begin{tabular}{|c|c|c|c|c|}\hline
+          1 & 2 & 3 & 4 & 5\\\hline
+          6 & 7 & 8 & 9 &10\\\hline
+          11 &12 &13 &14 &15\\\hline
+        \end{tabular}
+      }
+    }
+    \skipdecoratefalse
+  }
+  \simpleHelpBox{fish}{Fish monopoly}{
+    \vspace*{3ex}
+    \begin{modlist}
+    \item[Partial] {+1 \ND limit}
+    \item[Total] {+1 to die for \rlap{\TFI}}
+    \end{modlist}
+  }
+  \simpleMarkerBox{religion}{Religion}{35mm}{Counter-Reform\Xcatholique, Conciliant\Xcatholique}
+  \dynasticactionsrecaptrue
+  \HabsburgEndogamy
+}
+
+%%%% TURQUIE
+\newcommand{\TurquieSpecial}{%
+  \helpBox{kings}{Named Sultans}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\longmonarque{Bayezid II}: at start.}
+      \GTitem{\longmonarque{Suleyman}: first Sultan of period II.}
+      \GTitem{\longmonarque{Selim I}: successor of \shortmonarque{Bayezid II} in period I.}
+      \GTitem{\longministre{Sadrazam}: always available as general \leaderwithdata{Sadrazam}.}
+    }
+  }
+  \simpleHelpBox{europeandiplomacy}{European Diplomacy}{
+    \GTitem{No diplomacy on \pays{chevaliers} and \pays{perse}.}
+    \GTitem{pI--pV: \CB against Christians and \pays{perse}, no offensive alliance.}
+    \GTitem{Lose 1 \STAB when \corsaire of \pays{chevaliers} inflict losses on \TradeFLEET.}
+    \GTitem{May annex capitals \& cause crusade by annexing Christian provinces.}
+    \GTitem{\textbf{La Valette}: period III+ or out of \province{Rhodos}, 1d10\geq 4.}
+    \GTheader{Ragusa}
+    \GTitem{Owner/controller of \shortprovince{Montenegro} receives \corsaire\facemoins for \stz{Adriatique} or 1 free (basic) \TFI in \region{Mediterranee} up to period III.}
+  }
+  \simpleHelpBox{barbaresque}{Barbaresques Pirates}{
+    \GTitem{Test to hold them: 1d10<\#period+dipl. bonus.}
+    \GTitem{\pays{Algerie}\textrightarrow\seazone{Levantin} (both \ctz{Espagne} and \stz{Lion}) or \stz{Lion};}
+    \GTitem{\pays{Tripoli} and \pays{Cyrenaique}\textrightarrow\stz{Ionienne} or \ctz{Venise}}
+    \GTitem{\pays{Tunisie}\textrightarrow\stz{Lion} or \stz{Ionienne}}
+    \GTitem{\pays{Maroc}\textrightarrow\ctz{Espagne}.}
+    \GTitem{\pays{Algerie} a \corsaire\facemoins each turn;  pI-pIII: \ND or 2\NGD;  pIV+ \NGD or \NDE.}
+    \GTitem{Other countries: a \corsaire\facemoins 2 turns after destruction.}
+    \GTitem{Exc.: if \leader{Dragut} used, raise \corsaire\facemoins of \pays{Tunisie}}
+  }
+  \simpleHelpBox[kings]{orientaltrade}{Oriental Policy}{
+    \GTheader{Great Orient CC}
+    \GTitem{100\ducats+10\ducats per 3 non-european \COL/\TP\up{(1)}-10\ducats per 5 Christian \COL/\TP\up{(2)}-10\ducats per 5 Christian \TradeFLEET in \stz{Arabie} or \stz{Indien}+10\ducats for each of \shortprovince{Ormus}, \shortprovince{Socotra}, \shortprovince{Malacca S}/\shortprovince{Sumatra C}\up{(3)}.}
+    \GTitem{\up{(1)}: not in \dipAT with other than \TUR or \VEN; \up{(2)}: in \continent{Asia} not in \continent{Siberia};}
+    \GTitem{\up{(3)}: \TUR \TP/\COL or no Christian \TP/\COL and owner in \dipAT of \TUR.}
+    \GTitem{If \CCs{Grand Orient} in \pays{egypte}, half of it for \TUR if owns \shortprovince{Syrie} or diplomatic control of \pays{Damas} not at war.}
+    \GTitem{\pays{Damas} or \pays{egypte} annexed if \ARMY destroyed and capital conquered. \pays{egypte} annexed\textrightarrow \CCs{Grand Orient} moved, Convoy available.}
+    \GTheader{Levant Convoy}
+    \GTitem{Contains 3\NTD\textmultiply15\ducats; +20\ducats when given, -20\ducats+1\STAB else.}
+    \GTitem{Given to controller of \CCs{Mediterranee} (\CB else) or any \MAJ with port on \region{Mediterranee} not in Trade Refusal.}
+    \GTheader{Development}
+    \GTitem{May only place \COL by land contact (or straits).}
+    \GTitem{pIII/pIV: one Admiral can go in \continent{Asia} (if any \TP; not \textbf{m} of lowest rank).}
+  }
+  \simpleHelpBox{military}{Military}{
+    \GTitem{Recruitment area limited to \province{Trakya} and \province{Angora}.}
+    \GTheader{Yearly Campaigning of \Timar}
+    \GTitem{After each winter, attrition with \# of \Timar \LD on Attrition table}
+    \GTitem{Roll 1d10+2x the distance in provinces to the National Territory of \TUR}
+    \GTitem{Consider only \LD loss (P ignored) as \Timar\LD losses.}
+    \GTitem{Each loss is temporary (refit out of limits, half-cost on next round, free on next turn)}
+  }
+  \EffectOfWood
+  \thanksforallthefishtrue
+  \ROTWRecruitment
+  \skipdecoratefalse
+  \simpleHelpBox{ottomans}{Facing the Ottomans}{
+    Mark here\\countries having already faced the Ottomans (otherwise, {\bf
+      -2} on shock until one \ARMY or \FLEET engaged):
+    \VEN, \pays{hongrie}, \pays{damas}, \pays{egypte}, \pays{genes},
+    \pays{chevaliers}, \pays{perse}
+    \vspace*{10.5ex}
+  }
+  \helpBox[period]{reforms}{Reforms}{
+    \GTcontent{
+      \begin{tabular}{c|c|c||c|c|c|c}
+        \multicolumn{3}{c||}{\ADM} & \multicolumn{4}{c}{\MIL}\\\hline
+        1a & 1b & 2 & 1a & 1b & 2 & 3\\
+      \end{tabular}
+    }
+    \GTmorecontent{table}{north west}{\gtid main.south west}{0,-2pt}%
+    {
+      \tabcolsep=5pt\begin{tabular}{*{5}{l|}l}
+        Reform   & 1492 & M-1a & M-1b & M-2 & M-3 \\ \hline
+        Timar 	 & Arq.     & Arq.     & Musk.     & \multicolumn{2}{c}{N/A}\\ \hline
+        Land cap & Musk.    & Bar.     & Musk.     & Man.     & Lace\\
+        Malus\geq& Arq.\xxa & Musk.\xxa& Musk.\xxa & Bar.\xxa &---\\\hline
+        Naval cap& Bat.     & Bat.     & Vessel    & TD & 74s\\
+        Malus\geq& Car\xxa  & Car.\xxa & Car.\xxa  & Bat.\xxa & --- \\
+      \end{tabular}
+    }
+    \GTnotitle{table}{Effect on Military technology}
+    \GTlegend[east south=main,xsize=(\gtid table.east)(\gtid main.east)]{\xxa -1 if current tech. this or better}
+    \GTdecorate
+    \skipdecoratetrue
+  }
+}
+
+%%%% VENISE
+\newcommand{\VeniseSpecial}{%
+  \helpBox{kings}{Named Doges}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\shortmonarque{Barbarigo}: at start.}
+      \GTheader{Specific rules for the Doges}
+      \GTitem{Reign length: -2 to die-roll;  no Dynastic Crisis.}
+      \GTitem{Used as an admiral.}
+      \GTitem{Characteristics rolled with +1 to die-roll, and  minimal value of 4.}
+    }
+  }
+  \simpleHelpBox{europeandiplomacy}{European Diplomacy}{
+    \GTitem{No diplomacy allowed on \pays{genes}}
+    \GTitem{The Pope in Venice: if Roma conquered, +1 to diplomacy on catholics.}
+    \GTheader{Itali e San Marco}
+    \GTitem{Must be declared during a diplomacy phase; -30\PV.}
+    \GTitem{Can be used on \pays{Genes}, \pays{Milan},
+      \pays{Modene}, \pays{Montferrat}, \pays{Naples}, \pays{Papaute},
+      \pays{Parme}, \pays{Pise}, \pays{Savoie}, \pays{Toscane}.}
+    \GTitem{These minors can be in \ANNEXION diplomatically (level 10).}
+    \GTitem{This gives one \CB against each of these minors [TBD].}
+  }
+  \simpleHelpBox{tradepolicy}{Trade Policy}{
+    \GTheader{Great Orient CC}
+    \GTitem{100\ducats+10\ducats per 3 non-european \COL/\TP\up{(1)}-10\ducats per 5 Christian \COL/\TP\up{(2)}-10\ducats per 5 Christian \TradeFLEET in \stz{Arabie} or \stz{Indien}+10\ducats for each of \shortprovince{Ormus}, \shortprovince{Socotra}, \shortprovince{Malacca S}/\shortprovince{Sumatra C}\up{(3)}.}
+    \GTitem{\up{(1)}: not in \dipAT with other than \TUR or \VEN; \up{(2)}: in \continent{Asia} not in \continent{Siberia};}
+    \GTitem{\up{(3)}: \TUR \TP/\COL or no Christian \TP/\COL and owner in \dipAT of \TUR.}
+    \GTitem{If \CCs{Grand Orient} in \pays{egypte}, half of it for \VEN if diplomatic control of \pays{Egypte} not at war.}
+    \GTitem{\pays{Damas} or \pays{egypte} annexed if \ARMY destroyed and capital conquered. \pays{egypte} annexed\textrightarrow \CCs{Grand Orient} moved, Convoy available.}
+    \GTheader{Salt trade}
+    \GTitem{Can exploit all Mediterranean salt with a \MNU level 2 in \shortprovince{Veneto}.}
+    \GTheader{Ragusa}
+    \GTitem{Owner/controller of \shortprovince{Montenegro} receives
+      \corsaire\facemoins for \stz{Adriatique} or 1 free (basic) \TFI in \region{Mediterranee}.}
+  }
+  \simpleHelpBox[kings]{galleasses}{Galleasses}{
+    \GTitem{When technology reached, up to 2 \VGD\\ can be bought, one per turn.}
+    \GTitem{Before \TBAT: 1 \VGD= use full fire damage against Galleys; 2 \VGD=+1 to Fire roll.}
+    \GTitem{\TBAT or after: presence of 1 \VGD=+1 to Fire roll.}
+    \GTitem{One \VGD must be lost when losing in a Rout.}
+  }
+  \simpleHelpBox{dutchtrade}{Dutch Trade}{
+    % Maybe move the responsibility to HIS or premade table.
+    \GTitem{Each turn, roll 1d10\textrightarrow number of \HOL \TradeFLEET to be placed by\\ \VEN [TBD?].}
+    \GTitem{1-2 none ; 3-5 one ; 6-8 two; 9-10 three (1 in Mediterranean Sea).}
+  }
+  \helpBox{orientincome}{Orient Income}{
+    \GTcontent[eastpoint]{
+      \newlength{\OIboxlength}\setlength{\OIboxlength}{1cm}
+      % 1cm is miraculously correct! It should actually depend on
+      % \linewidth or something similar.
+      %
+      % I don't know why the table background isn't white.
+      % Or how to put pII/pIII halfway between both their lines.
+      \begin{tabular}{c||p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}|p{\OIboxlength}}
+        p\period{I} & T1: & T2: & T3: & T4: & T5: & T6: \\
+        \hline
+        p\period{II} & T7: & T8: & T9: & T10: & \multicolumn{2}{l}{Total
+          p\period{I}:} \\
+        \hline
+        & T11: & T12: & T13: & T14: & \multicolumn{2}{l}{Total
+          p\period{II}:}\\
+        \hline
+        p\period{III} & T15: & T16: & T17: & T18: & T19: & T20:\\
+        \hline
+        & T21: & T22: & T23: & T24: & T25: & Tot:\\
+      \end{tabular}
+    }
+    \GTlegend{\CCs{Grand Orient}, \CCs{Tempete}, convoys of \bazar{Izmir}
+      or \terme{East Indies}, resources exploited with \dipAT, \COL/\TP
+      producing \RES{PO}, \RES{Spice} or \RES{Silk}, \TradeFLEET in
+      \CCs{Tempete}.}
+    \GTdecorate
+  }
+  \simpleMarkerBox[period]{doctrine}{Italia e San Marco}{5cm}\null
+}
+
+%%%% HOLLANDE
+\newcommand{\HollandeSpecial}{%
+  \helpBox{kings}{Named Stadhouders}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\shortmonarque{Willem I}: at start of the rebellion, 7 turns, 7/9/9,\\ Stadhouder. Also \leaderwithdata{Willem I}.}
+      \GTitem{\shortmonarque{Oldenbarnevelt}: T19--26, 9/7/7, Parliament.}
+      \GTitem{\shortmonarque{Maurits}: T20--27, 7/7/9,
+        Stadhouder. Also \leaderwithdata{M Nassau}.}
+      \GTitem{\shortmonarque{Frederik Hendrik}: T27--32, Stadhouder, 8/7/9. Also \leaderwithdata{Frederik Hendrik}.}
+      \GTitem{\ministre{de Witt}: by \xeventref{pV:de Witt}{V-10}, random duration, 9/7/9, Parliament or minister of a Stadhouder. Adds \FLEET\facemoins and \ARMY\faceplus to \terme{Basic forces} when at war.}
+      \GTitem{\shortmonarque{Willem III}: T37-43, 7/9/7, Stadhouder, see \xeventref{pV:Glorious Revolution}{V-3}. Adds \ARMY\faceplus to \terme{Basic forces}, also \leaderwithdata{Willem III}.}
+      \GTheader{Changing government}
+      \GTitem{After the death of a sovereign.}
+      \GTitem{Immediately after being victim of a declaration of war\textrightarrow\terme{Stadhouder}}
+      \GTitem{Following the acknowledgement of sovereignty by \SPA.}
+      \GTitem{When a named character is available.}
+      \GTheader{Stadhouder}
+      \GTitem{\MIL is at least 5; limits are changed; at most one \ARMY in the \ROTW.}
+      \GTitem{At the beginning of full involvement in war, gain \ARMY\faceplus and one fortress of maximum level in Europe.}
+      \GTheader{Parliament}
+      \GTitem{\ADM is at least 5; limits are changed; at most two \ARMY in Europe.}
+      \GTitem{\CCs{Atlantic} is worth 150\ducats if
+        \longxeventref{pIV:Act Navigation}{IV-5 (Act of Navigation)} is not
+        enforced.}
+      \GTheader{Naval Construction}
+      \GTitem{If the monarch has at least 7 in both \ADM and \MIL, two \TFI actions can be traded for a free \FLEET\facemoins (in addition of Construction limits) if Naval Technology is not \terme{Three-Decker} of higher.}
+    }
+  }
+  \simpleHelpBox[kings]{flood}{Dutch Flood}{
+    \GTitem{Any national province can be flooded during movement\\of enemy troops.}
+    \GTitem{Enemy must retreat and suffer attrition at +2.}
+    \GTitem{Only dutch troops can move in flooded provinces at the cost of 6 \MP.}
+    \GTitem{Flooding a province cost 5\PV and 1 \STAB.}
+    \GTitem{Place a \PILLAGE\faceplus marker in flooded provinces (not adjusted this turn). Flood last as long as the province is looted.}
+  }
+  \simpleHelpBox{cipayes}{Army of the VOC}{%
+    \Cipayes{Indi\"{e}rs}
+    \GTheader{Conquistadors}
+    \GTitem{\shortleader{Coen}/\shortleader{van Diemen}/\shortleader{Maetsuycker} may use the table of conquistadors in Indonesia.}
+    \GTheader{Exclusivity}
+    \GTitem{\HOL cannot sell, give or trade discoveries as well as \COL/\TP before period VII.}
+  }
+  \simpleHelpBox{loan}{Loan treaties}{%
+    \GTitem{May loan up to 150\ducats per turn.}
+    \GTitem{Add 100\ducats after \longxeventref{pIII:Amsterdam Stock Exchange}{III-2 (Amsterdam Stock Exchange)}.}
+    \GTitem{If Recognised by \SPA, no penalty to lend money to \MAJ having a different Religion.}
+  }
+  \simpleHelpBox[turn]{fish}{Fish monopoly}{
+    \vspace*{3ex}
+    \begin{modlist}
+    \item[Partial] {+1 \ND limit}
+    \item[Total] {+1 to die for \rlap{\TFI}}
+    \end{modlist}
+  }
+  \woodshorttrue
+  \EffectOfWood[\null]
+  \thanksforallthefishtrue
+  \ROTWRecruitment[purchase]
+  \simpleMarkerBox[period]{dynasty}{Dynasty}{65mm}\null
+  \simpleMarkerBox{government}{Government}{65mm}{Parliament/Stadhouder}
+}
+
+%%%% HABSBOURG
+\newcommand{\HabsbourgSpecial}{%
+  \helpBox{kings}{Named Archidukes}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{At start: roll for a random Monarch.}
+      \GTitem{\shortmonarque{Maria Theresia}: due to \longxeventref{pVI:WoAS}{VI-13 (War of Austrian Succession)}.}
+    }
+  }
+  \simpleHelpBox{autonomousstates}{Autonomous States}{%
+    \GTitem{\pays{HNaples}: \ARMY\facemoins[\region{Italie}], \FLEET\facemoins[Med.],\\\bbold{f}[\shortprovince{Campania}]; autonomy is mandatory.}
+    \GTitem{\pays{HMilan}: \ARMY\faceplus[\region{Italie}, {\HIS}, {\AUS}], \bbold{f}}
+    \GTitem{\pays{HHongrie}: 1 or 2\ARMY\faceplus[\AUS, \pays{Pologne}, \pays{Boheme}, \pays{Hongrie}, \region{Balkans}, {\TUR}], \bbold{f}[any number in \pays{Hongrie}]}
+    \GTitem{\pays{HBoheme}: \ARMY\faceplus[\HRE, \AUS, \pays{Pologne}, \pays{Hongrie}], \bbold{f}[\shortprovince{Boheme}]}
+    \GTitem{\pays{HHongrie}, \pays{HBoheme} and possibly \pays{HMilan} are for \AUS.}
+    \GTitem{If \pays{HHongrie} has 4 provinces or less, only 1\ARMY\faceplus.}
+    \GTitem{\pays{HNaples} for \AUS comprises \province{Sicilia}, \province{Palermo}, \province{Saldigna}.}
+  }
+  \simpleHelpBox{hungaria}{Hungaria}{%
+    \GTitem{May use all units of \pays{Hongrie} if it owns 7+ of its provinces.}
+    \GTitem{May use half the units of \pays{Hongrie} if it owns 4 to 6 of its provinces.}
+    \GTitem{May not use any units if \pays{HHongrie} exists.}
+  }
+  \simpleHelpBox{fleet}{Baltic Fleet}{%
+    If \AUS annexes a province part of the territory of \pays{Hanse}:\\
+    \GTitem{\FLEET counter available (anywhere).}
+    \GTitem{\TradeFLEET available starting in period VI.}
+    \GTitem{Limits are changed.}
+  }
+  \dynasticactionsrecaptrue
+  \HabsburgEndogamy
+}
+
+%%%% POLOGNE
+\newcommand{\PologneSpecial}{%
+  \helpBox{kings}{Named Kings}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\shortmonarque{John and Alexander}: at start.}
+      \GTitem{\shortmonarque{Zygmunt I}: successor of \shortmonarque{John and Alexander}.}
+      \GTitem{\shortmonarque{Bathory}: values 8/7/9, Also a general \leaderwithdata{Bathory}.}
+      \GTitem{\shortmonarque{Sobiesky}: values 8/7/9, Also a general \leaderwithdata{Sobieski}.}
+      \GTitem{\shortmonarque{Zygmunt III}: after \longxeventref{pIII:Union Poland Sweden}{III-13 (Union between \paysmajeur{Pologne} and \paysmajeur{Suede})}.}
+      \GTitem{\shortmonarque{August II}: after \longxeventref{pV:Saxon King Poland}{V-12 (\shortmonarque{August II})}.}
+      \GTitem{\shortmonarque{Patkul}: values  5/9/4, Also a general \leaderwithdata{Patkul}. May also be a minister. During his service, no alliance with \SUE, \POL may sign limited offensive alliances against \SUE.}
+      \GTitem{\shortmonarque{Stanislas}: by \longxeventref{pVI:Great Northern War}{VI-1 (The Great Northern War)}.}
+      \GTheader{Elective monarchy}
+      \GTitem{Generals above can be chosen as kings instead of rolling for a new one.}
+      \GTitem{If retired by event, remains available as a normal leader.}
+      \GTitem{+1 to the die for \Man and Shock of kings.}
+    }
+  }
+  \simpleHelpBox{trade}{Trade}{
+    \vspace*{2ex}
+    \GTitem{\POL may only use 3 \TradeFLEET if not Protestant.}
+  }
+  \simpleHelpBox[kings]{policy}{Internal Policy}{
+    \GTheader{Before Union of Lublin}
+    \GTitem{-2 to the die for \DC/reign length.}
+    \GTitem{Separate forces for \paysmajeur{Pologne} and \paysmajeur{Lithuanie}.}
+    \GTheader{After \emph{Liberum Veto}}
+    \GTitem{-2 to the die for \DC/reign length.}
+    \GTitem{-5 to raise \STAB if at war with a \MAJ.}
+    \GTitem{-2/-3 \STAB to declare war with/without \CB.}
+    \GTitem{War for \terme{Absolutism} may be started.}
+    \GTitem{Cannot maintain fortress of level >3 at peace.}
+    \GTheader{Warsaw}
+    \GTitem{\shortprovince{Mazowia} can be annexed starting from \shortmonarque{Zygmunt I}.}
+    \GTitem{\shortville{Varsovie}can be made a second capital \textrightarrow immediate +2 \STAB.}
+  }
+  \simpleHelpBox{cossacks}{Cossacks}{
+    \GTitem{\ARMY and 4\LD can be used by \POL and raised in \pays{Ukraine}\\if at least one province owned.}
+    \GTitem{If \ARMY present and not at war against \TUR or \pays{Crimee}, agitations possible (remove army for the turn).}
+    \GTitem{Choose \RUS or \TUR, roll a revolt if die+M\geq10.}
+    \begin{modlist}[1.1em]
+    \item[+2] if target is \TUR.
+    \item[+2] if \ARMY\faceplus.
+    \end{modlist}
+    \GTitem{Revolt does not happen if south (included) of \shortprovince{Alep}, \shortprovince{Kordistan} and \shortprovince{Azarbayadjan}.}
+  }
+  \woodshorttrue
+  \EffectOfWood
+  \thanksforallthefishtrue
+  \ROTWRecruitment[purchase]
+  \simpleMarkerBox[period]{dynasty}{Dynasty}{60mm}{Also mark down \terme{Liberum Veto}, \terme{Union of Lublin}, \terme{Absolutism}.}
+  \simpleMarkerBox{religion}{Religion}{60mm}{Conciliatory\Xcatholique, Counter-Reform\Xcatholique, Orthodox\Xorthodoxe, Protestant\Xprotestant}
+}
+
+%%%% PRUSSE
+\newcommand{\PrusseSpecial}{%
+  \helpBox{kings}{Named Kings}{
+    \GTcoord{\gtid east}{midleftpoint}
+    \GTtextcontent[eastpoint]{
+      \GTitem{\shortmonarque{Friedrich-Wilhelm}: at start (8/5/9, dies turn 51).}
+      \GTitem{\shortmonarque{Friedrich II}: Beginning of \longxeventref{pVII:Seven Years War}{VII-1 (Seven years war)} or after \shortmonarque{Friedrich-Wilhelm} (9/9/9), also \leaderwithdata{Friedrich II}, no survival for 6 turns.}
+      \GTitemitem{No -1 at survival tests after battle.}
+      \GTitemitem{Escape the first death in battle (by hiding in hay).}
+      \GTitemitem{During his Reign, \PRU may break any Alliance for the cost of 1 \STAB (instead of 2).}
+      \GTitemitem{Military revolution with \shortmonarque{Friedrich II} during certain wars. [TBD]}
+    }
+  }
+  \simpleHelpBox{military}{Military means}{
+    \GTitem{Troops recruited below purchase limit are veterans.}
+    \GTitem{Can make exceptional recruitment after a major defeat {\bf without} losing 1 \STAB.}
+    \GTitem{One free multiple campaign each turn (two if \shortmonarque{Friedrich II} reigns).}
+    \GTheader{Silesia}
+    \GTitem{Gains 1 lv. of \MNU (Metal/Silesia) as soon as both \shortprovince{Silesie} and \shortprovince{Lausitz} are owned.}
+  }
+  \EffectOfWood
+}
+
+% LocalWords:  malus Lateen Carrack decker Siegeworks Condottieri MinorEntryWar
+% LocalWords:  RandomCondottieri ReplacementLeaders CountenanceFleets Arquebus
+% LocalWords:  ExcellentMinisters RecruitmentPeriod MonarchsMilitarySkills
+% LocalWords:  NumberFleets WindAdvantage NavalShock LandFire NavalFireShock
+% LocalWords:  Khanates SizeComparison ArmyClasses NavalFire CombatResults
+% LocalWords:  RetreatLosses ModificationsLossesStackSize FortressesResistance
+
+% LocalWords:  Bayezid Oldenbarnevelt Bathory Sobiesky Moskva Boyars Galleasses
+% LocalWords:  Stadhouders stadhouders stadhouder Asiento
