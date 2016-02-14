@@ -327,51 +327,51 @@ public class CounterGenerator {
                     types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_TRADING_FLEET_MINUS.png", "TradeFleet_{0}_*_verso.png"));
                     break;
                 case "FORT12":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_1.png", "Fortress_{0}_2-1_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_2.png", "Fortress_{0}_2-1_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_2.png", "Fortress_{0}_2-1_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_1.png", "Fortress_{0}_2-1_verso.png"));
                     break;
                 case "FORT23":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_2.png", "Fortress_{0}_3-2_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_3.png", "Fortress_{0}_3-2_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_3.png", "Fortress_{0}_3-2_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_2.png", "Fortress_{0}_3-2_verso.png"));
                     break;
                 case "FORT34":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_3.png", "Fortress_{0}_4-3_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_4.png", "Fortress_{0}_4-3_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_4.png", "Fortress_{0}_4-3_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_3.png", "Fortress_{0}_4-3_verso.png"));
                     break;
                 case "FORT45":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_4.png", "Fortress_{0}_5-4_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_5.png", "Fortress_{0}_5-4_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_5.png", "Fortress_{0}_5-4_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORTRESS_4.png", "Fortress_{0}_5-4_verso.png"));
                     break;
                 case "FORT":
                     types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FORT.png", "Fort_{0}_0_recto.png"));
                     break;
                 case "ARS23":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_2.png", "Arsenal_{0}_3-2_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3.png", "Arsenal_{0}_3-2_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3.png", "Arsenal_{0}_3-2_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_2.png", "Arsenal_{0}_3-2_verso.png"));
                     break;
                 case "ARS23_GIBRALTAR":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_2_GIBRALTAR.png", "Arsenal_{0}_3-2-Gibraltar_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3_GIBRALTAR.png", "Arsenal_{0}_3-2-Gibraltar_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3_GIBRALTAR.png", "Arsenal_{0}_3-2-Gibraltar_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_2_GIBRALTAR.png", "Arsenal_{0}_3-2-Gibraltar_verso.png"));
                     break;
                 case "ARS23_SEBASTOPOL":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_2_SEBASTOPOL.png", "Arsenal_{0}_3-2-Sebastopol_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3_SEBASTOPOL.png", "Arsenal_{0}_3-2-Sebastopol_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3_SEBASTOPOL.png", "Arsenal_{0}_3-2-Sebastopol_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_2_SEBASTOPOL.png", "Arsenal_{0}_3-2-Sebastopol_verso.png"));
                     break;
                 case "ARS01_ST_PETER":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_0_ST_PETER.png", "Arsenal_{0}_1-0-Saint-Petersburg_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}ARSENAL_1_ST_PETER.png", "Arsenal_{0}_1-0-Saint-Petersburg_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_1_ST_PETER.png", "Arsenal_{0}_1-0-Saint-Petersburg_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_0_ST_PETER.png", "Arsenal_{0}_1-0-Saint-Petersburg_verso.png"));
                     break;
                 case "ARS23_ST_PETER":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_2_ST_PETER.png", "Arsenal_{0}_3-2-Saint-Petersburg_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}ARSENAL_3_ST_PETER.png", "Arsenal_{0}_3-2-Saint-Petersburg_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3_ST_PETER.png", "Arsenal_{0}_3-2-Saint-Petersburg_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_2_ST_PETER.png", "Arsenal_{0}_3-2-Saint-Petersburg_verso.png"));
                     break;
                 case "ARS45_ST_PETER":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_4_ST_PETER.png", "Arsenal_{0}_5-4-Saint-Petersburg_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}ARSENAL_5_ST_PETER.png", "Arsenal_{0}_5-4-Saint-Petersburg_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_5_ST_PETER.png", "Arsenal_{0}_5-4-Saint-Petersburg_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_4_ST_PETER.png", "Arsenal_{0}_5-4-Saint-Petersburg_verso.png"));
                     break;
                 case "ARS34":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3.png", "Arsenal_{0}_4-3_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_4.png", "Arsenal_{0}_4-3_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_4.png", "Arsenal_{0}_4-3_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3.png", "Arsenal_{0}_4-3_verso.png"));
                     break;
                 case "MISSION":
                     // TODO missionary can be level 1, 2 or 3. Maybe collusion with leaders. Wait leaders conception.
