@@ -157,39 +157,51 @@ public class DataExtractor {
                             case 6:
                                 String resourceName = "PO";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 7:
                                 resourceName = "SP";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 8:
                                 resourceName = "PA";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 9:
                                 resourceName = "SU";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 10:
                                 resourceName = "SUBR";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 11:
                                 resourceName = "SL";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 12:
                                 resourceName = "CO";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 13:
                                 resourceName = "COAS";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 14:
                                 resourceName = "FUR";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 15:
                                 resourceName = "FISH";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 16:
                                 resourceName = "SALT";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 17:
                                 resourceName = "SILK";
                                 region.addRessource(resourceName, Integer.parseInt(value));
+                                break;
                             case 18:
                                 resourceName = "WOOD";
                                 region.addRessource(resourceName, Integer.parseInt(value));
