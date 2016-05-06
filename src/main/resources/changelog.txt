@@ -1,4 +1,63 @@
-DD/MM/YYYY:
+DD/MM/YYYY
+
+translations.utf:
+ - seazone:Irlande:Mer d’Irlande -> seazone:Irlande:Mer d'Irlande
+ - Terre-Neuve=[seazone]=>Grands Bancs -> Terre-Neuve=[seazone]=>Grand Bancs
+ - addition of:
+   - Pacifique sud-est=[seazone]=>Pacifique SE
+   - Pacifique nord-est=[seazone]=>Pacifique NE
+   - Méditerranée orientale=[seazone]=>Levantin
+   - Méditerranée occidentale=[seazone]=>Alboran
+   - Western Approaches=[seazone]=>Rockall
+   - Île de Man=[seazone]=>Irlande
+   - Îles sous-le-vent=[seazone]=>Petites Antilles
+   - Cuba=[seazone]=>Bahamas
+   - Puerto Rico=[seazone]=>Sargasses
+   - Atlantique nord-ouest=[seazone]=>Grand Bancs
+   - Grønland=[seazone]=>Irminger
+   - Mer des Épices=[seazone]=>Banda
+   - Mer de Chine sud=[seazone]=>Thailande
+   - Mer de Corée=[seazone]=>Jaune
+   - Mer des Seychelles=[seazone]=>Erythree
+   - Golfe de l'Indus=[seazone]=>Kutch
+   - Mer d’Oman=[seazone]=>Arabie
+   - Maldives=[seazone]=>Laquedives
+   - Mer Rouge=[seazone]=>Rouge
+   - Golfe de Syrte=[seazone]=>Gabes
+   - Bay of Fundy=[seazone]=>Fundy
+   - Mer du Bengale=[seazone]=>Bengale
+   - Mer de Sawu=[seazone]=>Savu
+   - Canal de Mozambique=[seazone]=>Mozambique
+   - Atlantique ouest=[seazone]=>Amerique
+   - Atlantique sud=[seazone]=>Atlantique S
+   - Atlantique sud-ouest=[seazone]=>Atlantique SW
+   - Atlantique sud-est=[seazone]=>Atlantique SE
+   - Atlantique équatorial=[seazone]=>Atlantique
+   - Pacifique nord-ouest=[seazone]=>Pacifique NW
+   - Océan Indien ouest=[seazone]=>Malgaches
+   - Bancs\ndes Bahamas=[seazone]=>Bahamas
+
+sourceRotw.eps:
+ - Mer d’Arabie -> Mer d'Arabie
+
+europe.grid.ps:
+ - Mer d’Irlande -> Mer Celtique
+
+rotw.grid.ps:
+ - Mer d’Irlande -> Mer Celtique
+ - Atlantique nord -> Bonnet flamand
+ - Atlantique -> Atlantique Nord
+ - Mer de Tasman -> Détroit de Bass
+ - Mer de Corail -> Mer de Tasman
+ - Pacifique sud-ouest -> Mer de Corail
+ - Mer des Philippines -> Mer des Célèbes
+ - Pacifique ouest -> Mer des Philippines
+ - Mer de Chine nord -> Détroit de Formose
+ - Détroit de Formose -> Mer de Chine
+ - Quarantièmes rugissants -> Cinquantièmes hurlants
+ - Océan Indien sud -> Quarantièmes rugissants
+
+05/05/2016:
 ressource:
  - Mississipi -> Mississippi
  - Amérique -> America

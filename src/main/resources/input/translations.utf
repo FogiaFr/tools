@@ -350,7 +350,7 @@ province:Cabo Verde
 province:Delhi::Dellī
 province:Diu
 province:Edo:江戸:Edo
-province:Fernado Po
+province:Fernando Po
 province:Guadeloupe
 province:Goa
 province:Herat:ﺙﺍﺮﻫ:Herât
@@ -379,6 +379,7 @@ province:Sumatra N:N. Sumatra
 province:Sumatra C:Central Sumatra
 province:Trinidad
 province:Zanzibar
+province:Sulawesi S:Sulawesi S.
 
 Ormuz=[province]=>Ormus
 
@@ -620,111 +621,191 @@ continent:Indochina
 South America=[continent]=>Spanish World
 
 %sea zones
+%% Europe
 seazone:Caspienne:Mer Caspienne
 seazone:Noire E:Mer Noire orientale
 seazone:Noire W:Mer Noire occidentale
 seazone:Marmara
 seazone:Egee:Mer Égée
-seazone:Mediterranee E:Méditerranée orientale
+seazone:Levantin:Bassin Levantin
+Méditerranée orientale=[seazone]=>Levantin
+%seazone:Mediterranee E:Méditerranée orientale => Bassin Levantin
 seazone:Adriatique
+seazone:Ionienne:Mer Ionienne
+seazone:Thyrrenienne:Mer Tyrrhénienne
+seazone:Gabes:Golfe de Gabès
+Golfe de Syrte=[seazone]=>Gabes
+%seazone:Syrte:Golfe de Syrte => Golfe de Gabès
+seazone:Lion:Golfe du Lion
+seazone:Alger:Baie d’Alger
+seazone:Alboran:Mer d'Alboran
+Méditerranée occidentale=[seazone]=>Alboran
+%seazone:Mediterranee W:Méditerranée occidentale => Mer d'Alboran
+seazone:Cadix:Golfe de Cadix
+seazone:Gascogne:Golfe de Gascogne
+seazone:Celtique:Mer Celtique
+%seazone:Irlande:Mer d’Irlande => Mer celtique
+seazone:Rockall:Bassin de Rockall
+Western Approaches=[seazone]=>Rockall
+%seazone:Western Approaches => Bassin de Rockall
+seazone:Irlande:Mer d'Irlande
+Île de Man=[seazone]=>Irlande
+%seazone:Man:Île de Man => Mer d'Irlande
+seazone:Manche
+seazone:Nord:Mer du Nord
+seazone:Norvege:Mer de Norvège
 seazone:Baltique
 seazone:Botnie:Baie de Botnie
 seazone:Oresund:Øresund
-seazone:Ionienne:Mer Ionienne
-seazone:Thyrrenienne:Mer Tyrrhénienne
-seazone:Syrte:Golfe de Syrte
-seazone:Lion:Golfe du Lion
-seazone:Alger:Baie d’Alger
-seazone:Mediterranee W:Méditerranée occidentale
-seazone:Cadix:Golfe de Cadix
-seazone:Gascogne:Golfe de Gascogne
-seazone:Nord:Mer du Nord
-seazone:Manche
-seazone:Irlande:Mer d’Irlande
-seazone:Western Approaches
-seazone:Norvege:Mer de Norvège
-seazone:Alaska:Mer d’Alaska
-seazone:Californie:Golfe de Californie
-seazone:Pacifique NE:Pacifique nord-est
-seazone:Pacifique SE:Pacifique sud-est
-seazone:Panama:Golfe de Panama
-seazone:Perou:Côte du Pérou
-seazone:Chili:Côte du Chili
+
+%%Atlantic
+%%%America
 seazone:Horn:Cap Horn
 seazone:Patagonie:Côte de Patagonie
 seazone:Plata:Rio de la Plata
 seazone:Bahia:Mer de Bahia
 seazone:Recife:Mer de Recife
-seazone:Natal:Mer du Natal
 seazone:Amazonie:Golfe d'Amazonie
-seazone:Sous-le-vent:Îles sous-le-vent
+seazone:Petites Antilles
+Îles sous-le-vent=[seazone]=>Petites Antilles
+% seazone:Sous-le-vent:Îles sous-le-vent => Petites Antilles
 seazone:Caraibes:Caraïbes
 seazone:Mexique:Golfe du Mexique
-seazone:Cuba
-seazone:Puerto Rico
+seazone:Bahamas:Bancs des Bahamas
+Bancs\ndes Bahamas=[seazone]=>Bahamas
+Cuba=[seazone]=>Bahamas
+% seazone:Cuba => Bahamas
+seazone:Sargasses:Mer des Sargasses
+Puerto Rico=[seazone]=>Sargasses
+% seazone:Puerto Rico => Sargasses
 seazone:Bermudes:Triangle des Bermudes
+seazone:Floride:Détroit de Floride
+seazone:Amerique:Amérique
+Atlantique ouest=[seazone]=>Amerique
+%seazone:Atlantique W:Atlantique Ouest => Amerique
+seazone:Fundy:Baie de Fundy
+Bay of Fundy=[seazone]=>Fundy
+seazone:Grand Bancs:Grands Bancs de Terre-Neuve
+Terre-Neuve=[seazone]=>Grand Bancs
+Atlantique nord-ouest=[seazone]=>Grand Bancs
+%seazone:Atlantique NW:Atlantique Nord-Ouest => Grands Bancs (de Terre-Neuve)
+% (appelation attestée au 17ème)
 seazone:Saint-Laurent
 seazone:Labrador:Mer du Labrador
 seazone:Hudson:Baie d’Hudson
-seazone:Groenland:Grœnland
+%%%Europe
+seazone:Irminger:Mer d'Irminger
+Grønland=[seazone]=>Irminger
+% seazone:Groenland:Grœnland => Mer d'Irminger (nom 19ème)
 seazone:Acores:Mer des Açores
 seazone:Canarias:Mer des Canaries
-seazone:Atlantique N:Atlantique nord
-seazone:Atlantique NO:Atlantique nord-ouest
-seazone:Atlantique
+%%%Africa
 seazone:Arguin:Banc d’Arguin
 seazone:Gambie:Baie de Gambie
 seazone:Guinee:Golfe de Guinée
 seazone:Angola:Côte d’Angola
-seazone:Atlantique S:Atlantique sud
-seazone:Atlantique SW:Atlantique sud-ouest
-seazone:Atlantique SE:Atlantique sud-est
-seazone:Atlantique W:Atlantique ouest
-seazone:Atlantique EQ:Atlantique équatorial
-seazone:Man:Île de Man
 seazone:Bonne-Esperance:Cap de Bonne-Espérance
-seazone:Tempetes:Cap des tempêtes
-seazone:Quarantiemes:Quarantièmes rugissants
-seazone:Fundy:Bay of Fundy
-seazone:Mozambique:Canal de Mozambique
-seazone:Indien W:Océan Indien ouest
-seazone:Seychelles:Mer des Seychelles
-seazone:Rouge:Mer rouge:Mer Rouge
-seazone:Mascate:Côte de Mascate
-seazone:Indus:Golfe de l'Indus
-seazone:Oman:Mer d’Oman
-seazone:Maldives
-seazone:Malabar:Côte de Malabar
-seazone:Bengale:Mer du Bengale
-seazone:Indien:Océan Indien
-seazone:Malaisie:Détroit de Malaisie
-seazone:Java:Mer de Java
-seazone:Sawu:Mer de Sawu
-seazone:Indien S:Océan Indien sud
+%%%Middle
+seazone:Bonnet flamand
+%seazone:Atlantique N:Atlantique Nord => Bonnet flamand
+seazone:Atlantique N:Atlantique Nord
+% seazone:Atlantique => Atlantique N.
+seazone:Atlantique S:Atlantique Sud
+Atlantique sud=[seazone]=>Atlantique S
+seazone:Atlantique SW:Atlantique Sud-Ouest
+Atlantique sud-ouest=[seazone]=>Atlantique SW
+seazone:Atlantique SE:Atlantique Sud-Est
+Atlantique sud-est=[seazone]=>Atlantique SE
+seazone:Atlantique
+Atlantique équatorial=[seazone]=>Atlantique
+% seazone:Atlantique EQ:Atlantique équatorial => Atlantique
+
+%%Pacific
+seazone:Alaska:Mer d’Alaska
+% => Mer de Béring ???
+seazone:Californie:Golfe de Californie
+seazone:Panama:Golfe de Panama
+seazone:Perou:Côte du Pérou
+seazone:Chili:Côte du Chili
+seazone:Pacifique SE:Pacifique Sud-Est
+Pacifique sud-est=[seazone]=>Pacifique SE
+seazone:Pacifique NE:Pacifique Nord-Est
+Pacifique nord-est=[seazone]=>Pacifique NE
+seazone:Pacifique:Grand océan pacifique
 seazone:Australienne:Grande Baie Australienne
+seazone:Bass:Détroit de Bass
+% seazone:Tasman:Mer de Tasman => Détroit de Bass
 seazone:Tasman:Mer de Tasman
-seazone:Corail:Mer de Corail
-seazone:Pacifique SW:Pacifique sud-ouest
+% seazone:Corail:Mer de Corail => Tasman
 seazone:Arafura:Mer d’Arafura
-seazone:Epices:Mer des Épices
-seazone:Philippines:Mer des Philippines
-seazone:Chine S:Mer de Chine sud
+seazone:Corail:Mer de Corail
+% seazone:Pacifique SW:Pacifique Sud-Ouest => Corail
+seazone:Banda:Mer de Banda
+Mer des Épices=[seazone]=>Banda
+% seazone:Epices:Mer des Épices => Mer de Banda
+seazone:Celebes:Mer des Célèbes
+% seazone:Philippines:Mer des Philippines => Mer des Célèbes
+seazone:Thailande:Golfe de Thaïlande
+Mer de Chine sud=[seazone]=>Thailande
+% seazone:Chine S:Mer de Chine Sud => Golfe de Thaïlande
+seazone:Chine:Mer de Chine
+% seazone:Formose:Détroit de Formose => Mer de Chine ?
 seazone:Formose:Détroit de Formose
-seazone:Floride:Détroit de Floride
-seazone:Chine N:Mer de Chine nord
-seazone:Coree:Mer de Corée
+% seazone:Chine N:Mer de Chine Nord => Détroit de Formose
+seazone:Jaune:Mer Jaune
+Mer de Corée=[seazone]=>Jaune
+% seazone:Coree:Mer de Corée => Mer jaune
 seazone:Japon:Mer du Japon
 seazone:Okhotsk:Mer d’Okhotsk
-seazone:Pacifique NW:Pacifique nord-ouest
-seazone:Pacifique W:Pacifique ouest
-seazone:Pacifique:Grand océan pacifique
+seazone:Pacifique NW:Pacifique Nord-Ouest
+Pacifique nord-ouest=[seazone]=>Pacifique NW
+seazone:Philippines:Mer des Philippines
+% seazone:Pacifique W:Pacifique Ouest => Philippines
+
+%%Indian
+seazone:Tempetes:Cap des tempêtes
+seazone:Cinquantiemes:Cinquantièmes hurlants
+% seazone:Quarantiemes:Quarantièmes rugissants => Cinquantièmes hurlants
+seazone:Quarantiemes:Quarantièmes rugissants
+% seazone:Indien S:Océan Indien Sud => Quarantièmes rugissants
+seazone:Mozambique:Canal du Mozambique
+Canal de Mozambique=[seazone]=>Mozambique
+seazone:Malgaches:Côtes malgaches
+Océan Indien ouest=[seazone]=>Malgaches
+%seazone:Indien W:Océan Indien Ouest
+seazone:Erythree:Mer Érythrée
+Mer des Seychelles=[seazone]=>Erythree
+% seazone:Seychelles:Mer des Seychelles => Mer Érythrée
+seazone:Rouge:Mer rouge
+Mer Rouge=[seazone]=>Rouge
+seazone:Mascate:Côte de Mascate
+seazone:Kutch:Golfe de Kutch
+Golfe de l'Indus=[seazone]=>Kutch
+% seazone:Indus:Golfe de l'Indus => Golfe de Kutch
+seazone:Arabie:Mer d'Arabie
+Mer d’Oman=[seazone]=>Arabie
+% seazone:Oman:Mer d’Oman => Mer d'Arabie
+seazone:Laquedives:Mer des Laquedives
+Maldives=[seazone]=>Laquedives
+% seazone:Maldives => Mer des Laquedives
+seazone:Malabar:Côte de Malabar
+seazone:Bengale:Golfe du Bengale
+Mer du Bengale=[seazone]=>Bengale
+seazone:Indien:Océan Indien
+seazone:Malaisie:Détroit de Malaisie
+% => Mer d'Andaman ? Détroit de Malacca
+seazone:Java:Mer de Java
+% Détroit de la Sonde ?
+seazone:Savu:Mer de Savu
+Mer de Sawu=[seazone]=>Savu
 seazone:Persique:Golfe Persique
 seazone:Wharton:Bassin de Wharton
-Noire=[seazone]=>Noire W
+
+%Noire=[seazone]=>Noire W
 Canaries=[seazone]=>Canarias
-Mediterrannee E=[seazone]=>Mediterranee E
-Mediterrannee W=[seazone]=>Mediterranee W
-Grønland=[seazone]=>Groenland
+Indien W=[seazone]=>Malgaches
+%Mediterrannee E=[seazone]=>Mediterranee E
+%Mediterrannee W=[seazone]=>Mediterranee W
 
 %Pays
 paysmajeur:Espagne:Hispania

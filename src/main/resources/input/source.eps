@@ -1,4 +1,4 @@
-﻿%!PS
+%!PS
 BOOTFILE (r) file run
 /clipping false def
 systemdict /CLIP known {/compress false def /clipping true def}if
@@ -56,25 +56,31 @@ clipping{(q\n1 0 0 1 00000 00000 cm 00000 00000 01300 01300%Clipping info\nre W 
 (img:orage4) 5305 2193 (Mer Noire occidentale) false orage
 (img:orage4) 5060 2064 (Marmara) false orage
 (img:orage4) 4204 1638 (Mer Égée) true orage
-(img:orage4) 4989 1029 (Méditerranée orientale) true orage
+%(img:orage4) 4989 1029 (Méditerranée orientale) true orage
+(img:orage4) 4989 1029 (Bassin Levantin) true orage
 (img:orage4) 3569 1921 (Adriatique) false orage
+(img:orage5) 3615 1065 (Mer Ionienne) true orage
+(img:orage5) 2836 1791 (Mer Tyrrhénienne) true orage
+(img:orage5) 2800 1200 (Golfe de Gabès) false orage
+%(img:orage5) 3358 0681 (Golfe de Syrte) false orage
+(img:orage5) 2169 1872 (Golfe du Lion) true orage
+(img:orage5) 2057 1449 (Baie d’Alger) true orage
+(img:orage5) 1040 1174 (Mer d'Alboran) true orage
+%(img:orage5) 1040 1174 (Méditerranée occidentale) true orage
+(img:orage5) 0045 1632 (Golfe de Cadix) false orage
+(img:orage5) 0187 2632 (Golfe de Gascogne) false orage
+(img:orage6) 0045 3751 (Mer Celtique) false orage
+%(img:orage6) 0045 3751 (Mer d’Irlande) false orage
+(img:orage7) 0085 4330 (Bassin de Rockall) false orage
+%(img:orage7) 0085 4330 (Western Approaches) false orage
+(img:orage5) 1060 4180 (Mer d'Irlande) false orage
+%(img:orage5) 0910 4164 (Île de Man) false orage
+(img:orage5) 1196 3479 (Manche) true orage
+(img:orage5) 1554 4652 (Mer du Nord) false orage
+(img:orage6) 1337 5609 (Mer de Norvège) false orage
 (img:orage4) 3692 4557 (Baltique) true orage
 (img:orage4) 3650 5587 (Baie de Botnie) true orage
 (img:orage4) 2720 4931 (Øresund) true orage
-(img:orage5) 3615 1065 (Mer Ionienne) true orage
-(img:orage5) 2836 1791 (Mer Tyrrhénienne) true orage
-(img:orage5) 3358 0681 (Golfe de Syrte) false orage
-(img:orage5) 2169 1872 (Golfe du Lion) true orage
-(img:orage5) 2057 1449 (Baie d’Alger) true orage
-(img:orage5) 1040 1174 (Méditerranée occidentale) true orage
-(img:orage5) 0045 1632 (Golfe de Cadix) false orage
-(img:orage5) 0187 2632 (Golfe de Gascogne) false orage
-(img:orage5) 1554 4652 (Mer du Nord) false orage
-(img:orage5) 1196 3479 (Manche) true orage
-(img:orage6) 0045 3751 (Mer d’Irlande) false orage
-(img:orage5) 0910 4164 (Île de Man) false orage
-(img:orage7) 0085 4330 (Western Approaches) false orage
-(img:orage6) 1337 5609 (Mer de Norvège) false orage
 
 %%%%%%%%% ILES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 CURRENTDIR(/carres.eps)! include
@@ -99,35 +105,54 @@ endalpha
 [[(Jeu de Philippe Thibault publié par Azure Wis)@ f1][(1)f2][(h)f3][(_)f2]] 6725 0310 32 multitext
 [[(Variante )@ f1][(EU)f3][(8 proposée par Pierre Borgna)@ f1][(0) f2][(t, Ber) f1][(0) f2][(trand Asseray,)f1]] 6710 0250 32 multitext
 [[(Jean-Yves Mo)f1][(y)f2][(en & Jean-Christophe Dubac)f1][(q_)f2]] 6725 0218 32 multitext
+% Seazone, names in local language.
+[[(Hazar Deniz)f1][(i)f2]] 7193 2269 128 multitext % Caspienne
+[[(Doğu Ak)f1][(2)f2][(deni)f3][(z)f2]] 4604 0804 128 multitext % Noire E
+[[(Ba)f1][(1)f2][(t)f3][(ı Kara)f1][(d)f2][(eni)f1][(z)f2]] 4907 2368 128 multitext % Noire W
+[[(Marmara) f1]] 4762 2076 128 multitext
+% Egee: should be either Greek or Turkish. I choose greek.
+[[(Ege)f1][(o )f2][(Pelago)f1][(s)f2]] 4277 1170 128 multitext
+%[[(Mare Ege)f1][(o)f2]] 4277 1170 128 multitext
+[[(Doğu Kara)f1][(2)f2][(deni)f3][(z)f2]] 5705 2168 128 multitext
+%%% Italian : "Mar" not "Mare" (which is latin but then the second word is different)
+[[(Ma)f1][(r)f2]] 3184 2127 128 multitext
+%[[(Mar)f1][(e)f2]] 3184 2127 128 multitext
+[[(A)f1][(d)f2][(riatic)f1][(o)f2]] 3350 2041 128 multitext
+[[(Ma)f1][(r )f2][(Ioni)f1][(o)f2]] 3567 0947 128 multitext
+%[[(Mare Ioni)f1][(o)f2]] 3567 0947 128 multitext
+[[(Ma)f1][(r )f2][(Tirren)f1][(o)f2]] 2736 1691 128 multitext
+%[[(Mare Tirren)f1][(o)f2]] 2736 1691 128 multitext
+[[(S)f1][(y)f2][(r)f1][(0)f2][(ti) f1][(s)f2][(Mino)f1][(r ) f2]] 2740 0905 128 multitext
+%[[(Mino)f1][(r ) f2][(S)f1][(y)f2][(r)f1][(0)f2][(ti) f1][(s)f2]] 2778 0805 128 multitext
+[[(Golfe )f1][(2)f2][(du)f3][( Lio)f1][(n)f2]] 1928 2080 128 multitext
+[[(Baie )f1][(2)f2][(d')f3][( Alge)f1][(r)f2]] 1907 1626 128 multitext
+[[(Ma)f1][(r)f2]] 1487 1720 128 multitext
+[[(2)f2][(de)f3]] 1570 1500 128 multitext
+[[(Alborá)f1][(n)f2]] 1498 1393 128 multitext
+%[[(Ma)f1][(r)f2]] 1487 1720 128 multitext
+%[[(Me)f1][(d)f2][(iterráne)f1][(o)f2]] 1388 1543 128 multitext
+%[[(Occidenta)f1][(l)f2]] 1498 1393 128 multitext
+[[(Golfo )f1][(2)f2][(de)f3][( Cá)f1][(d)f2][(i)f3][(z)f2]] 114 1236 128 multitext
+[[(Go)f1][(0)f2][(lfe)f3][( de Gascogn)f1][(e)f2]] 815 2598 128 multitext
+[[(Cel)f1][(0)f2][(tic)f1][( Se)f1][(a)f2]] 417 3594 128 multitext
+%[[(Iris)f1][(1)f2][(h)f3][( Se)f1][(a)f2]] 417 3594 128 multitext
+[[(Clai)f1][(s)f2]] 25 4160 128 multitext %Clais Sgeir Rocail
+[[(S)f1][(g)f2][(ei)f1][(r )f2][(Rocai)f1][(l)f2]] 25 4060 128 multitext
+%[[(Wes)f1][(0)f2][(ter)f1][(n)f2]] 25 4142 128 multitext
+%[[(Approac)f1][(1)f2][(h)f3][(e)f1][(s)f2]] 25 4042 128 multitext
+% No room for a fancy 'h'...
+[[(Irish)f1]] 0880 4200 128 multitext
+[[(Se)f1][(a)f2]] 0859 3974 128 multitext
+%[[(Ma)f1][(n)f2]] 0859 3974 128 multitext
+[[(Channe) f1][(l) f2]] 1391 3500 128 multitext
+[[(Nort) f1][ (h)f2][( Se) f1][ (a) f2]] 1863 4405 128 multitext
+[[(Nors)f1][(k)f2][(e)f3][(have)f1][(0)f2][(t)f1]] 1680 5290 128 multitext
+%Norskehavet
+%[[(Sea o)f1][(f)f2][( Norwa)f1][(y)f2]] 1713 5290 128 multitext
 [[(Os) f1][(0) f2][(tse) f1] [(e) f2]] 3501 4372 128 multitext
 [[(Bottnis) f1][(1) f2][(ka) f3] [( Vi) f1][(k) f2][(e) f3][(n) f2]]
 3712 5215 128 multitext
 [[(Øresun) f1][(d) f2]] 2759 4701 128 multitext
-[[(Marmara) f1]] 4762 2076 128 multitext
-[[(Nort) f1][ (h)f2][( Se) f1][ (a) f2]] 1863 4405 128 multitext
-[[(Sea o)f1][(f)f2][( Norwa)f1][(y)f2]] 1713 5290 128 multitext
-[[(Wes)f1][(0)f2][(ter)f1][(n)f2]] 25 4142 128 multitext
-[[(Approac)f1][(1)f2][(h)f3][(e)f1][(s)f2]] 25 4042 128 multitext
-[[(Channe) f1][(l) f2]] 1391 3500 128 multitext
-[[(Iris)f1][(1)f2][(h)f3][( Se)f1][(a)f2]] 417 3594 128 multitext
-[[(Ma)f1][(n)f2]] 0859 3974 128 multitext
-[[(Go)f1][(0)f2][(lfe)f3][( de Gascogn)f1][(e)f2]] 815 2598 128 multitext
-[[(Golfo )f1][(2)f2][(de)f3][( Cá)f1][(d)f2][(i)f3][(z)f2]] 114 1236 128 multitext
-[[(Ma)f1][(r)f2]] 1487 1720 128 multitext
-[[(Me)f1][(d)f2][(iterráne)f1][(o)f2]] 1388 1543 128 multitext
-[[(Occidenta)f1][(l)f2]] 1498 1393 128 multitext
-[[(Golfe )f1][(2)f2][(du)f3][( Lio)f1][(n)f2]] 1928 2080 128 multitext
-[[(Baie )f1][(2)f2][(d')f3][( Alge)f1][(r)f2]] 1907 1626 128 multitext
-[[(Mare Tirren)f1][(o)f2]] 2736 1691 128 multitext
-[[(Mino)f1][(r ) f2][(S)f1][(y)f2][(r)f1][(0)f2][(ti) f1][(s)f2]] 2778 0805 128 multitext
-[[(Mar)f1][(e)f2]] 3184 2127 128 multitext
-[[(A)f1][(d)f2][(riatic)f1][(o)f2]] 3350 2041 128 multitext
-[[(Mare Ioni)f1][(o)f2]] 3567 0947 128 multitext
-[[(Mare Ege)f1][(o)f2]] 4277 1170 128 multitext
-[[(Doğu Ak)f1][(2)f2][(deni)f3][(z)f2]] 4604 0804 128 multitext
-[[(Ba)f1][(1)f2][(t)f3][(ı Kara)f1][(d)f2][(eni)f1][(z)f2]] 4907 2368 128 multitext
-[[(Doğu Kara)f1][(2)f2][(deni)f3][(z)f2]] 5705 2168 128 multitext
-[[(Hazar Deniz)f1][(i)f2]] 7193 2269 128 multitext
 
 %%%%%%%%% ZP/ZM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ztur2 ztur 20 2 (Türkiye) pop (Turcia) 5347 0693 1 zp
