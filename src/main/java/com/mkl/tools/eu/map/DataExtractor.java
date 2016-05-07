@@ -11,10 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiPredicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1102,7 +1099,7 @@ public class DataExtractor {
      *
      * @param provinces data gathered so far.
      * @param countries the countries.
-     * @param borders  existing borders.
+     * @param borders   existing borders.
      * @param aliases   the aliases.
      * @param rotw      flag to know if europe or rotw part is being parsed.
      * @param log       log writer.
@@ -1331,6 +1328,99 @@ public class DataExtractor {
         }
 
         return major;
+    }
+
+    /**
+     * Extract data about the mines and salt.
+     *
+     * @param provinces data gathered so far.
+     * @param countries the countries.
+     * @param borders   existing borders.
+     * @param aliases   the aliases.
+     * @param rotw      flag to know if europe or rotw part is being parsed.
+     * @param log       log writer.
+     * @throws Exception exception.
+     */
+    public static List<Mine> extractMinesSaltData(Map<String, Province> provinces, Map<String, Country> countries, List<Border> borders,
+                                                  Map<String, Map<String, List<String>>> aliases, String file,
+                                                  boolean rotw, Writer log) throws Exception {
+        List<Mine> mines = new ArrayList<>();
+        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream(file)));
+        while ((line = reader.readLine()) != null) {
+            if (line.contains("%")) {
+                line = line.substring(0, line.indexOf('%')).trim();
+            }
+            Matcher m = Pattern.compile("\\((.*)\\) (\\d{4}) (\\d{4}) .*").matcher(line);
+            if (!m.matches()) {
+                m = Pattern.compile("\\((.*)\\) (\\d{4}) \\d{2} add (\\d{4}) \\d{2} add .*").matcher(line);
+                if (!m.matches()) {
+                    continue;
+                }
+            }
+            String type = m.group(1);
+            // We add 10 to the coordinates because in some case, the bottom right corner of the
+            // image is in the neighboring province
+            Double x = Double.parseDouble(m.group(2)) + 10;
+            Double y = Double.parseDouble(m.group(3)) + 10;
+            Province province = findProvinceAtCoordinates(provinces, null, x, y, rotw);
+            String provinceName = province.getName();
+            if (province != null) {
+                if (StringUtils.equals("img:mine", type)) {
+                    Optional<Mine> opt = mines.stream().filter(mine1 -> StringUtils.equals(provinceName, mine1.getProvince())).findFirst();
+                    if (opt.isPresent()) {
+                        opt.get().setGold(opt.get().getGold() + Mine.DEFAULT_GOLD);
+                    } else {
+                        Mine mine = new Mine(province.getName());
+                        mines.add(mine);
+                    }
+                } else if (StringUtils.equals("img:sel", type)) {
+                    // the salt of Corfou is in the ionenne sea
+                    if (StringUtils.equals("sIonienne", province.getName())) {
+                        province = provinces.get("eCorfu");
+                    }
+                    // the salt of Baleares is in the alger sea
+                    if (StringUtils.equals("sAlger", province.getName())) {
+                        province = provinces.get("eIlles Balears");
+                    }
+                    if (province.getInfo() != null) {
+                        province.getInfo().setSalt(1);
+                    } else {
+                        log.append("Can't put salt on a non-european province\t").append(province.getName()).append("\t").append(line).append("\n");
+                    }
+                } else if (StringUtils.isNumeric(type)) {
+                    int nb = Integer.parseInt(type);
+                    if (rotw) {
+                        Optional<Mine> opt = mines.stream().filter(mine1 -> StringUtils.equals(provinceName, mine1.getProvince())).findFirst();
+                        if (opt.isPresent()) {
+                            opt.get().setGold(nb);
+                        } else {
+                            Mine mine = new Mine(province.getName());
+                            mine.setGold(nb);
+                            mines.add(mine);
+                            log.append("Warning: shouldn't define a special mine in a province without mine\t").append(province.getName()).append("\t").append(line).append("\n");
+                        }
+                    } else {
+                        // the salt of Baleares is in the alger sea
+                        if (StringUtils.equals("sAlger", province.getName())) {
+                            province = provinces.get("eIlles Balears");
+                        }
+                        if (province.getInfo() != null) {
+                            if (province.getInfo().getSalt() == null) {
+                                log.append("Warning: shouldn't define a special salt in a province without salt\t").append(province.getName()).append("\t").append(line).append("\n");
+                            }
+                            province.getInfo().setSalt(nb);
+                        } else {
+                            log.append("Can't put salt on a non-european province\t").append(province.getName()).append("\t").append(line).append("\n");
+                        }
+                    }
+                }
+            } else {
+                log.append("Can't find province\t").append(line).append("\n");
+            }
+        }
+
+        return mines;
     }
 
     /**

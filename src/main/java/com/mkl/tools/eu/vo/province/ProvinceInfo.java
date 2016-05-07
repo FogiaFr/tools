@@ -38,6 +38,8 @@ public class ProvinceInfo {
     private boolean arsenal = false;
     /** Flag saying that the natural port/arsenal can be blocked by a fortress. */
     private boolean praesidiable = false;
+    /** Number of salt ressources on the province. */
+    private Integer salt;
 
     /** @return the nameCity. */
     public String getNameCity() {
@@ -177,6 +179,16 @@ public class ProvinceInfo {
     /** @param praesidiable the praesidiable to set. */
     public void setPraesidiable(boolean praesidiable) {
         this.praesidiable = praesidiable;
+    }
+
+    /** @return the salt. */
+    public Integer getSalt() {
+        return salt;
+    }
+
+    /** @param salt the salt to set. */
+    public void setSalt(Integer salt) {
+        this.salt = salt;
     }
 
     /**

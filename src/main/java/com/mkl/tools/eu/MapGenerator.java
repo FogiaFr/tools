@@ -6,10 +6,7 @@ import com.mkl.tools.eu.map.DBGenerator;
 import com.mkl.tools.eu.map.DataExtractor;
 import com.mkl.tools.eu.util.ToolsUtil;
 import com.mkl.tools.eu.vo.country.Country;
-import com.mkl.tools.eu.vo.province.Border;
-import com.mkl.tools.eu.vo.province.Path;
-import com.mkl.tools.eu.vo.province.Province;
-import com.mkl.tools.eu.vo.province.Region;
+import com.mkl.tools.eu.vo.province.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.util.IOUtils;
 
@@ -78,6 +75,10 @@ public final class MapGenerator {
             DataExtractor.extractSeaData(provinces, countries, borders, aliases, "input/source.eps", false, log);
             DataExtractor.extractSeaData(provinces, countries, borders, aliases, "input/sourceRotw.eps", true, log);
 
+            List<Mine> mines = new ArrayList<>();
+            mines.addAll(DataExtractor.extractMinesSaltData(provinces, countries, borders, aliases, "input/portsandmines.eps", false, log));
+            mines.addAll(DataExtractor.extractMinesSaltData(provinces, countries, borders, aliases, "input/portsandminesRotw.eps", true, log));
+
             for (Province province : provinces.values()) {
                 if (province.getInfo() != null && province.getInfo().getDefaultOwner() == null) {
                     log.append(province.getName()).append("\tProvince has no owner\n");
@@ -113,9 +114,13 @@ public final class MapGenerator {
 
             ClientGenerator.createBorderData(borders, provinces, specialBorders, log);
 
-            DBGenerator.createDBInjection(provinces, borders, regions, sqlWriter);
+            DBGenerator.createDeleteScript(sqlWriter);
+
+            DBGenerator.createProvincesData(provinces, borders, regions, sqlWriter);
 
             DBGenerator.createCountriesData(countries, sqlWriter);
+
+            DBGenerator.createMinesData(mines, sqlWriter);
         } finally {
             IOUtils.closeQuietly(sqlWriter);
             IOUtils.closeQuietly(log);

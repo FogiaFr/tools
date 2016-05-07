@@ -2,6 +2,7 @@ package com.mkl.tools.eu.map;
 
 import com.mkl.tools.eu.vo.country.Country;
 import com.mkl.tools.eu.vo.province.Border;
+import com.mkl.tools.eu.vo.province.Mine;
 import com.mkl.tools.eu.vo.province.Province;
 import com.mkl.tools.eu.vo.province.Region;
 import org.apache.commons.lang3.StringUtils;
@@ -19,15 +20,12 @@ import java.util.Map;
 public class DBGenerator {
 
     /**
-     * Create a SQL injection script for provinces, borders and countries.
+     * Create the delete statement at the beginning of the script.
      *
-     * @param provinces list of provinces.
-     * @param borders   list of borders.
-     * @param regions   list of regions.
      * @param sqlWriter where to write the db instructions.
      * @throws IOException exception.
      */
-    public static void createDBInjection(Map<String, Province> provinces, List<Border> borders, Map<String, Region> regions, Writer sqlWriter) throws IOException {
+    public static void createDeleteScript(Writer sqlWriter) throws IOException {
         sqlWriter.append("DELETE FROM R_COUNTRY_PROVINCE_EU_CAPITALS;\n")
                 .append("DELETE FROM R_COUNTRY_PROVINCE_EU;\n")
                 .append("DELETE FROM R_LIMIT;\n")
@@ -43,8 +41,20 @@ public class DBGenerator {
                 .append("DELETE FROM R_PROVINCE;\n")
                 .append("DELETE FROM R_RESOURCES;\n")
                 .append("DELETE FROM R_REGION;\n")
+                .append("DELETE FROM R_GOLD;\n")
                 .append("\n");
+    }
 
+    /**
+     * Create a SQL injection script for provinces, borders.
+     *
+     * @param provinces list of provinces.
+     * @param borders   list of borders.
+     * @param regions   list of regions.
+     * @param sqlWriter where to write the db instructions.
+     * @throws IOException exception.
+     */
+    public static void createProvincesData(Map<String, Province> provinces, List<Border> borders, Map<String, Region> regions, Writer sqlWriter) throws IOException {
         for (Region region : regions.values()) {
             sqlWriter.append("INSERT INTO R_REGION (NAME, INCOME, DIFFICULTY, TOLERANCE, NATIVES_NUMBER, NATIVES_TYPE, COLD_AREA)\n")
                     .append("    VALUES (").append(stringToString(region.getName()))
@@ -71,7 +81,11 @@ public class DBGenerator {
                     .append(");\n");
 
             if (province.getInfo() != null) {
-                sqlWriter.append("INSERT INTO R_PROVINCE_EU (ID, INCOME, FORTRESS, R_COUNTRY, CAPITAL, PORT, ARSENAL, PRAESIDIABLE, METADATA)\n")
+                sqlWriter.append("INSERT INTO R_PROVINCE_EU (ID, INCOME, FORTRESS, R_COUNTRY, CAPITAL, PORT, ARSENAL, PRAESIDIABLE");
+                if (province.getInfo().getSalt() != null) {
+                    sqlWriter.append(", SALT");
+                }
+                sqlWriter.append(", METADATA)\n")
                         .append("    VALUES (").append(" (SELECT ID FROM R_PROVINCE WHERE NAME = '").append(province.getName()).append("')")
                         .append(", ").append(integerToString(province.getInfo().getIncome()))
                         .append(", ").append(integerToString(province.getInfo().getFortress()))
@@ -79,8 +93,11 @@ public class DBGenerator {
                         .append(", ").append(booleanToBit(province.getInfo().isCapital()))
                         .append(", ").append(booleanToBit(province.getInfo().isPort()))
                         .append(", ").append(booleanToBit(province.getInfo().isArsenal()))
-                        .append(", ").append(booleanToBit(province.getInfo().isPraesidiable()))
-                        .append(", ").append(stringToString(String.join(";;", province.getInfo().getMetadata(province.getName()))))
+                        .append(", ").append(booleanToBit(province.getInfo().isPraesidiable()));
+                if (province.getInfo().getSalt() != null) {
+                    sqlWriter.append(", ").append(integerToString(province.getInfo().getSalt()));
+                }
+                sqlWriter.append(", ").append(stringToString(String.join(";;", province.getInfo().getMetadata(province.getName()))))
                         .append(");\n");
 
             } else if (province.getSeaInfo() != null) {
@@ -200,6 +217,22 @@ public class DBGenerator {
                         .append(", (SELECT ID FROM R_COUNTRY WHERE NAME = '").append(country.getName()).append("')")
                         .append(");\n");
             }
+        }
+    }
+
+    /**
+     * Create a SQL injection script for gold mines.
+     *
+     * @param mines     list of mines.
+     * @param sqlWriter where to write the db instructions.
+     * @throws IOException exception.
+     */
+    public static void createMinesData(List<Mine> mines, Writer sqlWriter) throws IOException {
+        for (Mine mine : mines) {
+            sqlWriter.append("INSERT INTO R_GOLD (R_PROVINCE, VALUE)\n")
+                    .append("    VALUES (").append(stringToString(mine.getProvince()))
+                    .append(", ").append(integerToString(mine.getGold()))
+                    .append(");\n");
         }
     }
 
