@@ -35,7 +35,7 @@ public class TablesGenerator {
      * @throws IOException
      */
     public static void computeCountryTables() throws IOException {
-        Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/tables.sql", false);
+        Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/tables-auto.sql", false);
 
         sqlWriter.append("DELETE FROM T_UNIT;\n")
                 .append("DELETE FROM T_BASIC_FORCE;\n")
@@ -59,9 +59,11 @@ public class TablesGenerator {
             if (m.matches()) {
                 country = m.group(1).toLowerCase();
                 type = "limits";
-
-
-                System.out.println(country);
+            }
+            m = Pattern.compile("\\\\newcommand\\{\\\\(.*)Period.*").matcher(line);
+            if (m.matches()) {
+                country = m.group(1).toLowerCase();
+                type = "maxima";
             }
             if (line.equals("}")) {
                 country = null;
@@ -116,8 +118,6 @@ public class TablesGenerator {
                     if (m.matches()) {
                         String period = m.group(1);
                         String[] limits = m.group(2).split("&");
-
-                        System.out.println(period);
 
                         addLimitLine(sqlWriter, country, period, getLimitNumber(limits[0]), "ACTION_DIPLO");
                         addLimitLine(sqlWriter, country, period, getLimitNumber(limits[1]), "ACTION_TFI");
@@ -176,6 +176,53 @@ public class TablesGenerator {
                                 addLimitLine(sqlWriter, country, period, Integer.parseInt(number), leader);
                             }
                         }
+                    }
+                } else if (StringUtils.equals("maxima", type)) {
+                    if (previousLine != null) {
+                        line = previousLine + line;
+                        previousLine = null;
+                    }
+
+                    if (line.endsWith("&")) {
+                        previousLine = line;
+                        continue;
+                    }
+
+                    m = Pattern.compile("\\d{4}\\-+\\d{4} ([IV]+) *&(.*)").matcher(line);
+                    if (m.matches()) {
+                        String period = m.group(1);
+                        String[] limits = m.group(2).split("&");
+
+                        System.out.println(period);
+
+                        addLimitLine(sqlWriter, country, period, getLimitNumber(limits[0]), "MAX_DTI");
+                        if (limits[1].contains("/")) {
+                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[1].split("/")[0]), "MAX_FTI");
+                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[1].split("/")[1]), "MAX_FTI_ROWT");
+                        } else {
+                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[1]), "MAX_FTI");
+                        }
+                        addLimitLine(sqlWriter, country, period, getLimitNumber(limits[2]), "MAX_MNU");
+                        addLimitLine(sqlWriter, country, period, getLimitNumber(limits[3]), "MAX_COL");
+                        addLimitLine(sqlWriter, country, period, getLimitNumber(limits[4]), "MAX_TP");
+                        addLimitLine(sqlWriter, country, period, getLimitNumber(limits[5]), "MAX_ND");
+                        int fleetMinus = 6;
+                        int fleetPlus = 7;
+                        int artillery = 8;
+                        if (StringUtils.equals("suede", country) || StringUtils.equals("pologne", country)) {
+                            fleetMinus = 7;
+                            fleetPlus = 8;
+                            artillery = 9;
+                        }
+                        if (!StringUtils.equals("---", limits[fleetMinus].trim())) {
+                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[fleetMinus].split("/")[0]), "MAX_ND_F_MOINS");
+                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[fleetMinus].split("/")[1]), "MAX_NTR_F_MOINS");
+                        }
+                        if (!StringUtils.equals("---", limits[fleetPlus].trim())) {
+                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[fleetPlus].split("/")[0]), "MAX_ND_F_PLUS");
+                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[fleetPlus].split("/")[1]), "MAX_NTR_F_PLUS");
+                        }
+                        addLimitLine(sqlWriter, country, period, getLimitNumber(limits[artillery]), "ARTILLERY_A_PLUS");
                     }
                 }
             }
@@ -383,6 +430,18 @@ public class TablesGenerator {
 
         if (toNumber.contains("{")) {
             toNumber = toNumber.substring(0, toNumber.indexOf('{'));
+        }
+
+        if (toNumber.contains("(")) {
+            toNumber = toNumber.substring(0, toNumber.indexOf('('));
+        }
+
+        if (toNumber.contains("[")) {
+            toNumber = toNumber.substring(0, toNumber.indexOf('['));
+        }
+
+        if (toNumber.contains("+")) {
+            toNumber = toNumber.substring(0, toNumber.indexOf('+'));
         }
 
         if (StringUtils.equals("\\f", toNumber)) {
