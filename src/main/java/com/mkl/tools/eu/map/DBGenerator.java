@@ -138,13 +138,6 @@ public class DBGenerator {
      * @throws IOException exception.
      */
     public static void createCountriesData(Map<String, Country> countries, Writer sqlWriter) throws IOException {
-        sqlWriter.append("DELETE FROM R_COUNTRY_PROVINCE_EU_CAPITALS;\n")
-                .append("DELETE FROM R_COUNTRY_PROVINCE_EU;\n")
-                .append("DELETE FROM R_LIMIT;\n")
-                .append("DELETE FROM R_BASIC_FORCE;\n")
-                .append("DELETE FROM R_REINFORCEMENTS;\n")
-                .append("DELETE FROM R_COUNTRY;\n\n");
-
         for (Country country : countries.values()) {
             sqlWriter.append("INSERT INTO R_COUNTRY (NAME, TYPE, RELIGION, CULTURE, GEOPOLITICS_COUNTRY, GEOPOLITICS_BONUS" +
                     ", RM, SUB, MA, EC, EW, VA, AN" +

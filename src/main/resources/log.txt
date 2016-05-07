@@ -1089,11 +1089,11 @@ rMumbai~NW	Border not closed	/path1565	(5592.0,761.0)	(5584.0,765.0)
 rMumbai~NW	Border not consistent (ignored)	/path0852	(5677.0,2155.0)	(5673.0,2146.0)	(5677.0,2188.0)
 eWest Preussen	Border not closed	/path0282	(3640.0,4222.0)	(3631.0,4224.0)
 rTexas~W	Border not closed	/path0591	(1288.0,2552.0)	(1296.0,2536.0)
-rTexas~W	Border not closed	/bord70	536.0)
 rTexas~W	Border not closed	/bord70	(0.0,500.0)	(0.0,250.0)
 sCeltique	Border not consistent (ignored)	/mer10	(359.0,3979.0)	(361.0,3970.0)	(0.0,2973.0)
 sCeltique	Border not consistent (enclave)	/path0822	(1115.0,3075.0)	(0.0,3979.0)	(0.0,2973.0)	1006.0	1435.4236308490954
 sCeltique	Border not closed	/bord20	(1220.0,3007.0)	(1115.0,3075.0)
+sCeltique	Border not consistent (ignored)	/mer006	(3783.0,2965.0)	(3778.0,2966.0)	(3709.0,3024.0)
 rMandchourie~E	Border not closed	/path0489	(6916.0,2854.0)	(6888.0,2872.0)
 eModena	Border not closed	/path0705	(2689.0,2585.0)	(2686.0,2583.0)
 sJaune	Border not consistent (ignored)	/mer040	(7078.0,2556.0)	(7072.0,2552.0)	(6774.0,2698.0)
@@ -1151,10 +1151,8 @@ parliament	Can't parse country force	None (played as a major country)
 natives	Can't parse country force	As written on the map
 pirates	Can't parse country force	Uses available \corsaire\ counters
 rebelles	Can't parse country force	Uses available rebel counters
-Grands Bancs de Terre-Neuve	Sea zone not found.
-Atlantique Nord	Sea zone not found.
 Can't parse ZM/ZP	( ) ( ) 2007 2521 [] zm
-
+eBrega	Province has no owner
 eBosna	Province has no owner
 eDalmacija	Province has no owner
 eCaffa	Province has no owner

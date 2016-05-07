@@ -11,6 +11,7 @@ import com.mkl.tools.eu.vo.province.Path;
 import com.mkl.tools.eu.vo.province.Province;
 import com.mkl.tools.eu.vo.province.Region;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.util.IOUtils;
 
 import java.io.Writer;
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public final class MapGenerator {
      */
     public static void main(String[] args) throws Exception {
         Writer log = ToolsUtil.createFileWriter("src/main/resources/log.txt", false);
+        Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/delete_insert_referentiel.sql", false);
+
         try {
             Map<String, List<Path>> specialBorders = new HashMap<>();
             Map<String, Province> provinces = new HashMap<>();
@@ -110,17 +113,12 @@ public final class MapGenerator {
 
             ClientGenerator.createBorderData(borders, provinces, specialBorders, log);
 
-            Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/provinces_countries.sql", false);
-
             DBGenerator.createDBInjection(provinces, borders, regions, sqlWriter);
 
             DBGenerator.createCountriesData(countries, sqlWriter);
-
-            sqlWriter.flush();
-            sqlWriter.close();
         } finally {
-            log.flush();
-            log.close();
+            IOUtils.closeQuietly(sqlWriter);
+            IOUtils.closeQuietly(log);
         }
     }
 }
