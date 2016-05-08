@@ -1475,7 +1475,7 @@ public class DataExtractor {
         major.setName("prusse");
         major.setLongLabel("Kingdom of Prussia");
         major.setShortLabel("Prussia");
-        major.setArmyClass("III");
+        major.setArmyClass("IV");
         major.setCulture("Latin");
         major.setReligion("protestant");
         countries.put(major.getName(), major);
