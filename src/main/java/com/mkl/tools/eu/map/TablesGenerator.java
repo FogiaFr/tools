@@ -198,7 +198,7 @@ public class TablesGenerator {
                         addLimitLine(sqlWriter, country, period, getLimitNumber(limits[0]), "MAX_DTI");
                         if (limits[1].contains("/")) {
                             addLimitLine(sqlWriter, country, period, getLimitNumber(limits[1].split("/")[0]), "MAX_FTI");
-                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[1].split("/")[1]), "MAX_FTI_ROWT");
+                            addLimitLine(sqlWriter, country, period, getLimitNumber(limits[1].split("/")[1]), "MAX_FTI_ROTW");
                         } else {
                             addLimitLine(sqlWriter, country, period, getLimitNumber(limits[1]), "MAX_FTI");
                         }
