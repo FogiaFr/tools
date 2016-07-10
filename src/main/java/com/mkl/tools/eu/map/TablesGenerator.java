@@ -26,22 +26,28 @@ public class TablesGenerator {
      * @throws Exception Exception.
      */
     public static void main(String... args) throws Exception {
-        computeCountryTables();
-    }
-
-    /**
-     * Compute the country tables.
-     *
-     * @throws IOException
-     */
-    public static void computeCountryTables() throws IOException {
         Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/tables-auto.sql", false);
 
         sqlWriter.append("DELETE FROM T_UNIT;\n")
                 .append("DELETE FROM T_BASIC_FORCE;\n")
                 .append("DELETE FROM T_LIMIT;\n")
+                .append("DELETE FROM T_TRADE;\n")
                 .append("\n");
 
+        computeCountryTables(sqlWriter);
+        computeGeneralTables(sqlWriter);
+
+        sqlWriter.flush();
+        sqlWriter.close();
+    }
+
+    /**
+     * Compute the country tables.
+     * @param sqlWriter the writer with all database instructions.
+     *
+     * @throws IOException
+     */
+    public static void computeCountryTables(Writer sqlWriter) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/engCountryTables.tex")));
         String line;
         String country = null;
@@ -227,9 +233,6 @@ public class TablesGenerator {
                 }
             }
         }
-
-        sqlWriter.flush();
-        sqlWriter.close();
     }
 
     /**
@@ -640,6 +643,85 @@ public class TablesGenerator {
                 .append("(SELECT ID FROM T_PERIOD WHERE NAME = ").append(stringToString(period)).append("), ")
                 .append(integerToInteger(number)).append(", ")
                 .append(stringToString(type)).append(");\n");
+    }
+
+    /**
+     * Compute the general tables.
+     *
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException
+     */
+    public static void computeGeneralTables(Writer sqlWriter) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/engGeneralTables.tex")));
+        String line;
+        String type = null;
+        Integer id = 1;
+        String previousLine = null;
+        while ((line = reader.readLine()) != null) {
+            line = line.trim();
+            Matcher m = Pattern.compile("\\\\newcommand\\{\\\\foreigntrade\\}\\{").matcher(line);
+            if (m.matches()) {
+                type = "foreigntrade";
+            }
+            m = Pattern.compile("\\\\newcommand\\{\\\\domestictrade\\}\\{").matcher(line);
+            if (m.matches()) {
+                type = "domestictrade";
+            }
+            if (line.equals("}")) {
+                type = null;
+            }
+
+            if (StringUtils.equals("foreigntrade", type) || StringUtils.equals("domestictrade", type)) {
+                boolean foreign = StringUtils.equals("foreigntrade", type);
+                m = Pattern.compile("(\\\\leq|\\d+|\\\\geq)-?-?(\\d+)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*).*").matcher(line);
+                if (m.matches()) {
+                    Integer startTrade;
+                    String startTradeString = m.group(1);
+                    Integer endTrade = Integer.parseInt(m.group(2));
+                    Integer valueTrade1 = Integer.parseInt(m.group(3));
+                    Integer valueTrade2 = Integer.parseInt(m.group(4));
+                    Integer valueTrade3 = Integer.parseInt(m.group(5));
+                    Integer valueTrade4 = Integer.parseInt(m.group(6));
+                    Integer valueTrade5 = Integer.parseInt(m.group(7));
+
+                    if (StringUtils.equals("\\leq", startTradeString)) {
+                        startTrade = null;
+                    } else if (StringUtils.equals("\\geq", startTradeString)) {
+                        startTrade = endTrade;
+                        endTrade = null;
+                    } else {
+                        startTrade = Integer.parseInt(startTradeString);
+                    }
+
+                    addTradeLine(sqlWriter, 1, startTrade, endTrade, valueTrade1, foreign);
+                    addTradeLine(sqlWriter, 2, startTrade, endTrade, valueTrade2, foreign);
+                    addTradeLine(sqlWriter, 3, startTrade, endTrade, valueTrade3, foreign);
+                    addTradeLine(sqlWriter, 4, startTrade, endTrade, valueTrade4, foreign);
+                    addTradeLine(sqlWriter, 5, startTrade, endTrade, valueTrade5, foreign);
+                }
+            }
+        }
+    }
+
+    /**
+     * Creates an insert for a foreign trade.
+     *
+     * @param sqlWriter    where to write the db instructions.
+     * @param countryValue DTI/FTI of the country.
+     * @param min          minimum value of foreign/domestic trade.
+     * @param max          maximum value of the foreign/domestic trade.
+     * @param value        income computed.
+     * @param foreign      flag saying if it is foreign or domestic trade.
+     * @throws IOException if the writer fails.
+     */
+    private static void addTradeLine(Writer sqlWriter, Integer countryValue, Integer min, Integer max, Integer value, boolean foreign) throws IOException {
+        sqlWriter.append("INSERT INTO T_TRADE (COUNTRY_VALUE, MIN_VALUE, MAX_VALUE, VALUE, FOREIGN_TRADE)\n" +
+                "    VALUES (")
+                .append(integerToInteger(countryValue)).append(", ")
+                .append(integerToInteger(min)).append(", ")
+                .append(integerToInteger(max)).append(", ")
+                .append(integerToInteger(value)).append(", ")
+                .append(booleanToBit(foreign)).append(");\n");
     }
 
     /**
