@@ -32,6 +32,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_BASIC_FORCE;\n")
                 .append("DELETE FROM T_LIMIT;\n")
                 .append("DELETE FROM T_TRADE;\n")
+                .append("DELETE FROM T_RESULT;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -43,8 +44,8 @@ public class TablesGenerator {
 
     /**
      * Compute the country tables.
-     * @param sqlWriter the writer with all database instructions.
      *
+     * @param sqlWriter the writer with all database instructions.
      * @throws IOException
      */
     public static void computeCountryTables(Writer sqlWriter) throws IOException {
@@ -198,8 +199,6 @@ public class TablesGenerator {
                     if (m.matches()) {
                         String period = m.group(1);
                         String[] limits = m.group(2).split("&");
-
-                        System.out.println(period);
 
                         addLimitLine(sqlWriter, country, period, getLimitNumber(limits[0]), "MAX_DTI");
                         if (limits[1].contains("/")) {
@@ -667,13 +666,17 @@ public class TablesGenerator {
             if (m.matches()) {
                 type = "domestictrade";
             }
+            m = Pattern.compile("\\\\newcommand\\{\\\\admintbl\\}\\{").matcher(line);
+            if (m.matches()) {
+                type = "adminresults";
+            }
             if (line.equals("}")) {
                 type = null;
             }
 
             if (StringUtils.equals("foreigntrade", type) || StringUtils.equals("domestictrade", type)) {
                 boolean foreign = StringUtils.equals("foreigntrade", type);
-                m = Pattern.compile("(\\\\leq|\\d+|\\\\geq)-?-?(\\d+)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*).*").matcher(line);
+                m = Pattern.compile("(\\\\leq|\\d+|\\\\geq|\\\\textgreatequal)-?-?(\\d+)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*).*").matcher(line);
                 if (m.matches()) {
                     Integer startTrade;
                     String startTradeString = m.group(1);
@@ -686,7 +689,7 @@ public class TablesGenerator {
 
                     if (StringUtils.equals("\\leq", startTradeString)) {
                         startTrade = null;
-                    } else if (StringUtils.equals("\\geq", startTradeString)) {
+                    } else if (StringUtils.equals("\\geq", startTradeString) || StringUtils.equals("\\textgreatequal", startTradeString)) {
                         startTrade = endTrade;
                         endTrade = null;
                     } else {
@@ -699,8 +702,53 @@ public class TablesGenerator {
                     addTradeLine(sqlWriter, 4, startTrade, endTrade, valueTrade4, foreign);
                     addTradeLine(sqlWriter, 5, startTrade, endTrade, valueTrade5, foreign);
                 }
+            } else if (StringUtils.equals("adminresults", type)) {
+                String possibilites = "F\\\\textetoile|F|\\\\undemi|\\\\undemi\\s*\\\\textetoile|S|S\\\\textetoile";
+                m = Pattern.compile("[\\\\a-z]*(\\d+)&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")" +
+                        "&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")" +
+                        "(\\\\\\\\\\\\ghline)?").matcher(line);
+                if (m.matches()) {
+                    Integer die = Integer.parseInt(m.group(1));
+                    addAdminResultLine(sqlWriter, die, -4, possibilityToResult(m.group(2)));
+                    addAdminResultLine(sqlWriter, die, -3, possibilityToResult(m.group(3)));
+                    addAdminResultLine(sqlWriter, die, -2, possibilityToResult(m.group(4)));
+                    addAdminResultLine(sqlWriter, die, -1, possibilityToResult(m.group(5)));
+                    addAdminResultLine(sqlWriter, die, 0, possibilityToResult(m.group(6)));
+                    addAdminResultLine(sqlWriter, die, 1, possibilityToResult(m.group(7)));
+                    addAdminResultLine(sqlWriter, die, 2, possibilityToResult(m.group(8)));
+                    addAdminResultLine(sqlWriter, die, 3, possibilityToResult(m.group(9)));
+                    addAdminResultLine(sqlWriter, die, 4, possibilityToResult(m.group(10)));
+                }
             }
         }
+    }
+
+    /**
+     * @param possibility in the table input file.
+     * @return the AdminActionResultEnum given a possibility.
+     */
+    private static String possibilityToResult(String possibility) {
+        String result = null;
+
+        if (StringUtils.isNotEmpty(possibility)) {
+            String tmp = possibility.replaceAll("\\s", "");
+
+            if (StringUtils.equals("F\\textetoile", tmp)) {
+                result = "FUMBLE";
+            } else if (StringUtils.equals("F", tmp)) {
+                result = "FAILED";
+            } else if (StringUtils.equals("\\undemi", tmp)) {
+                result = "AVERAGE";
+            } else if (StringUtils.equals("\\undemi\\textetoile", tmp)) {
+                result = "AVERAGE_PLUS";
+            } else if (StringUtils.equals("S", tmp)) {
+                result = "SUCCESS";
+            } else if (StringUtils.equals("S\\textetoile", tmp)) {
+                result = "CRITICAL_HIT";
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -722,6 +770,23 @@ public class TablesGenerator {
                 .append(integerToInteger(max)).append(", ")
                 .append(integerToInteger(value)).append(", ")
                 .append(booleanToBit(foreign)).append(");\n");
+    }
+
+    /**
+     * Creates an insert for a result.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param die       modified die roll.
+     * @param column    column used.
+     * @param result    result of the action.
+     * @throws IOException if the writer fails.
+     */
+    private static void addAdminResultLine(Writer sqlWriter, Integer die, Integer column, String result) throws IOException {
+        sqlWriter.append("INSERT INTO T_RESULT (DIE, `COLUMN`, RESULT)\n" +
+                "    VALUES (")
+                .append(integerToInteger(die)).append(", ")
+                .append(integerToInteger(column)).append(", ")
+                .append(stringToString(result)).append(");\n");
     }
 
     /**
