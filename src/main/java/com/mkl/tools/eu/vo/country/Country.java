@@ -378,6 +378,24 @@ public class Country {
 
     /** @param preference the preference to set. */
     public void setPreference(String preference) {
+        switch (preference) {
+            case "SPA":
+                this.preference = "espagne";
+                break;
+            case "TUR":
+                this.preference = "turquie";
+                break;
+            case "HAB":
+                this.preference = "habsbourg";
+                break;
+            case "FRA":
+                // For bavaria, a '/' is missing so RA+ is retrieved instead of FRA.
+            case "RA+":
+                this.preference = "france";
+                break;
+            default:
+                throw new RuntimeException(preference);
+        }
         this.preference = preference;
     }
 
