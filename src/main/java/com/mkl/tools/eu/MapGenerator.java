@@ -1,6 +1,5 @@
 package com.mkl.tools.eu;
 
-
 import com.mkl.tools.eu.map.ClientGenerator;
 import com.mkl.tools.eu.map.DBGenerator;
 import com.mkl.tools.eu.map.DataExtractor;

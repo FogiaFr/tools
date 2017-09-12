@@ -5,6 +5,8 @@ import com.mkl.tools.eu.util.ToolsUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +21,8 @@ import java.util.regex.Pattern;
  * @author MKL.
  */
 public class TablesGenerator {
+    /** Logger. */
+    private static final Logger LOGGER = LoggerFactory.getLogger(TablesGenerator.class);
 
     /**
      * Main.
@@ -34,6 +38,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_LIMIT;\n")
                 .append("DELETE FROM T_TRADE;\n")
                 .append("DELETE FROM T_RESULT;\n")
+                .append("DELETE FROM T_BATTLE_TECH;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -168,7 +173,7 @@ public class TablesGenerator {
                             addLimitLine(sqlWriter, country, period, Integer.parseInt(m.group(1)), "PURCHASE_NAVAL_TROOPS");
                             addLimitLine(sqlWriter, country, period, Integer.parseInt(m.group(2)), "PURCHASE_LAND_TROOPS");
                         } else {
-                            System.out.println("Can't parse " + country + " unit limits: " + unitLimits);
+                            LOGGER.error("Can't parse " + country + " unit limits: " + unitLimits);
                         }
                         String[] leaderLimits = limits[leaderNumber].trim().split("/");
                         for (String leaderLimit : leaderLimits) {
@@ -462,7 +467,7 @@ public class TablesGenerator {
         try {
             number = Integer.parseInt(toNumber);
         } catch (Exception e) {
-            System.out.println(input + " -> " + toNumber);
+            LOGGER.error(input + " -> " + toNumber);
         }
 
         return number;
@@ -508,7 +513,7 @@ public class TablesGenerator {
                 type = "LEADER_GOVERNOR";
                 break;
             default:
-                System.out.println("Can't parse " + input + " -> " + toType);
+                LOGGER.error("Can't parse " + input + " -> " + toType);
                 break;
         }
 
@@ -649,79 +654,159 @@ public class TablesGenerator {
      * Compute the general tables.
      *
      * @param sqlWriter the writer with all database instructions.
-     * @throws IOException
+     * @throws IOException if the writer fails.
      */
     public static void computeGeneralTables(Writer sqlWriter) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/engGeneralTables.tex")));
         String line;
         String type = null;
-        Integer id = 1;
-        String previousLine = null;
         while ((line = reader.readLine()) != null) {
             line = line.trim();
-            Matcher m = Pattern.compile("\\\\newcommand\\{\\\\foreigntrade\\}\\{").matcher(line);
-            if (m.matches()) {
-                type = "foreigntrade";
-            }
-            m = Pattern.compile("\\\\newcommand\\{\\\\domestictrade\\}\\{").matcher(line);
-            if (m.matches()) {
-                type = "domestictrade";
-            }
-            m = Pattern.compile("\\\\newcommand\\{\\\\admintbl\\}\\{").matcher(line);
-            if (m.matches()) {
-                type = "adminresults";
-            }
-            if (line.equals("}")) {
-                type = null;
-            }
+            type = getGeneralTableType(line, type);
 
             if (StringUtils.equals("foreigntrade", type) || StringUtils.equals("domestictrade", type)) {
-                boolean foreign = StringUtils.equals("foreigntrade", type);
-                m = Pattern.compile("(\\\\leq|\\d+|\\\\geq|\\\\textgreatequal)-?-?(\\d+)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*).*").matcher(line);
-                if (m.matches()) {
-                    Integer startTrade;
-                    String startTradeString = m.group(1);
-                    Integer endTrade = Integer.parseInt(m.group(2));
-                    Integer valueTrade1 = Integer.parseInt(m.group(3));
-                    Integer valueTrade2 = Integer.parseInt(m.group(4));
-                    Integer valueTrade3 = Integer.parseInt(m.group(5));
-                    Integer valueTrade4 = Integer.parseInt(m.group(6));
-                    Integer valueTrade5 = Integer.parseInt(m.group(7));
-
-                    if (StringUtils.equals("\\leq", startTradeString)) {
-                        startTrade = null;
-                    } else if (StringUtils.equals("\\geq", startTradeString) || StringUtils.equals("\\textgreatequal", startTradeString)) {
-                        startTrade = endTrade;
-                        endTrade = null;
-                    } else {
-                        startTrade = Integer.parseInt(startTradeString);
-                    }
-
-                    addTradeLine(sqlWriter, 1, startTrade, endTrade, valueTrade1, foreign);
-                    addTradeLine(sqlWriter, 2, startTrade, endTrade, valueTrade2, foreign);
-                    addTradeLine(sqlWriter, 3, startTrade, endTrade, valueTrade3, foreign);
-                    addTradeLine(sqlWriter, 4, startTrade, endTrade, valueTrade4, foreign);
-                    addTradeLine(sqlWriter, 5, startTrade, endTrade, valueTrade5, foreign);
-                }
+                computeTrade(line, type, sqlWriter);
             } else if (StringUtils.equals("adminresults", type)) {
-                String possibilites = "F\\\\textetoile|F|\\\\undemi|\\\\undemi\\s*\\\\textetoile|S|S\\\\textetoile";
-                m = Pattern.compile("[\\\\a-z]*(\\d+)&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")" +
-                        "&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")" +
-                        "(\\\\\\\\\\\\ghline)?").matcher(line);
-                if (m.matches()) {
-                    Integer die = Integer.parseInt(m.group(1));
-                    addAdminResultLine(sqlWriter, die, -4, possibilityToResult(m.group(2)));
-                    addAdminResultLine(sqlWriter, die, -3, possibilityToResult(m.group(3)));
-                    addAdminResultLine(sqlWriter, die, -2, possibilityToResult(m.group(4)));
-                    addAdminResultLine(sqlWriter, die, -1, possibilityToResult(m.group(5)));
-                    addAdminResultLine(sqlWriter, die, 0, possibilityToResult(m.group(6)));
-                    addAdminResultLine(sqlWriter, die, 1, possibilityToResult(m.group(7)));
-                    addAdminResultLine(sqlWriter, die, 2, possibilityToResult(m.group(8)));
-                    addAdminResultLine(sqlWriter, die, 3, possibilityToResult(m.group(9)));
-                    addAdminResultLine(sqlWriter, die, 4, possibilityToResult(m.group(10)));
-                }
+                computeAdminResult(line, sqlWriter);
+            } else if (StringUtils.equals("navaltech", type) || StringUtils.equals("landtech", type)) {
+                computeBattleTech(line, type, sqlWriter);
             }
         }
+    }
+
+    /**
+     * @param line         to check.
+     * @param previousType previous type before parsing this line.
+     * @return the type of table to compute given the line.
+     */
+    private static String getGeneralTableType(String line, String previousType) {
+        String type = previousType;
+        Matcher m = Pattern.compile("\\\\newcommand\\{\\\\foreigntrade\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "foreigntrade";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\domestictrade\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "domestictrade";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\admintbl\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "adminresults";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\navaltech\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "navaltech";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\landtech\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "landtech";
+        }
+        if (line.equals("}")) {
+            type = null;
+        }
+        return type;
+    }
+
+    /**
+     * Creates the trade tables insertion for this line.
+     *
+     * @param line      the line to compute.
+     * @param type      type of block.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeTrade(String line, String type, Writer sqlWriter) throws IOException {
+        boolean foreign = StringUtils.equals("foreigntrade", type);
+        Matcher m = Pattern.compile("(\\\\leq|\\d+|\\\\geq|\\\\textgreatequal)-?-?(\\d+)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*).*").matcher(line);
+        if (m.matches()) {
+            Integer startTrade;
+            String startTradeString = m.group(1);
+            Integer endTrade = Integer.parseInt(m.group(2));
+            Integer valueTrade1 = Integer.parseInt(m.group(3));
+            Integer valueTrade2 = Integer.parseInt(m.group(4));
+            Integer valueTrade3 = Integer.parseInt(m.group(5));
+            Integer valueTrade4 = Integer.parseInt(m.group(6));
+            Integer valueTrade5 = Integer.parseInt(m.group(7));
+
+            if (StringUtils.equals("\\leq", startTradeString)) {
+                startTrade = null;
+            } else if (StringUtils.equals("\\geq", startTradeString) || StringUtils.equals("\\textgreatequal", startTradeString)) {
+                startTrade = endTrade;
+                endTrade = null;
+            } else {
+                startTrade = Integer.parseInt(startTradeString);
+            }
+
+            addTradeLine(sqlWriter, 1, startTrade, endTrade, valueTrade1, foreign);
+            addTradeLine(sqlWriter, 2, startTrade, endTrade, valueTrade2, foreign);
+            addTradeLine(sqlWriter, 3, startTrade, endTrade, valueTrade3, foreign);
+            addTradeLine(sqlWriter, 4, startTrade, endTrade, valueTrade4, foreign);
+            addTradeLine(sqlWriter, 5, startTrade, endTrade, valueTrade5, foreign);
+        }
+    }
+
+    /**
+     * Creates an insert for a foreign trade.
+     *
+     * @param sqlWriter    where to write the db instructions.
+     * @param countryValue DTI/FTI of the country.
+     * @param min          minimum value of foreign/domestic trade.
+     * @param max          maximum value of the foreign/domestic trade.
+     * @param value        income computed.
+     * @param foreign      flag saying if it is foreign or domestic trade.
+     * @throws IOException if the writer fails.
+     */
+    private static void addTradeLine(Writer sqlWriter, Integer countryValue, Integer min, Integer max, Integer value, boolean foreign) throws IOException {
+        sqlWriter.append("INSERT INTO T_TRADE (COUNTRY_VALUE, MIN_VALUE, MAX_VALUE, VALUE, FOREIGN_TRADE)\n" +
+                "    VALUES (")
+                .append(integerToInteger(countryValue)).append(", ")
+                .append(integerToInteger(min)).append(", ")
+                .append(integerToInteger(max)).append(", ")
+                .append(integerToInteger(value)).append(", ")
+                .append(booleanToBit(foreign)).append(");\n");
+    }
+
+    /**
+     * Creates the admin result tables insertion for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeAdminResult(String line, Writer sqlWriter) throws IOException {
+        String possibilites = "F\\\\textetoile|F|\\\\undemi|\\\\undemi\\s*\\\\textetoile|S|S\\\\textetoile";
+        Matcher m = Pattern.compile("[\\\\a-z]*(\\d+)&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")" +
+                "&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")&(" + possibilites + ")" +
+                "(\\\\\\\\\\\\ghline)?").matcher(line);
+        if (m.matches()) {
+            Integer die = Integer.parseInt(m.group(1));
+            addAdminResultLine(sqlWriter, die, -4, possibilityToResult(m.group(2)));
+            addAdminResultLine(sqlWriter, die, -3, possibilityToResult(m.group(3)));
+            addAdminResultLine(sqlWriter, die, -2, possibilityToResult(m.group(4)));
+            addAdminResultLine(sqlWriter, die, -1, possibilityToResult(m.group(5)));
+            addAdminResultLine(sqlWriter, die, 0, possibilityToResult(m.group(6)));
+            addAdminResultLine(sqlWriter, die, 1, possibilityToResult(m.group(7)));
+            addAdminResultLine(sqlWriter, die, 2, possibilityToResult(m.group(8)));
+            addAdminResultLine(sqlWriter, die, 3, possibilityToResult(m.group(9)));
+            addAdminResultLine(sqlWriter, die, 4, possibilityToResult(m.group(10)));
+        }
+    }
+
+    /**
+     * Creates an insert for a result.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param die       modified die roll.
+     * @param column    column used.
+     * @param result    result of the action.
+     * @throws IOException if the writer fails.
+     */
+    private static void addAdminResultLine(Writer sqlWriter, Integer die, Integer column, String result) throws IOException {
+        sqlWriter.append("INSERT INTO T_RESULT (DIE, `COLUMN`, RESULT)\n" +
+                "    VALUES (")
+                .append(integerToInteger(die)).append(", ")
+                .append(integerToInteger(column)).append(", ")
+                .append(stringToString(result)).append(");\n");
     }
 
     /**
@@ -753,41 +838,196 @@ public class TablesGenerator {
     }
 
     /**
-     * Creates an insert for a foreign trade.
+     * Creates the battle tech tables insertion for this line.
      *
-     * @param sqlWriter    where to write the db instructions.
-     * @param countryValue DTI/FTI of the country.
-     * @param min          minimum value of foreign/domestic trade.
-     * @param max          maximum value of the foreign/domestic trade.
-     * @param value        income computed.
-     * @param foreign      flag saying if it is foreign or domestic trade.
+     * @param line      the line to compute.
+     * @param type      type of block.
+     * @param sqlWriter the writer with all database instructions.
      * @throws IOException if the writer fails.
      */
-    private static void addTradeLine(Writer sqlWriter, Integer countryValue, Integer min, Integer max, Integer value, boolean foreign) throws IOException {
-        sqlWriter.append("INSERT INTO T_TRADE (COUNTRY_VALUE, MIN_VALUE, MAX_VALUE, VALUE, FOREIGN_TRADE)\n" +
-                "    VALUES (")
-                .append(integerToInteger(countryValue)).append(", ")
-                .append(integerToInteger(min)).append(", ")
-                .append(integerToInteger(max)).append(", ")
-                .append(integerToInteger(value)).append(", ")
-                .append(booleanToBit(foreign)).append(");\n");
+    private static void computeBattleTech(String line, String type, Writer sqlWriter) throws IOException {
+        boolean land = StringUtils.equals("landtech", type);
+        Matcher m = Pattern.compile("\\\\technologie\\{([^\\}]*)\\}.*").matcher(line);
+        if (m.matches()) {
+            String tech = m.group(1);
+            String[] split = line.split("&");
+            if (land && split.length != 9) {
+                LOGGER.error("Land tech battle line should have 9 columns. " + line);
+            }
+            if (!land && split.length != 10) {
+                LOGGER.error("Naval tech battle line should have 10 columns. " + line);
+            }
+            int moral = 0;
+            m = Pattern.compile("^(\\d).*").matcher(split[split.length - 1].trim());
+            if (m.matches()) {
+                moral = Integer.parseInt(m.group(1));
+            } else {
+                LOGGER.error("Can't retrieve moral for battle tech. " + line);
+            }
+            m = Pattern.compile(".*\\\\textdag.*").matcher(split[split.length - 1]);
+            boolean bonus = land || m.matches();
+            for (int i = 1; i < split.length - 1; i++) {
+                String s = split[i];
+                m = Pattern.compile(".*([ABCDE-])/.*([ABCDE]).*").matcher(s);
+                if (m.matches()) {
+                    addBattleTechLine(sqlWriter, transformTech(tech), getTech(land, i), land, m.group(1), m.group(2), moral, bonus);
+                } else {
+                    LOGGER.error("Can't parse battle tech. " + s);
+                }
+            }
+        }
     }
 
     /**
      * Creates an insert for a result.
      *
-     * @param sqlWriter where to write the db instructions.
-     * @param die       modified die roll.
-     * @param column    column used.
-     * @param result    result of the action.
+     * @param sqlWriter   where to write the db instructions.
+     * @param techFor     the technology of the stack.
+     * @param techAgainst the technology facing the stack.
+     * @param land        if it is land battle.
+     * @param columnFire  fire column of the stack.
+     * @param columnShock shock column of the stack.
+     * @param moral       moral of the stack.
+     * @param bonus       bonus moral if the stack is veteran.
      * @throws IOException if the writer fails.
      */
-    private static void addAdminResultLine(Writer sqlWriter, Integer die, Integer column, String result) throws IOException {
-        sqlWriter.append("INSERT INTO T_RESULT (DIE, `COLUMN`, RESULT)\n" +
+    private static void addBattleTechLine(Writer sqlWriter, String techFor, String techAgainst, boolean land,
+                                          String columnFire, String columnShock, int moral, boolean bonus) throws IOException {
+        if (StringUtils.equals("-", columnFire)) {
+            columnFire = null;
+        }
+        if (StringUtils.equals("-", columnShock)) {
+            columnShock = null;
+        }
+        sqlWriter.append("INSERT INTO T_BATTLE_TECH (TECH_FOR, `TECH_AGAINST`, LAND, COLUMN_FIRE, COLUMN_SHOCK, MORAL, MORAL_BONUS_VETERAN)\n" +
                 "    VALUES (")
-                .append(integerToInteger(die)).append(", ")
-                .append(integerToInteger(column)).append(", ")
-                .append(stringToString(result)).append(");\n");
+                .append(stringToString(techFor)).append(", ")
+                .append(stringToString(techAgainst)).append(", ")
+                .append(booleanToBit(land)).append(", ")
+                .append(stringToString(columnFire)).append(", ")
+                .append(stringToString(columnShock)).append(", ")
+                .append(integerToInteger(moral)).append(", ")
+                .append(booleanToBit(bonus)).append(");\n");
+    }
+
+    /**
+     * @param text the tech name in another format.
+     * @return the tech name given the text.
+     */
+    private static String transformTech(String text) {
+        String tech = null;
+
+        switch (text) {
+            case "Galley":
+                tech = "GALLEY";
+                break;
+            case "Carrack":
+                tech = "CARRACK";
+                break;
+            case "Nao-Galeon":
+                tech = "NAE_GALEON";
+                break;
+            case "Galleon-Fluyt":
+                tech = "GALLEON_FLUYT";
+                break;
+            case "Battery":
+                tech = "BATTERY";
+                break;
+            case "Vessel":
+                tech = "VESSEL";
+                break;
+            case "Three-Decker":
+                tech = "THREE_DECKER";
+                break;
+            case "74s":
+                tech = "SEVENTY_FOUR";
+                break;
+            case "Medieval":
+                tech = "MEDIEVAL";
+                break;
+            case "Renaissance":
+                tech = "RENAISSANCE";
+                break;
+            case "Arquebus":
+                tech = "ARQUEBUS";
+                break;
+            case "Muskets":
+                tech = "MUSKET";
+                break;
+            case "Baroque":
+                tech = "BAROQUE";
+                break;
+            case "Manoeuvre":
+                tech = "MANOEUVRE";
+                break;
+            case "Lace":
+                tech = "LACE_WAR";
+                break;
+        }
+
+        return tech;
+    }
+
+    /**
+     * @param land  if the tech is land.
+     * @param index index in the line.
+     * @return the tech name given its index.
+     */
+    private static String getTech(boolean land, int index) {
+        String tech = null;
+        if (land) {
+            index += 10;
+        }
+
+        switch (index) {
+            case 1:
+                tech = "GALLEY";
+                break;
+            case 2:
+                tech = "CARRACK";
+                break;
+            case 3:
+                tech = "NAE_GALEON";
+                break;
+            case 4:
+                tech = "GALLEON_FLUYT";
+                break;
+            case 5:
+                tech = "BATTERY";
+                break;
+            case 6:
+                tech = "VESSEL";
+                break;
+            case 7:
+                tech = "THREE_DECKER";
+                break;
+            case 8:
+                tech = "SEVENTY_FOUR";
+                break;
+            case 11:
+                tech = "MEDIEVAL";
+                break;
+            case 12:
+                tech = "RENAISSANCE";
+                break;
+            case 13:
+                tech = "ARQUEBUS";
+                break;
+            case 14:
+                tech = "MUSKET";
+                break;
+            case 15:
+                tech = "BAROQUE";
+                break;
+            case 16:
+                tech = "MANOEUVRE";
+                break;
+            case 17:
+                tech = "LACE_WAR";
+                break;
+        }
+
+        return tech;
     }
 
     /**
