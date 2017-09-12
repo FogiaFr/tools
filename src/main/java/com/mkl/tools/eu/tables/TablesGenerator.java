@@ -1,5 +1,6 @@
-package com.mkl.tools.eu.map;
+package com.mkl.tools.eu.tables;
 
+import com.mkl.tools.eu.map.DataExtractor;
 import com.mkl.tools.eu.util.ToolsUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
