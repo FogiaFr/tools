@@ -39,6 +39,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_TRADE;\n")
                 .append("DELETE FROM T_RESULT;\n")
                 .append("DELETE FROM T_BATTLE_TECH;\n")
+                .append("DELETE FROM T_COMBAT_RESULT;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -660,6 +661,7 @@ public class TablesGenerator {
         BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/engGeneralTables.tex")));
         String line;
         String type = null;
+        String pendingLine = null;
         while ((line = reader.readLine()) != null) {
             line = line.trim();
             type = getGeneralTableType(line, type);
@@ -670,6 +672,8 @@ public class TablesGenerator {
                 computeAdminResult(line, sqlWriter);
             } else if (StringUtils.equals("navaltech", type) || StringUtils.equals("landtech", type)) {
                 computeBattleTech(line, type, sqlWriter);
+            } else if (StringUtils.equals("combatresults", type)) {
+                pendingLine = computeCombatResult(line, pendingLine, sqlWriter);
             }
         }
     }
@@ -700,6 +704,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\newcommand\\{\\\\landtech\\}\\{").matcher(line);
         if (m.matches()) {
             type = "landtech";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\combatresults\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "combatresults";
         }
         if (line.equals("}")) {
             type = null;
@@ -1028,6 +1036,83 @@ public class TablesGenerator {
         }
 
         return tech;
+    }
+
+    /**
+     * Creates the combat result table insertions for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static String computeCombatResult(String line, String pendingLine, Writer sqlWriter) throws IOException {
+        if (line.endsWith("ghline")) {
+            String[] split = line.split("&");
+            if (split.length == 11) {
+                int dice = Integer.parseInt(split[0].replace("\\leq", "").replace("\\geq", "").trim());
+
+                addBattleResultLine("A", dice, split[1], split[2], sqlWriter);
+                addBattleResultLine("B", dice, split[3], split[4], sqlWriter);
+                addBattleResultLine("C", dice, split[5], split[6], sqlWriter);
+                addBattleResultLine("D", dice, split[7], split[8], sqlWriter);
+                addBattleResultLine("E", dice, split[9], split[10], sqlWriter);
+
+                return null;
+            } else {
+
+                return computeCombatResult((pendingLine != null ? pendingLine : "") + line, null, sqlWriter);
+            }
+        }
+
+        return (pendingLine != null ? pendingLine : "") + line;
+    }
+
+    /**
+     * Creates the combat result table insertions for this line.
+     *
+     * @param column    the technology column.
+     * @param dice      the modified dice.
+     * @param army      the part of the line concerning round and third losses.
+     * @param moral     the part of the line concerning moral losses.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void addBattleResultLine(String column, int dice, String army, String moral, Writer sqlWriter) throws IOException {
+        Integer roundLoss = 0;
+        Matcher m = Pattern.compile(".*(\\d).*").matcher(army);
+        if (m.matches()) {
+            roundLoss = Integer.parseInt(m.group(1));
+        }
+        Integer thirdLoss = 0;
+        if (army.contains("\\td")) {
+            thirdLoss = 2;
+        } else if (army.contains("\\tu")) {
+            thirdLoss = 1;
+        }
+        Integer moralLoss = StringUtils.countMatches(moral, "\\textetoilex");
+        addBattleResultLine(sqlWriter, column, dice, roundLoss, thirdLoss, moralLoss);
+    }
+
+    /**
+     * Creates an insert for a result.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param column    the column resulting from the technology.
+     * @param dice      the result of the modified dice.
+     * @param roundLoss the number of round losses.
+     * @param thirdLoss the number of third losses.
+     * @param moralLoss the number of moral losses.
+     * @throws IOException if the writer fails.
+     */
+    private static void addBattleResultLine(Writer sqlWriter, String column, int dice, Integer roundLoss,
+                                            Integer thirdLoss, Integer moralLoss) throws IOException {
+        sqlWriter.append("INSERT INTO T_COMBAT_RESULT (`COLUMN`, DICE, ROUND_LOSS, THIRD_LOSS, MORALE_LOSS)\n" +
+                "    VALUES (")
+                .append(stringToString(column)).append(", ")
+                .append(integerToInteger(dice)).append(", ")
+                .append(integerToInteger(roundLoss)).append(", ")
+                .append(integerToInteger(thirdLoss)).append(", ")
+                .append(integerToInteger(moralLoss)).append(");\n");
     }
 
     /**
