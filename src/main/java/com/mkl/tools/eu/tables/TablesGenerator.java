@@ -40,6 +40,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_RESULT;\n")
                 .append("DELETE FROM T_BATTLE_TECH;\n")
                 .append("DELETE FROM T_COMBAT_RESULT;\n")
+                .append("DELETE FROM T_ARMY_CLASS;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -674,6 +675,8 @@ public class TablesGenerator {
                 computeBattleTech(line, type, sqlWriter);
             } else if (StringUtils.equals("combatresults", type)) {
                 pendingLine = computeCombatResult(line, pendingLine, sqlWriter);
+            } else if (StringUtils.equals("armyclasses", type)) {
+                computeArmyClass(line, sqlWriter);
             }
         }
     }
@@ -708,6 +711,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\newcommand\\{\\\\combatresults\\}\\{").matcher(line);
         if (m.matches()) {
             type = "combatresults";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\armyclasses\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "armyclasses";
         }
         if (line.equals("}")) {
             type = null;
@@ -1113,6 +1120,45 @@ public class TablesGenerator {
                 .append(integerToInteger(roundLoss)).append(", ")
                 .append(integerToInteger(thirdLoss)).append(", ")
                 .append(integerToInteger(moralLoss)).append(");\n");
+    }
+
+    /**
+     * Creates the combat result table insertions for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeArmyClass(String line, Writer sqlWriter) throws IOException {
+        Matcher m = Pattern.compile("\\\\CA([^&]*)&[^&]*&(\\d)&(\\d)&(\\d)&(\\d)&(\\d)&(\\d)&(\\d)&.*").matcher(line);
+        if (m.matches()) {
+            String armyClass = m.group(1);
+
+            addArmyClassLine(sqlWriter, armyClass, "I", Integer.parseInt(m.group(2)));
+            addArmyClassLine(sqlWriter, armyClass, "II", Integer.parseInt(m.group(3)));
+            addArmyClassLine(sqlWriter, armyClass, "III", Integer.parseInt(m.group(4)));
+            addArmyClassLine(sqlWriter, armyClass, "IV", Integer.parseInt(m.group(5)));
+            addArmyClassLine(sqlWriter, armyClass, "V", Integer.parseInt(m.group(6)));
+            addArmyClassLine(sqlWriter, armyClass, "VI", Integer.parseInt(m.group(7)));
+            addArmyClassLine(sqlWriter, armyClass, "VII", Integer.parseInt(m.group(8)));
+        }
+    }
+
+    /**
+     * Creates an insert for a result.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param armyClass the class of the army.
+     * @param period    the period.
+     * @param size      the size of the army.
+     * @throws IOException if the writer fails.
+     */
+    private static void addArmyClassLine(Writer sqlWriter, String armyClass, String period, int size) throws IOException {
+        sqlWriter.append("INSERT INTO T_ARMY_CLASS (CLASS, PERIOD, SIZE)\n" +
+                "    VALUES (")
+                .append(stringToString(armyClass)).append(", ")
+                .append(stringToString(period)).append(", ")
+                .append(integerToInteger(size)).append(");\n");
     }
 
     /**
