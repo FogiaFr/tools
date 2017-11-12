@@ -3,6 +3,7 @@ package com.mkl.tools.eu.tables;
 import com.mkl.tools.eu.map.DataExtractor;
 import com.mkl.tools.eu.util.ToolsUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
@@ -12,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,6 +44,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_BATTLE_TECH;\n")
                 .append("DELETE FROM T_COMBAT_RESULT;\n")
                 .append("DELETE FROM T_ARMY_CLASS;\n")
+                .append("DELETE FROM T_ARMY_ARTILLERY;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -677,6 +681,8 @@ public class TablesGenerator {
                 pendingLine = computeCombatResult(line, pendingLine, sqlWriter);
             } else if (StringUtils.equals("armyclasses", type)) {
                 computeArmyClass(line, sqlWriter);
+            } else if (StringUtils.equals("artilleryvalue", type)) {
+                computeArmyArtillery(line, sqlWriter);
             }
         }
     }
@@ -715,6 +721,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\newcommand\\{\\\\armyclasses\\}\\{").matcher(line);
         if (m.matches()) {
             type = "armyclasses";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\artilleryvalue\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "artilleryvalue";
         }
         if (line.equals("}")) {
             type = null;
@@ -1159,6 +1169,135 @@ public class TablesGenerator {
                 .append(stringToString(armyClass)).append(", ")
                 .append(stringToString(period)).append(", ")
                 .append(integerToInteger(size)).append(");\n");
+    }
+
+    /**
+     * Creates the combat result table insertions for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeArmyArtillery(String line, Writer sqlWriter) throws IOException {
+        Matcher m = Pattern.compile("([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)\\\\\\\\\\\\ghline.*").matcher(line);
+        if (m.matches()) {
+            String header = m.group(1);
+            List<String> classes = extractClassesFromArmyArtilleryHeader(header);
+
+            if (classes.isEmpty()) {
+                String country = extractCountryFromArmyArtilleryHeader(header);
+                if (StringUtils.isNotEmpty(country)) {
+                    addArmyArtilleryLine(sqlWriter, country, null, "I", NumberUtils.toInt(m.group(2)));
+                    addArmyArtilleryLine(sqlWriter, country, null, "II", NumberUtils.toInt(m.group(3)));
+                    addArmyArtilleryLine(sqlWriter, country, null, "III", NumberUtils.toInt(m.group(4)));
+                    addArmyArtilleryLine(sqlWriter, country, null, "IV", NumberUtils.toInt(m.group(5)));
+                    addArmyArtilleryLine(sqlWriter, country, null, "V", NumberUtils.toInt(m.group(6)));
+                    addArmyArtilleryLine(sqlWriter, country, null, "VI", NumberUtils.toInt(m.group(7)));
+                    addArmyArtilleryLine(sqlWriter, country, null, "VII", NumberUtils.toInt(m.group(8)));
+                }
+            } else {
+                for (String armyClass : classes) {
+                    addArmyArtilleryLine(sqlWriter, null, armyClass, "I", NumberUtils.toInt(m.group(2)));
+                    addArmyArtilleryLine(sqlWriter, null, armyClass, "II", NumberUtils.toInt(m.group(3)));
+                    addArmyArtilleryLine(sqlWriter, null, armyClass, "III", NumberUtils.toInt(m.group(4)));
+                    addArmyArtilleryLine(sqlWriter, null, armyClass, "IV", NumberUtils.toInt(m.group(5)));
+                    addArmyArtilleryLine(sqlWriter, null, armyClass, "V", NumberUtils.toInt(m.group(6)));
+                    addArmyArtilleryLine(sqlWriter, null, armyClass, "VI", NumberUtils.toInt(m.group(7)));
+                    addArmyArtilleryLine(sqlWriter, null, armyClass, "VII", NumberUtils.toInt(m.group(8)));
+                }
+            }
+        }
+    }
+
+    private static String extractCountryFromArmyArtilleryHeader(String header) {
+        String country = null;
+
+        header = header.trim();
+
+        switch (header) {
+            case "\\VEN":
+                country = "venise";
+                break;
+            case "\\HOL":
+                country = "hollande";
+                break;
+            case "\\HAB":
+                country = "habsbourg";
+                break;
+            case "\\POR":
+                country = "portugal";
+                break;
+            case "\\SUE":
+                country = "suede";
+                break;
+            case "\\SPA":
+                country = "espagne";
+                break;
+            case "\\FRA":
+                country = "france";
+                break;
+            case "\\ENG":
+                country = "angleterre";
+                break;
+            case "\\TUR":
+                country = "turquie";
+                break;
+            case "\\RUS":
+                country = "russie";
+                break;
+            case "\\POL":
+                country = "pologne";
+                break;
+            case "\\PRU":
+                country = "prusse";
+                break;
+            default:
+                if (!header.startsWith("\\\\quad")) {
+                    LOGGER.error("Can't parse country for army artillery : " + header);
+                }
+                break;
+        }
+
+        return country;
+    }
+
+    private static List<String> extractClassesFromArmyArtilleryHeader(String header) {
+        List<String> armyClasses = new ArrayList<>();
+
+        Matcher m = Pattern.compile(".*\\\\quad.*\\\\CA([^\\s/\\\\]*).*\\\\CA([^\\s/\\\\]*).").matcher(header);
+        if (m.matches()) {
+            String armyClass = m.group(1);
+            armyClasses.add(armyClass);
+            armyClass = m.group(2);
+            armyClasses.add(armyClass);
+        } else {
+            m = Pattern.compile(".*\\\\quad.*\\\\CA([^\\s/\\\\]*).*").matcher(header);
+            if (m.matches()) {
+                String armyClass = m.group(1);
+                armyClasses.add(armyClass);
+            }
+        }
+
+        return armyClasses;
+    }
+
+    /**
+     * Creates an insert for a result.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param country   the name of the owner of the army.
+     * @param armyClass the class of the army.
+     * @param period    the period.
+     * @param artillery the number of artillery of the army.
+     * @throws IOException if the writer fails.
+     */
+    private static void addArmyArtilleryLine(Writer sqlWriter, String country, String armyClass, String period, int artillery) throws IOException {
+        sqlWriter.append("INSERT INTO T_ARMY_ARTILLERY (R_COUNTRY, CLASS, PERIOD, ARTILLERY)\n" +
+                "    VALUES (")
+                .append(stringToString(country)).append(", ")
+                .append(stringToString(armyClass)).append(", ")
+                .append(stringToString(period)).append(", ")
+                .append(integerToInteger(artillery)).append(");\n");
     }
 
     /**
