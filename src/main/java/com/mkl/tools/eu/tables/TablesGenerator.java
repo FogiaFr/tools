@@ -1123,7 +1123,7 @@ public class TablesGenerator {
      */
     private static void addBattleResultLine(Writer sqlWriter, String column, int dice, Integer roundLoss,
                                             Integer thirdLoss, Integer moralLoss) throws IOException {
-        sqlWriter.append("INSERT INTO T_COMBAT_RESULT (`COLUMN`, DICE, ROUND_LOSS, THIRD_LOSS, MORALE_LOSS)\n" +
+        sqlWriter.append("INSERT INTO T_COMBAT_RESULT (`COLUMN`, DICE, ROUNDLOSS, THIRDLOSS, MORALELOSS)\n" +
                 "    VALUES (")
                 .append(stringToString(column)).append(", ")
                 .append(integerToInteger(dice)).append(", ")
