@@ -47,6 +47,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_ARMY_ARTILLERY;\n")
                 .append("DELETE FROM T_ARTILLERY_SIEGE;\n")
                 .append("DELETE FROM T_FORTRESS_RESISTANCE;\n")
+                .append("DELETE FROM T_ASSAULT_RESULT;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -689,6 +690,8 @@ public class TablesGenerator {
                 computeArtilleryBonus(line, sqlWriter);
             } else if (StringUtils.equals("fortressResistance", type)) {
                 computeFortressResistance(line, sqlWriter);
+            } else if (StringUtils.equals("assault", type)) {
+                computeAssaultResult(line, sqlWriter);
             }
         }
     }
@@ -739,6 +742,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\GTmorecontent\\{fortresses\\}\\{.*").matcher(line);
         if (m.matches()) {
             type = "fortressResistance";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\assault\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "assault";
         }
         if (line.equals("}")) {
             type = null;
@@ -1274,6 +1281,44 @@ public class TablesGenerator {
         }
     }
 
+    /**
+     * Creates the fortress resistance table insertions for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeAssaultResult(String line, Writer sqlWriter) throws IOException {
+        Matcher m = Pattern.compile("([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)\\\\\\\\\\\\ghline.*").matcher(line);
+        if (m.matches()) {
+            String dieString = m.group(1);
+            dieString = dieString.replace("\\leq", "").replace("\\geq", "").trim();
+            int die = NumberUtils.toInt(dieString);
+            computeAssaultResult(sqlWriter, die, true, m.group(2), m.group(3), false, false);
+            computeAssaultResult(sqlWriter, die, true, m.group(4), m.group(3), true, false);
+            computeAssaultResult(sqlWriter, die, false, m.group(5), m.group(6), false, false);
+            computeAssaultResult(sqlWriter, die, false, m.group(7), m.group(6), true, false);
+            computeAssaultResult(sqlWriter, die, true, m.group(8), m.group(9), false, true);
+            computeAssaultResult(sqlWriter, die, false, m.group(10), m.group(11), false, true);
+        }
+    }
+
+    private static void computeAssaultResult(Writer sqlWriter, int die, boolean fire, String result, String moral, boolean breach, boolean besieger) throws IOException {
+        Integer roundLoss = 0;
+        Matcher m = Pattern.compile(".*(\\d).*").matcher(result);
+        if (m.matches()) {
+            roundLoss = Integer.parseInt(m.group(1));
+        }
+        Integer thirdLoss = 0;
+        if (result.contains("\\td")) {
+            thirdLoss = 2;
+        } else if (result.contains("\\tu")) {
+            thirdLoss = 1;
+        }
+        Integer moralLoss = StringUtils.countMatches(moral, "\\textetoilex");
+        addAssaultResultLine(sqlWriter, die, fire, roundLoss, thirdLoss, moralLoss, breach, besieger);
+    }
+
     private static String extractCountryFromArmyArtilleryHeader(String header) {
         String country = null;
 
@@ -1402,12 +1447,36 @@ public class TablesGenerator {
     }
 
     /**
+     * Creates an insert for a result.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param die       the die roll.
+     * @param fire      fire or shock phase.
+     * @param roundLoss the round losses.
+     * @param thirdLoss the third losses.
+     * @param moral     the moral loss.
+     * @param breach    if the fortress is breached.
+     * @param besieger  if it si the besieger.
+     * @throws IOException if the writer fails.
+     */
+    private static void addAssaultResultLine(Writer sqlWriter, int die, boolean fire, int roundLoss, int thirdLoss, int moral, boolean breach, boolean besieger) throws IOException {
+        sqlWriter.append("INSERT INTO T_ASSAULT_RESULT (DICE, FIRE, ROUNDLOSS, THIRDLOSS, BREACH, BESIEGER)\n" +
+                "    VALUES (")
+                .append(integerToInteger(die)).append(", ")
+                .append(booleanToBit(fire)).append(", ")
+                .append(integerToInteger(roundLoss)).append(", ")
+                .append(integerToInteger(thirdLoss)).append(", ")
+                .append(integerToInteger(moral)).append(", ")
+                .append(booleanToBit(breach)).append(", ")
+                .append(booleanToBit(besieger)).append(");\n");
+    }
+
+    /**
      * Convert a String to String (database).
      *
      * @param toConvert String to convert.
      * @return a String.
      */
-
     private static String stringToString(String toConvert) {
         String db = "null";
 
