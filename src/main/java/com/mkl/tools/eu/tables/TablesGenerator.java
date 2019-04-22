@@ -45,6 +45,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_COMBAT_RESULT;\n")
                 .append("DELETE FROM T_ARMY_CLASS;\n")
                 .append("DELETE FROM T_ARMY_ARTILLERY;\n")
+                .append("DELETE FROM T_ARTILLERY_SIEGE;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -683,6 +684,8 @@ public class TablesGenerator {
                 computeArmyClass(line, sqlWriter);
             } else if (StringUtils.equals("artilleryvalue", type)) {
                 computeArmyArtillery(line, sqlWriter);
+            } else if (StringUtils.equals("artillerybonus", type)) {
+                computeArtilleryBonus(line, sqlWriter);
             }
         }
     }
@@ -725,6 +728,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\newcommand\\{\\\\artilleryvalue\\}\\{").matcher(line);
         if (m.matches()) {
             type = "artilleryvalue";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\artillerybonus\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "artillerybonus";
         }
         if (line.equals("}")) {
             type = null;
@@ -1209,6 +1216,23 @@ public class TablesGenerator {
         }
     }
 
+    /**
+     * Creates the artillery bonus table insertions for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeArtilleryBonus(String line, Writer sqlWriter) throws IOException {
+        Matcher m = Pattern.compile("&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&.*\\+([^&]*)\\\\\\\\.*").matcher(line);
+        if (m.matches()) {
+            int bonus = NumberUtils.toInt(m.group(7).trim());
+            for (int i = 0; i < 6; i++) {
+                addArtilleryBonusLine(sqlWriter, i, NumberUtils.toInt(m.group(i + 1).trim()), bonus);
+            }
+        }
+    }
+
     private static String extractCountryFromArmyArtilleryHeader(String header) {
         String country = null;
 
@@ -1298,6 +1322,23 @@ public class TablesGenerator {
                 .append(stringToString(armyClass)).append(", ")
                 .append(stringToString(period)).append(", ")
                 .append(integerToInteger(artillery)).append(");\n");
+    }
+
+    /**
+     * Creates an insert for a result.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param fortress  the level of the fortress.
+     * @param artillery the number of artillery of the army.
+     * @param bonus     the bonus given by the artllery on the fortress.
+     * @throws IOException if the writer fails.
+     */
+    private static void addArtilleryBonusLine(Writer sqlWriter, int fortress, int artillery, int bonus) throws IOException {
+        sqlWriter.append("INSERT INTO T_ARTILLERY_SIEGE (FORTRESS, ARTILLERY, BONUS)\n" +
+                "    VALUES (")
+                .append(integerToInteger(fortress)).append(", ")
+                .append(integerToInteger(artillery)).append(", ")
+                .append(integerToInteger(bonus)).append(");\n");
     }
 
     /**
