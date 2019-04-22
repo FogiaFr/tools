@@ -46,6 +46,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_ARMY_CLASS;\n")
                 .append("DELETE FROM T_ARMY_ARTILLERY;\n")
                 .append("DELETE FROM T_ARTILLERY_SIEGE;\n")
+                .append("DELETE FROM T_FORTRESS_RESISTANCE;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -686,6 +687,8 @@ public class TablesGenerator {
                 computeArmyArtillery(line, sqlWriter);
             } else if (StringUtils.equals("artillerybonus", type)) {
                 computeArtilleryBonus(line, sqlWriter);
+            } else if (StringUtils.equals("fortressResistance", type)) {
+                computeFortressResistance(line, sqlWriter);
             }
         }
     }
@@ -732,6 +735,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\newcommand\\{\\\\artillerybonus\\}\\{").matcher(line);
         if (m.matches()) {
             type = "artillerybonus";
+        }
+        m = Pattern.compile("\\\\GTmorecontent\\{fortresses\\}\\{.*").matcher(line);
+        if (m.matches()) {
+            type = "fortressResistance";
         }
         if (line.equals("}")) {
             type = null;
@@ -1233,6 +1240,40 @@ public class TablesGenerator {
         }
     }
 
+    /**
+     * Creates the fortress resistance table insertions for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeFortressResistance(String line, Writer sqlWriter) throws IOException {
+        Matcher m = Pattern.compile("([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*)&([^&]*).*").matcher(line);
+        if (m.matches()) {
+            String title = m.group(1).trim();
+            if (StringUtils.equals("Level", title)) {
+                return;
+            }
+            boolean breach = !StringUtils.equals("Resistance", title);
+            for (int i = 0; i < 6; i++) {
+                String res = m.group(i + 2).trim();
+                int third = 0;
+                int round = 0;
+                Matcher m2 = Pattern.compile(".*(\\d).*").matcher(res);
+                if (m2.matches()) {
+                    round = Integer.parseInt(m2.group(1));
+                }
+                if (res.contains("\\td")) {
+                    third = 2;
+                } else if (res.contains("\\tu")) {
+                    third = 1;
+                }
+
+                addFortressResistanceLine(sqlWriter, i, round, third, breach);
+            }
+        }
+    }
+
     private static String extractCountryFromArmyArtilleryHeader(String header) {
         String country = null;
 
@@ -1339,6 +1380,25 @@ public class TablesGenerator {
                 .append(integerToInteger(fortress)).append(", ")
                 .append(integerToInteger(artillery)).append(", ")
                 .append(integerToInteger(bonus)).append(");\n");
+    }
+
+    /**
+     * Creates an insert for a result.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param fortress  the level of the fortress.
+     * @param round     the resistance of the fortress (round number).
+     * @param third     the resistance of the fortress (third number).
+     * @param breach    if the fortress is breached.
+     * @throws IOException if the writer fails.
+     */
+    private static void addFortressResistanceLine(Writer sqlWriter, int fortress, int round, int third, boolean breach) throws IOException {
+        sqlWriter.append("INSERT INTO T_FORTRESS_RESISTANCE (FORTRESS, ROUND, THIRD, BREACH)\n" +
+                "    VALUES (")
+                .append(integerToInteger(fortress)).append(", ")
+                .append(integerToInteger(round)).append(", ")
+                .append(integerToInteger(third)).append(", ")
+                .append(booleanToBit(breach)).append(");\n");
     }
 
     /**
