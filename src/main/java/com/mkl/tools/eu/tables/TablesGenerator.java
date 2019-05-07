@@ -1460,7 +1460,7 @@ public class TablesGenerator {
      * @throws IOException if the writer fails.
      */
     private static void addAssaultResultLine(Writer sqlWriter, int die, boolean fire, int roundLoss, int thirdLoss, int moral, boolean breach, boolean besieger) throws IOException {
-        sqlWriter.append("INSERT INTO T_ASSAULT_RESULT (DICE, FIRE, ROUNDLOSS, THIRDLOSS, BREACH, BESIEGER)\n" +
+        sqlWriter.append("INSERT INTO T_ASSAULT_RESULT (DICE, FIRE, ROUNDLOSS, THIRDLOSS, MORALELOSS, BREACH, BESIEGER)\n" +
                 "    VALUES (")
                 .append(integerToInteger(die)).append(", ")
                 .append(booleanToBit(fire)).append(", ")
