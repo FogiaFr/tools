@@ -1633,7 +1633,7 @@ public class DataExtractor {
                         country.getCapitals().add(realProv);
                     }
                 } else if (minor.startsWith("\\minorpref")) {
-                    // TODO conception
+                    // TODO TG-18 conception
                 } else if (minor.startsWith("\\minorbasicforces")) {
                     List<Country.Limit> forces = createForces(country, split[1], log);
                     country.getBasicForces().addAll(forces);
@@ -1873,7 +1873,7 @@ public class DataExtractor {
         major.addLimit(5, "LDND_TIMAR");
         major.addLimit(5, "LD");
         major.addLimit(5, "LD_TIMAR");
-//        major.addLimit(5, "PASHAS"); TODO conception pashas
+//        major.addLimit(5, "PASHAS"); TODO TG-5 conception pashas
         major.addLimit(4, "NTD");
         major.addLimit(6, "LDENDE");
         major.addLimit(5, "FORT12");
@@ -1978,7 +1978,7 @@ public class DataExtractor {
         major.addLimit(1, "FORT45");
         major.addLimit(4, "FORT");
         major.addLimit(2, "ARS23");
-        // TODO army pugatchev ?
+        // TODO TG-131 army pugatchev ?
         major.addLimit(5, "COL");
         major.addLimit(5, "TP");
         major.addLimit(10, "TF");

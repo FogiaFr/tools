@@ -374,7 +374,7 @@ public class CounterGenerator {
                     types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARSENAL_3.png", "Arsenal_{0}_4-3_verso.png"));
                     break;
                 case "MISSION":
-                    // TODO missionary can be level 1, 2 or 3. Maybe collusion with leaders. Wait leaders conception.
+                    // TODO TG-5 missionary can be level 1, 2 or 3. Maybe collusion with leaders. Wait leaders conception.
                     break;
                 case "SEPOY":
                     types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_LAND_SEPOY.png", "LD_{0}_*-(Sepoys,Cipayes,Indiers).png"));
