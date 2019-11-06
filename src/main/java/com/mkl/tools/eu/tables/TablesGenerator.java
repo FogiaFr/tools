@@ -48,6 +48,7 @@ public class TablesGenerator {
                 .append("DELETE FROM T_ARTILLERY_SIEGE;\n")
                 .append("DELETE FROM T_FORTRESS_RESISTANCE;\n")
                 .append("DELETE FROM T_ASSAULT_RESULT;\n")
+                .append("DELETE FROM T_EXCHEQUER;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -692,6 +693,8 @@ public class TablesGenerator {
                 computeFortressResistance(line, sqlWriter);
             } else if (StringUtils.equals("assault", type)) {
                 computeAssaultResult(line, sqlWriter);
+            } else if (StringUtils.equals("etatsauvrai", type)) {
+                computeExchequer(line, sqlWriter);
             }
         }
     }
@@ -746,6 +749,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\newcommand\\{\\\\assault\\}\\{").matcher(line);
         if (m.matches()) {
             type = "assault";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\etatsauvrai\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "etatsauvrai";
         }
         if (line.equals("}")) {
             type = null;
@@ -1469,6 +1476,42 @@ public class TablesGenerator {
                 .append(integerToInteger(moral)).append(", ")
                 .append(booleanToBit(breach)).append(", ")
                 .append(booleanToBit(besieger)).append(");\n");
+    }
+
+    /**
+     * Creates the exchequer table insertion for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeExchequer(String line, Writer sqlWriter) throws IOException {
+        Matcher m = Pattern.compile("([^&]*)&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*&\\s*(\\d*)\\s*\\\\%.*").matcher(line);
+        if (m.matches()) {
+            addExchequerLine(sqlWriter, possibilityToResult(m.group(1)), Integer.parseInt(m.group(2)), Integer.parseInt(m.group(3)),
+                    Integer.parseInt(m.group(4)), Integer.parseInt(m.group(5)));
+        }
+    }
+
+    /**
+     * Creates an insert for a exchequer.
+     *
+     * @param sqlWriter         where to write the db instructions.
+     * @param result            the result of the exchequer test.
+     * @param regular           the regular income.
+     * @param prestige          the prestige income.
+     * @param nationalLoan      the maximum national loan.
+     * @param internationalLoan the maximum internation loan.
+     * @throws IOException if the writer fails.
+     */
+    private static void addExchequerLine(Writer sqlWriter, String result, int regular, int prestige, int nationalLoan, int internationalLoan) throws IOException {
+        sqlWriter.append("INSERT INTO T_EXCHEQUER (RESULT, REGULAR, PRESTIGE, NATLOAN, INTERLOAN)\n" +
+                "    VALUES (")
+                .append(stringToString(result)).append(", ")
+                .append(integerToInteger(regular)).append(", ")
+                .append(integerToInteger(prestige)).append(", ")
+                .append(integerToInteger(nationalLoan)).append(", ")
+                .append(integerToInteger(internationalLoan)).append(");\n");
     }
 
     /**
