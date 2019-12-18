@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,10 +51,12 @@ public class TablesGenerator {
                 .append("DELETE FROM T_FORTRESS_RESISTANCE;\n")
                 .append("DELETE FROM T_ASSAULT_RESULT;\n")
                 .append("DELETE FROM T_EXCHEQUER;\n")
+                .append("DELETE FROM T_LEADER;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
         computeGeneralTables(sqlWriter);
+        computeLeader(sqlWriter);
 
         sqlWriter.flush();
         sqlWriter.close();
@@ -191,7 +195,7 @@ public class TablesGenerator {
                                 continue;
                             }
                             String number = leaderLimit.substring(0, leaderLimit.indexOf("\\"));
-                            String leader = getLeaderType(leaderLimit.substring(leaderLimit.indexOf("\\")));
+                            String leader = getLeaderTypeLimit(leaderLimit.substring(leaderLimit.indexOf("\\")));
                             if (!StringUtils.isEmpty(leader)) {
                                 if (StringUtils.isEmpty(number)) {
                                     number = "1";
@@ -489,7 +493,7 @@ public class TablesGenerator {
      * @param input input
      * @return the leader type.
      */
-    private static String getLeaderType(String input) {
+    private static String getLeaderTypeLimit(String input) {
         String type = null;
 
         String toType = input.trim().substring(1).trim();
@@ -1501,7 +1505,7 @@ public class TablesGenerator {
      * @param regular           the regular income.
      * @param prestige          the prestige income.
      * @param nationalLoan      the maximum national loan.
-     * @param internationalLoan the maximum internation loan.
+     * @param internationalLoan the maximum international loan.
      * @throws IOException if the writer fails.
      */
     private static void addExchequerLine(Writer sqlWriter, String result, int regular, int prestige, int nationalLoan, int internationalLoan) throws IOException {
@@ -1512,6 +1516,128 @@ public class TablesGenerator {
                 .append(integerToInteger(prestige)).append(", ")
                 .append(integerToInteger(nationalLoan)).append(", ")
                 .append(integerToInteger(internationalLoan)).append(");\n");
+    }
+
+    /**
+     * Compute the leader.
+     *
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static Map<String, List<String>> computeLeader(Writer sqlWriter) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/leaders.txt")));
+        String line;
+        Map<String, List<String>> leaders = new HashMap<>();
+        while ((line = reader.readLine()) != null) {
+            line = line.trim();
+            Matcher m = Pattern.compile("LEADER;([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);;;(.*)").matcher(line);
+            if (m.matches()) {
+                String value = m.group(10);
+                Matcher mVal = Pattern.compile("([A-Z]) (\\d).(\\d).(\\d) ?\\-?(\\d)?").matcher(value);
+                if (mVal.matches()) {
+                    String name = m.group(1);
+                    String country = m.group(8);
+                    String beginGroup = m.group(6);
+                    String endGroup = m.group(7);
+                    Integer begin = null;
+                    Integer end = null;
+                    String event = null;
+                    if (StringUtils.isNumeric(beginGroup) && StringUtils.isNumeric(endGroup)) {
+                        begin = Integer.parseInt(beginGroup);
+                        end = Integer.parseInt(endGroup);
+                    } else {
+                        event = beginGroup + "-" + endGroup;
+                    }
+                    String rank = mVal.group(1);
+                    int manoeuvre = Integer.parseInt(mVal.group(2));
+                    int fire = Integer.parseInt(mVal.group(3));
+                    int shock = Integer.parseInt(mVal.group(4));
+                    String possibleSiege = mVal.group(5);
+                    int siege = 0;
+                    if (StringUtils.isNotEmpty(possibleSiege)) {
+                        siege = Integer.parseInt(possibleSiege);
+                    }
+                    String typeValue = m.group(9);
+                    String type = getLeaderType(typeValue);
+                    boolean rotw = typeValue.contains("R");
+                    boolean asia = typeValue.contains("@");
+                    boolean america = typeValue.contains("%");
+                    boolean privateer = typeValue.contains("P");
+                    addLeaderLine(sqlWriter, name, country, event, begin, end, rank, manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer);
+                    if (!leaders.containsKey(country)) {
+                        leaders.put(country, new ArrayList<>());
+                    }
+                    leaders.get(country).add(name);
+                }
+            }
+        }
+        return leaders;
+    }
+
+    private static String getLeaderType(String value) {
+        if (value.startsWith("G")) {
+            return "GENERAL";
+        } else if (value.startsWith("A")) {
+            return "ADMIRAL";
+        } else if (value.startsWith("C")) {
+            return "CONQUISTADOR";
+        } else if (value.startsWith("E")) {
+            return "EXPLORER";
+        } else if (value.startsWith("I")) {
+            return "ENGINEER";
+        } else if (value.startsWith("K")) {
+            return "KING";
+        } else if (value.startsWith("g")) {
+            return "GOVERNOR";
+        } else if (value.startsWith("P")) {
+            return "PRIVATEER";
+        }
+        LOGGER.error("Leader type unknown : " + value);
+        return null;
+    }
+
+    /**
+     * Insert a leader database insert line.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param name      of the leader.
+     * @param country   of the leader.
+     * @param event     of the leader.
+     * @param begin     of the leader.
+     * @param end       of the leader.
+     * @param rank      of the leader.
+     * @param manoeuvre of the leader.
+     * @param fire      of the leader.
+     * @param shock     of the leader.
+     * @param siege     of the leader.
+     * @param type      of the leader.
+     * @param rotw      of the leader.
+     * @param asia      of the leader.
+     * @param america   of the leader.
+     * @param privateer of the leader.
+     * @throws IOException if the writer fails.
+     */
+    private static void addLeaderLine(Writer sqlWriter, String name, String country, String event, Integer begin, Integer end,
+                                      String rank, int manoeuvre, int fire, int shock, int siege, String type,
+                                      boolean rotw, boolean asia, boolean america, boolean privateer) throws IOException {
+        sqlWriter.append("INSERT INTO T_LEADER (NAME, R_COUNTRY, EVENT, BEGIN, END, " +
+                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, PRIVATEER)\n" +
+                "    VALUES (")
+                .append(stringToString(name)).append(", ")
+                .append(stringToString(country)).append(", ")
+                .append(stringToString(event)).append(", ")
+                .append(integerToInteger(begin)).append(", ")
+                .append(integerToInteger(end)).append(", ")
+                .append(stringToString(rank)).append(", ")
+                .append(integerToInteger(manoeuvre)).append(", ")
+                .append(integerToInteger(fire)).append(", ")
+                .append(integerToInteger(shock)).append(", ")
+                .append(integerToInteger(siege)).append(", ")
+                .append(stringToString(type)).append(", ")
+                .append(booleanToBit(rotw)).append(", ")
+                .append(booleanToBit(asia)).append(", ")
+                .append(booleanToBit(america)).append(", ")
+                .append(booleanToBit(privateer)).append(");\n");
     }
 
     /**

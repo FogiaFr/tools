@@ -1,0 +1,595 @@
+##Type;Internal code;Surname (>2) or Spelling;Spelling (>2);Counter Spelling (>3);Full name if not "Surname Spelling";First turn or Period;Last turn or Event;Country;Leader Type;Stats;Leader Type 2;Stats 2;Comment
+#Type;NameA;NameB;NameC;NameD;NameE;First turn;Last turn;Country;Leader Type;Stats;Leader Type 2;Stats 2;Comment
+##############################################################
+##
+##          Angleterre
+##
+##############################################################
+LEADER;Raleigh;Walter;Raleigh;;;18;21;angleterre;CR;B 3.2.2;;;Instigator of the lost colony of Roanoke
+LEADER;Smith;John;Smith;;;23;26;angleterre;CR;D 4.2.2;;;Founder of Jamestown
+LEADER;Bradford;William;Bradford;;;27;30;angleterre;gR;A 2.3.3;;;Pilgrim of the Mayflower, Governor of the Plymouth colony
+LEADER;Dudley;Robert;Dudley;;;18;20;angleterre;G;A 3.3.2;;;Commander of British forces in Netherland
+LEADER;Cromwell;Oliver;Cromwell;;;IV;7;angleterre;G;A 4.4.4;;;Military and political leader of the Parliamentarists. Instigator of the New Model Army. Then Lord Protector of the Commonwealth
+LEADERDOUBLE;Duke of York;James II;Duke of York;;James II, Duke of York;IV;7;angleterre;G;A 2.3.4;A;A 2.3.4;James II of England, brother of Charles II, heir to the throne in 1685. Last catholic ruler in England
+LEADER;Montrose;James Graham;Montrose;;;IV;7;royalistes;G;B 4.2.3;;;Scottish Covenanter, he led the royalists forces against the Scots and won the battle of Kilsyth
+## LEADER;Royal Marines;;;;;V;4;angleterre;G;H 4.4.4 -3;;;The Royal Marines battalions, during the War of Spanish Succession. Took and Defended the Gibaltar's mole
+LEADER;Prince Charles;Charles Edward Stuart;Prince Charles;;Prince Charles Edward Stuart;VI;4;royalistes;G;A 2.2.4;;;Great grandson of Sobieski. Bonnie Prince Charlie during the Jacobite Rebellion. Severly defeated at Culloden, he managed to escape capture and lived in exile afterwards
+LEADER;Marlborough;John Churchill, 1st Duke of Marlborough, Prince of Mindelheim;Marlborough;;John Churchill, 1st Duke of Marlborough, Prince of Mindelheim;43;46;angnomalus;G;A 5.5.6 -2;;;One of the greatest leaders of England, fought 10 campaigns against France, mostly in Flandres. Victorious at Blenheim, Ramillies, Oudenaarde, Malplaquet
+##LEADER;Marlborough;John Churchill;Marlborough;;;43;46;angleterre;G;A 5.5.6 -2;;;One of the greatest leaders of England, fought 10 campaigns against France, mostly in Flandres
+LEADER;Clive;Robert;Clive;;;53;58;angleterre;C@;J 4.6.6;;;Commander who established the military supremacy of the East India Company in Southern India and Bengal
+LEADER;Wolfe;James;Wolfe;;;53;57;angleterre;G$;C 4.4.5;;;Conqueror of Canada. Killed at the Battle of the Plains of Abraham while taking Québec
+LEADER;Amherst;Jeffery;Amherst;;;54;58;angleterre;G$;B 3.3.1 -1;;;Commander in North America, helped the British seize most French territory in Canada
+LEADER;Carleton;Guy;Carleton;;;56;60;angleterre;g$;E 4.3.3;;;Governor of British Québec. Repelled an American invasion during the American Revolution
+LEADER;Burgoyne;John;Burgoyne;;;57;62;angleterre;G$;B 2.2.2;;;General during the American Revolution. Loser of Saratoga
+LEADER;Hastings;Warren;Hastings;;;57;59;angleterre;g@;D 5.1.1;;;Brilliant governor of India
+LEADERDOUBLE;Howe;Richard and William;Howe;;;58;60;angleterre;G$*;A 1.3.3;A$;A 2.2.2;Two brothers, leaders of the English army during the American Revolution
+LEADER;Cornwallis;Charles;Cornwallis;;;58;62;angleterre;gR;B 2.2.3;;;Last Commander of British North America, became governor in India afterwards
+LEADER;Murray;James;Murray;;;55;60;angleterre;GR;G 4.2.2;;;Defender of Minorca during the American Revolution
+LEADER;Moore;John;Moore;;;61;62;angleterre;GR;E 3.2.3;;;Served in India, later hero of the Peninsula War
+###################### Begin Sea hounds
+LEADER;Drake;Francis;Drake;;Francis Drake;17;24;angseahound;AR♥;C 5.5.6;;;The best English seahound. Explorer of South America. Raided Panama. First English circumnavigation
+LEADER;Hawkins;John;Hawkins;;;17;24;angseahound;AR;B 3.3.5;;;An English privateer. Chief architect of the rebuilding of the Elisabethan navy
+LEADER;Frobisher;Martin;Frobisher;;;18;21;angseahound;ER;J 4.5.2;;;Explored the North searching for the Northwest Passage and fought the invincible Armada
+LEADER;Cavendish;Thomas;Cavendish;;;20;21;angseahound;ER;L 5.4.4;;;First Englishman that tried to circumnavigate the globe
+###################### End Sea hounds
+LEADER;Howard;Charles Howard of Effingham;Howard;;Charles Howard of Effingham;19;25;angleterre;APR;A 3.5.4;;;Defeater of the Invincible Armada
+LEADER;Grenville;Richard;Grenville;;;20;23;angleterre;EPR;K 4.4.2;;;Lead the Roanoke expedition
+LEADER;Hudson;Henry;Hudson;;;24;26;angleterre;ER;J 5.3.2;;;Explorer of the Artic Ocean and North America
+##LEADERDOUBLE;Kirke;David;Kirke;;;28;32;royalistes;ER*;F 4.2.3;A;F 2.2.3;Newfoundland discoverer, takes the side of Royalists
+LEADER;Kirke;David;Kirke;;;28;32;angleterre;ER;F 4.2.3;;;Discovered Newfoundland. Later took the side of Royalists
+LEADERDOUBLE;Monck;George;Monck;;;30;38;angleterre;G;B 3.3.3;A;A 4.5.3;Duke of Albemarle. Fought in Scotland and Ireland for the Royalist then for the Commonwealth. Later admiral of the Anglo-Dutch wars
+LEADER;Ayscue;George;Ayscue;;;33;39;angleterre;A;F 2.3.2;;;Defeated at the Plymouth battle by Ruyter, later captured by Tromp at the Four Days' battle
+LEADERDOUBLE;Blake;Robert;Blake;;;31;37;angleterre;GR;A 2.2.3 -1;AR;A 4.4.4;Parliamentarist commander later made General at sea. \emph{Father of the Royal Navy}, he build the Navy and issued its first set of regulations. Fought at sea against Royalists, Dutch, Barbary pirates and Spanish
+LEADER;Radisson;Pierre-Esprit;Radisson;;;36;40;angleterre;E$;G 5.1.1;;;French adventurer that helped found the Hudson bay company
+LEADER;Torrington;Arthur Herbert, Earl of;Torrington;;;40;44;angleterre;A;E 2.2.3;;;Admiral who carried the \emph{invitation to William} III in England. Looser at Beachy Head. Credited with the concept of \emph{Fleet in being}
+LEADER;Russell;Edward;Russell;;;41;47;angleterre;A;B 3.1.2;;;Earl of Orford, one of the "immortal seven", signing the \emph{Invitation to William}. Victor of the battle of Barfleur-Cherbourg-La Hougue. First English commander to over-winter at Cadix rather than in England
+LEADER;Benbow;John;Benbow;;;42;45;angleterre;AR;B 3.2.4;;;Admiral who took many actions against privateers and pirates, both from Barbary coast, France (St Malo) and West Indies. Failed to seize the Spanish gold fleet
+LEADER;Rooke;George;Rooke;;;41;44;angleterre;A;A 3.4.3 -1;;;Distinguished at la Hougue. Helped \monarque{Charles XII} land in Copenhagen. Attempted to take Cadix and then took Gibraltar during the War of Spanish Succession
+LEADER;Boscawen;Edward;Boscawen;;;48;54;angleterre;AR;E 5.4.3 -1;;;Dinstinguished at Portobello. Failed to take Pondicherry. Took Louisbourg and won the battle of Lagos
+LEADER;Anson;George;Anson;;;50;52;angleterre;EPR;D 4.2.4;;;Captured one galeon of Manila and circumnavigated the globe. Victor at the First Battle of Cape Finisterre
+LEADER;Byng;John;Byng;;;51;54;angleterre;A;C 2.1.2;;;Held responsible for the loss of Minorca, court-martialed and executed
+LEADER;Hawke;Edward;Hawke;;;51;55;angleterre;AR;C 4.3.3;;;Victor of the battle of Quiberon Bay
+## LEADER;Saunders;Charles;Saunders;;;52;57;angleterre;AR;B 4.1.3;;;Successor to Boscawen
+LEADER;Hughes;Edward;Hughes;;;57;61;angleterre;A@;C 3.3.4;;;Admiral in India who fought many battles against Suffren avoiding disaster each time
+LEADER;Cook;James;Cook;;;56;60;angleterre;ER;J 6.1.1;;;Charted the St Lawrence while carrying Wolfe to Québec. Reached Australia, New-Zealand and Hawaii where he was killed by natives
+LEADER;Rodney;George;Rodney;;;56;60;angleterre;AR;A 3.3.3;;;Victor of the Battle of Saintes
+LEADER;Hood;Samuel;Hood;;;58;62;angleterre;AR;B 2.4.4;;;Resisted the attack of St Kitts
+LEADER;Nelson;Horatio;Nelson;;;61;62;angleterre;AR;C 6.6.6;;;The vanquisher of France at Abukir Bay and again at Trafalgar where he was killed
+##############################################################
+##
+##         France
+##
+##############################################################
+LEADER;Verrazzano;Giovanni da;Verrazzano;;;7;9;france;ER;D 5.1.2;;;Mapped the East coast of North America
+LEADER;Cartier;Jacques;Cartier;;;9;12;france;ER;M 4.2.2;;;Discovered Canada and Saint-Lawrence
+LEADER;Annebault;Claude;d’Annebault;;;11;14;france;A;B 2.3.3;;;Amiral de France, took Wight (Battle of the Solent)
+LEADER;Ribault;Jean;Ribault;;;15;16;france;CR;P 3.2.2;;;Explored Florida
+LEADER;Bretigny;Charles Poncet de;Bretigny;;;35;37;france;E$;O 4.2.2;;;Founder of Cayenne
+LEADER;Sourdis;Henri d'Escoubleau de;Sourdis;;;30;31;france;AR;B 2.3.3;;;Archbishop of Bordeaux. Commander of the artillery during the siege of La Rochelle. Fought many battles against Spain, loosing most of them
+LEADER;Duquesne;Abraham Duquesne, baron d'Indret;Duquesne;;Abraham Duquesne, baron d'Indret;34;40;france;Am;C 3.3.3;;;Fought against Spain during the Thirty Years War. Swedish admiral against Denmark before coming back to France. Supporter of Louis XIV during the Fronde. Fought many battles in the Mediterranean but lacked offensive spirit
+LEADER;Chateaurenault;François Louis Rousselet de;Châteaurenault;;;38;43;france;AR;C 4.4.5;;;Victorious at the battles of Bantry Bay, Beachy head and Lagos. Defeated at Vigo. Later made governor in Brittany
+LEADER;Tourville;Anne Hilarion de Costentin de;Tourville;;;39;42;france;A;B 4.3.5;;;Great French adimral, won many battles against English and Dutch alike. Also interested in shipbuilding and training of officiers
+LEADERDOUBLE;La Bourdonnais;Bertrand-François Mahé de;La Bourdonnais;;;50;52;france;A@;G 3.4.3 -1;g@;G 5.3.3;Governor of Bourbon island who introduced sugar and built the main ports. Later amiral in India, relieved Dupleix in Pondichéry and took Madras
+LEADERDOUBLE;La Galissonniere;Rolland-Michel Barrin de;La Galissonnière;;;51;53;france;A;I 5.2.3;g$;I 4.2.3;Governor of Québec who first designed the line of forts toward Lousianna. Then admiral who took Minorque from the English
+LEADER;Conflans;Hubert de Brienne de;Conflans;;;55;57;france;A;A 1.2.2;;;Looser at Quiberon Bay
+LEADER;de Grasse;François Joseph Paul;de Grasse;;;56;60;france;AR;A 3.3.3;;;Beaten at Saintes, but victor at the battle of Chesapeake
+LEADER;La Perouse;Jean-François de;La Pérouse;;;59;62;france;ER;K 3.1.1;;;Lead a Pacific expedition that went round America, to Hawai, Alaska, California, Kamtchaka, China and Australia but got lost in Vanuatu
+##LEADER;Coeuvres;Victor Marie d’Estrées;Cœuvres;;;40;46;france;APR;C 2.2.3;;;Took part of the battles of Beachy-head and Lagos. Arrived to late at Barfleur. Lead Phillipe V in Napoli to be recognised as king
+LEADER;Maille-Breze;Jean Armand de;Maillé-Brézé;;;30;34;france;A;A 3.3.4;;;Nephew of Richelieu, admiral in chief at 20, beat the Spanish several times
+LEADER;Coeuvres;Victor Marie;Cœuvres;;Victor Marie d'Estrées, comte de Cœuvres;40;46;france;A;B 2.2.3;;;Took part of the battles of Beachy-head and Lagos. Arrived to late at Barfleur. Lead Phillipe V in Napoli to be recognised as king
+LEADER;Esnambuc;Pierre Belain;d’Esnambuc;;;23;27;france;PR;E 3.3.3;;;Raided the Antillas then first French to colonise Martinique and lesser Antillas
+LEADER;Suffren;Pierre André de;Suffren;;;57;60;france;A@;C 5.4.6;;;Greatest French admiral. Served in the Mediterranean. During the American Revolution, he won many battles in India and kept the English from total see domination
+################ Begin licensed privateers
+LEADER;Bart;Jean;Bart;;;38;43;fralicense;P;F 5.4.5;;;Privateer from Dunkirk who took many ships, English, Spanish and Dutch alike. Salvage a grain convoy, thus saving Paris from starvation
+LEADER;Estrees;Jean 2;d’Estrées;;;36;40;fralicense;APR;C 2.2.3;;;Privateer in America. Father of Cœuvres
+LEADER;Forbin;Claude de;Forbin;;;40;44;fralicense;P;G 4.4.4;;;Present at Beachy-Head, la Hougue and Lagos. Privateer under Bart in the North sea. Successful privateer and pirate-hunter in the Medditerranean and North seas
+LEADER;Duguay-Trouin;René Trouin du gué;Duguay-Trouin;;René Duguay-Trouin;41;49;fralicense;APR;C 5.3.4;;;Privateer in the Channel and North sea. Victor at the Battle at The Lizard. Took Rio de Janeiro
+LEADER;Cassard;Jacques;Cassard;;;44;48;fralicense;PR;E 5.2.4;;;Privateer in the Irish and Mediterranean seas. Escorted a food convoy, saving Marseilles from hunger. Freed Vendôme from a blockade in Catalogne. Took many English and Dutch establishments in Antillas. Kept few personal gain from these expeditions, ended up in poverty and died in prison after insulting Fleury
+################# End licenced privateers
+LEADER;Tremoille;Louis II de;La Trémoille;;;1;7;france;G;A 4.3.3;;;General during the wars in Brittany and in Italy. Victorious at Fornovo and Agnadello. Died at the battle of Pavia
+LEADER;Foix;Odet de;Foix;;;5;9;france;G;A 3.2.3 -1;;;General during the wars in Italy. Governor of Milan. Took Genoa and Pavie. Died besieging Napoli
+LEADER;Bayard;Pierre Terrail de;Bayard;;;3;8;france;G;B 1.1.6;;;\emph{Chevalier sans peur et sans reproche}. Brillant soldier in Italy, illustrated himself at Garigliano, Agnadello and Marignan. Governor of Dauphiné. Died in battle and was mourned by friends and foes alike
+LEADER;F. Guise;François de Guise;F. Guise;;François de Guise;12;15;france;G;A 2.2.4 -1;;;2nd duke of Guise. Fought in Flandern and Lorraine during the wars of Italy, took Calais back from the English. De facto regent during the reign of François II, murdered at the beginning of the wars of religion
+LEADER;Montmorency;Anne de;Montmorency;;;9;16;france;G;A 3.3.3;;;Connetable of France. Personnal friend of François Ier and Henri II. Took part in all the wars in Italy. Stayed faithful to the king during the wars of religion
+LEADER;Roberval;Jean-François de la Roque de;Roberval;;;11;14;france;EPR;L 3.3.2;;;Explored Canada and the Northwest passage. Protestant, he was murdered in Paris at the beginning of the Wars of Religion
+LEADER;Champlain;Samuel de;Champlain;;;23;29;france;CR;O 4.4.4;;;Extensively explored Canada and the Eastern American coast. Founder of Québec and Montréal
+LEADER;Grand Conde;Louis II de Bourbon-Condé;Grand Condé;;Louis II de Bourbon-Condé;31;39;france;G;A 4.3.4;;;Victorious at Rocroy and Nördlingen. Revolted during the Fronde. Later general of Louis XIV
+LEADER;Turenne;Henri de La Tour d'Auvergne, vicomte de;Turenne;;;33;40;france;G;B 5.4.6 -1;;;Marshall-General of Louis XIII and Louis XIV. Victorious at Nördlingen. Revolted at the beginning of the Fronde but beat Condé at the battle of the Dunes. Killed winning the battle of Salzbach
+LEADER;Luxembourg;François-Henri de Montmorency-Luxembourg;Luxembourg;;François-Henri de Montmorency-Luxembourg;35;41;france;G;E 2.3.4;;;Rebelled during the Fronde. General in Holland, fought many campaigns against William and the Anglo-Dutch. Victorious at Neerwinden
+LEADER;Vauban;Sébastien Le Prestre de;Vauban;;;37;44;france;I;F 1.1.1 -4;;;Military engineer who perfected the art of fortification and siege. Fortified around 300 cities, built 37 new fortresses and succesfully besieged more than 70. Also precursor of the enligthnement of the 18th
+LEADER;Frontenac;Louis de Buade de;Frontenac;;;38;42;france;g$;M 4.4.2 -1;;;Governor in Canada. Crushed Iroquois attacks and British siege on Québec
+LEADER;La Salle;René-Robert Cavelier de;La Salle;;;39;42;france;CR;P 6.2.3;;;Canoed down the Mississippi and explored Louisiana
+LEADER;Iberville;Pierre Le Moyne;d’Iberville;;;40;43;france;G$;D 4.3.3;;;Attacked British settlements in Hudson Bay, Newfoundland and Antilles
+LEADER;Bienville;Jean-Baptiste Le Moyne de;Bienville;;;43;51;france;g$;M 3.3.2;;;Brother of d'Iberville. Governed Lousiana, founder of New-Orleans
+LEADER;Villars;Claude Louis Hector de;Villars;;;40;49;france;G;D 4.5.5 -1;;;Marshall-General of Louis XIV, crushed the Huguenot revolt in Cévennes. Defeated at Malpaquet, but victorious at Denain. Managed to keep Eugen and Marlborough from invading France
+LEADER;Vendome;Louis-Joseph de;Vendôme;;;41;45;france;G;C 4.3.3;;;Marshal during the War of Spanish Succession in Italy, Flandres and finally Spain. Beaten at Oudenarde but victorious at Villaviciosa
+LEADER;Catinat;Nicolas de;Catinat;;;42;44;france;G;A 2.3.3;;;Victorious against Savoia during the League of Augsburg but unsuccessful against Eugen during the War of Spanish Succession
+LEADER;Berwick;Jacques Fitz-James, duc de;Berwick;;;43;49;france;G;B 4.2.3;;;Illegitimate son of James II, became French after the Glorious revolution. Served successfully in Spain during the War of Spanish Succession. Died besieging Philippsburg
+LEADER;Dupleix;Joseph François;Dupleix;;;50;53;france;C@;O 4.6.6;;;Commander in chief in India
+LEADER;Lally;Thomas Arthur de Lally-Tollendal;Lally;;Thomas Arthur de Lally-Tollendal;51;54;france;g@;F 5.4.4;;;Governor in India. He was accused of the loss of French India, imprisonned and executed
+LEADER;Richelieu;Louis François Armand de Vignerot du Plessis de;Richelieu;;;52;54;france;G;A 3.4.2;;;Took a important part in the victory of Fontenoy and later in the siege of Minorca. Invaded Hanover during the Seven Years War. Personnal friend of Louis XV, he became a proeminent statesman and diplomat. Womaniser, he was married three times
+LEADER;Vaudreuil;Pierre de Rigaud de;Vaudreuil;;;52;56;france;g$;K 3.3.4;;;Last governor of Canada. Left Québec for Montréal where he was forced to surrender
+LEADER;Montcalm;Louis-Joseph de;Montcalm;;;53;57;france;G$;J 3.4.6;;;Commander in chief in Canada, killed while defending Québec
+LEADER;Broglie;Victor-François;de Broglie;;;53;58;france;G;B 4.4.4;;;Great commander in Germany during the Seven Years War. Governor in Alsace and later general of the anti-revolutionnary army. Ancestor of the Nobel laureate physicist
+LEADER;Bussy;Charles Joseph Patissier de Bussy-Castelnau;Bussy;;;54;55;france;C@;K 5.4.5;;;Commander in India
+LEADER;Bougainville;Louis Antoine de;Bougainville;;;55;59;france;ER;K 4.4.4;;;Made the first French circumnavigation. Explored the Falklands, Tahiti, and the Solomon
+LEADER;Rochambeau;Jean-Baptiste Donatien de Vimeur de;Rochambeau;;;58;60;france;GR;A 1.2.2;;;Sent in America to officially help the Revolution
+LEADER;Benyowsky;Maurice Auguste de;Benyowsky;;;57;58;france;g@;E 3.2.2;;;Became ``king'' of Madagascar
+##############################################################
+##
+##        Révolutionnaires
+##
+##############################################################
+LEADER;Bonaparte;Napoléon;Bonaparte;;;VII;5(2);revolutionnaires;G;B 6.6.6 -3;;;General of the Revolution, later first Consul and Emperor who almost conquered Europa
+LEADER;Dumouriez;Charles-François;Dumouriez;;;VII;5;revolutionnaires;G;B 2.3.2;;;Commanded on the Rhine and in Flandres. Kept sympathies with Louis XVI and was thus considered traitor and forced into exile in England
+LEADER;Jourdan;Jean-Baptiste;Jourdan;;;VII;5;revolutionnaires;G;B 4.2.3 -1;;;Victorious at Fleurus. General in Belgium and in Germany
+LEADER;Marceau;François Séverin;Marceau;;;VII;5;revolutionnaires;G;F 5.2.6;;;Fought against the Chouans. Killed in Germany at the Battle of Altenkirchen
+LEADER;Kleber;Jean-Baptiste;Kléber;;;VII;5;revolutionnaires;G;C 6.2.2;;;Fought against the Chouans. He stayed in Egypt after Napoleon left for France and was murdered in Cairo
+LEADER;Kellermann;François Christophe;Kellermann;;;VII;5;revolutionnaires;G;B 3.5.3;;;Stopped the allies at Valmy. Imprisonned during the Terror. Later general of the Empire
+LEADER;Hoche;Lazare;Hoche;;;VII;5;revolutionnaires;G;A 4.4.4;;;Defended Dunkirk against an English invasion. Successful general on the Rhine. Imprisonned during the Terror. Fought against the Chouans. Died in illness
+LEADER;Massena;André;Masséna;;;VII;5;revolutionnaires;G;C 3.4.3 -1;;;General in Italy and on the Danube. Saved France from the russian and austrian invasion at Zurich
+LEADER;Joubert;Barthélemy Catherine;Joubert;;;VII;5;revolutionnaires;G;C 3.3.3;;;Brillantly seconded Bonaparte in Italy. General in Holland, Germany and Italy. Died loosing at Novi
+LEADER;Pichegru;Jean-Charles;Pichegru;;;VII;5;revolutionnaires;G;D 4.4.4 -1;;;Brillant general in Flandres who charged and captured a Dutch fleet frozen in Den Helder
+##Special: may attack fleet
+LEADER;Moreau;Jean Victor Marie;Moreau;;;VII;5;revolutionnaires;G;B 4.4.3;;;Very successful on the Rhine and in Belgium. Succeded Bonaparte in Italy. Victor at Hohenlinden
+LEADER;Brueys;François Paul de Brueys d'Aigalliers;Brueys;;François Paul de Brueys d'Aigalliers;VII;5;revolutionnaires;A;B 2.2.3;;;Died losing the Battle of the Nile
+LEADER;Villeneuve;Pierre Charles Silvestre de;Villeneuve;;;VII;5;revolutionnaires;AR;B 4.2.2;;;Looser at Trafalgar. Killed himself afterwards
+##############################################################
+##
+##        Espagne
+##
+##############################################################
+LEADER;Carlos I;Karl V;Carlos I;;Karl V;I;A;espagne;K;A 2.2.3;;;Greatest Habsburg monarch. Built an empire "\emph{on which the sun never sets}" including Spain, Netherlands, Germany, Austria, most of Italy, large parts of the Americas, Philippines. Suffering from gout, he finally abdicated and later died of malaria
+LEADER;Ojeda;Alonso de;Ojeda;;;2;5;espagne;CR;G 3.4.4;;;Explored the northern coast of South America
+LEADER;Gran Capitan;Gonzalo Fernández de Córdoba;Gran Capitán;;Gonzalo Fernández de Córdoba;2;6;espagne;G;A 4.4.4;;;Fought in the conquest of Granada. Got his title in the Italian wars where he manage to drive the French out of the Kingdom of Napoli. Stopped the ottomans in Greece
+LEADER;Balboa;Vasco Núñez de;Balboa;;;3;6;espagne;CR;H 4.2.2;;;First European to see the eastern shores of Pacific
+LEADER;Leon;Juan;Ponce de León;;;4;6;espagne;CR;I 3.2.2;;;Discoverer of Florida, searching for the Fountain of Youth
+LEADER;Cortes;Hernán;Cortés;;;6;10;espagne;CR;F 5.6.6;;;Conqueror of the Aztec Empire. Famously scuttled his ships after landing. Later part of a failed Spanish attack on Algiers
+LEADER;Cordoba;Francisco Hernández de;Córdoba;;;6;8;espagne;CR;J 4.3.2;;;Discoverer of Nicaragua
+LEADER;Grijalva;Juan de;Grijalva;;;7;8;espagne;CR;L 4.2.2;;;Explorer of Southern Mexico
+LEADER;Pizarro;Francisco;Pizarro;;;8;12;espagne;CR;K 4.4.4 -1;;;Conquerer of the Inca Empire
+LEADER;de Soto;Henando;de Soto;;;10;13;espagne;CR;L 6.2.2;;;Explorer of Florida. First european to cross the Mississippi
+LEADER;Coronado;Francisco Vásquez de;Coronado;;;11;13;espagne;CR;M 5.2.1;;;Explorer of Sonora and south of the USA
+LEADER;Orellana;Francisco de;Orellana;;;11;14;espagne;CR;M 4.2.2;;;He sailed the length of the Amazon river
+LEADER;Valdivia;Pedro de;Valdivia;;;11;15;espagne;CR;L 4.4.6;;;Explorer of Chile
+LEADER;Duque de Alva;Fernando Álvarez de Toledo;Duque de Alva;;Fernando Álvarez de Toledo, Duque de Alva;12;19;espagne;G;B 3.4.4;;;Duke of Alba, the ``Iron Duke''. Governor of Netherlands where he bloodily tried to crush the revolt
+LEADER;Garay;Juan de;Garay;;;16;19;espagne;CR;D 4.3.2;;;Founder of Santa Fé and Buenos Aires
+LEADER;Toledo;Francisco de;Toledo;;;16;17;espagne;gR;D 4.2.2;;;Viceroy of Peru, he had to execute Tupac Amaru
+LEADERDOUBLE;Don Juan;de Austria;Don Juan;;;17;23;espagne;G*;A 2.3.4;Am;A 1.4.4;illegitimate son of Charles V. Crushed the Granada revolt. Victor at Lepanto
+LEADER;Farnese;Alessandro, third Duke of Parma;Farnese;;Alessandro Farnese, Duke of Parma;17;23;espagne;G;B 3.4.4;;;Illegitimate grandson of Charles V. Fought at Lepanto. In Netherlands, he successfully played the divisions of his ennemies to secure Wallonia then marched into Brabant and Flanders until he finally took Antwerp. Sent in France, he relieved Paris and was wounded relieving Rouen
+LEADER;Antonelli;Gian Battista;Antonelli;;;20;22;espagne;I$;D 2.3.1 -2;;;Italian engineer sent to improve forteresses in Spanish Indies
+LEADER;Onate;Juan de;Oñate;;;22;25;espagne;CR;F 3.4.4;;;Explorer of Oklahoma and Kansas, convicted of treason
+LEADER;Spinola;Ambrogio Spinola Doria;Spinola;;Ambrogio Spinola Doria;23;30;espagne;G;C 3.5.4 -1;;;Genoese Condottiere working for Spain. Served in Flanders and Palatinate. Took Breda after almost one year of siege
+LEADER;Cardinal-Infante;Don Fernando de Austria;Cardinal-Infante;;;29;34;espagne;G;B 4.4.5 -2;;;Arshbishop of Toledo, Governor in Nethelands. Victorious at the first battle of Nördlingen. Won several battles and sieges in Netherlands and lost some. Died of illness and exhaustion
+##LEADER;Virrey;Viceroy;Virrey;;Virrey;47;50;espagne;GR;B 1.2.2;;;Poor overall quality of the Spanish governors
+LEADER;Montiano;Manuel de;Montiano;;;49;54;espagne;G$;D 1.2.3;;;Defended Florida and launched a failed invasion of Georgia during the War of Jenkin's ear
+LEADER;Galvez;Bernardo de;Gálvez;;;56;62;espagne;g$;A 3.2.3;;;Governor of Louisiana during the American Revolution
+LEADER;Colon;Cristobal;Colón;;;1;3;espagne;ER;H 6.1.1;;;Known in English as Columbus, (re-)discoverer of America
+LEADER;Pinzon;Vincente Yáñez;Pinzón;;;3;7;espagne;ER;I 5.2.3;;;Discoverer of Amazonia
+LEADER;Solis;Juan Díaz de;Solís;;;4;7;espagne;ER;J 4.4.2;;;Discoverer of central America and Rio de la Plata
+LEADER;Magallanes;Hernando de;Magallanes;;;6;9;espagne;ER;H 6.4.2;;;Born as Fernão de Magalhães, crossed the Pacific Ocean. Lead the first Circumnavigation but died before completing it
+LEADER;Santa Cruz;Álvaro de Bazán, Marques de;Santa Cruz;;;13;20;espagne;AR;A 3.4.4;;;Third in command at Lepanto, taker of Tunis, victorious against French in Azores. Advocated the Invincible armada but fell out of grace before being able to command it
+LEADER;Medina Sidonia;Alonso Pérez de Guzmán, Dúque de;Medina Sidonia;;;20;23;espagne;A;A 2.2.2;;;Commander of the Invincible Armada because of high rank and faith despite his lack of military experience, he lead it to the disaster of Gravelines
+LEADER;Recalde;Juan Martínez de;Recalde;;;18;25;espagne;A;C 2.3.3;;;Experienced captain, opposed to Drake. Knight of Santiago. Second in command of the Armada, he died shortly after returning to Spain.
+##LEADER;Valdez;Diego Flores de;Valdez;;;18;25;espagne;A;F 2.2.3;;;Chief of Staff of Medina Sidona
+LEADER;Bertendona;Don Martín de;Bertendona;;;19;23;espagne;A;F 2.2.3;;;Defended Atlantic during the Portuguese succession. One of the commander of the Armada. Kept command in the Atlantic and focused on the construction of new ships
+##LEADER;F Spinola;Federigo Spinola Doria;F Spinola;;Federigo Spinola Doria;23;30;espagne;A;E 3.3.2;;;Brother of Ambrosia, died prematurely
+LEADER;Oquendo;Antonio de;Oquendo;;;24;30;espagne;AR;E 3.3.2;;;Admiral of the treasure fleet. Victorious at Albrolhos but sevearly beaten at The Downs
+LEADER;Don Fadrique;Fadrique Álvarez de Toledo, Marquis of Villanueva de Valdueza;Don Fadrique;;Fadrique Álvarez de Toledo, Marquis of Villanueva de Valdueza;26;29;espagne;AR;B 3.3.3;;;Took back Salvador da Bahia from the Dutch and razed english settlements at St Kitts and Nevis
+##LEADER;Benavides;Juan de;Benavides;;;26;29;espagne;AR;C 3.1.3;;;Lost the Silver fleet to Heyn
+LEADER;Cordova;Luis de Córdova y Córdova;Córdova;;Luis de Córdova y Córdova;53;59;espagne;A;B 3.3.3;;;Captured an english convoy at Cape St Vincent but failed to stop the relief fleet of Gibraltar at Cape Spartel
+LEADER;Blas de Lezo;Blas de Lezo y Olavarrieta;Blas de Lezo;;Blas de Lezo y Olavarrieta;45;50;espagne;AR;B 5.3.3 -1;;;Succesfull convoy commander during the War of Spanish Succession. Fought pirates off the Coast of Peru. Victorious at Carthagena. Lost many body parts in various battles
+##############################################################
+##
+##         Autriche
+##
+##############################################################
+##LEADER;Matthias;of Austria;Matthias;;;21;24;habsbourg;G;A 3.2.4;;;Brother of Rudolf II, finally became Emperor
+## LEADER;Wallenstein;Albrecht Wenzel Eusebius von;Wallenstein;;;IV;A;mercenaires;G;A 4.5.5 -1;;;Great general during the Thirty Years war, almost made a kingdom for himself in Germany. Duke of Friedland, Admiral of the North and Baltic seas. Victorious many times, he was defeated at Lützen. Finally charged for treason and murdered, maybe on Imperial orders
+LEADER;Wallenstein;Albrecht Wenzel Eusebius von;Wallenstein;;;IV;A;habmercenaires;G;A 4.5.5 -1;;;Great general during the Thirty Years war, almost made a kingdom for himself in Germany. Duke of Friedland, Admiral of the North and Baltic seas. Victorious many times, he was defeated at Lützen. Finally charged for treason and murdered, maybe on Imperial orders
+LEADER;Pappenheim;Gottfried Heinrich, Graf zu;Pappenheim;;;27;32;habsbourg;G;A 3.4.3;;;Courageous cuirassier during the Thirty Years war, served as cavalery commander under Tilly and Wallenstein. Present at White mountain, at the sack of Magdeburg, at Breitenfeld and at Lützen were he was killed
+LEADER;Montecuccoli;Raimondo;Montecuccoli;;;32;38;habsbourg;G;A 4.4.3 -1;;;Outstanding military expert and military writer. Brilliant NCO during the Thirty Years War, he was wounded at Breitenfeld and Lützen. Later commander in Poland and Denmark against the Swedes. He brilliantly stopped the Turks at St Gotthard. Later, he skilfully outmaneuvered both Turenne and Condé
+LEADER;Charles V Lorraine;Karl V Leopold;Charles V de Lorraine;;Charles V Léopold de Lorraine;37;40;habsbourg;G;B 4.2.4 -1;;;General of Hungarian wars. Took Murau. Served at Philippsburg and Vienna. Took Buda and conquered Transylvania
+LEADER;TurkenLouis;Ludwig Wilhelm I, margrave von Baden-Baden;TürkenLouis;;Ludwig Wilhelm I, margrave von Baden-Baden;39;44;habsbourg;G;C 4.3.4;;;\emph{Shield of the Empire}, he defended Hungary, severly beating the Turks at Slankamen and fortifiying the frontier. Then general in Flandres and Germany, he conquered Landau thus preventing Bavarian reinforcements at Blenheim
+LEADER;E Starhemberg;Ernst Rüdiger, Graf von;E. Starhemberg;;Ernst Rüdiger, Graf von Starhemberg;39;42;habsbourg;I;D 2.3.2 -1;;;Defender of Vienna during the siege of 1683 and besieger of Buda in the following years
+LEADER;G Starhemberg;Guido Wald Rüdiger, count of Starhemberg;G. Starhemberg;;Guido Wald Rüdiger, count of Starhemberg;43;48;habsbourg;G;D 3.3.3 -1;;;Cousin of Ernst. Commander in Spain. Victorious at Saragossa, he took Madrid but could not hold it. Beaten at Villaviciosa, he retraited to Catalonia and held Barcelona
+LEADER;Commercy;Charles François de Lorraine, prince de;Commercy;;;40;45;habsbourg;G;E 4.2.4;;;Hero of Hungarian wars. Advisor of Eugen, present at Buda and Belgrade. Commander in Italy during the War of Spanish Succession, he was killed at the battle of Luzzara
+LEADER;Prinz Eugen;Franz von Savoyen-Carignan;Prinz Eugen;;Franz von Savoyen-Carignan;40;49;habsbourg;G;A 5.5.5 -1;;;Great opponent of Louis XIV, hero of the War of Spanish Succession. Victorious at Blenheim, Oudenarde, Malpaquet and many others
+LEADER;Traun;Otto Ferdinand Graf von Abensperg und;Traun;;;49;52;habsbourg;G;C 3.3.3 -1;;;Lead the Italian campaigns of the Wars of Polish and Austrian Succession
+LEADER;Daun;Leopold Josef, Graf von;Daun;;;50;55;habsbourg;G;B 4.4.4;;;Great opponent of Frederick II of Prussia. Relieved Prague, victorious at Kolin and Hochkirch but beaten at Torgau
+LEADER;Browne;Maximilian Ulysses, Graf von;Browne;;;52;57;habsbourg;G;C 3.3.4;;;Skilfully slowed Frederick's advance in Silesia during the War of Austrian Succession. Field marshal during the Seven years war. Deadly wounded at the battle of Prague
+LEADER;Nadasdy;Franz Leopold von;Nádasdy;;;53;58;habsbourg;G;G 4.2.3;;;Hungarian Hussard. Served in Bavaria and Italy during the War of Austrian Succession, then under Daun during the Seven Years War. Lead a decisive charge at Kolin
+LEADER;F Lacy;Franz Moritz, Graf von;F. Lacy;;;54;57;habsbourg;G;E 3.2.3;;;Son of the Russian general Peter Lacy. Hero of the Seven Years war. Together with Daun, he designed the cautious defensive strategy that slowed Frederick
+LEADER;Laudon;Ernst Gideon Freiherr von;Laudon;;;54;59;habsbourg;G;C 4.3.4 -1;;;Brilliant commander-in-chief in Bohemia, Moravia and Silesia during the Seven Years War
+LEADER;Coburg;Friedrich Josias, Prinz von Sachsen-Coburg;Coburg;;Friedrich Josias, Prinz von Sachsen-Coburg;60;61;habsbourg;G;A 3.3.4 -1;;;Captured Bessarabia, Moldavia and Wallachia from the Ottomans. Later commander in Flandres during the Revolutionary war, he was victorious at Neerwinden but beaten at Fleurus
+LEADER;Alvinczy;József Alvinczy von Borberek Alvincz;Alvinczy;;József Alvinczy von Borberek Alvincz;61;62;habsbourg;G;C 3.2.3;;;Fought the Bavarian War of Succession and the Revolutionary wars. Beaten at Arcole and Rivoli
+LEADER;Karl;Erzherzog Karl von Österreich, Herzog von Teschen;Karl;;Erzherzog Karl von Österreich, Herzog von Teschen;62;62;habsbourg;G;B 4.3.5;;;Future commander in chief of the Austrian army and hero of the Napoleonic wars
+##############################################################
+##
+##           Hollande
+##
+##############################################################
+LEADER;Pomp;Dirck Gerritsz;Pomp;;;21;24;hollande;ER;H 5.1.1;;;First Dutchman to set foot in China and Japan in the 1580s
+##LEADER;Houtman;Cornelis de;Houtman;;;21;23;hollande;EPR;F 6.6.4;;;First Dutchman to make a commercial trip to Spice Islands. His lack of diplomacy lead to several battles until his death against the Aceh admiral Malahayati
+LEADER;Houtman;Cornelis and Frederick de;Houtman;;;21;26;hollande;EPR;F 3.3.4;;;Two brothers who explored Indonesia and Australia. Cornelis was the first Dutchman to make a commercial trip to Spice Islands but his lack of diplomacy lead to several battles until his death against the Aceh admiral Malahayati. Frederick was made prisonner by Aceh and later explored the coast of Australia
+LEADERDOUBLE;Brouwer;Hendrik;Brouwer;;;23;31;hollande;EPR;F 5.2.2;CR;C 3.2.2;Found a new route through the Roaring Forties. Nominated at VOC, founded Valdivia in Chile
+LEADER;Hein;Piet Pieterszoon;Hein;;;27;30;hollande;APR;A 4.4.3;;;Captured Salvador and harassed Portuguese trade. Later he captured the Silver fleet thus founding the Dutch armies for 8 months
+LEADER;Tasman;Abel Janszoon;Tasman;;;31;34;hollande;ER;I 6.2.2;;;Discoverer of Australia and Tasmania
+LEADER;Tromp;Maarten Harpertszoon;Tromp;;;30;35;hollande;AR♥;A 5.5.6;;;Defeated a Spanish invasion of Netherland at the Downs. Said to be the first admiral to use line of battle tactics. Fought many battles against England and was killed in action
+LEADER;de Ruyter;Michiel Adriaenszoon;de Ruyter;;;33;38;hollande;AR♥;B 5.6.4;;;Victorious at the Four Days battle, the Raid on the Medway, Solebay and Texel. Killed at Agosta
+##LEADER;C Tromp;Cornelis Marteenszoon Tromp;C. Tromp;;Cornelis Marteenszoon Tromp;34;40;hollande;A;C 4.3.4;;;Son of Maarten, commander of Dutch Fleet. Victorious at öland
+##LEADER;Banckert;Adriaen van Trappen;Banckert;;;35;40;hollande;AR;C 3.3.4;;;Admiral that fought the French Navy
+LEADER;Evertsen;Cornelis, de Jongste;Evertsen;;;36;41;hollande;AR;D 4.4.4;;;He recaptured New York and fought at Beachy Head
+LEADER;van Bylandt;Lodewijk;van Bylandt;;;58;62;hollande;AR;B 3.1.3;;;Lead a succesfull expedition against Morocco. Commander during the American and French Revolutions. Twice accused of cowardice but acquitted. Wrote about naval tactics and restored discipline in the Dutch Navy
+LEADER;de Graaf;Laurens Cornelis Boudewijn;de Graaf;;;39;41;hollande;EPR;I 5.2.1;;;Dutch pirate that helped explore the coast of New-Orleans
+LEADER;Keppel;Arnold Joost van Keppel, 1st Earl of Abermarle;Keppel;;Arnold Joost van Keppel, 1st Earl of Abermarle;42;46;hollande;A;F 4.2.3;;;Friend of William III, he then return to his natal country
+LEADER;L Nassau;Louis van Nassau;L. Nassau;;Louis van Nassau;15;19;hollande;G;C 2.3.3 -1;;;Fought beside his brother Willem against the Spanish
+LEADER;Willem I;van Orange;Willem I;;Willem I van Oranje;III;1;hollande;K;A 3.3.2 -1;;;Also known as \emph{William the Silent}, leader of the Dutch Revolt. Friend of Charles V who leaned on his shoulder during his abdication ceremony
+LEADERDOUBLE;van der Marck;Willem II;van der Marck;;;17;19;hollande;G*;A 4.2.2 -2;A;C 2.2.2;Lord of Lumey and initially admiral of the \emph{Gueux de mer}. Captured Brielle and hold part of Holland and Zeeland
+LEADER;M Nassau;Maurits van Nassau;M. Nassau;;Maurits van Nassau;20;27;hollande;K;A 4.5.5 -1;;;Son of William the Silent and Stadtholder after his death. Reorganised the rebellion and the army, instisting on drill. Took many fortresses, including Breda. His conflict with van Oldenbarnevelt ended with the arrest and execution of the later
+LEADER;Heemskerk;Jacob van;Heemskerk;;;23;26;hollande;ER;B 5.4.4;;;Explored the Arctic sea, died winning the Battle of Gibraltar
+## Begin "VOC" conquistadors : allowed to use the table in Indonesia.
+LEADER;Coen;Jan Pieterszoon;Coen;;;24;29;holvoc;CR;D 4.6.4 -2;;;Governor general of the East Indies on behalf of the VOC. Bloody conqueror of Jayakarta
+LEADER;van Diemen;Antonio;van Diemen;;;28;31;holvoc;C@;D 5.3.3;;;Conqueror of Ceylon, Taiwan, Malacca
+LEADER;Maetsuycker;Joan;Maetsuycker;;;32;38;holvoc;C@;B 5.3.3;;;First Dutch governor of Ceylon. Conqueror of Indonesia
+## End "VOC" conquistadors.
+LEADER;Minuit;Peter;Minuit;;;27;31;hollande;C$;E 5.3.2;;;Founder of New Amsterdam, later called New York, on the Isle of Manhattan purchased from the natives
+LEADERDOUBLE;Johan Maurits;van Nassau-Siegen;Johan Maurits;;Johan Maurits van Nassau-Siegen;29;37;hollande;C$;B 3.4.3;G;A 3.4.3;Dutch conqueror of Brazil. Commander in the Rhineland during the Anglo-Dutch wars
+LEADER;Frederik Hendrik;van Oranje;Frederik Hendrik;;Frederik Hendrik van Oranje;27;32;hollande;K;A 4.4.3 -1;;;Youngest son of William the Silent and grandfather of William III. Militarily trained by Maurits and Stadtholder at his death. Took many fortresses including Breda
+LEADER;Stuyvesant;Peter;Stuyvesant;;;32;35;hollande;g$;E 3.4.4;;;Governor of Dutch North America. Last governor of New Amsterdam before it was taken by the English. Built Broadway and the wall on what would become Wall Street
+LEADER;van Riebeeck;Jan Anthoniszoon;van Riebeeck;;;33;37;hollande;CR;E 2.4.2;;;Founder of Kaapstadt colony
+LEADER;Willem III;van Oranje-Nassau;Willem III;;Willem III van Oranje-Nassau;37;43;hollande;K;A 3.3.3;;;Married Mary Stuart and was called by the English Protestant for the Glorious Revolution. Lead together England and Netherland, thus ending the naval conflicts. Great opponent of Louis XIV
+LEADER;Coehoorn;Menno van;Coehoorn;;;40;43;hollande;I;B 1.2.0 -3;;;Inventor of a lightweight portable kind of mortar that was still in use during the American Civil War. Great military engineer and rival of Vauban
+LEADER;Overkirk;Hendrik van Nassau-Ouwerkerk;Overkirk;;Hendrik van Nassau-Ouwerkerk;43;46;hollande;G;A 3.4.4;;;Commander of the Dutch army under Marlborough. Saved William at St Denis. Present at Neerwinden, Ramillies, Oudenarde. Died of illness at the siege of Lille
+LEADER;Prince Waldek;Karl August, Prince of Waldeck and Pyrmont;Prince Waldek;;Karl August, Prince of Waldeck and Pyrmont;49;54;hollande;G;B 2.3.3;;;Commander of the Dutch forces during the War of Austrian Succession
+LEADER;van Zuylen van Nijevelt;Philip Julius;van Zuylen van Nijevelt;;;VII;3;hollande;G;C 3.2.2;;;Commander during the Batavian Revolution
+##############################################################
+##
+##         Pologne
+##
+##############################################################
+LEADER;Tarnowski;Jan Amor;Tarnowski;;;8;12;pologne;G;A 5.2.4;;;Good reformer of the army, fought Muscovy and Moldavia
+LEADER;Zamoyski;Jan;Zamoyski;;;19;25;pologne;G;A 3.3.2;;;Batory's supporter, fought against Wallachia, Russia and Habsburgs
+LEADER;Zygmunt III;Wasa;Zygmunt III;;Zygmunt III Wasa;III;13;pologne;K;A 4.3.4;;;Ruled Poland and Sweden, initiated lots of wars
+LEADER;Zolkiewski;Stanisław;Żółkiewski;;;22;27;pologne;G;A 5.2.6 -1;;;Fought the Cossacks and seized Moscow. Crushed the Russo-Swedes at Klushino
+LEADER;Potocki;Mikołaj;Potocki;;;28;33;pologne;G;A 4.2.1;;;Mainly fought rebellious Cossacks
+LEADER;Koniecpolski;Stanisław;Koniecpolski;;;26;31;pologne;G;B 5.3.4;;;Repelled a large Turkish invasion, defeated Tatars and obtained a stalemate against Gustav Adolf in Prussia
+LEADER;Zaslawski;Władysław Dominik Zasławski-Ostrogski;Zasławski;;Władysław Dominik Zasławski-Ostrogski;30;33;pologne;G;B 3.1.1;;;Prince of Volhynia, he stayed loyal to Jan Kasimir during the Swedish invasion. Looser at Pyliavtsi
+LEADER;Czarniecki;Stefan;Czarniecki;;;33;36;pologne;G;C 6.2.2;;;Defended Kraków against Gustav Adolf, managed to reduce the disasters of Jan Kasimir
+LEADERDOUBLE;Sobieski;Jan III;Sobieski;;;37;42;pologne;G;A 4.2.5;K;A 4.2.5;Victor over the Turks in the 1683 battle of Vienna
+LEADERDOUBLE;Patkul;Johann Reinhold von;Patkul;;;42;46;pologne;G;A 4.2.2;K;A 4.2.2;Livonian noble forced into exil. Artist of the alliance between Russia, Poland and Denmark that lead to the Great Northern War. He tried to serve too many sovereigns and was finally arrested by the Saxons and executed by the Swedish
+LEADER;Kosciuszko;Tadeusz;Kościuszko;;;VII;9;pologne;G;D 3.4.4;;;Polish hero of the American Revolution, he tried to wage a Polish revolt against Russia
+LEADER;Ostrogiskis;Konstantinas;Ostrogiškis;;;5;7;lithuanie;G;B 4.2.3;;;Lost at Vedrosha but won at Wiśniowiec and Orsha
+LEADER;Chodkiewicz;Jan Karol;Chodkiewicz;;;23;25;lithuanie;G;B 4.3.2;;;Took and then held Livonia against Sweden without supplies
+LEADER;Beniowski;Maurycy August;Beniowski;;;55;56;pologne;G;B 4.2.2;;;Joined the confederation of Bar, was captured by the Russians, then became an adventurer for the French
+##############################################################
+##
+##         Portugal
+##
+##############################################################
+LEADER;Dias;Bartolomeu;Dias;;;1;3;portugal;ER;G 6.5.4;;;Explored the African coast and passed the cape of Good Hope. Member of the expeditions of Da Gama and Cabral, he was killed by natives near the Cape of Good Hope
+LEADER;Cabral;Pedro Álvares;Cabral;;;2;4;portugal;ER;F 5.4.4;;;First discoverer of Brazil. Bloodily installed Portuguese trade in Calicut in an early display of gunboat diplomacy
+################### Begin Viceroys
+LEADERDOUBLE;Da Gama;Vasco;Da Gama;;;2;4;porviceroy;CR*;A 6.4.4 -1;ER;A 6.4.4;Reached Mombassa, then India and initiated turbulent trade relations with arab merchants and Indian rulers
+LEADERDOUBLE;Almeida;Francisco de;Almeida;;;4;7;porviceroy;AR*;A 2.4.5;CR;A 2.4.5 -1;Took Mombasa and Zanzibar. Appointed Viceroy of India, he fought against Indian and their allies. His victory at Diu established the Portuguese domination in the Indian ocean. Killed by natives near the Cape of Good Hope
+LEADERDOUBLE;Albuquerque;Afonso de;Albuquerque;;;5;9;porviceroy;CR*;B 5.5.5 -3;EPR;B 5.5.5;Conquered Ormus (twice), Goa (twice) and Malacca (twice), but failed in front of Aden. Strategical genius whose global vision laid the foundations of the Portuguese empire
+LEADERDOUBLE;Albergaria;Lopo Soares de;Albergaria;;;6;9;porviceroy;CR*;C 4.3.3;ER;C 4.3.3;Commander of the sixth Portuguese Armada, he bombarded Calicut. Later governor in India, he made an unsuccessful expedition into Red Sea, conquered Ceylan, and built a fort at Colombo
+LEADER;de Castro;João;de Castro;;;10;12;porviceroy;CR;B 4.3.4;;;Fought in Tanger and Tunis. Charted Red Sea and East African coast. Vanquished Gujarat and completed the subjugation of Malacca
+LEADER;Noronha;Fernão de;Noronha;;;13;14;porviceroy;CR;B 3.2.2;;;Converted jewish merchant. Funded expeditions to map the brasilian coast and instal trading posts. During his tenure, the name Brazil was given to the land (from the Brazilwood exploited there). His real name was Loronha
+################### End Viceroys
+LEADER;Abreu;Antonio de;Abreu;;;4;6;portugal;ER;G 4.2.2;;;Member of Albuquerque's armada at Ormus and Malacca. Explored Indonesia, first European in Timor and Banda islands. Died in Azores while going back to Portugal
+LEADER;Pires de Andrade;Fernão;Pires de Andrade;;;5;6;portugal;ER;H 5.1.1;;;Reached China: Canton, Nanjing and Beijing. Launched an expedition to the Ryukyu islands
+LEADER;Serrao;Francisco;Serrão;;;5;6;portugal;ER;H 4.1.1;;;Cousin of Magellan. First know European to have navigated past Malacca to the Spice Islands. Died in Ternate
+LEADER;Brito;Antonio;Brito;;;7;8;portugal;gR;H 4.2.2;;;Built a fortress on Ternate
+LEADER;Galvao;António;Galvão;;;9;12;portugal;CR;D 4.2.3;;;Governor of Spice Islands. Wrote a comprehensive history of the Portuguese and Spanish discoveries. Felt in disgrace and died in poverty
+LEADERDOUBLE;Pinto;Fernão Mendes;Pinto;;;9;12;portugal;CR*;E 6.1.2;ER;E 4.1.2;Reached Japan and Yokohama
+##############################################################
+##
+##        Prusse
+##
+##############################################################
+LEADER;Friedrich-Wilhelm;the Great Elector;Friedrich-Wilhelm;;Friedrich-Wilhelm, the Great Elector;IV;19;prusse;K;A 2.3.3;;;Reformer of Brandebourg. Manage to get his state strengthened after the peace of Westphalia, paving the way for the future greatness of Prussia
+LEADER;Alte Dessauer;Leopold I., duke of Anhalt-Dessau;Alte Dessauer;;Leopold I., duke of Anhalt-Dessau;45;51;prusse;G;A 4.4.4;;;Great drill master, creator of the Prussian Infantry. Commander of the Prussian corps in the War of Spanish Succession
+LEADER;Schwerin;Kurt Christoph Graf von Schwerin;Schwerin;;Kurt Christoph Graf von Schwerin;49;55;prusse;G;B 4.4.4 -1;;;Great commander in Silesia and Bohemia during the War of Austrian Succession and the Seven Years War. Killed at the battle of Prague
+LEADER;Friedrich II;;;;;51;59;prunomalus;K♥;A 6.6.6 -1;;;Frederick the Great. Military genius who raise Prussia from a local state to an European power. Admired by philosophers of the Enlightenment and personnal friend of Voltaire
+LEADER;Leopold II;von Anhalt-Dessau;Leopold II.;;Leopold II. von Anhalt-Dessau;50;53;prusse;G;D 2.2.3 -2;;;Son of \emph{der Alte Dessauer}. Military commander during the War of Austrian Succession. Took Glogau
+LEADER;Heinrich;Friedrich Heinrich Ludwig von Preußen;Heinrich;;Friedrich Heinrich Ludwig von Preußen;52;56;prusse;G;C 4.3.5 -1;;;Brother of Frederick the Great, lost no battle during the Seven Years war, worked as a diplomat after his military career
+LEADER;Braunschweig-Bevern;August-Wilhelm, duke of Brunswick-Bevern;Braunschweig-Bevern;;August-Wilhelm, duke of Brunswick-Bevern;54;58;prusse;G;E 5.3.3;;;Lost the battle of Breslau but commanded an outnumbered prussian army skillfully
+LEADER;Seydlitz;Friedrich Wilhelm von;Seydlitz;;;54;57;prusse;G;F 4.2.6;;;Brilliant cavalry general. Checked the austrian pursuit after Kölin, and played crucial role at Rossbach and Zorndorf. Defender of Berlin during the Austro-Russian Raid
+##LEADER;K Braunschweig;Karl Wilhelm Ferdinand von Braunschweig-Wolfenbüttel;K. Braunschweig;;Karl Wilhelm Ferdinand von Braunschweig-WolfenbÜttel;58;62;prusse;G;A 4.3.2;;;Nephew of Ferdinand von Braunshweig. NCO during the Seven Years Wars. Leader of anti-revolutionary forces, he edicted the "Brunswick manifesto" which sparkled revolts. Looser at Valmy
+LEADER;Hohenlohe;Friedrich Ludwig von;Hohenlohe;;;60;62;prusse;G;C 3.2.3;;;Took part in the Bavarian Succession war, became governor of Berlin
+##############################################################
+##
+##      Russie
+##
+##############################################################
+LEADER;Apraksin;Fyodor Matveyevich - Фёдор Матвеевич Апраксин;Apraksin;Apraksin;Fyodor Matveyevich Apraksin (Фёдор Матвеевич Апраксин);41;48;russie;A;A 3.4.4 -1;;;Admiral, counsellor and friend of Peter the great
+LEADER;Bering;Vitus Jonassen - Ivan Ivanovich Bering;Bering;Bering;Vitus Jonassen Bering (Ivan Ivanovich Bering);47;51;russie;ER;F 5.4.2;;;Danish explorer who worked for the Russians. Intensively explored the Artic waters that are now named after him
+##LEADER;Orlov;Alexei Grigoryevich - Алексей Григорьевич Орлов;Orlov;Orlov;Alexei Grigoryevich Orlov (Алексей Григорьевич Орлов);56;57;russie;A;E 4.2.4;;;Winner of the battle of Chesma against the Ottomans. Sparked a pro-russian greek revolt which did not succeed
+LEADER;Spiridov;Grigory Andreyevich - Григорий Андреевич Спиридов;Spiridov;Spiridov;Grigory Andreyevich Spiridov (Григорий Андреевич Спиридов);54;57;russie;A;B 4.3.3 -1;;;Admiral in Baltic during the Seven Years War. Fought at Chesma and established supremacy in the Aegean Sea during the Russo-Turkish wars
+LEADER;Ushakov;Fyodor Fyodorovich - Фёдор Фёдорович Ушако́в;Ushakov;Ushakov;Fyodor Fyodorovich Ushakov (Фёдор Фёдорович Ушако́в);57;62;russie;A;A 4.4.3;;;Fought against Turkey many times. His innovative tactics lead to several victories in the Black Sea. Supported Suvarov campaign as admiral in the Mediterranean
+##LEADER;Jones;John Paul;Jones;;;59;60;russie;A;B 5.3.3;;;American admiral engaged in the Russian navy
+##LEADER;Hetman;;;;;16;17;russie;CR;I 2.3.4;;;Anonymous russian commanders, in charge of Siberia
+LEADER;Yermak;Timofeyevich - Ерма́к Тимофе́евич;Yermak;Yermak;Yermak Timofeyevich (Ерма́к Тимофе́евич);18;23;russie;CR;I 5.6.6;;;Cossack leader, conqueror of Siberia
+##LEADER;Hetman2;Hetman;;;;24;32;russie;CR;I 2.3.4;;;Anonymous russian commanders, in charge of Siberia
+LEADER;Khabarov;Yerofey Pavlovich - Ерофей Павлович Хабаров;Khabarov;Khabarov;Yerofey Pavlovich Khabarov (Ерофей Павлович Хабаров);32;35;russie;CR;I 4.4.4;;;Charted the Amur river. Founded the city of Khabarovsk
+LEADER;Shchenya;Daniil Vasiliyevich - Даниил Васильевич Щеня;Shchenya;Shchenya;Daniil Vasiliyevich Shchenya (Даниил Васильевич Щеня);1;5;russie;G;A 3.1.4;;;Captured Smolensk, devasted Finland, victor of the battle of Vedrosha. Did not fight the Tatars or Crimea
+LEADER;I Vorotynsky;Ivan Mikhailovich - Иван Михайлович Воротынский;I. Vorotynsky;I. Vorotynsky;Ivan Mikhailovich Vorotynsky (Иван Михайлович Воротынский);4;7;russie;G;B 5.1.3;;;Lithuanian noble who defected to Muscovy and helped to the fall of Smolensk. Routed the Crimean Tatars several times
+LEADER;Vyrodkov;Ivan Grigoryevich - Иван Григорьевич Выродков;Vyrodkov;Vyrodkov;Ivan Grigoryevich Vyrodkov (Иван Григорьевич Выродков);13;15;russie;I;K 3.1.1 -1;;;Inventor of the battery-tower that greatly helped to take Kazan
+LEADER;Kurbsky;Andrei Mikhailovich - Андрей Михайлович Курбский;Kurbsky;Kurbsky;Andrei Mikhailovich Kurbsky (Андрей Михайлович Курбский);13;18;russie;G;A 3.4.2;;;General, friend and counsellor of Ivan the Terrible. Victorious against Kazan and later in Livonia. Exiled at the time of the Oprichnina, he exchanged a long serie of letters with the Czar
+LEADER;M Vorotynski;Mikhail Ivanovich - Михаи́л Ива́нович Воротынский;M. Vorotynski;M. Vorotynsky;Mikhail Ivanovich Vorotynski (Михаи́л Ива́нович Воротынский);13;17;russie;G;B 5.3.3;;;Helped conquer then governed Kazan, strengthened the \emph{Great Abatis Belt}. Winner of the Battle of Molodi on the Tatars, thus putting Crimean and Ottoman expansion to an end
+LEADER;Ivan IV;Иоа́нн IV Васи́льевич Гро́зный;Ivan the terrible;Ivan IV;Ivan the terrible (Иоа́нн IV Васи́льевич Гро́зный);II;?;russie;K;A 5.2.2 -1;;;Ivan the Terrible. During his reign, Muscovy conquered Kazan and Astrakhan, was defeated in Livonia, stopped Crimean raids and conquered Siberia, thus expanding into Russia. Reformed Russia into an absolutist state
+LEADER;Dmitry;Tsarevich Dmitry Ivanovich and False Dmitry;Dmitry;;Tsarevich Dmitry Ivanovich and False Dmitry;IV;17;russie;G;A 4.2.2;;;Younger son of Ivan IV, died of a stab wound, possibily assassinated by Godunov's men. Several False Dmitry claimed to be the miraculously saved tsarevich during the Times of Troubles
+LEADER;Godunov;Boris Fyodorovich - Бори́с Фёдорович Годуно́в;Godunov;Godunov;Boris Fyodorovich Godunov (Бори́с Фёдорович Годуно́в);IV;17;russie;G;A 2.3.2;;;Right arm of Ivan IV, regent of Russia then first non-Rurikid tsar
+LEADER;Romanov;Aleksey Mikhailovich - Алексей Михайлович Рома́нов;Romanov;Romanov;Aleksey Mikhailovich Romanov (Алексей Михайлович Рома́нов);32;37;russie;G;A 2.4.2;;;The tsar of Russia after the Time of Troubles. Became protector of Ukrainian cossaks. Waged war against Sweden and Poland and reconquered Smolensk
+LEADER;Gordon;Patrick Leopold;Gordon;;;37;42;russie;G;C 3.2.3;;;Of Scottish descent, Catholic self-exiled to avoid persecution. Distinguished against Tatars, especially in the siege of Azov. Brought Peter to the throne
+LEADER;V Galitzine;Vasily Vasilyevich - Васи́лий Васи́льевич Голи́цын;V. Galitzine;V.Galitzine;Vasily Vasilyevich Galitzine (Васи́лий Васи́льевич Голи́цын);38;40;russie;GR;B 3.2.3;;;Artisan of the Nerchinsk treaty. Leader of unsuccessful campaigns against Crimea. Supporter of Sophia, he was exiled by Peter
+LEADERDOUBLE;Piotr I;Пётр Вели́кий;Peter the Great;Piotr I;Peter the Great (Пётр Вели́кий);V;11;russie;K;A 4.4.4 -1;d;A 3.3.4;Founder of St-Petersburg, reformer of Russia. During his reign, Russia became a modern state following occidental models. Took Azov, won the Great Northern War thus taking the leadership in the East from Swedish, Polish and Turkish hands
+LEADERDOUBLE;Lefort;François Jacques - Франц Яковлевич Лефорт;Lefort;Lefort;François Jacques Lefort (Франц Яковлевич Лефорт);41;43;russie;G*;A 2.4.3;A;A 2.4.3;Swiss who fought for the French and Dutch before coming to Russia. Trusted counseller of Peter the great, took Azov
+LEADER;Menshikov;Aleksandr Danilovich - Алекса́ндр Дани́лович Ме́ншиков;Menshikov;Menshikov;Aleksandr Danilovich Menshikov (Алекса́ндр Дани́лович Ме́ншиков);43;45;russie;G;C 4.3.3;;;Fought in Crimea, Ingria and Germany. Governor often accused of corruption, he was saved by his friendship with Peter. He put Catherine to the throne and acted as "half-tsar" during her reign, he was finally overthrone by the Galitzines and exiled in Siberia
+LEADER;Sheremetev;Boris Petrovich - Бори́с Петро́вич Шереме́тев;Sheremetev;Sheremetev;Boris Petrovich Sheremetev (Бори́с Петро́вич Шереме́тев);43;46;russie;G;B 2.2.3;;;Commander in chief during the Great Northern War. He took the fortresses of Oreshek (Nöteborg) and Nyenskans that allowed the fundation of St-Petersburg
+##LEADERDOUBLE;M Galitzine;Mikhail Mikhailovich - Михаи́л Миха́йлович Голи́цын;M. Galitzine;M. Galitzine;Mikhail Mikhailovich Galitzine (Михаи́л Миха́йлович Голи́цын);45;48;russie;G*;A 3.3.3 -1;A;A 3.3.5;Governor of Finland during the Great Wrath. Victorious at Storkyro, fought at Grengam
+LEADER;M Galitzine;Mikhail Mikhailovich - Михаи́л Миха́йлович Голи́цын;M. Galitzine;M. Galitzine;Mikhail Mikhailovich Galitzine (Михаи́л Миха́йлович Голи́цын);45;48;russie;G;C 3.3.3 -1;;;Governor of Finland during the Great Wrath. Victorious at Storkyro, fought at Grengam
+LEADER;P Lacy;Peter von - Пётр Петрович Ласси;P. Lacy;P. Lacy;Peter vor Lacy (Пётр Петрович Ласси);47;52;russie;G;B 3.3.3 -1;;;Irish who fought in France and Austria before coming to Russia. Governor of Livland and Riga during the Great Northern War. Victorious against Poland during the Polish Succession. Took Azov. Commander in chief against Sweden during the Hats' War
+LEADER;Bibikov;Aleksandr Ilyich - Алекса́ндр Ильи́ч Би́биков;Bibikov;Bibikov;Aleksandr Ilyich Bibikov (Алекса́ндр Ильи́ч Би́биков);55;59;russie;G;B 2.3.2;;;Fought against the Bar confederation, then Pugachev's Rebellion
+LEADER;Totleben;Gottlieb Heinrich von - Готлиб-Генрих Тотлебен;Totleben;Totleben;Gottlieb Heinrich von Totleben (Готлиб-Генрих Тотлебен);54;56;russie;G;C 1.2.4;;;Saxon commander accused of corruption who became a Russian general. Russian commander during the Raid on Berlin in the Seven Years War. Accused of treachery, found guilty but spared by Catherine. Recalled to lead an expedition in Georgia where he both angered Georgian nobility and beat the Turks
+LEADER;Saltykov;Pyotr Semyonovich - Пётр Семёнович Салтыков;Saltykov;Saltykov;Pyotr Semyonovich Saltykov (Пётр Семёнович Салтыков);53;56;russie;G;B 3.2.3;;;Sent to France for 20 years by Peter to master navigation. Commander-in-chief of the Russian army during the Seven Years War. Victor of Kay and Kunersdorf against the Prussian. Then governor of Moscow
+##LEADER;Chernyshyov;Zakhar Grigoryevich - Захар Григорьевич Чернышёв;Chernyshyov;Chernyshyov;Zakhar Grigoryevich Chernyshyov (Захар Григорьевич Чернышёв);54;56;russie;G;C 3.3.2 -1;;;Russian general during the Seven Years War, took part in the Raid on Berlin. Later minister of war
+LEADER;Rumyantsev;Pyotr Alexandrovich - Пётр Александрович Румянцев-Задунайский;Rumyantsev-Zadunaysky;Rumyantsev;Pyotr Alexandrovich Rumyantsev-Zadunaysky (Пётр Александрович Румянцев-Задунайский);55;60;russie;G;A 3.3.5 -1;;;Took Kolberg during the Seven Years War, thus opening the way to Berlin. Governor of Ukraine during the late Russo-Turkish wars. He crushed the more numerous Turks at Larga and Kagula, forcing the Sultan to sue for peace. Maybe the greatest general of Catherine
+LEADER;Potemkin;Grigory Aleksandrovich - Григо́рий Алекса́ндрович Потёмкин-Таври́ческий;Potemkin-Tavricheski;Potemkin;Grigory Aleksandrovich Potemkin-Tavricheski (Григо́рий Алекса́ндрович Потёмкин-Таври́ческий);56;60;russie;G;A 5.2.2;;;Commander-in-chief of the Russian army, annexed Crimea. Governor of Crimea he founded many towns including Sebastopol. Close friend and probable lover of Catherine
+LEADER;Suvorov;Alexander Vasilyevich - Алекса́ндр Васи́льевич Суво́ров;Suvorov;Suvorov;Alexander Vasilyevich Suvorov (Алекса́ндр Васи́льевич Суво́ров);57;62;russie;G;B 5.5.5 -1;;;Scourge of the Poles and the Turks, never lost a battle. Crushed the Turks in Bessarabia, storming Ismail. Then he crushed the Kosciusko uprising, stormed and sacked Warsaw. Later anti-revolutionary general in Italy
+LEADER;Kutuzov;Mikhail Illarionovich - князь Михаи́л Илларио́нович Голени́щев-Куту́зов;Golenishchev-Kutuzov;Kutuzov;Mikhail Illarionovich Golenishchev-Kutuzov (князь Михаи́л Илларио́нович Голени́щев-Куту́зов);60;62;russie;G;D 5.3.3;;;Disciple of Suvarov. Later great opponent of Napoleon
+##############################################################
+##
+##       Suède
+##
+##############################################################
+LEADER;de Mornay;Charles;de Mornay;;;15;17;suede;G;B 2.2.2;;;French huguenot sent to Scotland then Sweden. Advisor of Erik XIV. Took part in the Livonian and Nordic Seven Years Wars, fighting Rantzau several times. Executed after taking part in a conspiracy to bring back Erik on the throne
+LEADERDOUBLE;KK Horn;Klas Kristersson;K.K. Horn;;Klas Kristersson Horn;15;18;suede;A*;A 4.3.3;G;C 3.2.2;Finnish amiral who crushed the Danes several times. Ravaged the coast of Denmark and dominated the whole Baltic. Died of plague
+LEADER;P de La Gardie;Pontus;P. de La Gardie;;Pontus de La Gardie;17;20;suede;G;C 4.3.4 -1;;;French noble who served Denmark and switched alliegeance after being captured. Commander in chief against Russia, he conquered most of Karelia and Ingria, stormed Narva and invented new siege technics
+LEADER;J De la Gardie;Jacob Pontusson;J. De la Gardie;;Jacob Pontusson De la Gardie;24;28;suede;G;B 5.3.2;;;Lead the Swedes during the Times of Trouble. Reached Moscow, lost at Klushino
+LEADER;H Wrangel;Herman;H. Wrangel;;Herman Wrangel;27;30;suede;G;A 4.3.3;;;Baltic noble who served Poland then Sweden. Fought against the Poles. Then took part in the Thirty Years War, mostly in Pommerania
+LEADER;G Horn;Gustav Horn af Björneborg;G. Horn;;Gustav Horn af Björneborg;28;33;suede;G;A 2.4.2;;;Distant relative of K.K. Horn, son-in-law of Oxenstrierna. Second in command at Breitenfeld. Occupied Rhineland. Failed cooperatation with Saxe-Weimar result in his capture at first Nördlingen. Took Scania during Tortesson's war
+LEADER;Gustav-Adolf;Gustaf Adolf den Store;Gustav Adolf;;Gustaf Adolf den Store;IV;A;suede;K;A 6.6.6;;;Military genius, king of Sweden, protestant hero of the Thirty Years War, \emph{The Lion of the North}. He trained intensivelly his soldiers, resulting in an early form of combined arms and first massive use of light field artillery. Raised Sweden from a second-rank country to the dominating Baltic power. Victorious against the Russians and the Poles. Crushed Tilly and Pappenheim at Breitenfeld then at Rain. Died winning at Lützen
+LEADER;Baner;Johan;Banér;;;IV;A;suede;G;B 4.4.4;;;Soldier during the Ingrian and Polish wars. Left in command of the Swedish forces after Lützen. Marched on Prague but forced to stop after first Nördlingen. Victorious at Wittstock and Chemnitz
+LEADER;Torstensson;Lennart;Torstensson;;;31;34;suede;G;C 5.6.4 -1;;;Artillery commander from Breitenfeld to Chemnitz, captured at Alte Veste, became commander-in-chief after Banér's death. Crushed the imperials at second Breitenfeld and Jankau, menacing Vienna. Lead an invasion of Denmark
+LEADER;Printz;Johann Björnsson Printz von Buchau;Printz;;Johann Björnsson Printz von Buchau;31;33;suede;CR;B 4.2.3;;;Governor of Nya Sverige from 1643 to 1653
+LEADER;Risingh;Johan Classon;Risingh;;;34;36;suede;CR;B 2.1.2;;;Governor of New Sweden from 1654 to 1655, before the Dutch conquest
+LEADERDOUBLE;KG Wrangel;Karl Gustav;K.G. Wrangel;;Karl Gustav Wrangel;31;36;suede;G*;D 2.3.4;A;A 2.3.4;Son of H. Wrangel. Victorious admiral during Tortensson's war, then commander-in-chief in Germany. Serve both on land and sea during subsequent wars. Died of illness
+LEADER;M De la Gardie;Magnus Gabriel;M. De la Gardie;;Magnus Gabriel De la Gardie;34;39;suede;G;D 2.2.2;;;Son of J. De la Gardie. Governor of Livonia, general during the second Northern War
+LEADER;G Stenbock;Gustaf Otto;G. Stenbock;;Gustaf Otto Stenbock;34;37;suede;G;D 2.3.3;;;Commander-in-chief in Sweden during Charles X wars. Governor of Scania afterwards
+LEADER;Dahlbergh;Erik;Dahlbergh;;;34;42;suede;I;D 1.2.2 -2;;;Helped Charles X Gustav crossing the Belt and besieging Copenhagen. Director-general of fortifications, founded the engineer corps. Successfully held Riga during the sieges of 1700
+LEADER;Carl XII;;;;;;;suede;K♥;A 5.6.6 -1;;;His reign was spent in the Great Northern War where he shown exceptionally military skills. Crushed the Russians at Narva, forced the Danes and Poles out of the war. Attempt to march on Moscow but was utterly defeated at Poltava and fled to Turkey. Took arms again and was killed at the siege of Fredriksten. The war resulted in important territorial loss as well as establishment of a parliamentarian government in Sweden
+LEADER;AL Lewenhaupt;Adam Ludwig;A.L. Lewenhaupt;;Adam Ludwig Lewenhaupt;41;46;suede;G;B 2.3.2;;;Governor of Riga. Victorious at Jēkabpils and Gemauerthof. Defeated at Lesnaya with the supply convoi of Carl XII. Captured at Poltava
+LEADER;Rehnskiold;Carl Gustav;Rehnskiöld;;;43;48;suede;G;D 4.2.4;;;Victorious at Fraustadt, lead a successful campaign in Poland. Captured at Poltava
+LEADER;M Stenbock;Magnus Gustafsson;M. Stenbock;;Magnus GustafssonStenbock;43;48;suede;G;D 2.4.4;;;Grandson of J. De la Gardie. Present at Narva. Governor of Scania, victorious at Helsinborg. Lead an invasion of Mecklenburg to cover the siege of Stralsund where he was victorious on the field but finally outnumbered and forced to retreat. Captured at the siege of Tönning
+##LEADER;AB Horn;Arvid Bernhard;A.B. Horn;;Arvid Bernhard Horn;46;48;suede;G;E 3.3.3;;;Put Stanislas on the Polish throne
+LEADER;C Lewenhaupt;Charles Emil Lewenhaupt the Elder;C. Lewenhaupt;;Charles Emil Lewenhaupt the Elder;49;52;suede;G;B 3.3.2;;;Soldier during the Great Northern War. His poor result in the 1741-1743 war lead to his arrestation and execution
+##LEADER;Klingspor;Whilhelm Mauritz;Klingspor;;;59;62;suede;G;C 5.2.1;;;Commander-in-Chief during the 1788-1790 war. Lost Finland in 1809 and participate to the coup that overthrown Gustav IV
+LEADER;Dobeln;Georg Carl;von Döbeln;;;59;62;suede;G;C 5.2.1;;;Wounded at the head during the 1788-1790 war. Later lead the retreat from Finland and stopped the Russian invasion during the Finnish war
+LEADER;Cronstedt;Carl Olof;Cronstedt;;;59;62;suede;A;B 3.4.4;;;Crushed the Russian navy at Svensksund, thus ending the 1788-1790 war
+##############################################################
+##
+##     Turquie
+##
+##############################################################
+###
+### (jym) I'm not sure whether we should have the name in modern
+### turkish (roman alphabet), ottoman turkish (arabic) or both. In
+### wikipedia, only a few names are given in ottoman turkish. Hence, I
+### put everything in modern turkish and keep the ottoman turkish
+### names as comments when I do have them so we can use them easilly
+### if we ever decide to…
+###
+## Sultans
+LEADER;Selim;Yavuz Sultan Selim, Hâdim'ul-Harameyn'uş-Şerifeyn;I. Selim;;Yavuz Sultan Selim, Hâdim'ul-Harameyn'uş-Şerifeyn;;;turquie;K;A 3.4.3;;;Father of Suleiman. Gained control of Eastern Anatolia after repulsing Persia at Chaldiran. Conquered the Mameluks states
+### Ottoman turkish: لوﺄﻟا ﻢﻴﻠﺳ
+LEADER;Suleyman;Kānūnī Sultān Suleimān;Süleyman;;Kānūnī Sultān Suleimān;;;turquie;K;A 3.4.3 -1;;;The Lawgiver, or the Magnificent, longest-reigning sultan who created a golden age for Turkey. Conquered Hungary, Iraq and Aden, launched expeditions to Aceh, united the Barbary coast under Ottoman rule, failed at besieging Vienna and conquering Malta. Also patron of the arts and legal reformer
+### Ottoman turkish: نﺎﻤﻴﻠﺳ نﺎﻄﻠﺳ ﻰﻧﻮﻧﺎﻗ
+## Viziers
+##LEADER;Sadrazam;Grand Vizier;Sadrazam;;Grand Vizier;;;turquie;K;A 2.1.2 -1;;;Generic Turkish Grand Vizier
+LEADER;Borovinic;Hadım Ali Paşa and Hadım Sinan Paşa;Borovinić;;;1;6;turvizir;K;A 3.2.3;;;Two Viziers from the same Bosniac family. Hadım Ali failed at invading the mameluks and died crushing the Şahkulu Rebellion. Hadım Sinan illustratred himself against the mameluk at Khan Yaunis and Ridaniya (where he died)
+### Ottoman turkish not found
+LEADER;Ibrahim;Pargalı İbrahim Paşa;İbrahim;;Pargalı İbrahim Paşa;7;10;turvizir;K;A 2.2.4;;;Personal friend and first vizir of Suleiman. Skilled diplomat who sealed many deals with Europeans. During a successful expedition to Persia, he gave himself a too high title and was executed on Suleiman's order afterwards.
+### Ottoman turkish not found
+LEADER;Sokollu;Mehmed Paşa;Sokollu;;Sokollu Mehmed Paşa;13;18;turvizir;K;A 4.1.4;;;Long standing Grand Vizier and de facto ruler of the empire. Seized Transylvania, fought in Persia, crushed several revolts in Europe and Asia. Launched expeditions against Habsbourgs and Russia
+### Ottoman turkish: ﺎﺷﺎﭘ ﺪﻤﺤﻣ ﻮﻠﮐﻮﺳ
+LEADER;Koprulu;Mehmed, Fazıl Ahmed and Kara Mustafa;Köprülü;;The early Köprülü viziers;V;15;turvizir;K;A 4.3.4 -1;;;A dynasty of Grand Viziers that tried to relaunch the Turkish dynamism but ultimately failed at the siege of Vienna led by Kara Mustafa
+### Ottoman turkish not found
+## Other land leaders
+LEADER;Ozdemir;Özdemir Paşa;Özdemir;;Özdemir Paşa;11;14;turquie;CR;D 4.2.2;;;Took part in the failed siege of Diu, governor of Yemen, invaded Ethiopia
+### Ottoman turkish not found
+LEADERDOUBLE;Osman;Özdemiroğlu;Osman Paşa;;;15;19;turquie;G;A 3.4.4;gR;I 5.3.3;Able governor of Yemen and Ethiopia. Good general in Persia, secured Caucasus at the battle of Torches. Dethroned a reluctant Crimean Khan. Later briefly Grand Vizier
+### Ottoman turkish not found
+LEADER;Lala Mustafa;Lala Kara Mustafa Paşa;Lala Mustafa;;Lala Kara Mustafa Paşa;14;18;turquie;G;D 2.2.4;;;Commander at the siege of Malta and conqueror of Cyprus
+### Ottoman turkish not found
+LEADER;Seydi Ali;Seydi Ali Reis;Seydi Ali;;Seydi Ali Reis;13;15;turquie;CR;C 5.2.3;;;Amiral in the Indian Ocean who came back overland to Turkey through India, Afghanistan, Uzbekistan and Crimea
+### Ottoman turkish not found
+LEADERDOUBLE;Yusuf Sinan;Cığalazade Yusuf Sinan Paşa;Yusuf Sinan;;Cığalazade Yusuf Sinan Paşa;18;23;turquie;G;C 3.1.3;A;C 3.2.2;Lead the fleet to capture Tunis and apointed two times Kapudan pasha. Lead several campaigns in Persia and Hungary with mitigated success. Briefly Grand Vizier
+### Ottoman turkish not found
+## Privateers admirals
+LEADER;Kemal Reis;Ahmed Kemaleddin;Kemal Reis;;Ahmed Kemaleddin;1;4;turcorsaire;APm;B 4.2.3;;;Victor of the first battle of Lepanto, expelled Venice and Genoa from many greek islands
+### Ottoman turkish not found
+LEADER;Kurtoglu M;Kurtoğlu Muslihiddin Reis;Kurtoğlu M.;;Kurtoğlu Muslihiddin Reis;5;10;turcorsaire;APm;B 4.1.2;;;Turkish corsair based in Tunisia who sacked Central and Eastern Meditteranean for years
+### Ottoman turkish not found
+LEADER;Salih Reis;;;;;9;15;turcorsaire;Pm;E 4.2.3;;;Close friend of Dragut and long time raider of the Mediterranean. Took part in most naval battles of that time
+### Ottoman turkish not found
+LEADER;Uluj Ali;Kılıç Ali Paşa;Uluç Ali;;Kılıç Ali Paşa;16;20;turcorsaire;APm;B 5.1.4;;;Born Giovanni Dionigi, called the renegade, skilfully outflanked Doria at Lepanto battle. Became Kapudan Paşa for 15 years afterwards
+### Ottoman turkish not found
+LEADER;Murat Reis;Murat Reis the Elder;Murat Reis;;Koca Murat Reis;16;30;turcorsaire;APR;E 4.2.3;;;Several successful corsairs of the same name acting in the late 16th. The most famous commanded in Indian ocean, raided the Canaries and raided the Mediteranean for a long time, reputedly dying at the age of 100 while still active
+### Ottoman turkish not found
+LEADER;Siroco;Şuluk Mehmed Pasha;Siroco;;Şuluk Mehmed Pasha;15;20;turcorsaire;Pm;E 4.3.3;;;Bey of Alexandria, raided christian trade for years, commanded the right wing during the Lepanto battle
+### Ottoman turkish not found
+LEADER;Mezzomorto;Mezamorta Hüseyin Paşa;Mezzomorto;;Mezamorta Hüseyin Paşa;39;42;turcorsaire;AP;C 3.2.4;;;Algerian privateer. Fought Dusquenne at Algiers. Later Kapudan Pacha in the Agean, retook Chios from Venise. Wrote a treaty on naval reforms. Gain his nickname after being left for dead during a battle
+### Ottoman turkish not found
+## Other sea leaders
+LEADER;Piri Reis;Hacı Ahmed Muhiddin Piri;Piri Reis;;Hacı Ahmed Muhiddin Piri;12;13;turquie;ER;F 4.3.3 -1;;;Cartographer of one of the oldest known map to depict America. Nephew of Kemal Reis, he served in the Ottoman navy. Later, commander of the Red Sea fleet, he took Aden, Muscat and Ormuz
+### Ottoman turkish: ﺲﯿﺋر یﺮﯿﭘ
+LEADER;Kurtoglu H;Kurtoğlu Hızır Reis;Kurtoğlu H.;;;15;18;turquie;ER;C 4.2.3;;;Sent to Sumatra after Aceh's call for help against Portugal
+### Ottoman turkish not found
+LEADER;Piyale;Pıyale Paşa;Pıyale;;Pıyale Paşa;13;17;turquie;Am;B 4.2.3;;;Raided Italy and Spain for years, taking Reggio Calabria, Minorca and even Napoli. Crushed a christian fleet at Djerba. Lead the fleet at Malta and Cyprus
+### Ottoman turkish not found
+LEADER;Ali Pasha;Müezzinzade Ali Paşa;Ali Paşa;;Müezzinzade Ali Paşa;13;18;turquie;Am;A 3.2.2;;;Commanded the fleet that carried Lala Mustafa's troops during the conquest of Cyprus. Died Losing at Lepanto
+### Ottoman turkish not found
+LEADER;Husain Pasha;Deli Hüseyin Paşa;Hüseyin Paşa;;Deli Hüseyin Paşa;29;34;turquie;A;A 4.2.3 -1;;;Escaped the blocaded Dardanelles and laid siege to Heraklion in Creta
+### Ottoman turkish not found
+##############################################################
+##
+##     Venise
+##
+##############################################################
+LEADER;Grimani;Antonio;Grimani;;;1;2;venise;Am;A 2.1.2;;;Inexperienced capitano da mar, he lost at Sapienza and Zonchio. Exiled, he nonetheless came back and was elected doge. He allied with France during the wars in Italy
+LEADER;Veniero;Sebastiano;Veniero;;;13;18;venise;Am;A 5.3.4;;;Capitano da mar of Venice, protagonist of the Battle of Lepanto, elected doge in his late life
+LEADER;Mocenigo;Lazzaro;Mocenigo;;;31;34;venise;Am;B 4.2.3;;;Admiral who took part in the three expeditions to the Dardanelles
+##LEADERDOUBLE;Morosini;Francesco;Morosini;;;34;41;venise;Am*;A 4.5.5;G;D 2.3.3 -1;Admiral that managed to take back the Peloponnese from the Ottomans. A direct hit of his artillery destroyed the Parthenon, used as powder magazine by the Turks. Later elected doge
+LEADER;Morosini;Francesco;Morosini;;;34;41;venise;Am;A 4.5.5 -2;;;Admiral that managed to take back the Peloponnese from the Ottomans. A direct hit of his artillery destroyed the Parthenon, used as powder magazine by the Turks. Later elected doge
+LEADER;Pitigliano;Niccolò di;Pitigliano;;;2;4;venise;G;B 2.2.3;;;Condottiere of the Orsini Clan, fought against France and the Holy See
+LEADER;Alviano;Bartolomeo di;Alviano;;;2;5;venise;G;C 4.1.3;;;Condottiere of the Orsini Clan, lost the battle of Agnadello
+##LEADER;Orsini;Bartolomeo di Alviano and Niccolò di Pitigliano;Orsini;;Bartolomeo di Alviano and Niccolò di Pitigliano;2;5;venise;G;C 4.1.3;;;Italian clan that gave several condottiere to Venise during the wars in Italy
+LEADER;Gritti;Andrea;Gritti;;;5;9;venise;G;A 3.3.3 -1;;;Retook territory lost to the League of Cambrai, and was elected doge afterwards
+LEADER;Bragadino;Marcantonio;Bragadino;;;16;20;venise;Im;E 1.2.3 -1;;;Governor of Famagusta in Cyprus during the Ottomans attack, he was tormented and killed
+##############################################################
+##
+##    Mineurs
+##
+##############################################################
+##LEADERDOUBLE;Burji;ﺔﻴﺟﺮﺑﻟﺍ ﻚﻴﻟﺎﻤﻤﻟﺍ;Burji dynasty;Burji;Al-Ashraf Qansuh Al-Ghawri (ﻱﺭﻮﻐﻟﺍ ﮦﻮﺼﻧﺎﻗ ﻑﺮﺷﺄﻟﺍ) and Al-Ashraf Tuman Bay II (ﯼﺎﺑ ﻥﺎﻣﻮﻃ ﻑﺮﺷﺄﻟﺍ);;;mamelouks;K;A 5.1.4;K;A 3.1.4;Ruling mameluk dynasty since 1382. Its last two Sultans died loosing at Marj Dabiq and Ridaniya during the Turkish conquest
+LEADER;Selman Reis;ﺲﯿﺋر ﻥﺎﻤﻠﺳ;Selman Reis;;Selman Reis (ﺲﯿﺋر ﻥﺎﻤﻠﺳ);4;9;mamelouks;EPR;D 4.3.3;;;Egyptian commander who later served the Ottomans. Expelled the Portuguese from the Red sea and went as far as Sumatra. Failed to retake Diu
+### No arabic found for Selman. Used google translate…
+LEADER;Oruc Reis;سوﺮﺑﺮﺑ جوﺮﻋ;Oruç Reis;;Oruç Reis (سوﺮﺑﺮﺑ جوﺮﻋ);1;5;algerie;dPm;C 5.1.4;;;Elder brother of Barbaros. Corsair who took Algiers and seek protection of the Ottoman. Killed by a Spanish raid after taking Tlemcen
+LEADER;Maximilian II;Maximilian Emmanuel;Maximilian II.;;;39;44;baviere;K;A 3.2.3;;;Elector of Bavaria. Took part in the defense of Vienna, captured Belgrade. Governor of the Spanish Netherlands during the League of Augsburg, he witnessed the fire of Brussels. During the War of Spanish Succession, he sided with France
+LEADER;Mercy;Franz Freiherr von;Mercy;;;IV;A;baviere;G;A 2.4.4;;;Great defender of Bavaria during the Thirty Years War. Fought the French and was killed at Nördlingen
+LEADER;Tilly;Johann t'Serclaes von;Tilly;;;IV;1;baviere;G;A 4.4.4 -1;;;A great catholic commander of the Bohemian revolt and Thirty Years War. Victorious at White mountain, defeated at Breitenfeld, deadly wounded at Rain
+LEADER;Sampiero;Corso;Sampiero;;Sampiero Corso;III;12;corse;Gm;A 4.2.3;;;French commander in Italy, he was sent to Corsica in an attempt to seize the island
+LEADERDOUBLE;Giray;ﺮﻠﻳﺍﺮﻛ‎;House of Giray;Giray;House of Giray (ﺮﻠﻳﺍﺮﻛ);;;crimee;K;A 4.1.4;K;A 5.1.4;The ruling dynasty of Crimea for the whole lifespan of the khanate
+LEADER;Christian IV;;;;;IV;A;danemark;K;A 4.2.2 -1;;;King of Denmark. He fought repeatidelly against Sweden and lead an expedition during the Thirty Years War. He witnessed the change of leadership around the Baltic, but his reforms and building activities still makes him a popular figure
+LEADER;Rantzau;Daniel;Rantzau;;;15;17;danemark;G;A 4.2.3;;;Able general of the Northern Seven Years War, he lead a winter campaign through Sweden and was killed besieging Varberg
+LEADER;Juel;Niels;Juel;;;34;42;danemark;A;B 4.2.3;;;Learned seamanship under Tromp and de Ruyter in the Anglo-dutch wars. Then succesful amiral of the Scanian War and reformer of the Danish navy
+LEADER;A Doria;Andrea;A. Doria;;Andrea Doria;7;16;genes;Am♥;A 5.4.4;;;Proeminent genoese figure, he lead several changes of sides between France and Spain. Finally restored the Republic and definitely sided with the Imperials, he became one of the main admiral of Charles V. Great oponent of Barbarossa, he did not manage to break the Turkish naval domination
+LEADER;GA Doria;Giovanni Andrea;G.A. Doria;;Giovanni Andrea Doria;16;21;genes;Am;B 4.3.4;;;Great nephew of Andrea Doria, he succeded him as Galley commander. Commander of the right wing at Lepanto
+LEADER;Conde;Louis Ier de Bourbon, prince de;Condé;;Louis Ier de Bourbon, prince de Condé;III;D;huguenots;G;A 4.3.4;;;Huguenot commander during the early wars of religion. Murdered after surrending at Jarnac
+## lasts 5 turns
+LEADER;Coligny;Gaspard II de;Coligny;;;III;D;huguenots;G;A 3.3.3;;;Nephew of Montmorency, fought in Italy. Took arms after the Massacre of Wassy and co-leader of the Huguenots. His failed assassination triggered St Bartholomew's Day massacre
+## lasts 5 turns
+LEADER;Zrinski;Nikola Šubić;Zrinski;;;11;16;hongrie;G;C 4.3.4 -1;;;Croatian noble distinguished during the siege of Vienna. Died, a couple of days after Suleiman, in the heroic defense of Szigetvár against the whole Turkish army
+LEADER;Lajos II;Louis II of Hungary;II. Lajos;;Louis II of Hungary;6;9;hongrie;G;A 2.2.3;;;Last king of medieval Hungary, crowned at 10. At 19, without successor, died loosing the battle of Mohács, thus starting the disintegration of the kingdom
+LEADER;Bethlen;Gábor;Bethlén;;;IV;1;hongrie;G;A 4.2.3;;;Leader of an anti-Habsburg insurrection in Hungary during the Bohemian revolt
+LEADERDOUBLE;Grand Maitre;;Grand Maître;;;;;chevaliers;G*m;B 2.2.2 -1;Am;B 2.2.2;Grand Master of the Knights Hospitalier
+LEADERDOUBLE;La Valette;Jean Parisot de;La Valette;;;;;chevaliers;G*m;A 2.5.6 -4;Am;A 2.5.6;Distinguished during the siege of Rhodes, he later became Grand Master of the Knights Hospitalier, and heroically defended Malta whose capital city is now named after him
+LEADER;Johann Kasimir;von der Pfalz-Simmern;Johann Kasimir;;Johann Kasimir von der Pfalz-Simmern;III;D;palatinat;G;E 3.2.3;;;Defender of Calvinist values, he intervened in the French Wars of Religion
+LEADER;Mansfeld;Peter Ernst II. von;Mansfeld;;;IV;1;palatinat;G;A 2.3.4;;;One of the foremost champions of the Protestant League during the Thirty Years War. Beat Tilly in Palatinate, then utterly beaten by Wallenstein
+LEADERDOUBLE;Shah;ﻩﺎﺷ;Shāh;;Shāh (ﻩﺎﺷ);;;perse;K;A 4.3.3;K;A 5.2.2 -1;Generic Persian monarch
+LEADER;Abbas Shah;ﮒﺭُﺰُﺑ ﺱﺎﺒَﻋ ﻩﺎﺷ;Shāh ’Abbās I;;Shāh ’Abbās I (ﮒﺭُﺰُﺑ ﺱﺎﺒَﻋ ﻩﺎﺷ);III;18;perse;KR;A 3.4.4 -1;;;Greatest ruler of the Safavid dynasty. Military reformer and reconqueror. Talented administrator and diplomat, skilled tactician
+LEADER;Nadir Shah;ﺭﺎﺸﻓﺍ ﻩﺎﺷ ﺭﺩﺎﻧ;Nādir Shāh Afshār;;Nādir Shāh Afshār (ﺭﺎﺸﻓﺍ ﻩﺎﺷ ﺭﺩﺎﻧ);VI;18;perse;KR;A 3.4.4 -1;;;Founder of the Afsharid dynasty. Called Persian Napoleon, reconquered Afghanistan and restored Persian glory
+LEADER;Victor-Amedee;Vittorio-Amedeo II di Savoia e di Sardinia;Victor Amédée;;Vittorio-Amedeo II di Savoia e di Sardinia;41;48;savoie;G;A 2.4.4 -2;;;Duke of Savoy. Sided with the Imperials during the War of Spanish Successior, thus gaining Sicilia. But he was forced to exchange it for Sardignia 10 years later
+LEADER;Mayenne;Charles de;Mayenne;;;III;D;sainte-ligue;G;B 2.2.2;;;Brother of Henri de Guise, took the head of the League at his death
+LEADER;Colonna;Marcantonio II;Colonna;;;13;18;papaute;Am;A 2.3.3;;;Admiral at the second battle of Lepanto. Later viceroy of Sicily
+LEADER;Johann Friedrich;the Magnanimous;Johann Friedrich;;Johann Friedrich I the Magnanimous;9;16;saxe;K;A 3.3.3;;;Head of the Schmalkadic league. Defeated at Mühlberg, he was made prisonner and forced to resign in favor of his cousin Maurice
+##LEADER;Johann Georg II;;;;;27;31;saxe;K;A 1.2.2;;;TODO
+LEADER;Johann Georg I;;Johann Georg I.;;;25;33;saxe;K;A 1.2.2;;;Elector of Saxony during the Thirty Years War. First supporter of the emperor, he joined the Swedes after being invaded by Tilly and went back to the emperor after the death of Gustavus Adolphus. Fleed at Breitenfeld and severly beaten at Wittstock
+##LEADER;Johann Georg III;;;;;32;40;saxe;K;A 1.2.2;;;TODO
+LEADER;Johann Georg III;Johann Georg II. and III.;Johann Georg III;;Johann Georg II. and III.;34;40;saxe;K;A 2.2.3;;;Electors of Saxony. Johann Georg II. reconstructed his state ravaged by the Thirty Years War. Johann Georg III. fought at Vienna, during the Great Turkish War and lately joined the league of Augburg
+LEADER;Mazepa;Ivan Stepanovitch;Mazepa;;;VI;19;ukraine;G;C 2.2.3;;;Ally of Charles XII during the Great Northen War, defeated with him at Poltava
+LEADER;Arnold;Benedict;Arnold;;;58;60;usa;G$;B 4.3.4;;;Successful american general during the American Revolution. Lead an expedition to Québec through wilderness. Later changed side and lead British raids in Virginia
+LEADER;ArabAdmiralA;ﺮﺤﺑﻟﺍ ﺮﻴﻣﺃ;’Emīru albahr;;;;;aden;PR;A 2.2.2;;;This leader will be used preferentially if a leader is obtain by reinforcements
+LEADER;ArabAdmiralO;ﺮﺤﺑﻟﺍ ﺮﻴﻣﺃ;’Emīru albahr;;;;;oman;PR;A 2.2.2;;;This leader will be used preferentially if a leader is obtain by reinforcements
+LEADER;Akbar;जलाल-उद्दीन मोहम्मद अकबर;Akbar;Akbar (ﺮﺒﻛﺍ);Abu'l-Fath Jalal-ud-Din Muhammad Akbar I (जलाल-उद्दीन मोहम्मद अकबर);III;20;mogol;K@;A 5.4.4;;;Great conqueror of India. Military genious, with a heavy use of both cannons and elephants (sometimes one on top of the other!) Restored the Mughal empire at Panipat and conquered most of Northern India. Patron of arts
+LEADER;Ackbar;;;;;;;rebelles;A;A 6.4.4;;;Supreme commander of the fleet. Lead the victorious attack on the second Death Star
+LEADER;Great Mughal;;;;;;;mogol;K@;A 3.3.4;;;Generic Mughal monarch
+LEADER;Pugachev;Yemelyan Ivanovich - Емелья́н Ива́нович Пугачёв;Pugachev;Pugachev;Yemelyan Ivanovich Pugachev (Емелья́н Ива́нович Пугачёв);VII;13;rebelles;G;A 4.2.3;;;Leader of a large-scale cossack revolt in Eastern Russia. Captured and sent to Moscow for execution
+LEADER;Malahayati;;Malahayati;;;III;22(2);aceh;A@;A 6.4.5;;;First woman in the World to became admiral. Brilliant defender of Aceh during its golden age
+LEADER;J. Cabot;Giovanni Caboto;J. Cabot;;Giovanni Caboto;2;3;mercenaires;ER;J 4.2.4;;;An Italian adventurer. Probably explored Newfoundland. Searched the Northwest passage
+LEADER;S. Cabot;Sebastiano Caboto;S. Cabot;;Sebastiano Caboto;5;13;mercenaires;ER;J 4.5.2;;;The son of Giovanni Cabot. Switched allegiance between England and Spain several times
+##############################################################
+##
+##    Pirates
+##
+##############################################################
+LEADER;Jambe de bois;François le Clerc;Jambe de bois;;François le Clerc;12;16;pirates;P$;B 2.2.3;;;Sacked Santiago de Cuba
+LEADER;Legrand;Pierre;Legrand;;;21;25;pirates;P$;A 2.3.2;;;Took the vice-admiral ship of the spanish fleet
+LEADER;Easton;Peter;Easton;;;24;27;pirates;P$;B 4.2.2;;;Raided Newfoundland for several years and was never caught
+LEADER;Olonnais;Jean David Nau;L’Olonnais;;Jean David Nau;34;38;pirates;P$;B 2.3.4;;;Sacked Maracaibo and San Pedro
+LEADER;Avery;Long Ben;Avery;;;40;42;pirates;P;P 4.2.3;;;Retired without being caught
+LEADER;Kidd;William;Kidd;;;41;43;pirates;P@;A 2.4.4;;;Former pirate hunter who turned to the dark side
+LEADER;Burgess;Samuel;Burgess;;;41;44;pirates;P$;B 3.2.2;;;Pirate in the Caribbean, seized near Cape Town, later made english privateer
+LEADER;Misson;Olivier;Misson;;;42;47;pirates;P@;B 3.1.2;;;Founder of Libertalia in Madagascar
+LEADER;Bonnet;Steede;Bonnet;;;45;46;pirates;P$;D 2.1.1;;;The gentleman-pirate
+LEADER;Blackbeard;Edward Teach;Blackbeard;;Edward Teach;45;47;pirates;P$;A 5.3.4;;;Maybe the most famous pirate
+LEADER;England;Edward;England;;;45;47;pirates;P@;C 3.3.2;;;Never killed prisonner, marooned after a mutiny, died as a beggar
+LEADER;Bonny;Ann;Bonny;;;47;48;pirates;P$;C 4.3.3;;;Ann Bonny, Mary Read, John Rackham and Charles Vane
+LEADER;Roberts;Bartholomew;Roberts;;;46;48;pirates;P$;B 5.2.2;;;Most successful pirate, captured hundreds of ships
+LEADER;La Buse;Olivier Levasseur;La Buse;;Olivier Levasseur;46;51;pirates;P@;A 4.2.2;;;Took the ship of the Viceroy of Goa, loaded with diamonds and precious stones
+##############################################################
+##
+##   Double face spéciaux
+##
+##############################################################
+##Type;Internal code;Surname;Spelling;Counter Spelling;Full name;First turn or Period;Last turn or Event;Country;Leader Type;Stats;Unused;Unused;Comment;Internal Code2;Surname2;Spelling2;Counter Spelling2;Full name 2;First turn or Period 2;Last turn or Event 2;Country 2;Leader Type 2;Stats 2;Unused;Unused;Comment 2
+#Type;NameA;NameB;NameC;NameD;NameE;First turn;Last turn;Country;Leader Type;Stats;Unused;Unused;Comment;NameA 2;NameB 2;NameC 2;NameD 2;NameE 2;First turn 2;Last turn 2;Country 2;Leader Type 2;Stats 2;Unused;Unused;Comment 2
+LEADERPAIRE;Rupertroy;Prince Rupert of the Rhine;Rupert;;Prince Rupert of the Rhine;IV;7;royalistes;G;C 4.3.4;;;Count Palatine of the Rhine, Duke of Bavaria. Great royalist commander during the English Civil War;Rupertang;Prince Rupert of the Rhine;Rupert;;Prince Rupert of the Rhine;IV;7;angleterre;A;C 3.4.4;;;After the English Civil War, admiral in the Royal Navy against Holland
+LEADERPAIRE;Estaingpriv;Charles Henri;d’Estaing;;;55;61;fralicense;P@;E 4.3.3;;;Brillant privateer in the Indian Ocean;Estaingfra;Charles Henri;d'Estaing;;;55;61;france;AR;A 1.3.3;During the American Revolution, he took Grenada but failed to pursue and destroy the English relief fleet
+LEADERPAIRE;Sinan;Sinan Pashë Topojani;Sınan Paşa;;Sinan Pashë Topojani;17;22;turvizir;K;A 3.4.4 -1;;;Ottoman soldier and statesman, appointed five times Grand Vizier. Retook Tripoli, fought in the Long War with both victories and defeats;Sinan2;Sinan Pashë Topojani;Sınan Paşa;;Sinan Pashë Topojani;17;22;turquie;CR;H 3.4.4;;;Governor of Egypt, conqueror of Yemen
+### Ottoman turkish not found
+LEADERPAIRE;Washington2;George;Washington;;;55;60;angleterre;g$;I 6.2.2;;;Served in the British army before the American Revolution. Also represents Johnson and the good relations with the Indians;Washington;George;Washington;;;55;60;usa;G$;A 6.2.2;;;Often referred as the Father of the nation. Rebeled against the British rule, he lead the revolted colonies to freedom. First president of the United States of America
+LEADERPAIRE;Guise;Henri le balafré;Guise;;Henri de Guise;III;D;sainte-ligue;G;A 2.2.4 -1;;;Leader of the Catholic League during the wars of religion. Suspected of plotting a coup, he was murdered by Henri III;Henri de Guise;;;;;III;D;france;K;A 2.2.4 -1;;;Hypothetical French king if the League win the wars of religion
+LEADERPAIRE;Navarre;Henri de;Navarre;;;III;D;huguenots;G;A 2.3.3 -1;;;Leader of the Protestant activists or moderates during the wars of religion;Henri IV;;;;;III;D;france;K;A 2.3.3 -1;;;Protestant leader during the wars of religion, he converted to catholicism to become king of France. Reigned for 12 years, rebuilding the kingdom, before being murdered by a religious zealot
+LEADERPAIRE;La Fayette2;Marie Joseph Paul du Motier, marquis de;La Fayette;;;58;61;france;GR;I 4.2.2;;;French general who fought for the American Revolution and later for the French Revolution;La Fayette;Marie Joseph Paul du Motier, marquis de;La Fayette;;;58;61;usa;G$;H 4.2.2;;;Hypothetical leader of a War of Independance of the French colonies
+##LEADERPAIRE;Brouwer;Hendrik;Brouwer;;;23;31;hollande;E*PR;F 5.2.2;;;Found a new route through the Roaring Forties;Brouwer2;Hendrik;Brouwer;;;27;31;hollande;CR;C 3.2.2;;;Nominated at VOC, founded Valdivia in Chile
+##LEADERPAIRE;Johan Maurits;van Nassau-Siegen;Johan Maurits;;Johan Maurits van Nassau-Siegen;29;32;hollande;C$*;B 3.4.3;;;Dutch conqueror of Brazil;Johan Maurits2;van Nassau-Siegen;Johan Maurits;;Johan Maurits van Nassau-Siegen;32;37;hollande;G;A 3.4.3;;;Commander in the Rhineland during the Anglo-Dutch wars
+LEADERPAIRE;Poniatowski;Stanisław;Poniatowski;;;42;50;pologne;G;C 3.2.2;;;Long lasting stateman and general of the 18th;Poniatowski2;Stanisław;Poniatowski;;;VI;1;suede;G;C 3.2.2;;;Supporter of Stanisław Leszczyński and the Swedish faction during the Great Northern War
+##LEADERPAIRE;Beniowski;Maurycy August;Beniowski;;;55;56;pologne;G;B 4.2.2;;;Joined the confederation of Bar, was captured by the Russians, then became an adventurer for the French;Benyowsky;Maurice Auguste de;Benyowsky;;;57;58;france;g@;E 3.2.2;;;Became ``king'' of Madagascar
+LEADERPAIRE;Bathory;István;Báthory;;;17;22;ukraine;G;B 5.2.4;;;Hungarian noble who oposed the emperor and was imprisonned. He became voivode of Transylvania;Batory;Stefan;Batory;;;17;22;pologne;K;A 5.2.4;;;Elected king of Poland. Victorious against Russia. Strengthened the royal authority and initiated counter-reformation in the commonwealth
+LEADERPAIRE;Ferdinand;von Braunschweig;Ferdinand;;Ferdinand von Braunschweig;52;57;prusse;G;D 4.3.4;;;Young brother of the Duke of Brunswick, fought the Seven Years War;Ferdinand2;von Braunschweig;Ferdinand;;Ferdinand von Braunschweig;52;57;prumercenaires;G;A 4.3.4;;;Young brother of the Duke of Brunswick, victor at Minden and Crefeld
+LEADERPAIRE;K Braunschweig;Karl Wilhelm Ferdinand von Braunschweig-WolfenbÜttel;K. Braunschweig;;Karl Wilhelm Ferdinand von Braunschweig-WolfenbÜttel;58;62;prusse;G;A 4.3.2;;;Nephew of Ferdinand von Braunshweig. NCO during the Seven Years Wars.;K Braunschweig2;Karl Wilhelm Ferdinand von Braunschweig-WolfenbÜttel;K. Braunschweig;;Karl Wilhelm Ferdinand von Braunschweig-WolfenbÜttel;58;62;prumercenaires;G;A 4.3.2;;;Leader of anti-revolutionary forces, he edicted the "Brunswick manifesto" which sparkled revolts. Looser at Valmy
+LEADERPAIRE;Sachsen-Weimar;Bernhard av;Sachsen-Weimar;;;IV;A;suede;G;A 3.4.4 -1;;;General of the Thirty Years War, he was recruted by France after the death of Gustav-Adolf;Saxe-Weimar;Bernard de;Saxe-Weimar;;;IV;A;framercenaires;G;B 3.4.4 -1;;;German leader who fought first for the Swedish then for the French during the Thirty Years War
+LEADERPAIRE;de Saxe;Maurice;de Saxe;;;50;53;france;G;A 4.4.5 -1;;;Illegitimate son of the Saxe elector. Marshall-General of France. Victorious at Fontenoy. Took Prague, Brussels and Maastricht. Great grand-father of the writer George Sand;von Sachsen;Hermann Moritz;von Sachsen;;;50;53;courlande;G;A 4.4.5 -1;;;Illegitimate son of the Saxe elector, he grabbed the power and briefly tried to rule an independant Courland
+LEADERPAIRE;Barbaros2;ﻦﻳﺪﻟﺍ ﺮﻴﺧ;Barbarossa;;Khayr ad-Din (ﻦﻳﺪﻟﺍ ﺮﻴﺧ);5;11;algerie;dPm♥*;A 5.4.5;;;Bey of Algiers, famous corsair. Raided Western Mediterranean, Italy and Spain for years, forged the Algerian alliance with Turkey;Barbaros;Hayrettin Paşa;Barbaros;;Hayrettin Paşa;5;11;turquie;APm♥;A 5.4.5;;;Pasha of Algiers and Grand Admiral of the Navy. Lost La Goletta to Spain. Victorious at Preveza, thus ensuring Turkish domination for years. Wintered in Toulon
+LEADERPAIRE;Dragut2;ﺙﻮﻏﺭﺩ;Dragut;;Dragut (ﺙﻮﻏﺭﺩ);10;16;tunisie;dPm*;A 5.2.4;;;Famous pirate based in Djerba. Raided central Mediterranean and Venetian possessions;Dragut;Turgut Reis;Dragut;;Turgut Reis;10;16;turquie;APm;D 5.2.4;;;Successor of Barbarossa. Sacked Gozo, victorious at Ponza and Djerba. Deadly wounded during the siege of Malta
+LEADERPAIRE;Burji1;ﻱﺭﻮﻐﻟﺍ ﮦﻮﺼﻧﺎﻗ ﻑﺮﺷﺄﻟﺍ;Al-Ashraf Qansuh Al-Ghawri;Qansuh Al-Ghawri;Al-Ashraf Qansuh Al-Ghawri (ﻱﺭﻮﻐﻟﺍ ﮦﻮﺼﻧﺎﻗ ﻑﺮﺷﺄﻟﺍ);;;mamelouks;K;A 3.1.4;;;Second-to-last Sultan of the Burji dynasty. Tried to repulse the Portuguese from the Red Sea and the Indian trade. Died loosing at Marj Dabiq during the Turkish conquest;Burji2;ﯼﺎﺑ ﻥﺎﻣﻮﻃ ﻑﺮﺷﺄﻟﺍ;Al-Ashraf Tuman Bay II;Tuman Bay II;Al-Ashraf Tuman Bay II (ﯼﺎﺑ ﻥﺎﻣﻮﻃ ﻑﺮﺷﺄﻟﺍ);;;mamelouks;K;A 5.1.4;;;Last Sultan of the Burji dynasty. Died loosing at Ridaniya during the Turkish conquest
+##############################################################
+##
+##          Missionaries
+##
+##############################################################
+#Type;NameA;NameB;NameC;Country;First turn;Last turn;carac;bonus;Comment
+##NameA: code. NameB: first name. NameC: counter/surname.
+##### ANG
+MISSIONNAIRE;Brewster;William;Brewster;angleterre;26;31;2.0.0;3;Pilgrim of the Mayflower and religious leader of the Plymouth colony
+MISSIONNAIRE;Penn;William;Penn;angleterre;38;42;1.0.0;3;Quaker, founder of Pennsylvannia
+MISSIONNAIRE;Blair;James;Blair;angleterre;40;50;1.0.0;2;Missionary in Virginia and funder of ''Public Ivy'' College William and Mary
+##### FRA catho
+MISSIONNAIRE;de Rhodes;Alexandre - \vnrhodes;de Rhodes;france;26;34;3.0.0;2;Creator of the Vietnamese alphabet and writer of the first Vietnamese-Latin dictionary. Later sent to Persia
+MISSIONNAIRE;Brebeuf;Saint Jean de;Brébeuf;france;28;32;2.0.0;3;Jesuit, Apostle of the Hurons, he learnt their language and even printed a catechism in Huron thus paving the way for future Jesuit linguistic works
+MISSIONNAIRE;Marquette;Jacques;Marquette;france;35;41;3.0.0;2;Founder of Sault Sainte Marie, the first European settlement in Michigan, explorer and cartographer of the northern Mississippi river
+MISSIONNAIRE;Laval;Saint François de;Laval;france;38;44;1.0.0;3;Member of the Montmorency family. First bishop of Québec and father of the Canadian Church
+## Chinese fonts don't interact well with auto-translation.
+## Need to do a specific command - see rules/engCommand.tex
+MISSIONNAIRE;Bouvet;Joachim - \cnbouvet - \cnbouvetcourtesy;Bouvet;france;40;48;2.0.0;2;Missionary and mathematician, leading member of the Figurist movement. Sent to China by Louis XIV, he gain confidence of the emperor, served as his envoy back in France, survey the country and died in Beijing. He brought knowledge of the Chinese hexagrams to Leibniz
+##MISSIONNAIRE;Amiot;Jean Joseph Marie -  Qian Deming (\cnamiot);Amiot;france;53;62;1.0.0;1;Missionary in China and official translator of Western languages for the Emperor
+##### FRA protestant
+MISSIONNAIRE;Chartier;Guillaume;Chartier;frahuguenots;14;20;1.0.0;2;Sent by Calvin as a pastor for the France Antarctique colony in Brazil. Conflicts with the catholic governor Villegagnon lead to his expulsion
+MISSIONNAIRE;Dugua de Mons;Pierre;Dugua de Mons;frahuguenots;21;27;2.0.0;2;Founder of Port-Royal and early coloniser of Acadia
+MISSIONNAIRE;Court;Antoine;Court;frahuguenots;45;54;1.0.0;3;Leading pastor of the Desert period and restorer of Protestantism in France. Supposed to have travelled to restore faith in the New World under a Protestant king
+##### POR
+MISSIONNAIRE;Agostinho;;Agostinho;portugal;3;14;2.0.0;1;Augistinians missionaries were seen in Zanzibar as soon as 1499
+MISSIONNAIRE;Alvares;Fransisco;Alvares;portugal;5;10;2.0.0;2;Missionary and explorer in Ethiopia
+MISSIONNAIRE;Nobrega;Manuel da;Nóbrega;portugal;10;14;3.0.0;2;Co-founder of Rio, Recife, Salvador and São Paulo
+MISSIONNAIRE;Francois-Xavier;Francisco de Jasso Azpilcueta Atondo y Aznáres;São Francisco Xavier;portugal;10;14;3.0.0;3;Apostle of the Far East, he went as far as India, Japan and China. Co-founder of the Jesuit society
+##### HIS
+MISSIONNAIRE;Las Casas;Bartolomé de;Las Casas;espagne;5;14;3.0.0;3;\emph{Protector of the Indians} and first bishop of Chiapas. He actively fought for the rights of natives in America and is thus seen as a precursor of the universality of Human rights
+MISSIONNAIRE;Cancer;Luis;Cancer;espagne;6;14;3.0.0;2;Adept of the non-violent approach to christianisation. Missionary in Caraibes, Guatemala and Florida, where he was killed
+MISSIONNAIRE;Motolinia;Toribio de Benavente;Motolinia;espagne;7;16;1.0.0;2;One of the \emph{Twelve Apostles of Mexico} and ethnographer of the Nahuas
+MISSIONNAIRE;Zumarraga;Juan de;Zumarraga;espagne;8;17;1.0.0;2;First archbishop of Mexico, introduced the first printing press in the New World
+MISSIONNAIRE;de Niza;Marcos;de Niza;espagne;9;14;4.0.0;2;Missionary in Peru and Guatemala. Explorer of Sonora, described the Seven cities of Cibola and later guide of Coronado's expedition
+MISSIONNAIRE;Sahagun;Bernardino de;Sahagún;espagne;10;20;2.0.0;3;Studied the aztecs for a long time, thus becoming one of the first antropologists. Translated the Psalms and Gospels in Nahualt
+MISSIONNAIRE;Solano;Juan;Solano;espagne;12;18;1.0.0;2;Second bishop of Cuzco, stayed fidel to the Crown during Gonzalo Pizarro's rebellion. Defender of native rights, he built the first hospital in Peru
+MISSIONNAIRE;Montufar;Alonso de;Montúfar;espagne;13;17;1.0.0;2;Second bishop of Mexico. Approved the devotion to Our Lady of Guadalupe
+MISSIONNAIRE;Contreras;Pedro Moya de;Contreras;espagne;17;20;2.0.0;2;Archbishop of Mexico, Viceroy of New Spain and first inquisitor general of New Spain. Died in poverty in Madrid, the Crown had to pay for his funerals
+MISSIONNAIRE;Bolanos;Luis de;Bolaños;espagne;18;28;3.0.0;2;Initiated the system of \emph{reductions} in South America. Wrote the first grammar of Guaraní and translated the Catechism of the Third Council of Lima
+MISSIONNAIRE;Murua;Martín de;Murúa;espagne;19;26;3.0.0;3;Chronicler of the Spanish conquest, wrote the first illustrated history of Peru
+MISSIONNAIRE;Torquemada;Juan de;Torquemada;espagne;20;27;2.0.0;3;Writer of a monumental history of natives that was still used by historians centuries later. Not to be confused with the Spanish inquisitor
+MISSIONNAIRE;Kino;Eusebio;Kino;espagne;39;44;4.0.0;2;Missionary in Sonora, he explored Baja California thus proving that it is not an island
+MISSIONNAIRE;Junipero;Miquel Josep Serra Ferrer;Junípero;espagne;52;59;2.0.0;2;Founder of the first Spanish missions in California between San Diego and San Fransisco
+#Count;Type;Name;Country;bonus;Comment
+x2;MISSIONNAIREanonyme;Dominicos;espagne;1;Dominican friars, Order of Preachers, or Black friars. An intellectual order founded to fight heresy. Produced many inquisitors, theologians and philosophers. Las Casas was the most famed Dominican missionary
+x2;MISSIONNAIREanonyme;Franciscanos;espagne;1;Fransiscan friars or Grey friars. Mendicant religious order which built many missions in the New World, including what is now San Fransisco
