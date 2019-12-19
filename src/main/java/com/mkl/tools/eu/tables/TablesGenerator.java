@@ -1656,7 +1656,7 @@ public class TablesGenerator {
 
                     if (sqlWriter != null) {
                         addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
-                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false);
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false, null);
                     }
                     Leader leader = new Leader();
                     leader.setType(doubleLeader ? Leader.LeaderType.LEADERDOUBLE : Leader.LeaderType.LEADER);
@@ -1687,7 +1687,7 @@ public class TablesGenerator {
 
                             if (sqlWriter != null) {
                                 addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
-                                        manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false);
+                                        manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false, null);
                             }
                         }
                     }
@@ -1735,7 +1735,7 @@ public class TablesGenerator {
 
                     if (sqlWriter != null) {
                         addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
-                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false);
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false, null);
                     }
                     Leader leader = new Leader();
                     leader.setType(Leader.LeaderType.LEADERPAIRE);
@@ -1779,7 +1779,7 @@ public class TablesGenerator {
 
                         if (sqlWriter != null) {
                             addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
-                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false);
+                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false, null);
                         }
                     } else {
                         System.out.println("Double leader second side : " + value2);
@@ -1854,7 +1854,7 @@ public class TablesGenerator {
 
                     if (sqlWriter != null) {
                         addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
-                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, true);
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, true, null);
                     }
                     Leader leader = new Leader();
                     leader.setType(doubleLeader ? Leader.LeaderType.LEADERPAIRE : Leader.LeaderType.LEADER);
@@ -1868,8 +1868,42 @@ public class TablesGenerator {
 
                         if (sqlWriter != null) {
                             addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
-                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, true);
+                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, true, null);
                         }
+                    }
+                }
+            } else {
+                m = Pattern.compile("PACHA;([^;]*);([^;]*);([^;]*);(\\d);(.*)").matcher(line);
+                if (m.matches()) {
+                    String value = m.group(5);
+                    Matcher mVal = Pattern.compile("([A-Z]) (\\d).(\\d).(\\d) ?\\-?(\\d)?").matcher(value);
+                    if (mVal.matches()) {
+                        String country = "turquie";
+                        String rank = mVal.group(1);
+                        int manoeuvre = Integer.parseInt(mVal.group(2));
+                        int fire = Integer.parseInt(mVal.group(3));
+                        int shock = Integer.parseInt(mVal.group(4));
+                        String possibleSiege = mVal.group(5);
+                        int siege = 0;
+                        if (StringUtils.isNotEmpty(possibleSiege)) {
+                            siege = Integer.parseInt(possibleSiege);
+                        }
+                        String type = "PACHA";
+                        String code = m.group(1) + "_" + m.group(2);
+                        String otherCode = code + "-2";
+                        Integer size = Integer.parseInt(m.group(4));
+
+                        if (sqlWriter != null) {
+                            addLeaderLine(sqlWriter, code, otherCode, code, country, null, null, null, rank,
+                                    manoeuvre, fire, shock, siege, type, false, false, false, false, true, true, size);
+                            addLeaderLine(sqlWriter, otherCode, code, code, country, null, null, null, null,
+                                    0, 0, 0, 0, type, false, false, false, false, false, true, null);
+                        }
+                        Leader leader = new Leader();
+                        leader.setType(Leader.LeaderType.PACHA);
+                        leader.setCode(code);
+                        leader.setCountry(country);
+                        leaders.add(leader);
                     }
                 }
             }
@@ -1949,13 +1983,14 @@ public class TablesGenerator {
      * @param privateer of the leader.
      * @param main      of the leader.
      * @param anonymous of the leader.
+     * @param size      of the leader.
      * @throws IOException if the writer fails.
      */
     private static void addLeaderLine(Writer sqlWriter, String code, String otherCode, String name, String country, String event,
                                       Integer begin, Integer end, String rank, int manoeuvre, int fire, int shock, int siege,
-                                      String type, boolean rotw, boolean asia, boolean america, boolean privateer, boolean main, boolean anonymous) throws IOException {
+                                      String type, boolean rotw, boolean asia, boolean america, boolean privateer, boolean main, boolean anonymous, Integer size) throws IOException {
         sqlWriter.append("INSERT INTO T_LEADER (CODE, T_LEADER, NAME, R_COUNTRY, EVENT, BEGIN, END, " +
-                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, PRIVATEER, MAIN, ANONYMOUS)\n" +
+                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, PRIVATEER, MAIN, ANONYMOUS, SIZE)\n" +
                 "    VALUES (")
                 .append(stringToString(code)).append(", ")
                 .append(stringToString(otherCode)).append(", ")
@@ -1975,7 +2010,8 @@ public class TablesGenerator {
                 .append(booleanToBit(america)).append(", ")
                 .append(booleanToBit(privateer)).append(", ")
                 .append(booleanToBit(main)).append(", ")
-                .append(booleanToBit(anonymous)).append(");\n");
+                .append(booleanToBit(anonymous)).append(", ")
+                .append(integerToInteger(size)).append(");\n");
     }
 
     /**

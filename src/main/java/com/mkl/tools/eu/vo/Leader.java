@@ -65,6 +65,7 @@ public class Leader {
     public enum LeaderType {
         LEADER,
         LEADERDOUBLE,
-        LEADERPAIRE
+        LEADERPAIRE,
+        PACHA
     }
 }

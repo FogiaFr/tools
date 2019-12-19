@@ -111,6 +111,10 @@ public class CounterGenerator {
                     typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "LeaderPair_{0}%7C" + country2 + "_" + sourceCode + "_recto.png"));
                     typesByCountry.get(country2).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + "-2.png", "LeaderPair_" + country + "%7C{0}_" + sourceCode + "_verso.png"));
                     break;
+                case PACHA:
+                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "Pacha_" + code + "_recto.png"));
+                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + "-2.png", "Pacha_" + code + "_verso.png"));
+                    break;
             }
         }
         typesByCountry.put(null, listNeutralCounters(log));

@@ -2,6 +2,7 @@ DD/MM/YYYY
 
 anonymes.txt:
  - commented all anonymous leaders without an image
+ - commented new version of pacha, awaiting for new images
 
 leaders.txt:
  - LEADER;Tromp; -> LEADER;M Tromp;

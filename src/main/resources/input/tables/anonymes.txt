@@ -268,53 +268,53 @@ LEADERANONYMOUS;?5;natives;;;GR;D 3.2.2;1
 LEADERANONYMOUS;?6;natives;;;GR;D 1.1.4;1
 #Type;Country;NameA;NameB;NameC;LD;Stats
 ## NameA: code, NameB: name/counter, NameC: alt spelling
-## PACHA;timar;Ali;Ali;1;G 1.1.1
-## PACHA;timar;Abdallah;Abdallah;1;J 2.2.1
-## PACHA;timar;Adnan;Adnan;1;H 2.1.2
-## PACHA;timar;Amar;Amar;2;V 1.0.1
-## PACHA;timar;Ashraf;Ashraf;1;U 2.2.2
-## PACHA;timar;Aziz;Aziz;1;Q 1.0.0
-## PACHA;timar;Bahman;Bahman;1;M 4.2.3
-## PACHA;timar;Djamil;Djamil;2;X 3.1.1
-## PACHA;timar;Elias;Elias;1;O 0.1.0
-## PACHA;timar;Eren;Eren;1;Y 2.2.2
-## PACHA;timar;Ismail;Ismail;3;W 0.2.0
-## PACHA;timar;Israf;Israf;2;S 4.4.4
-## PACHA;timar;Karim;Karim;1;R 2.1.1
-## PACHA;timar;Khaled;Khaled;1;T 2.2.3
-## PACHA;timar;Mehmet;Mehmet;1;I 1.0.1
-## PACHA;timar;Mustafa;Mustafa;1;N 2.1.1
-## PACHA;timar;Saleh;Saleh;1;K 3.2.1
-## PACHA;timar;Selim;Selim;1;Z 0.0.0
-## PACHA;timar;Tarek;Tarek;2;K 3.2.1
-## PACHA;timar;Turgut;Turgut;1;Y 4.0.1
-## PACHA;timar;Yasser;Yasser;2;X 1.0.4
-## PACHA;timar;Yussuf;Yussuf;2;P 2.1.0
+PACHA;timar;Ali;Ali;1;G 1.1.1
+PACHA;timar;Abdallah;Abdallah;1;J 2.2.1
+PACHA;timar;Adnan;Adnan;1;H 2.1.2
+PACHA;timar;Amar;Amar;2;V 1.0.1
+PACHA;timar;Ashraf;Ashraf;1;U 2.2.2
+PACHA;timar;Aziz;Aziz;1;Q 1.0.0
+PACHA;timar;Bahman;Bahman;1;M 4.2.3
+PACHA;timar;Djamil;Djamil;2;X 3.1.1
+PACHA;timar;Elias;Elias;1;O 0.1.0
+PACHA;timar;Eren;Eren;1;Y 2.2.2
+PACHA;timar;Ismail;Ismail;3;W 0.2.0
+PACHA;timar;Israf;Israf;2;S 4.4.4
+PACHA;timar;Karim;Karim;1;R 2.1.1
+PACHA;timar;Khaled;Khaled;1;T 2.2.3
+PACHA;timar;Mehmet;Mehmet;1;I 1.0.1
+PACHA;timar;Mustafa;Mustafa;1;N 2.1.1
+PACHA;timar;Saleh;Saleh;1;K 3.2.1
+PACHA;timar;Selim;Selim;1;Z 0.0.0
+PACHA;timar;Tarek;Tarek;2;K 3.2.1
+PACHA;timar;Turgut;Turgut;1;Y 4.0.1
+PACHA;timar;Yasser;Yasser;2;X 1.0.4
+PACHA;timar;Yussuf;Yussuf;2;P 2.1.0
 ## [BLP]
-PACHA;timar;Adnan;Adnan;;1;Z 2.1.2
-PACHA;timar;Ali;Ali;ﻲﻠﻋ;1;Z 4.4.3
-PACHA;timar;Aziz;Aziz;;3;Z 2.3.3
-PACHA;timar;Bahman;Bahman;;1;Z 4.2.3
-PACHA;timar;Crnojevic;Crnojević;;1;Z 2.2.2 -1
-PACHA;timar;Cemil;Cemil;;2;Z 3.1.1
-PACHA;timar;Ilyas;İlyas;;1;Z 1.1.3
-PACHA;timar;Hadim;Hadım;;1;Z 2.3.3
-PACHA;timar;Huseyin;Hüseyin;;1;Z 2.2.2
-PACHA;timar;Ibrahim2;İbrahim;;1;Z 4.4.4
-PACHA;timar;Ismail;İsmail;;3;Z 1.2.1
-PACHA;timar;Kerim;Kerim;;1;Z 2.1.4
-PACHA;timar;Khalid;Khalid;ﺪﻟﺎﺧ;1;Z 2.2.3
-PACHA;timar;Mihajlovic;Mihajlović;;1;Z 3.2.3
-PACHA;timar;Mehmed;Mehmed;;1;Z 4.2.3 -1
-PACHA;timar;Mustafa;Mustafa;;1;Z 4.2.2
-PACHA;timar;Abdullah;Abdullah;ﻪﻠﻟﺍ ﺪﺒﻋ;1;Z 2.3.3 -1
-PACHA;timar;Predojevic;Predojević;;2;Z 2.1.2
-PACHA;timar;Ragip;Ragıp;;1;Z 2.2.1 -1
-PACHA;timar;Salih;Salih;;1;Z 3.3.3
-PACHA;timar;Selim2;Selim;;2;Z 1.1.1
-PACHA;timar;Taher;Taher;ﺮﻫﺎﻃ;2;Z 2.2.2
-PACHA;timar;Tardic;Tardić;;1;Z 2.3.3
-PACHA;timar;Tarik;Tarık;;2;Z 3.2.1
-PACHA;timar;Turgut;Turgut;;1;Z 4.4.1
-PACHA;timar;Yaser;Yaser;;2;Z 3.2.3
-PACHA;timar;Yusuf;Yusuf;;2;Z 2.1.1
+#PACHA;timar;Adnan;Adnan;;1;Z 2.1.2
+#PACHA;timar;Ali;Ali;ﻲﻠﻋ;1;Z 4.4.3
+#PACHA;timar;Aziz;Aziz;;3;Z 2.3.3
+#PACHA;timar;Bahman;Bahman;;1;Z 4.2.3
+#PACHA;timar;Crnojevic;Crnojević;;1;Z 2.2.2 -1
+#PACHA;timar;Cemil;Cemil;;2;Z 3.1.1
+#PACHA;timar;Ilyas;İlyas;;1;Z 1.1.3
+#PACHA;timar;Hadim;Hadım;;1;Z 2.3.3
+#PACHA;timar;Huseyin;Hüseyin;;1;Z 2.2.2
+#PACHA;timar;Ibrahim2;İbrahim;;1;Z 4.4.4
+#PACHA;timar;Ismail;İsmail;;3;Z 1.2.1
+#PACHA;timar;Kerim;Kerim;;1;Z 2.1.4
+#PACHA;timar;Khalid;Khalid;ﺪﻟﺎﺧ;1;Z 2.2.3
+#PACHA;timar;Mihajlovic;Mihajlović;;1;Z 3.2.3
+#PACHA;timar;Mehmed;Mehmed;;1;Z 4.2.3 -1
+#PACHA;timar;Mustafa;Mustafa;;1;Z 4.2.2
+#PACHA;timar;Abdullah;Abdullah;ﻪﻠﻟﺍ ﺪﺒﻋ;1;Z 2.3.3 -1
+#PACHA;timar;Predojevic;Predojević;;2;Z 2.1.2
+#PACHA;timar;Ragip;Ragıp;;1;Z 2.2.1 -1
+#PACHA;timar;Salih;Salih;;1;Z 3.3.3
+#PACHA;timar;Selim2;Selim;;2;Z 1.1.1
+#PACHA;timar;Taher;Taher;ﺮﻫﺎﻃ;2;Z 2.2.2
+#PACHA;timar;Tardic;Tardić;;1;Z 2.3.3
+#PACHA;timar;Tarik;Tarık;;2;Z 3.2.1
+#PACHA;timar;Turgut;Turgut;;1;Z 4.4.1
+#PACHA;timar;Yaser;Yaser;;2;Z 3.2.3
+#PACHA;timar;Yusuf;Yusuf;;2;Z 2.1.1
