@@ -1,6 +1,7 @@
 package com.mkl.tools.eu.map;
 
 import com.google.common.collect.Lists;
+import com.mkl.tools.eu.vo.Leader;
 import com.mkl.tools.eu.vo.country.Country;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -35,6 +36,9 @@ public class CounterGenerator {
         aliasCountry.put("parliament", "angleterre");
         aliasCountry.put("german-empire", "saint-empire");
         aliasCountry.put("provincesne", "hollande");
+        aliasCountry.put("turcorsaire", "turquie");
+        aliasCountry.put("turvizir", "turquie");
+        aliasCountry.put("fralicense", "france");
 
 
         countriesWithoutOwn = new ArrayList<>();
@@ -57,16 +61,51 @@ public class CounterGenerator {
      * Move from the existing counters (in flat directory) to a more hierarchic way.
      *
      * @param countries list of countries.
+     * @param leaders   list of leaders.
      * @param log       log writer.
      * @throws IOException exception.
      */
-    public static void moveExistingCounter(Map<String, Country> countries, String inputDirectory, String outputDirectory, Writer log) throws IOException {
+    public static void moveExistingCounter(Map<String, Country> countries, List<Leader> leaders, String inputDirectory, String outputDirectory, Writer log) throws IOException {
         deleteTree(FileSystems.getDefault().getPath(outputDirectory));
 
         Map<String, List<Pair<String, String>>> typesByCountry = new HashMap<>();
         for (Country country : countries.values()) {
             List<Pair<String, String>> types = listCounterTypes(country, log);
             typesByCountry.put(country.getName(), types);
+        }
+
+        for (Leader leader : leaders) {
+            String country = leader.getCountry();
+            if (aliasCountry.containsKey(country)) {
+                country = aliasCountry.get(country);
+            }
+            if (!typesByCountry.containsKey(country)) {
+                typesByCountry.put(country, new ArrayList<>());
+            }
+            String code = leader.getCode();
+            code = code.replaceAll(" ", "-");
+            switch (leader.getType()) {
+                case LEADER:
+                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "Leader_{0}_" + code + ".png"));
+                    break;
+                case LEADERDOUBLE:
+                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "LeaderDouble_{0}_" + code + "_recto.png"));
+                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + "-2.png", "LeaderDouble_{0}_" + code + "_verso.png"));
+                    break;
+                case LEADERPAIRE:
+                    String country2 = leader.getCountry2();
+                    if (aliasCountry.containsKey(country2)) {
+                        country2 = aliasCountry.get(country2);
+                    }
+                    if (!typesByCountry.containsKey(country2)) {
+                        typesByCountry.put(country2, new ArrayList<>());
+                    }
+                    String code2 = leader.getCode2();
+                    code2 = code2.replaceAll(" ", "-");
+                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "LeaderPair_{0}%7C" + country2 + "_" + code + "%7C" + code2 + "_recto.png"));
+                    typesByCountry.get(country2).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + "-2.png", "LeaderPair_" + country + "%7C{0}_" + code + "%7C" + code2 + "_verso.png"));
+                    break;
+            }
         }
         typesByCountry.put(null, listNeutralCounters(log));
 
@@ -464,6 +503,9 @@ public class CounterGenerator {
      * @throws IOException exception.
      */
     private static void deleteTree(Path path) throws IOException {
+        if (Files.notExists(path)) {
+            return;
+        }
         Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
             /** {@inheritDoc} */
             @Override

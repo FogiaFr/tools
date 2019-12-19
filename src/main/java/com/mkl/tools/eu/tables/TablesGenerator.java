@@ -2,6 +2,7 @@ package com.mkl.tools.eu.tables;
 
 import com.mkl.tools.eu.map.DataExtractor;
 import com.mkl.tools.eu.util.ToolsUtil;
+import com.mkl.tools.eu.vo.Leader;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -14,9 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +27,77 @@ import java.util.regex.Pattern;
 public class TablesGenerator {
     /** Logger. */
     private static final Logger LOGGER = LoggerFactory.getLogger(TablesGenerator.class);
+    /** Leaders without image. */
+    private static final List<String> leadersWithoutImage;
+
+    static {
+        // TODO TG-152 cannot import leaders that have no image
+        leadersWithoutImage = new ArrayList<>();
+        leadersWithoutImage.add("van Bylandt");
+        leadersWithoutImage.add("Prince Waldek");
+        leadersWithoutImage.add("van Zuylen van Nijevelt");
+        leadersWithoutImage.add("Kutuzov");
+        leadersWithoutImage.add("Oruc Reis");
+        leadersWithoutImage.add("Morosini");
+        leadersWithoutImage.add("Juel");
+        leadersWithoutImage.add("Malahayati");
+        leadersWithoutImage.add("Selman Reis");
+        leadersWithoutImage.add("J. Cabot");
+        leadersWithoutImage.add("S. Cabot");
+        leadersWithoutImage.add("Bart");
+        leadersWithoutImage.add("Dumouriez");
+        leadersWithoutImage.add("Estrees");
+        leadersWithoutImage.add("Forbin");
+        leadersWithoutImage.add("Jourdan");
+        leadersWithoutImage.add("Marceau");
+        leadersWithoutImage.add("Duguay-Trouin");
+        leadersWithoutImage.add("Cassard");
+        leadersWithoutImage.add("Kleber");
+        leadersWithoutImage.add("Kellermann");
+        leadersWithoutImage.add("Hoche");
+        leadersWithoutImage.add("Massena");
+        leadersWithoutImage.add("Joubert");
+        leadersWithoutImage.add("Pichegru");
+        leadersWithoutImage.add("Moreau");
+        leadersWithoutImage.add("Brueys");
+        leadersWithoutImage.add("Villeneuve");
+        leadersWithoutImage.add("Johann Georg I");
+        leadersWithoutImage.add("J De la Gardie");
+        leadersWithoutImage.add("Printz");
+        leadersWithoutImage.add("Dobeln");
+        leadersWithoutImage.add("Coeuvres");
+        leadersWithoutImage.add("Esnambuc");
+        leadersWithoutImage.add("Suffren");
+        leadersWithoutImage.add("Tremoille");
+        leadersWithoutImage.add("Selim");
+        leadersWithoutImage.add("Ozdemir");
+        leadersWithoutImage.add("Ali Pasha");
+        leadersWithoutImage.add("Husain Pasha");
+        leadersWithoutImage.add("Borovinic");
+        leadersWithoutImage.add("Ibrahim");
+        leadersWithoutImage.add("Kurtoglu M");
+        leadersWithoutImage.add("Salih Reis");
+        leadersWithoutImage.add("Uluj Ali");
+        leadersWithoutImage.add("Siroco");
+        leadersWithoutImage.add("Mezzomorto");
+        leadersWithoutImage.add("Montiano");
+        leadersWithoutImage.add("Bertendona");
+        leadersWithoutImage.add("Oquendo");
+        leadersWithoutImage.add("Blas de Lezo");
+        leadersWithoutImage.add("Kirke");
+        leadersWithoutImage.add("Hughes");
+        leadersWithoutImage.add("La Bourdonnais");
+        leadersWithoutImage.add("La Galissonniere");
+        leadersWithoutImage.add("Osman");
+        leadersWithoutImage.add("Yusuf Sinan");
+        leadersWithoutImage.add("Brouwer");
+        leadersWithoutImage.add("Johan Maurits");
+        leadersWithoutImage.add("Rupertroy");
+        leadersWithoutImage.add("Burji1");
+        leadersWithoutImage.add("Estaingpriv");
+        leadersWithoutImage.add("Sinan");
+        leadersWithoutImage.add("K Braunschweig");
+    }
 
     /**
      * Main.
@@ -56,7 +126,7 @@ public class TablesGenerator {
 
         computeCountryTables(sqlWriter);
         computeGeneralTables(sqlWriter);
-        computeLeader(sqlWriter);
+        computeLeaders(sqlWriter);
 
         sqlWriter.flush();
         sqlWriter.close();
@@ -1524,21 +1594,24 @@ public class TablesGenerator {
      * @param sqlWriter the writer with all database instructions.
      * @throws IOException if the writer fails.
      */
-    private static Map<String, List<String>> computeLeader(Writer sqlWriter) throws IOException {
+    public static List<Leader> computeLeaders(Writer sqlWriter) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/leaders.txt")));
         String line;
-        Map<String, List<String>> leaders = new HashMap<>();
+        List<Leader> leaders = new ArrayList<>();
         while ((line = reader.readLine()) != null) {
             line = line.trim();
-            Matcher m = Pattern.compile("LEADER;([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);;;(.*)").matcher(line);
+            Matcher m = Pattern.compile("LEADER(|DOUBLE);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);(.*)").matcher(line);
             if (m.matches()) {
-                String value = m.group(10);
+                String value = m.group(11);
                 Matcher mVal = Pattern.compile("([A-Z]) (\\d).(\\d).(\\d) ?\\-?(\\d)?").matcher(value);
                 if (mVal.matches()) {
-                    String name = m.group(1);
-                    String country = m.group(8);
-                    String beginGroup = m.group(6);
-                    String endGroup = m.group(7);
+                    String code = m.group(2);
+                    if (leadersWithoutImage.contains(code)) {
+                        continue;
+                    }
+                    String country = m.group(9);
+                    String beginGroup = m.group(7);
+                    String endGroup = m.group(8);
                     Integer begin = null;
                     Integer end = null;
                     String event = null;
@@ -1557,17 +1630,147 @@ public class TablesGenerator {
                     if (StringUtils.isNotEmpty(possibleSiege)) {
                         siege = Integer.parseInt(possibleSiege);
                     }
-                    String typeValue = m.group(9);
+                    String typeValue = m.group(10);
                     String type = getLeaderType(typeValue);
                     boolean rotw = typeValue.contains("R");
                     boolean asia = typeValue.contains("@");
                     boolean america = typeValue.contains("%");
                     boolean privateer = typeValue.contains("P");
-                    addLeaderLine(sqlWriter, name, country, event, begin, end, rank, manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer);
-                    if (!leaders.containsKey(country)) {
-                        leaders.put(country, new ArrayList<>());
+                    boolean main = typeValue.contains("*");
+
+                    boolean doubleLeader = StringUtils.isNotEmpty(m.group(1));
+                    String otherCode = doubleLeader ? code + "-2" : null;
+
+                    if (sqlWriter != null) {
+                        addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main);
                     }
-                    leaders.get(country).add(name);
+                    Leader leader = new Leader();
+                    leader.setType(doubleLeader ? Leader.LeaderType.LEADERDOUBLE : Leader.LeaderType.LEADER);
+                    leader.setCode(code);
+                    leader.setCountry(country);
+                    leaders.add(leader);
+
+                    if (doubleLeader) {
+                        String value2 = m.group(13);
+                        Matcher mVal2 = Pattern.compile("([A-Z]) (\\d).(\\d).(\\d) ?\\-?(\\d)?").matcher(value2);
+                        if (mVal2.matches()) {
+                            rank = mVal2.group(1);
+                            manoeuvre = Integer.parseInt(mVal2.group(2));
+                            fire = Integer.parseInt(mVal2.group(3));
+                            shock = Integer.parseInt(mVal2.group(4));
+                            possibleSiege = mVal2.group(5);
+                            siege = 0;
+                            if (StringUtils.isNotEmpty(possibleSiege)) {
+                                siege = Integer.parseInt(possibleSiege);
+                            }
+                            String typeValue2 = m.group(12);
+                            type = getLeaderType(typeValue2);
+                            rotw = typeValue2.contains("R");
+                            asia = typeValue2.contains("@");
+                            america = typeValue2.contains("%");
+                            privateer = typeValue2.contains("P");
+                            main = typeValue2.contains("*");
+
+                            if (sqlWriter != null) {
+                                addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
+                                        manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main);
+                            }
+                        }
+                    }
+                }
+            }
+            m = Pattern.compile("LEADER(PAIRE);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);(.*)").matcher(line);
+            if (m.matches()) {
+                String value = m.group(11);
+                Matcher mVal = Pattern.compile("([A-Z]) (\\d).(\\d).(\\d) ?\\-?(\\d)?").matcher(value);
+                if (mVal.matches()) {
+                    String code = m.group(2);
+                    if (leadersWithoutImage.contains(code)) {
+                        continue;
+                    }
+                    String country = m.group(9);
+                    String beginGroup = m.group(7);
+                    String endGroup = m.group(8);
+                    Integer begin = null;
+                    Integer end = null;
+                    String event = null;
+                    if (StringUtils.isNumeric(beginGroup) && StringUtils.isNumeric(endGroup)) {
+                        begin = Integer.parseInt(beginGroup);
+                        end = Integer.parseInt(endGroup);
+                    } else {
+                        event = beginGroup + "-" + endGroup;
+                    }
+                    String rank = mVal.group(1);
+                    int manoeuvre = Integer.parseInt(mVal.group(2));
+                    int fire = Integer.parseInt(mVal.group(3));
+                    int shock = Integer.parseInt(mVal.group(4));
+                    String possibleSiege = mVal.group(5);
+                    int siege = 0;
+                    if (StringUtils.isNotEmpty(possibleSiege)) {
+                        siege = Integer.parseInt(possibleSiege);
+                    }
+                    String typeValue = m.group(10);
+                    String type = getLeaderType(typeValue);
+                    boolean rotw = typeValue.contains("R");
+                    boolean asia = typeValue.contains("@");
+                    boolean america = typeValue.contains("%");
+                    boolean privateer = typeValue.contains("P");
+                    boolean main = typeValue.contains("*");
+
+                    String otherCode = code + "-2";
+
+                    if (sqlWriter != null) {
+                        addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main);
+                    }
+                    Leader leader = new Leader();
+                    leader.setType(Leader.LeaderType.LEADERPAIRE);
+                    leader.setCode(code);
+                    leader.setCountry(country);
+                    leader.setCode2(m.group(15));
+                    leader.setCountry2(m.group(22));
+                    leaders.add(leader);
+
+                    String value2 = m.group(24);
+                    Matcher mVal2 = Pattern.compile("([A-Z]) (\\d).(\\d).(\\d) ?\\-?(\\d)?").matcher(value2);
+                    if (mVal2.matches()) {
+                        country = m.group(22);
+                        beginGroup = m.group(20);
+                        endGroup = m.group(21);
+                        begin = null;
+                        end = null;
+                        event = null;
+                        if (StringUtils.isNumeric(beginGroup) && StringUtils.isNumeric(endGroup)) {
+                            begin = Integer.parseInt(beginGroup);
+                            end = Integer.parseInt(endGroup);
+                        } else {
+                            event = beginGroup + "-" + endGroup;
+                        }
+                        rank = mVal2.group(1);
+                        manoeuvre = Integer.parseInt(mVal2.group(2));
+                        fire = Integer.parseInt(mVal2.group(3));
+                        shock = Integer.parseInt(mVal2.group(4));
+                        possibleSiege = mVal2.group(5);
+                        siege = 0;
+                        if (StringUtils.isNotEmpty(possibleSiege)) {
+                            siege = Integer.parseInt(possibleSiege);
+                        }
+                        String typeValue2 = m.group(23);
+                        type = getLeaderType(typeValue2);
+                        rotw = typeValue2.contains("R");
+                        asia = typeValue2.contains("@");
+                        america = typeValue2.contains("%");
+                        privateer = typeValue2.contains("P");
+                        main = typeValue2.contains("*");
+
+                        if (sqlWriter != null) {
+                            addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
+                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main);
+                        }
+                    } else {
+                        System.out.println("Double leader second side : " + value2);
+                    }
                 }
             }
         }
@@ -1577,7 +1780,7 @@ public class TablesGenerator {
     private static String getLeaderType(String value) {
         if (value.startsWith("G")) {
             return "GENERAL";
-        } else if (value.startsWith("A")) {
+        } else if (value.startsWith("A") || value.startsWith("d")) {
             return "ADMIRAL";
         } else if (value.startsWith("C")) {
             return "CONQUISTADOR";
@@ -1600,6 +1803,8 @@ public class TablesGenerator {
      * Insert a leader database insert line.
      *
      * @param sqlWriter where to write the db instructions.
+     * @param code      of the leader.
+     * @param otherCode code of the other side of the leader.
      * @param name      of the leader.
      * @param country   of the leader.
      * @param event     of the leader.
@@ -1615,14 +1820,17 @@ public class TablesGenerator {
      * @param asia      of the leader.
      * @param america   of the leader.
      * @param privateer of the leader.
+     * @param main      of the leader.
      * @throws IOException if the writer fails.
      */
-    private static void addLeaderLine(Writer sqlWriter, String name, String country, String event, Integer begin, Integer end,
-                                      String rank, int manoeuvre, int fire, int shock, int siege, String type,
-                                      boolean rotw, boolean asia, boolean america, boolean privateer) throws IOException {
-        sqlWriter.append("INSERT INTO T_LEADER (NAME, R_COUNTRY, EVENT, BEGIN, END, " +
-                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, PRIVATEER)\n" +
+    private static void addLeaderLine(Writer sqlWriter, String code, String otherCode, String name, String country, String event,
+                                      Integer begin, Integer end, String rank, int manoeuvre, int fire, int shock, int siege,
+                                      String type, boolean rotw, boolean asia, boolean america, boolean privateer, boolean main) throws IOException {
+        sqlWriter.append("INSERT INTO T_LEADER (CODE, T_LEADER, NAME, R_COUNTRY, EVENT, BEGIN, END, " +
+                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, PRIVATEER, MAIN)\n" +
                 "    VALUES (")
+                .append(stringToString(code)).append(", ")
+                .append(stringToString(otherCode)).append(", ")
                 .append(stringToString(name)).append(", ")
                 .append(stringToString(country)).append(", ")
                 .append(stringToString(event)).append(", ")
@@ -1637,7 +1845,8 @@ public class TablesGenerator {
                 .append(booleanToBit(rotw)).append(", ")
                 .append(booleanToBit(asia)).append(", ")
                 .append(booleanToBit(america)).append(", ")
-                .append(booleanToBit(privateer)).append(");\n");
+                .append(booleanToBit(privateer)).append(", ")
+                .append(booleanToBit(main)).append(");\n");
     }
 
     /**
