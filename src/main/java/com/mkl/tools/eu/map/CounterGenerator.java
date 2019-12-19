@@ -101,9 +101,15 @@ public class CounterGenerator {
                         typesByCountry.put(country2, new ArrayList<>());
                     }
                     String code2 = leader.getCode2();
-                    code2 = code2.replaceAll(" ", "-");
-                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "LeaderPair_{0}%7C" + country2 + "_" + code + "%7C" + code2 + "_recto.png"));
-                    typesByCountry.get(country2).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + "-2.png", "LeaderPair_" + country + "%7C{0}_" + code + "%7C" + code2 + "_verso.png"));
+                    String sourceCode;
+                    if (code2 == null) {
+                        sourceCode = code;
+                    } else {
+                        code2 = code2.replaceAll(" ", "-");
+                        sourceCode = code + "%7C" + code2;
+                    }
+                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "LeaderPair_{0}%7C" + country2 + "_" + sourceCode + "_recto.png"));
+                    typesByCountry.get(country2).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + "-2.png", "LeaderPair_" + country + "%7C{0}_" + sourceCode + "_verso.png"));
                     break;
             }
         }

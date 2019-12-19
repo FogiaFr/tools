@@ -1,5 +1,8 @@
 DD/MM/YYYY
 
+anonymes.txt:
+ - commented all anonymous leaders without an image
+
 leaders.txt:
  - LEADER;Tromp; -> LEADER;M Tromp;
  - LEADER;Kurbsky; -> LEADER;Kurbskii;

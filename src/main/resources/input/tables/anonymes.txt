@@ -1,0 +1,320 @@
+#Type;Number;Country;First turn;Last turn;Leader Type;Stats;Class;Country 2
+LEADERANONYMOUS;?1;angleterre;;;CR;K 3.2.2;3
+LEADERANONYMOUS;?2;angleterre;;;CR;L 4.3.4;3
+LEADERANONYMOUS;?3;angleterre;;;CR;E 4.1.2;3
+LEADERANONYMOUS;?1;angleterre;;;ER;M 3.2.2;4
+LEADERANONYMOUS;?2;angleterre;;;ER;N 5.1.1;4
+LEADERANONYMOUS;?3;angleterre;;;ER;H 3.1.1;4
+#LEADERANONYMOUS;?1;angleterre;;;G;E 2.3.2;1
+#LEADERANONYMOUS;?2;angleterre;;;G;F 3.2.1 -1;1
+#LEADERANONYMOUS;?3;angleterre;;;GR;G 2.3.3;1
+LEADERANONYMOUS;?4;angleterre;;;G;M 2.2.1 -1;1
+LEADERANONYMOUS;?5;angleterre;;;GR;N 3.3.3;1
+LEADERANONYMOUS;?6;angleterre;;;G;O 4.2.2;1
+LEADERANONYMOUS;?0;angleterre;;;A;G 2.2.3;2
+LEADERANONYMOUS;?1;angleterre;;;A;H 3.2.2;2
+LEADERANONYMOUS;?2;angleterre;;;AP;I 4.2.3;2
+LEADERANONYMOUS;?3;angleterre;;;AR;M 3.2.2;2
+LEADERANONYMOUS;?4;angleterre;;;A;N 4.1.2;2
+LEADERANONYMOUS;?5;angleterre;;;APR;O 4.2.2;2
+#LEADERANONYMOUS;?6;angleterre;V;VII;A;D 2.1.2;2
+#LEADERANONYMOUS;?7;angleterre;V;VII;A;L 4.3.3;2
+#LEADERANONYMOUS;?8;angleterre;V;VII;AR;E 3.3.2;2
+#LEADERANONYMOUS;?9;angleterre;V;VII;APR;N 4.1.2;2
+LEADERANONYMOUS;?1;angleterre;;;gR;E 3.2.2;5
+LEADERANONYMOUS;?2;angleterre;;;gR;E 4.3.2;5
+LEADERANONYMOUS;?3;angleterre;;;gR;E 4.2.2;5
+LEADERANONYMOUS;?1;france;;;CR;O 3.2.2;3
+LEADERANONYMOUS;?2;france;;;CR;R 4.3.4;3
+LEADERANONYMOUS;?3;france;;;CR;E 4.1.2;3
+LEADERANONYMOUS;?1;france;;;ER;O 3.2.2;4
+LEADERANONYMOUS;?2;france;;;ER;P 5.1.1;4
+LEADERANONYMOUS;?3;france;;;ER;H 3.1.1;4
+#LEADERANONYMOUS;?1;france;;;GR;E 2.3.3;1
+#LEADERANONYMOUS;?2;france;;;G;F 2.3.2;1
+#LEADERANONYMOUS;?3;france;;;G;G 3.2.1 -1;1
+LEADERANONYMOUS;?4;france;;;G;M 2.2.1 -1;1
+LEADERANONYMOUS;?5;france;;;GR;N 3.3.3;1
+LEADERANONYMOUS;?6;france;;;G;O 4.2.2;1
+LEADERANONYMOUS;?0;france;;;A;H 2.2.3;2
+LEADERANONYMOUS;?1;france;;;A;I 2.3.2;2
+LEADERANONYMOUS;?2;france;;;APR;J 4.2.3;2
+LEADERANONYMOUS;?3;france;;;AR;M 3.2.2;2
+LEADERANONYMOUS;?4;france;;;A;N 4.1.2;2
+LEADERANONYMOUS;?5;france;;;APR;O 4.2.2;2
+#LEADERANONYMOUS;?6;france;V;VII;A;E 2.1.1;2
+#LEADERANONYMOUS;?7;france;V;VII;AR;L 4.2.3;2
+#LEADERANONYMOUS;?8;france;V;VII;A;E 2.3.3;2
+#LEADERANONYMOUS;?9;france;V;VII;APR;M 4.1.1;2
+LEADERANONYMOUS;?1;france;;;gR;E 3.2.2;5
+LEADERANONYMOUS;?2;france;;;gR;E 4.3.2;5
+LEADERANONYMOUS;?3;france;;;gR;E 4.2.2;5
+#LEADERANONYMOUS;?A;fralicense;;;PR;X 5.1.2;6
+#LEADERANONYMOUS;?B;fralicense;;;P;X 5.2.3;6
+#LEADERANONYMOUS;?C;fralicense;;;PR;X 4.3.3;6
+LEADERANONYMOUS;?1;espagne;;;CR;G 3.2.2;3
+LEADERANONYMOUS;?2;espagne;;;CR;H 4.3.4;3
+LEADERANONYMOUS;?3;espagne;;;CR;E 4.1.2;3
+LEADERANONYMOUS;?1;espagne;;;ER;K 3.2.2;4
+LEADERANONYMOUS;?2;espagne;;;ER;L 5.1.1;4
+LEADERANONYMOUS;?3;espagne;;;ER;H 3.1.1;4
+#LEADERANONYMOUS;?1;espagne;;;GR;D 2.3.3;1
+#LEADERANONYMOUS;?2;espagne;;;G;E 2.3.2;1
+#LEADERANONYMOUS;?3;espagne;;;G;F 3.2.1 -1;1
+LEADERANONYMOUS;?4;espagne;;;G;M 2.2.1 -1;1
+LEADERANONYMOUS;?5;espagne;;;GR;N 3.3.3;1
+LEADERANONYMOUS;?6;espagne;;;G;O 4.2.2;1
+LEADERANONYMOUS;?0;espagne;;;A;E 2.2.3;2
+LEADERANONYMOUS;?1;espagne;;;A;F 2.4.2;2
+LEADERANONYMOUS;?2;espagne;;;APR;G 4.2.3;2
+LEADERANONYMOUS;?3;espagne;;;AR;M 3.2.2;2
+LEADERANONYMOUS;?4;espagne;;;A;N 4.1.2;2
+LEADERANONYMOUS;?5;espagne;;;APR;O 4.2.2;2
+#LEADERANONYMOUS;?6;espagne;V;VII;A;E 2.1.1;2
+#LEADERANONYMOUS;?7;espagne;V;VII;A;L 4.3.3;2
+#LEADERANONYMOUS;?8;espagne;V;VII;AR;F 3.2.3;2
+#LEADERANONYMOUS;?9;espagne;V;VII;APR;O 2.1.1;2
+LEADERANONYMOUS;?1;espagne;;;gR;E 3.2.2;5
+LEADERANONYMOUS;?2;espagne;;;gR;E 4.3.2;5
+LEADERANONYMOUS;?3;espagne;;;gR;E 4.2.2;5
+LEADERANONYMOUS;?A;espagne;;;G$;D 3.2.2;7
+LEADERANONYMOUS;?B;espagne;;;G$;D 4.3.2;7
+LEADERANONYMOUS;?C;espagne;;;G$;D 4.2.2;7
+LEADERANONYMOUS;?1;habsbourg;;;G;E 2.3.3;1
+LEADERANONYMOUS;?2;habsbourg;;;G;F 4.3.4;1
+LEADERANONYMOUS;?3;habsbourg;;;G;A 3.2.2;1
+LEADERANONYMOUS;?4;habsbourg;;;G;H 2.4.1;1
+LEADERANONYMOUS;?5;habsbourg;;;G;F 3.2.1 -1;1
+LEADERANONYMOUS;?6;habsbourg;;;G;I 4.2.3;1
+LEADERANONYMOUS;?1;hollande;;;ER;G 3.2.2;4
+LEADERANONYMOUS;?2;hollande;;;ER;H 5.1.1;4
+LEADERANONYMOUS;?3;hollande;;;ER;H 4.2.3;4
+LEADERANONYMOUS;?1;hollande;;;CR;G 3.2.2;3
+LEADERANONYMOUS;?2;hollande;;;CR;K 4.3.4;3
+LEADERANONYMOUS;?3;hollande;;;CR;E 4.1.2;3
+#LEADERANONYMOUS;?1;hollande;;;GR;F 2.3.4;1
+#LEADERANONYMOUS;?2;hollande;;;G;G 2.3.2;1
+#LEADERANONYMOUS;?3;hollande;;;G;H 3.2.1 -1;1
+LEADERANONYMOUS;?4;hollande;;;G;M 2.2.1 -1;1
+LEADERANONYMOUS;?5;hollande;;;GR;N 3.3.3;1
+LEADERANONYMOUS;?6;hollande;;;G;O 4.2.2;1
+LEADERANONYMOUS;?0;hollande;;;A;G 2.2.3;2
+LEADERANONYMOUS;?1;hollande;;;A;H 3.2.2;2
+LEADERANONYMOUS;?2;hollande;;;APR;I 4.2.3;2
+LEADERANONYMOUS;?3;hollande;;;AR;M 3.2.2;2
+LEADERANONYMOUS;?4;hollande;;;A;N 4.1.2;2
+LEADERANONYMOUS;?5;hollande;;;APR;O 4.2.2;2
+#LEADERANONYMOUS;?6;hollande;V;VII;A;D 2.1.2;2
+#LEADERANONYMOUS;?7;hollande;V;VII;A;L 4.3.3;2
+#LEADERANONYMOUS;?8;hollande;V;VII;AR;E 3.3.2;2
+#LEADERANONYMOUS;?9;hollande;V;VII;APR;N 4.1.2;2
+LEADERANONYMOUS;?1;hollande;;;gR;E 3.2.2;5
+LEADERANONYMOUS;?2;hollande;;;gR;E 4.3.2;5
+LEADERANONYMOUS;?3;hollande;;;gR;E 4.2.2;5
+LEADERANONYMOUS;?1;lithuanie;;;G;B 3.1.3;1
+LEADERANONYMOUS;?2;pologne;;;G;C 4.2.1;1
+LEADERANONYMOUSDOUBLE;?3;pologne;;;G;K 4.2.2;1;lithuanie
+LEADERANONYMOUS;?4;pologne;;;G;E 4.2.3;1
+LEADERANONYMOUSDOUBLE;?5;pologne;;;G;A 4.1.2;1;lithuanie
+LEADERANONYMOUS;?6;lithuanie;;;G;A 5.2.3;1
+LEADERANONYMOUS;?1;pologne;;;ER;G 3.2.2;4
+LEADERANONYMOUS;?2;pologne;;;ER;H 5.1.1;4
+LEADERANONYMOUS;?3;pologne;;;ER;H 3.1.1;4
+LEADERANONYMOUS;?1;pologne;;;CR;J 3.2.2;3
+LEADERANONYMOUS;?2;pologne;;;CR;K 4.3.4;3
+LEADERANONYMOUS;?3;pologne;;;CR;E 4.1.2;3
+LEADERANONYMOUS;?1;pologne;;;A;F 2.1.3;2
+LEADERANONYMOUS;?2;pologne;;;A;G 3.2.1;2
+LEADERANONYMOUS;?1;portugal;;;ER;H 3.2.2;4
+LEADERANONYMOUS;?2;portugal;;;ER;I 4.2.2;4
+LEADERANONYMOUS;?3;portugal;;;ER;H 5.2.2;4
+LEADERANONYMOUS;?1;portugal;;;CR;F 3.2.2;3
+LEADERANONYMOUS;?2;portugal;;;CR;I 4.3.4;3
+LEADERANONYMOUS;?3;portugal;;;CR;E 4.1.2 -1;3
+LEADERANONYMOUS;?1;portugal;;;A;C 2.2.3;2
+LEADERANONYMOUS;?2;portugal;;;A;D 3.2.2;2
+LEADERANONYMOUS;?3;portugal;;;APR;E 4.2.3;2
+LEADERANONYMOUS;?4;portugal;;;A;E 3.2.2;2
+LEADERANONYMOUS;?1;portugal;;;GR;B 2.3.3;1
+LEADERANONYMOUS;?2;portugal;;;G;C 2.3.2;1
+LEADERANONYMOUS;?3;portugal;;;G;D 3.2.1 -1;1
+LEADERANONYMOUS;?4;portugal;;;GR;E 3.3.3 -1;1
+LEADERANONYMOUS;?1;prusse;;;G;D 2.2.2;1
+LEADERANONYMOUS;?2;prusse;;;G;E 1.2.2;1
+LEADERANONYMOUS;?3;prusse;;;G;G 4.3.3;1
+LEADERANONYMOUS;?4;prusse;;;G;H 3.4.4;1
+LEADERANONYMOUS;?5;prusse;;;G;G 3.2.2;1
+LEADERANONYMOUS;?6;prusse;;;G;H 1.2.3 -1;1
+LEADERANONYMOUS;?7;prusse;;;G;G 2.2.2 -1;1
+LEADERANONYMOUS;?8;prusse;;;G;H 2.3.1 -1;1
+LEADERANONYMOUS;?1;russie;;;ER;G 3.2.2;4
+LEADERANONYMOUS;?2;russie;;;ER;H 5.1.1;4
+LEADERANONYMOUS;?3;russie;;;ER;H 3.1.1;4
+LEADERANONYMOUS;?1;russie;;;CR;J 3.2.2;3
+LEADERANONYMOUS;?2;russie;;;CR;K 4.3.4;3
+LEADERANONYMOUS;?3;russie;;;CR;E 4.1.2;3
+#LEADERANONYMOUS;?1;russie;;;GR;F 2.3.3;1
+#LEADERANONYMOUS;?2;russie;;;G;G 2.3.2;1
+#LEADERANONYMOUS;?3;russie;;;G;H 3.2.1 -1;1
+LEADERANONYMOUS;?4;russie;;;G;M 2.2.1 -1;1
+LEADERANONYMOUS;?5;russie;;;GR;N 4.1.2;1
+LEADERANONYMOUS;?6;russie;;;G;O 4.2.2;1
+LEADERANONYMOUS;?1;russie;;;A;F 2.2.3;2
+LEADERANONYMOUS;?2;russie;;;A;G 3.2.2;2
+LEADERANONYMOUS;?3;russie;;;APR;H 4.2.3;2
+LEADERANONYMOUS;?4;russie;;;AR;M 3.2.2;2
+LEADERANONYMOUS;?5;russie;;;A;N 4.1.2;2
+LEADERANONYMOUS;?6;russie;;;APR;O 4.2.2;2
+LEADERANONYMOUS;?1;russie;;;gR;E 3.2.2;5
+LEADERANONYMOUS;?2;russie;;;gR;E 4.3.2;5
+LEADERANONYMOUS;?3;russie;;;gR;E 4.2.2;5
+LEADERANONYMOUS;?1;suede;;;G;A 3.2.2;1
+LEADERANONYMOUS;?2;suede;;;G;E 2.3.3;1
+LEADERANONYMOUS;?3;suede;;;G;J 3.2.3;1
+LEADERANONYMOUS;?4;suede;;;G;C 3.2.2;1
+LEADERANONYMOUS;?5;suede;;;G;D 2.2.2 -1;1
+LEADERANONYMOUS;?1;suede;;;A;B 3.2.4;2
+LEADERANONYMOUS;?2;suede;;;A;G 1.2.1;2
+LEADERANONYMOUS;?3;suede;;;A;H 4.3.2;2
+LEADERANONYMOUS;?1;suede;;;E;D 4.1.1;4
+LEADERANONYMOUS;?2;suede;;;E;C 3.2.2;4
+LEADERANONYMOUS;?3;suede;;;E;E 5.1.1;4
+LEADERANONYMOUS;?4;suede;;;E;F 4.2.1;4
+LEADERANONYMOUS;?1;suede;;;C;C 4.1.2;3
+LEADERANONYMOUS;?2;suede;;;C;C 2.3.3;3
+LEADERANONYMOUS;?1;turquie;;;ER;J 3.2.2;4
+LEADERANONYMOUS;?2;turquie;;;ER;K 5.1.1;4
+LEADERANONYMOUS;?3;turquie;;;ER;H 4.1.2;4
+LEADERANONYMOUS;?1;turquie;;;CR;I 3.2.2;3
+LEADERANONYMOUS;?2;turquie;;;CR;J 4.3.4;3
+LEADERANONYMOUS;?3;turquie;;;CR;E 4.1.2;3
+#LEADERANONYMOUS;?1;turquie;;;GR;E 2.3.3;1
+#LEADERANONYMOUS;?2;turquie;;;G;F 2.3.2;1
+#LEADERANONYMOUS;?3;turquie;;;G;G 3.2.1 -1;1
+LEADERANONYMOUS;?4;turquie;;;G;M 2.2.1 -1;1
+LEADERANONYMOUS;?5;turquie;;;GR;N 3.3.3;1
+LEADERANONYMOUS;?6;turquie;;;G;O 4.2.1 -1;1
+LEADERANONYMOUS;?1;turquie;;;A;F 2.2.3;2
+LEADERANONYMOUS;?2;turquie;;;A;G 3.2.2;2
+LEADERANONYMOUS;?3;turquie;;;APR;H 4.1.3;2
+LEADERANONYMOUS;?4;turquie;;;Am;M 3.2.2;2
+LEADERANONYMOUS;?5;turquie;;;Am;N 4.1.2;2
+LEADERANONYMOUS;?6;turquie;;;APm;O 4.2.2;2
+LEADERANONYMOUS;?1;turquie;;;gR;E 3.2.2;5
+LEADERANONYMOUS;?2;turquie;;;gR;E 4.3.2;5
+LEADERANONYMOUS;?3;turquie;;;gR;E 4.2.2;5
+LEADERANONYMOUS;?1;venise;;;Am;C 2.2.3;2
+LEADERANONYMOUS;?2;venise;;;Am;D 3.2.2;2
+LEADERANONYMOUS;?3;venise;;;APR;D 4.2.3;2
+LEADERANONYMOUS;?4;venise;;;Am;A 4.4.4;2
+LEADERANONYMOUS;?5;venise;;;Am;B 4.1.2;2
+LEADERANONYMOUS;?6;venise;;;AP;B 4.3.2;2
+LEADERANONYMOUS;?1;venise;;;G;B 2.3.3;1
+LEADERANONYMOUS;?2;venise;;;G;C 2.3.2;1
+LEADERANONYMOUS;?3;venise;;;G;D 3.2.1 -1;1
+LEADERANONYMOUS;?4;venise;;;G;M 2.2.1 -1;1
+LEADERANONYMOUS;?5;venise;;;G;N 3.1.2 -1;1
+LEADERANONYMOUS;?6;venise;;;G;O 1.2.2;1
+LEADERANONYMOUS;?1;venise;;;EPR;J 3.2.2;4
+LEADERANONYMOUS;?2;venise;;;ER;K 5.1.1;4
+LEADERANONYMOUS;?1;danemark;;;G;A 2.3.2;1
+LEADERANONYMOUS;?2;danemark;;;G;C 2.2.3 -1;1
+LEADERANONYMOUS;?1;usa;;;G$;E 5.1.2;1
+LEADERANONYMOUS;?2;usa;;;G$;D 4.2.3;1
+LEADERANONYMOUS;?3;usa;;;G$;F 4.1.1;1
+LEADERANONYMOUS;?1;neutre;;;A;A 4.3.4;2
+LEADERANONYMOUS;?2;neutre;;;A;B 1.1.1;2
+LEADERANONYMOUS;?3;neutre;;;A;C 2.2.2;2
+LEADERANONYMOUS;?4;neutre;;;A;D 2.4.3;2
+LEADERANONYMOUS;?5;neutre;;;A;E 2.2.1;2
+LEADERANONYMOUS;?6;neutre;;;A;F 1.2.1;2
+LEADERANONYMOUS;?7;neutre;;;A;G 4.4.4;2
+LEADERANONYMOUS;?8;neutre;;;A;H 3.2.2;2
+LEADERANONYMOUS;?9;neutre;;;A;I 4.1.2;2
+LEADERANONYMOUS;?10;neutre;;;A;J 4.2.2;2
+LEADERANONYMOUS;?11;neutre;;;A;K 2.2.1;2
+LEADERANONYMOUS;?12;neutre;;;A;L 1.3.2;2
+LEADERANONYMOUS;?1;neutre;;;G;A 1.1.1;1
+LEADERANONYMOUS;?2;neutre;;;G;B 3.4.2;1
+LEADERANONYMOUS;?3;neutre;;;G;C 2.4.4;1
+LEADERANONYMOUS;?4;neutre;;;G;D 4.1.3;1
+LEADERANONYMOUS;?5;neutre;;;G;E 3.2.3;1
+LEADERANONYMOUS;?6;neutre;;;G;F 2.3.4;1
+LEADERANONYMOUS;?7;neutre;;;G;G 2.2.2;1
+LEADERANONYMOUS;?8;neutre;;;G;I 2.2.1 -1;1
+LEADERANONYMOUS;?9;neutre;;;G;J 3.3.3;1
+LEADERANONYMOUS;?10;neutre;;;G;K 4.2.2;1
+LEADERANONYMOUS;?11;neutre;;;G;L 1.1.2;1
+LEADERANONYMOUS;?12;neutre;;;G;M 3.2.1;1
+LEADERANONYMOUS;?1;mercenaires;;;G;B 2.2.3;1
+LEADERANONYMOUS;?2;mercenaires;;;G;C 3.2.2;1
+LEADERANONYMOUS;?3;mercenaires;;;G;D 4.2.4;1
+LEADERANONYMOUS;?4;mercenaires;;;G;B 3.2.3;1
+LEADERANONYMOUS;?5;mercenaires;;;G;B 4.2.2;1
+LEADERANONYMOUS;?6;mercenaires;;;ER;B 5.1.1;4
+## [BLP]
+#LEADERANONYMOUS;?7;mercenaires;;;ER;B 2.3.3;4
+#LEADERANONYMOUS;?8;mercenaires;;;ER;B 3.1.2;4
+#LEADERANONYMOUS;?9;mercenaires;;;CR;B 4.2.3;3
+#LEADERANONYMOUS;?10;mercenaires;;;CR;B 2.4.3;3
+#LEADERANONYMOUS;?12;mercenaires;;;CR;B 2.1.2;3
+## LEADERANONYMOUS;?7;mercenaires;;;CR;B 4.2.3;3
+## End [BLP]
+LEADERANONYMOUS;?1;natives;;;GR;D 1.0.4;1
+LEADERANONYMOUS;?2;natives;;;GR;D 4.0.5;1
+LEADERANONYMOUS;?3;natives;;;GR;D 4.1.2;1
+LEADERANONYMOUS;?4;natives;;;GR;D 5.1.3;1
+LEADERANONYMOUS;?5;natives;;;GR;D 3.2.2;1
+LEADERANONYMOUS;?6;natives;;;GR;D 1.1.4;1
+#Type;Country;NameA;NameB;NameC;LD;Stats
+## NameA: code, NameB: name/counter, NameC: alt spelling
+## PACHA;timar;Ali;Ali;1;G 1.1.1
+## PACHA;timar;Abdallah;Abdallah;1;J 2.2.1
+## PACHA;timar;Adnan;Adnan;1;H 2.1.2
+## PACHA;timar;Amar;Amar;2;V 1.0.1
+## PACHA;timar;Ashraf;Ashraf;1;U 2.2.2
+## PACHA;timar;Aziz;Aziz;1;Q 1.0.0
+## PACHA;timar;Bahman;Bahman;1;M 4.2.3
+## PACHA;timar;Djamil;Djamil;2;X 3.1.1
+## PACHA;timar;Elias;Elias;1;O 0.1.0
+## PACHA;timar;Eren;Eren;1;Y 2.2.2
+## PACHA;timar;Ismail;Ismail;3;W 0.2.0
+## PACHA;timar;Israf;Israf;2;S 4.4.4
+## PACHA;timar;Karim;Karim;1;R 2.1.1
+## PACHA;timar;Khaled;Khaled;1;T 2.2.3
+## PACHA;timar;Mehmet;Mehmet;1;I 1.0.1
+## PACHA;timar;Mustafa;Mustafa;1;N 2.1.1
+## PACHA;timar;Saleh;Saleh;1;K 3.2.1
+## PACHA;timar;Selim;Selim;1;Z 0.0.0
+## PACHA;timar;Tarek;Tarek;2;K 3.2.1
+## PACHA;timar;Turgut;Turgut;1;Y 4.0.1
+## PACHA;timar;Yasser;Yasser;2;X 1.0.4
+## PACHA;timar;Yussuf;Yussuf;2;P 2.1.0
+## [BLP]
+PACHA;timar;Adnan;Adnan;;1;Z 2.1.2
+PACHA;timar;Ali;Ali;ﻲﻠﻋ;1;Z 4.4.3
+PACHA;timar;Aziz;Aziz;;3;Z 2.3.3
+PACHA;timar;Bahman;Bahman;;1;Z 4.2.3
+PACHA;timar;Crnojevic;Crnojević;;1;Z 2.2.2 -1
+PACHA;timar;Cemil;Cemil;;2;Z 3.1.1
+PACHA;timar;Ilyas;İlyas;;1;Z 1.1.3
+PACHA;timar;Hadim;Hadım;;1;Z 2.3.3
+PACHA;timar;Huseyin;Hüseyin;;1;Z 2.2.2
+PACHA;timar;Ibrahim2;İbrahim;;1;Z 4.4.4
+PACHA;timar;Ismail;İsmail;;3;Z 1.2.1
+PACHA;timar;Kerim;Kerim;;1;Z 2.1.4
+PACHA;timar;Khalid;Khalid;ﺪﻟﺎﺧ;1;Z 2.2.3
+PACHA;timar;Mihajlovic;Mihajlović;;1;Z 3.2.3
+PACHA;timar;Mehmed;Mehmed;;1;Z 4.2.3 -1
+PACHA;timar;Mustafa;Mustafa;;1;Z 4.2.2
+PACHA;timar;Abdullah;Abdullah;ﻪﻠﻟﺍ ﺪﺒﻋ;1;Z 2.3.3 -1
+PACHA;timar;Predojevic;Predojević;;2;Z 2.1.2
+PACHA;timar;Ragip;Ragıp;;1;Z 2.2.1 -1
+PACHA;timar;Salih;Salih;;1;Z 3.3.3
+PACHA;timar;Selim2;Selim;;2;Z 1.1.1
+PACHA;timar;Taher;Taher;ﺮﻫﺎﻃ;2;Z 2.2.2
+PACHA;timar;Tardic;Tardić;;1;Z 2.3.3
+PACHA;timar;Tarik;Tarık;;2;Z 3.2.1
+PACHA;timar;Turgut;Turgut;;1;Z 4.4.1
+PACHA;timar;Yaser;Yaser;;2;Z 3.2.3
+PACHA;timar;Yusuf;Yusuf;;2;Z 2.1.1

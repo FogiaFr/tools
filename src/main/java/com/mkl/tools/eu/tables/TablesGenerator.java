@@ -1595,6 +1595,19 @@ public class TablesGenerator {
      * @throws IOException if the writer fails.
      */
     public static List<Leader> computeLeaders(Writer sqlWriter) throws IOException {
+        List<Leader> leaders = new ArrayList<>();
+        leaders.addAll(computeNamedLeaders(sqlWriter));
+        leaders.addAll(computeAnonymousLeaders(sqlWriter));
+        return leaders;
+    }
+
+    /**
+     * Compute the named leaders.
+     *
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static List<Leader> computeNamedLeaders(Writer sqlWriter) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/leaders.txt")));
         String line;
         List<Leader> leaders = new ArrayList<>();
@@ -1643,7 +1656,7 @@ public class TablesGenerator {
 
                     if (sqlWriter != null) {
                         addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
-                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main);
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false);
                     }
                     Leader leader = new Leader();
                     leader.setType(doubleLeader ? Leader.LeaderType.LEADERDOUBLE : Leader.LeaderType.LEADER);
@@ -1674,7 +1687,7 @@ public class TablesGenerator {
 
                             if (sqlWriter != null) {
                                 addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
-                                        manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main);
+                                        manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false);
                             }
                         }
                     }
@@ -1722,7 +1735,7 @@ public class TablesGenerator {
 
                     if (sqlWriter != null) {
                         addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
-                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main);
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false);
                     }
                     Leader leader = new Leader();
                     leader.setType(Leader.LeaderType.LEADERPAIRE);
@@ -1766,7 +1779,7 @@ public class TablesGenerator {
 
                         if (sqlWriter != null) {
                             addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
-                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main);
+                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false);
                         }
                     } else {
                         System.out.println("Double leader second side : " + value2);
@@ -1777,6 +1790,97 @@ public class TablesGenerator {
         return leaders;
     }
 
+    /**
+     * Compute the anonymous leaders.
+     *
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static List<Leader> computeAnonymousLeaders(Writer sqlWriter) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/anonymes.txt")));
+        String line;
+        List<Leader> leaders = new ArrayList<>();
+        List<String> countriesWithAdmiralZero = new ArrayList<>();
+        while ((line = reader.readLine()) != null) {
+            line = line.trim();
+            Matcher m = Pattern.compile("LEADERANONYMOUS(|DOUBLE);\\?([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);([^;]*);?(.*)").matcher(line);
+            if (m.matches()) {
+                String value = m.group(7);
+                Matcher mVal = Pattern.compile("([A-Z]) (\\d).(\\d).(\\d) ?\\-?(\\d)?").matcher(value);
+                if (mVal.matches()) {
+                    String country = m.group(3);
+                    String beginGroup = m.group(4);
+                    String endGroup = m.group(5);
+                    Integer begin = null;
+                    Integer end = null;
+                    String event = null;
+                    if (StringUtils.isNumeric(beginGroup) && StringUtils.isNumeric(endGroup)) {
+                        begin = Integer.parseInt(beginGroup);
+                        end = Integer.parseInt(endGroup);
+                    } else {
+                        event = beginGroup + "-" + endGroup;
+                    }
+                    String rank = mVal.group(1);
+                    int manoeuvre = Integer.parseInt(mVal.group(2));
+                    int fire = Integer.parseInt(mVal.group(3));
+                    int shock = Integer.parseInt(mVal.group(4));
+                    String possibleSiege = mVal.group(5);
+                    int siege = 0;
+                    if (StringUtils.isNotEmpty(possibleSiege)) {
+                        siege = Integer.parseInt(possibleSiege);
+                    }
+                    String typeValue = m.group(6);
+                    String type = getLeaderType(typeValue);
+                    boolean rotw = typeValue.contains("R");
+                    boolean asia = typeValue.contains("@");
+                    boolean america = typeValue.contains("%");
+                    boolean privateer = typeValue.contains("P");
+                    boolean main = typeValue.contains("*");
+                    String suffix = m.group(2);
+                    String anonymType = getAnonymousLeaderType(type);
+                    if (StringUtils.equals("A", anonymType)) {
+                        Integer number = Integer.parseInt(suffix);
+                        if (number == 0) {
+                            countriesWithAdmiralZero.add(country);
+                        }
+                        if (countriesWithAdmiralZero.contains(country)) {
+                            suffix = number + 1 + "";
+                        }
+                    }
+                    String code = "Anonymous-" + anonymType + suffix;
+
+                    boolean doubleLeader = StringUtils.isNotEmpty(m.group(1));
+                    String otherCode = doubleLeader ? code + "-2" : null;
+
+                    if (sqlWriter != null) {
+                        addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, true);
+                    }
+                    Leader leader = new Leader();
+                    leader.setType(doubleLeader ? Leader.LeaderType.LEADERPAIRE : Leader.LeaderType.LEADER);
+                    leader.setCode(code);
+                    leader.setCountry(country);
+                    leader.setCountry2(doubleLeader ? m.group(9) : null);
+                    leaders.add(leader);
+
+                    if (doubleLeader) {
+                        country = m.group(9);
+
+                        if (sqlWriter != null) {
+                            addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
+                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, true);
+                        }
+                    }
+                }
+            }
+        }
+        return leaders;
+    }
+
+    /**
+     * @param value string to parse.
+     * @return the leader type.
+     */
     private static String getLeaderType(String value) {
         if (value.startsWith("G")) {
             return "GENERAL";
@@ -1796,6 +1900,29 @@ public class TablesGenerator {
             return "PRIVATEER";
         }
         LOGGER.error("Leader type unknown : " + value);
+        return null;
+    }
+
+    /**
+     * @param type the leader type.
+     * @return the initial of the leader type most of the time.
+     */
+    private static String getAnonymousLeaderType(String type) {
+        switch (type) {
+            case "GENERAL":
+                return "G";
+            case "ADMIRAL":
+                return "A";
+            case "CONQUISTADOR":
+                return "C";
+            case "EXPLORER":
+                return "E";
+            case "GOVERNOR":
+                return "G";
+            case "PRIVATEER":
+                return "P";
+        }
+        LOGGER.error("Anonymous leader type unknown : " + type);
         return null;
     }
 
@@ -1821,13 +1948,14 @@ public class TablesGenerator {
      * @param america   of the leader.
      * @param privateer of the leader.
      * @param main      of the leader.
+     * @param anonymous of the leader.
      * @throws IOException if the writer fails.
      */
     private static void addLeaderLine(Writer sqlWriter, String code, String otherCode, String name, String country, String event,
                                       Integer begin, Integer end, String rank, int manoeuvre, int fire, int shock, int siege,
-                                      String type, boolean rotw, boolean asia, boolean america, boolean privateer, boolean main) throws IOException {
+                                      String type, boolean rotw, boolean asia, boolean america, boolean privateer, boolean main, boolean anonymous) throws IOException {
         sqlWriter.append("INSERT INTO T_LEADER (CODE, T_LEADER, NAME, R_COUNTRY, EVENT, BEGIN, END, " +
-                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, PRIVATEER, MAIN)\n" +
+                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, PRIVATEER, MAIN, ANONYMOUS)\n" +
                 "    VALUES (")
                 .append(stringToString(code)).append(", ")
                 .append(stringToString(otherCode)).append(", ")
@@ -1846,7 +1974,8 @@ public class TablesGenerator {
                 .append(booleanToBit(asia)).append(", ")
                 .append(booleanToBit(america)).append(", ")
                 .append(booleanToBit(privateer)).append(", ")
-                .append(booleanToBit(main)).append(");\n");
+                .append(booleanToBit(main)).append(", ")
+                .append(booleanToBit(anonymous)).append(");\n");
     }
 
     /**
