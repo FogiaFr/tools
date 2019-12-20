@@ -109,19 +109,33 @@ public class TablesGenerator {
         Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/tables-auto.sql", false);
 
         sqlWriter.append("DELETE FROM T_UNIT;\n")
+                .append("ALTER TABLE T_UNIT AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_BASIC_FORCE;\n")
+                .append("ALTER TABLE T_BASIC_FORCE AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_LIMIT;\n")
+                .append("ALTER TABLE T_LIMIT AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_TRADE;\n")
+                .append("ALTER TABLE T_TRADE AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_RESULT;\n")
+                .append("ALTER TABLE T_RESULT AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_BATTLE_TECH;\n")
+                .append("ALTER TABLE T_BATTLE_TECH AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_COMBAT_RESULT;\n")
+                .append("ALTER TABLE T_COMBAT_RESULT AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_ARMY_CLASS;\n")
+                .append("ALTER TABLE T_ARMY_CLASS AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_ARMY_ARTILLERY;\n")
+                .append("ALTER TABLE T_ARMY_ARTILLERY AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_ARTILLERY_SIEGE;\n")
+                .append("ALTER TABLE T_ARTILLERY_SIEGE AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_FORTRESS_RESISTANCE;\n")
+                .append("ALTER TABLE T_FORTRESS_RESISTANCE AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_ASSAULT_RESULT;\n")
+                .append("ALTER TABLE T_ASSAULT_RESULT AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_EXCHEQUER;\n")
+                .append("ALTER TABLE T_EXCHEQUER AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_LEADER;\n")
+                .append("ALTER TABLE T_LEADER AUTO_INCREMENT = 1;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -1648,6 +1662,7 @@ public class TablesGenerator {
                     boolean rotw = typeValue.contains("R");
                     boolean asia = typeValue.contains("@");
                     boolean america = typeValue.contains("%");
+                    boolean mediterranee = typeValue.contains("m");
                     boolean privateer = typeValue.contains("P");
                     boolean main = typeValue.contains("*");
 
@@ -1656,7 +1671,7 @@ public class TablesGenerator {
 
                     if (sqlWriter != null) {
                         addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
-                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false, null);
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, mediterranee, privateer, main, false, null);
                     }
                     Leader leader = new Leader();
                     leader.setType(doubleLeader ? Leader.LeaderType.LEADERDOUBLE : Leader.LeaderType.LEADER);
@@ -1682,12 +1697,13 @@ public class TablesGenerator {
                             rotw = typeValue2.contains("R");
                             asia = typeValue2.contains("@");
                             america = typeValue2.contains("%");
+                            mediterranee = typeValue2.contains("m");
                             privateer = typeValue2.contains("P");
                             main = typeValue2.contains("*");
 
                             if (sqlWriter != null) {
                                 addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
-                                        manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false, null);
+                                        manoeuvre, fire, shock, siege, type, rotw, asia, america, mediterranee, privateer, main, false, null);
                             }
                         }
                     }
@@ -1728,6 +1744,7 @@ public class TablesGenerator {
                     boolean rotw = typeValue.contains("R");
                     boolean asia = typeValue.contains("@");
                     boolean america = typeValue.contains("%");
+                    boolean mediterranee = typeValue.contains("m");
                     boolean privateer = typeValue.contains("P");
                     boolean main = typeValue.contains("*");
 
@@ -1735,7 +1752,7 @@ public class TablesGenerator {
 
                     if (sqlWriter != null) {
                         addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
-                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false, null);
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, mediterranee, privateer, main, false, null);
                     }
                     Leader leader = new Leader();
                     leader.setType(Leader.LeaderType.LEADERPAIRE);
@@ -1774,12 +1791,13 @@ public class TablesGenerator {
                         rotw = typeValue2.contains("R");
                         asia = typeValue2.contains("@");
                         america = typeValue2.contains("%");
+                        mediterranee = typeValue2.contains("m");
                         privateer = typeValue2.contains("P");
                         main = typeValue2.contains("*");
 
                         if (sqlWriter != null) {
                             addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
-                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, false, null);
+                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, mediterranee, privateer, main, false, null);
                         }
                     } else {
                         System.out.println("Double leader second side : " + value2);
@@ -1834,6 +1852,7 @@ public class TablesGenerator {
                     boolean rotw = typeValue.contains("R");
                     boolean asia = typeValue.contains("@");
                     boolean america = typeValue.contains("%");
+                    boolean mediterranee = typeValue.contains("m");
                     boolean privateer = typeValue.contains("P");
                     boolean main = typeValue.contains("*");
                     String suffix = m.group(2);
@@ -1854,7 +1873,7 @@ public class TablesGenerator {
 
                     if (sqlWriter != null) {
                         addLeaderLine(sqlWriter, code, otherCode, code, country, event, begin, end, rank,
-                                manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, true, null);
+                                manoeuvre, fire, shock, siege, type, rotw, asia, america, mediterranee, privateer, main, true, null);
                     }
                     Leader leader = new Leader();
                     leader.setType(doubleLeader ? Leader.LeaderType.LEADERPAIRE : Leader.LeaderType.LEADER);
@@ -1868,7 +1887,7 @@ public class TablesGenerator {
 
                         if (sqlWriter != null) {
                             addLeaderLine(sqlWriter, otherCode, code, code, country, event, begin, end, rank,
-                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, privateer, main, true, null);
+                                    manoeuvre, fire, shock, siege, type, rotw, asia, america, mediterranee, privateer, main, true, null);
                         }
                     }
                 }
@@ -1895,9 +1914,9 @@ public class TablesGenerator {
 
                         if (sqlWriter != null) {
                             addLeaderLine(sqlWriter, code, otherCode, code, country, null, null, null, rank,
-                                    manoeuvre, fire, shock, siege, type, false, false, false, false, true, true, size);
+                                    manoeuvre, fire, shock, siege, type, false, false, false, false, false, true, true, size);
                             addLeaderLine(sqlWriter, otherCode, code, code, country, null, null, null, null,
-                                    0, 0, 0, 0, type, false, false, false, false, false, true, null);
+                                    0, 0, 0, 0, type, false, false, false, false, false, false, true, null);
                         }
                         Leader leader = new Leader();
                         leader.setType(Leader.LeaderType.PACHA);
@@ -1963,34 +1982,35 @@ public class TablesGenerator {
     /**
      * Insert a leader database insert line.
      *
-     * @param sqlWriter where to write the db instructions.
-     * @param code      of the leader.
-     * @param otherCode code of the other side of the leader.
-     * @param name      of the leader.
-     * @param country   of the leader.
-     * @param event     of the leader.
-     * @param begin     of the leader.
-     * @param end       of the leader.
-     * @param rank      of the leader.
-     * @param manoeuvre of the leader.
-     * @param fire      of the leader.
-     * @param shock     of the leader.
-     * @param siege     of the leader.
-     * @param type      of the leader.
-     * @param rotw      of the leader.
-     * @param asia      of the leader.
-     * @param america   of the leader.
-     * @param privateer of the leader.
-     * @param main      of the leader.
-     * @param anonymous of the leader.
-     * @param size      of the leader.
+     * @param sqlWriter    where to write the db instructions.
+     * @param code         of the leader.
+     * @param otherCode    code of the other side of the leader.
+     * @param name         of the leader.
+     * @param country      of the leader.
+     * @param event        of the leader.
+     * @param begin        of the leader.
+     * @param end          of the leader.
+     * @param rank         of the leader.
+     * @param manoeuvre    of the leader.
+     * @param fire         of the leader.
+     * @param shock        of the leader.
+     * @param siege        of the leader.
+     * @param type         of the leader.
+     * @param rotw         of the leader.
+     * @param asia         of the leader.
+     * @param america      of the leader.
+     * @param mediterranee of the leader.
+     * @param privateer    of the leader.
+     * @param main         of the leader.
+     * @param anonymous    of the leader.
+     * @param size         of the leader.
      * @throws IOException if the writer fails.
      */
     private static void addLeaderLine(Writer sqlWriter, String code, String otherCode, String name, String country, String event,
                                       Integer begin, Integer end, String rank, int manoeuvre, int fire, int shock, int siege,
-                                      String type, boolean rotw, boolean asia, boolean america, boolean privateer, boolean main, boolean anonymous, Integer size) throws IOException {
+                                      String type, boolean rotw, boolean asia, boolean america, boolean mediterranee, boolean privateer, boolean main, boolean anonymous, Integer size) throws IOException {
         sqlWriter.append("INSERT INTO T_LEADER (CODE, T_LEADER, NAME, R_COUNTRY, EVENT, BEGIN, END, " +
-                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, PRIVATEER, MAIN, ANONYMOUS, SIZE)\n" +
+                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, MEDITERRANEE, PRIVATEER, MAIN, ANONYMOUS, SIZE)\n" +
                 "    VALUES (")
                 .append(stringToString(code)).append(", ")
                 .append(stringToString(otherCode)).append(", ")
@@ -2008,6 +2028,7 @@ public class TablesGenerator {
                 .append(booleanToBit(rotw)).append(", ")
                 .append(booleanToBit(asia)).append(", ")
                 .append(booleanToBit(america)).append(", ")
+                .append(booleanToBit(mediterranee)).append(", ")
                 .append(booleanToBit(privateer)).append(", ")
                 .append(booleanToBit(main)).append(", ")
                 .append(booleanToBit(anonymous)).append(", ")
