@@ -1721,7 +1721,7 @@ public class TablesGenerator {
                     String type = getLeaderType(typeValue);
                     boolean rotw = typeValue.contains("R");
                     boolean asia = typeValue.contains("@");
-                    boolean america = typeValue.contains("%");
+                    boolean america = typeValue.contains("$");
                     boolean mediterranee = typeValue.contains("m");
                     boolean privateer = typeValue.contains("P");
                     boolean main = typeValue.contains("*");
