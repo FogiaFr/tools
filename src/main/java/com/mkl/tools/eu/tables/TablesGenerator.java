@@ -783,6 +783,8 @@ public class TablesGenerator {
                 computeAssaultResult(line, sqlWriter);
             } else if (StringUtils.equals("etatsauvrai", type)) {
                 computeExchequer(line, sqlWriter);
+            } else if (StringUtils.equals("leader", type)) {
+                computeReplacementLeader(line, sqlWriter);
             }
         }
     }
@@ -841,6 +843,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\newcommand\\{\\\\etatsauvrai\\}\\{").matcher(line);
         if (m.matches()) {
             type = "etatsauvrai";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\replacement\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "leader";
         }
         if (line.equals("}")) {
             type = null;
@@ -1456,6 +1462,15 @@ public class TablesGenerator {
             case "\\PRU":
                 country = "prusse";
                 break;
+            case "Minor":
+                country = "minor";
+                break;
+            case "Vizier":
+                country = "vizier";
+                break;
+            case "Natives":
+                country = "natives";
+                break;
             default:
                 if (!header.startsWith("\\\\quad")) {
                     LOGGER.error("Can't parse country for army artillery : " + header);
@@ -1600,6 +1615,51 @@ public class TablesGenerator {
                 .append(integerToInteger(prestige)).append(", ")
                 .append(integerToInteger(nationalLoan)).append(", ")
                 .append(integerToInteger(internationalLoan)).append(");\n");
+    }
+
+    /**
+     * Creates the replacement leader table insertion for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeReplacementLeader(String line, Writer sqlWriter) throws IOException {
+        Matcher m = Pattern.compile("([^&]*)&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3}).*").matcher(line);
+        if (m.matches()) {
+            String country = m.group(1).trim();
+            boolean badAdmiralManoeuvre = country.contains("\\xxa");
+            boolean badAdmiralFire = country.contains("\\xxb");
+            boolean goodArtiller = country.contains("\\xxc");
+            if (country.contains("\\x")) {
+                country = country.substring(0, country.indexOf("\\x"));
+            }
+            country = extractCountryFromArmyArtilleryHeader(country);
+            for (int i = 1; i <= 10; i++) {
+                Matcher mStats = Pattern.compile("(\\d)(\\d)(\\d)").matcher(m.group(i + 1));
+                if (mStats.matches()) {
+                    int manoeuvre = Integer.parseInt(mStats.group(1));
+                    int fire = Integer.parseInt(mStats.group(2));
+                    int shock = Integer.parseInt(mStats.group(3));
+                    int siege = 0;
+                    if (goodArtiller && i % 2 == 1) {
+                        siege++;
+                    }
+                    String code = country + "-general-" + i;
+                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, siege, "GENERAL", true, false, false, false, false, false, true, null);
+                    code = country + "-admiral-" + i;
+                    if (badAdmiralManoeuvre) {
+                        manoeuvre--;
+                    }
+                    if (badAdmiralFire) {
+                        fire--;
+                    }
+                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, 0, "ADMIRAL", true, false, false, false, false, false, true, null);
+                } else {
+                    System.out.println("Bad Stats : " + m.group(i + 1));
+                }
+            }
+        }
     }
 
     /**
