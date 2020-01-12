@@ -2070,7 +2070,7 @@ public class TablesGenerator {
                                       Integer begin, Integer end, String rank, int manoeuvre, int fire, int shock, int siege,
                                       String type, boolean rotw, boolean asia, boolean america, boolean mediterranee, boolean privateer, boolean main, boolean anonymous, Integer size) throws IOException {
         sqlWriter.append("INSERT INTO T_LEADER (CODE, T_LEADER, NAME, R_COUNTRY, EVENT, BEGIN, END, " +
-                "RANK, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, MEDITERRANEE, PRIVATEER, MAIN, ANONYMOUS, SIZE)\n" +
+                "`RANK`, MANOEUVRE, FIRE, SHOCK, SIEGE, TYPE, ROTW, ASIA, AMERICA, MEDITERRANEE, PRIVATEER, MAIN, ANONYMOUS, SIZE)\n" +
                 "    VALUES (")
                 .append(stringToString(code)).append(", ")
                 .append(stringToString(otherCode)).append(", ")
