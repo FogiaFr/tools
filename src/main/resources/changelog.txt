@@ -1,17 +1,5 @@
 DD/MM/YYYY
 
-anonymes.txt:
- - commented all anonymous leaders without an image
- - commented new version of pacha, awaiting for new images
-
-leaders.txt:
- - LEADER;Tromp; -> LEADER;M Tromp;
- - LEADER;Kurbsky; -> LEADER;Kurbskii;
- - LEADER;Dmitry; -> LEADER;Dimitri;
- - LEADER;F. Guise; -> LEADER;F Guise;
- - LEADER;Spinola; -> LEADER;A Spinola;
- - M Galitzine LEADERDOUBLE uncommented and M Galitzine LEADER commentented, awaiting for images
-
 translations.utf:
  - seazone:Irlande:Mer d’Irlande -> seazone:Irlande:Mer d'Irlande
  - Terre-Neuve=[seazone]=>Grands Bancs -> Terre-Neuve=[seazone]=>Grand Bancs

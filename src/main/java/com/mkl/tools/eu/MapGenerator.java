@@ -109,8 +109,12 @@ public final class MapGenerator {
 
             List<Leader> leaders = TablesGenerator.computeLeaders(null);
 
+//            CounterGenerator.moveExistingCounter(countries, leaders,
+//                    "D:\\dev\\upide\\old-lipn.univ-paris13.fr\\~dubacq\\europa\\pions\\0.6\\",
+//                    "D:\\dev\\workspace\\eu\\front\\eu-front-client\\data\\counters\\v2\\",
+//                    log);
             CounterGenerator.moveExistingCounter(countries, leaders,
-                    "D:\\dev\\upide\\old-lipn.univ-paris13.fr\\~dubacq\\europa\\pions\\0.6\\",
+                    "D:\\dev\\upide\\jymVersion\\",
                     "D:\\dev\\workspace\\eu\\front\\eu-front-client\\data\\counters\\v2\\",
                     log);
 

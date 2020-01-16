@@ -27,6 +27,10 @@ public class CounterGenerator {
     private static final List<String> countriesWithoutOwn;
     /** List of countries without control counter. */
     private static final List<String> countriesWithoutControl;
+    /** List of countries that can use Galley fleets. */
+    private static final List<String> countriesWithGalleyFleet;
+    /** List of minor countries with special diplo submission. */
+    private static final Map<String, String> countriesSubmissive;
 
     static {
         aliasCountry = new HashMap<>();
@@ -36,14 +40,15 @@ public class CounterGenerator {
         aliasCountry.put("parliament", "angleterre");
         aliasCountry.put("german-empire", "saint-empire");
         aliasCountry.put("provincesne", "hollande");
-        aliasCountry.put("turcorsaire", "turquie");
-        aliasCountry.put("turvizir", "turquie");
-        aliasCountry.put("fralicense", "france");
+        aliasCountry.put("teutoniques1", "teutoniques");
+        aliasCountry.put("teutoniques2", "teutoniques");
+//        aliasCountry.put("turcorsaire", "turquie");
+//        aliasCountry.put("turvizir", "turquie");
+//        aliasCountry.put("fralicense", "france");
 
 
         countriesWithoutOwn = new ArrayList<>();
         countriesWithoutOwn.add("saint-empire");
-        countriesWithoutOwn.add("teutoniques2");
         countriesWithoutOwn.add("pirates");
         countriesWithoutOwn.add("mazovie");
         countriesWithoutOwn.add("rebelles");
@@ -51,10 +56,26 @@ public class CounterGenerator {
 
         countriesWithoutControl = new ArrayList<>();
         countriesWithoutControl.add("saint-empire");
-        countriesWithoutControl.add("teutoniques2");
         countriesWithoutControl.add("pirates");
         countriesWithoutControl.add("mazovie");
         countriesWithoutControl.add("rebelles");
+
+        countriesWithGalleyFleet = new ArrayList<>();
+        countriesWithGalleyFleet.add("algerie");
+        countriesWithGalleyFleet.add("danemark");
+        countriesWithGalleyFleet.add("espagne");
+        countriesWithGalleyFleet.add("france");
+        countriesWithGalleyFleet.add("genes");
+        countriesWithGalleyFleet.add("mamelouks");
+        countriesWithGalleyFleet.add("naples");
+        countriesWithGalleyFleet.add("pologne");
+        countriesWithGalleyFleet.add("russie");
+        countriesWithGalleyFleet.add("suede");
+        countriesWithGalleyFleet.add("turquie");
+        countriesWithGalleyFleet.add("venise");
+
+        countriesSubmissive = new HashMap<>();
+        countriesSubmissive.put("mazovie", "pologne");
     }
 
     /**
@@ -106,10 +127,10 @@ public class CounterGenerator {
                         sourceCode = code;
                     } else {
                         code2 = code2.replaceAll(" ", "-");
-                        sourceCode = code + "%7C" + code2;
+                        sourceCode = code + "_" + code2;
                     }
-                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "LeaderPair_{0}%7C" + country2 + "_" + sourceCode + "_recto.png"));
-                    typesByCountry.get(country2).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + "-2.png", "LeaderPair_" + country + "%7C{0}_" + sourceCode + "_verso.png"));
+                    typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + ".png", "LeaderPair_{0}_" + country2 + "_" + sourceCode + "_recto.png"));
+                    typesByCountry.get(country2).add(new ImmutablePair<>("{0}" + File.separator + "Leader_{0}_" + code + "-2.png", "LeaderPair_" + country + "_{0}_" + sourceCode + "_verso.png"));
                     break;
                 case PACHA:
                     typesByCountry.get(country).add(new ImmutablePair<>("{0}" + File.separator + "Pacha_{0}_" + code + ".png", "Pacha_" + code + "_recto.png"));
@@ -143,6 +164,9 @@ public class CounterGenerator {
             }
             if (aliasCountry.containsKey(countryName)) {
                 countryName = aliasCountry.get(countryName);
+            }
+            if (StringUtils.equals(countryName, "teutoniques")) {
+                countryName = countryName + "?";
             }
             for (Pair<String, String> type : types) {
                 List<String> dirInError = new ArrayList<>();
@@ -305,8 +329,14 @@ public class CounterGenerator {
             }
         }
         if (country.getFidelity() > 0 && !StringUtils.equals("ROTW", country.getType())) {
-            types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_DIPLOMACY.png", "Diplomacy_*{0}_F*_recto.png"));
-            types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_DIPLOMACY_WAR.png", "Diplomacy_*{0}_F*_verso.png"));
+            if (countriesSubmissive.containsKey(country.getName())) {
+                String owner = countriesSubmissive.get(country.getName());
+                types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_DIPLOMACY.png", "Submission_*{0}_" + owner + "_recto.png"));
+                types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_DIPLOMACY_WAR.png", "Submission_*{0}_" + owner + "_recto.png"));
+            } else {
+                types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_DIPLOMACY.png", "Diplomacy_*{0}_F*_recto.png"));
+                types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_DIPLOMACY_WAR.png", "Diplomacy_*{0}_F*_verso.png"));
+            }
         }
         for (Country.Limit limit : country.getLimits()) {
             switch (limit.getType()) {
@@ -319,12 +349,16 @@ public class CounterGenerator {
                     types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_ARMY_TIMAR_MINUS.png", "Army_timar_*_verso.png"));
                     break;
                 case "FLEET":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_PLUS.png", "Fleet_{0}_*_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_MINUS.png", "Fleet_{0}_*_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_PLUS.png", "Fleet_Warships_{0}_*_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_MINUS.png", "Fleet_Warships_{0}_*_verso.png"));
+                    if (countriesWithGalleyFleet.contains(country.getName())) {
+                        types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_GALLEY_PLUS.png", "Fleet_Galleys_{0}_*_recto.png"));
+                        types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_GALLEY_MINUS.png", "Fleet_Galleys_{0}_*_verso.png"));
+                    }
                     break;
                 case "FLEET_TRANSPORT":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_TRANSPORT_PLUS.png", "Fleet_{0}_Transport_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_TRANSPORT_MINUS.png", "Fleet_{0}_Transport_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_TRANSPORT_PLUS.png", "Fleet_Warships_{0}_Transport_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_TRANSPORT_MINUS.png", "Fleet_Warships_{0}_Transport_verso.png"));
                     break;
                 case "LDND":
                     types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_LAND_DETACHMENT.png", "LDND_{0}_*_recto.png"));

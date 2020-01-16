@@ -1809,7 +1809,8 @@ public class DataExtractor {
         major = countries.get("espagne");
         major.addLimit(5, "ARMY");
         major.addLimit(4, "FLEET");
-        major.addLimit(2, "PIRATE");
+        // TODO TG-131 spain flemish sailors
+//        major.addLimit(2, "PIRATE");
         major.addLimit(10, "LDND");
         major.addLimit(10, "LD");
         major.addLimit(4, "NTD");
