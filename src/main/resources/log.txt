@@ -1185,16 +1185,4 @@ Haiti	Region has wrong number of provinces.	3	4
 Dai Viet	Region has wrong number of provinces.	4	3
 America	Region has wrong number of provinces.	4	5
 Cameroun	Region has wrong number of provinces.	2	3
-german-empire	Country counter not found.	Ownership_saint-empire.png	[counter_2]
-german-empire	Country counter not found.	Control_saint-empire.png	[counter_2]
-royalistes	Country counter not found.	Ownership_royalistes.png	[counter_2]
-royalistes	Country counter not found.	Control_royalistes.png	[counter_2]
-venise	Country counter not found.	Fort_venise_0_recto.png	[counter_2]
-Veastprussia	Country counter not found.	Ownership_eastprussia.png	[counter_2]
-Veastprussia	Country counter not found.	Control_eastprussia.png	[counter_2]
-Veastprussia	Country counter not found.	Diplomacy_*eastprussia_F*_recto.png	[counter_2]
-Veastprussia	Country counter not found.	Diplomacy_*eastprussia_F*_verso.png	[counter_2]
-Veastprussia	Country counter not found.	Army_eastprussia_*_recto.png	[counter_2]
-Veastprussia	Country counter not found.	Army_eastprussia_*_verso.png	[counter_2]
-Veastprussia	Country counter not found.	LD_eastprussia_*.png	[counter_2]
 eAstragan	Duplicate borders	eTerek

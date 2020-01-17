@@ -1,5 +1,6 @@
 package com.mkl.tools.eu.tables;
 
+import com.mkl.tools.eu.map.CounterGenerator;
 import com.mkl.tools.eu.map.DataExtractor;
 import com.mkl.tools.eu.util.ToolsUtil;
 import com.mkl.tools.eu.vo.Leader;
@@ -35,6 +36,11 @@ public class TablesGenerator {
      * @throws Exception Exception.
      */
     public static void main(String... args) throws Exception {
+        computeTables();
+    }
+
+    public static List<Leader> computeTables() throws Exception {
+        List<Leader> leaders = new ArrayList<>();
         Writer sqlWriter = ToolsUtil.createFileWriter("src/main/resources/output/tables-auto.sql", false);
 
         sqlWriter.append("DELETE FROM T_UNIT;\n")
@@ -68,11 +74,13 @@ public class TablesGenerator {
                 .append("\n");
 
         computeCountryTables(sqlWriter);
-        computeGeneralTables(sqlWriter);
-        computeLeaders(sqlWriter);
+        leaders.addAll(computeGeneralTables(sqlWriter));
+        leaders.addAll(computeLeaders(sqlWriter));
 
         sqlWriter.flush();
         sqlWriter.close();
+
+        return leaders;
     }
 
     /**
@@ -683,7 +691,8 @@ public class TablesGenerator {
      * @param sqlWriter the writer with all database instructions.
      * @throws IOException if the writer fails.
      */
-    public static void computeGeneralTables(Writer sqlWriter) throws IOException {
+    public static List<Leader> computeGeneralTables(Writer sqlWriter) throws IOException {
+        List<Leader> leaders = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(DataExtractor.class.getClassLoader().getResourceAsStream("input/tables/engGeneralTables.tex")));
         String line;
         String type = null;
@@ -713,9 +722,10 @@ public class TablesGenerator {
             } else if (StringUtils.equals("etatsauvrai", type)) {
                 computeExchequer(line, sqlWriter);
             } else if (StringUtils.equals("leader", type)) {
-                computeReplacementLeader(line, sqlWriter);
+                leaders.addAll(computeReplacementLeader(line, sqlWriter));
             }
         }
+        return leaders;
     }
 
     /**
@@ -1407,6 +1417,10 @@ public class TablesGenerator {
                 break;
         }
 
+        if (CounterGenerator.aliasCountry.containsKey(country)) {
+            country = CounterGenerator.aliasCountry.get(country);
+        }
+
         return country;
     }
 
@@ -1553,7 +1567,8 @@ public class TablesGenerator {
      * @param sqlWriter the writer with all database instructions.
      * @throws IOException if the writer fails.
      */
-    private static void computeReplacementLeader(String line, Writer sqlWriter) throws IOException {
+    private static List<Leader> computeReplacementLeader(String line, Writer sqlWriter) throws IOException {
+        List<Leader> leaders = new ArrayList<>();
         Matcher m = Pattern.compile("([^&]*)&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3})\\s*&\\s*(\\d{3}).*").matcher(line);
         if (m.matches()) {
             String country = m.group(1).trim();
@@ -1574,9 +1589,21 @@ public class TablesGenerator {
                     if (goodArtiller && i % 2 == 1) {
                         siege++;
                     }
-                    String code = country + "-general-" + i;
+                    String code = "Replacement-G" + (char) (i + (int) 'A' - 1);
+                    if (StringUtils.equals("turvizir", country)) {
+                        code = "Replacement-K" + (char) (i + (int) 'A' - 1);
+                    }
                     addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, siege, "GENERAL", true, false, false, false, false, false, true, null);
-                    code = country + "-admiral-" + i;
+                    Leader leader = new Leader();
+                    leader.setType(Leader.LeaderType.LEADER);
+                    leader.setCode(code);
+                    leader.setCountry(country);
+                    leaders.add(leader);
+
+                    if (StringUtils.equals("natives", country) || StringUtils.equals("turvizir", country)) {
+                        continue;
+                    }
+                    code = "Replacement-A" + (char) (i + (int) 'A' - 1);
                     if (badAdmiralManoeuvre) {
                         manoeuvre--;
                     }
@@ -1584,11 +1611,18 @@ public class TablesGenerator {
                         fire--;
                     }
                     addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, 0, "ADMIRAL", true, false, false, false, false, false, true, null);
+                    leader = new Leader();
+                    leader.setType(Leader.LeaderType.LEADER);
+                    leader.setCode(code);
+                    leader.setCountry(country);
+                    leaders.add(leader);
                 } else {
                     System.out.println("Bad Stats : " + m.group(i + 1));
                 }
             }
         }
+
+        return leaders;
     }
 
     /**
@@ -1865,7 +1899,7 @@ public class TablesGenerator {
                     }
                 }
             } else {
-                m = Pattern.compile("PACHA;([^;]*);([^;]*);([^;]*);(\\d);(.*)").matcher(line);
+                m = Pattern.compile("PACHA;([^;]*);([^;]*);([^;]*);[^;]*;(\\d);(.*)").matcher(line);
                 if (m.matches()) {
                     String value = m.group(5);
                     Matcher mVal = Pattern.compile("([A-Z]) (\\d).(\\d).(\\d) ?\\-?(\\d)?").matcher(value);
@@ -1944,9 +1978,9 @@ public class TablesGenerator {
             case "EXPLORER":
                 return "E";
             case "GOVERNOR":
-                return "G";
+                return "Gouv";
             case "PRIVATEER":
-                return "A";
+                return "P";
         }
         LOGGER.error("Anonymous leader type unknown : " + type);
         return null;

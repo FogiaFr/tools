@@ -22,7 +22,7 @@ import java.util.*;
  */
 public class CounterGenerator {
     /** Sometimes, some countries use the counters of other countries. */
-    private static final Map<String, String> aliasCountry;
+    public static final Map<String, String> aliasCountry;
     /** List of countries without own counter. */
     private static final List<String> countriesWithoutOwn;
     /** List of countries without control counter. */
@@ -45,6 +45,8 @@ public class CounterGenerator {
 //        aliasCountry.put("turcorsaire", "turquie");
 //        aliasCountry.put("turvizir", "turquie");
 //        aliasCountry.put("fralicense", "france");
+        aliasCountry.put("vizier", "turvizir");
+        aliasCountry.put("minor", "neutre");
 
 
         countriesWithoutOwn = new ArrayList<>();
@@ -357,8 +359,8 @@ public class CounterGenerator {
                     }
                     break;
                 case "FLEET_TRANSPORT":
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_TRANSPORT_PLUS.png", "Fleet_Warships_{0}_Transport_recto.png"));
-                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_TRANSPORT_MINUS.png", "Fleet_Warships_{0}_Transport_verso.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_TRANSPORT_PLUS.png", "Fleet_Transport_{0}_Transport_recto.png"));
+                    types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_FLEET_TRANSPORT_MINUS.png", "Fleet_Transport_{0}_Transport_verso.png"));
                     break;
                 case "LDND":
                     types.add(new ImmutablePair<>("{0}" + File.separator + "{0}_LAND_DETACHMENT.png", "LDND_{0}_*_recto.png"));

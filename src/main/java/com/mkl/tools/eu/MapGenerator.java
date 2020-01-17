@@ -107,7 +107,7 @@ public final class MapGenerator {
                 }
             }
 
-            List<Leader> leaders = TablesGenerator.computeLeaders(null);
+            List<Leader> leaders = TablesGenerator.computeTables();
 
 //            CounterGenerator.moveExistingCounter(countries, leaders,
 //                    "D:\\dev\\upide\\old-lipn.univ-paris13.fr\\~dubacq\\europa\\pions\\0.6\\",
