@@ -1593,7 +1593,7 @@ public class TablesGenerator {
                     if (StringUtils.equals("turvizir", country)) {
                         code = "Replacement-K" + (char) (i + (int) 'A' - 1);
                     }
-                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, siege, "GENERAL", true, false, false, false, false, false, true, null);
+                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, siege, "GENERAL", true, false, false, false, false, false, false, null);
                     Leader leader = new Leader();
                     leader.setType(Leader.LeaderType.LEADER);
                     leader.setCode(code);
@@ -1610,7 +1610,7 @@ public class TablesGenerator {
                     if (badAdmiralFire) {
                         fire--;
                     }
-                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, 0, "ADMIRAL", true, false, false, false, false, false, true, null);
+                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, 0, "ADMIRAL", true, false, false, false, false, false, false, null);
                     leader = new Leader();
                     leader.setType(Leader.LeaderType.LEADER);
                     leader.setCode(code);
