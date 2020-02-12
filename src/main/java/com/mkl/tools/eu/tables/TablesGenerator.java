@@ -1646,7 +1646,7 @@ public class TablesGenerator {
                         siege++;
                     }
                     String code = country + "-general-" + i;
-                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, siege, "GENERAL", true, false, false, false, false, false, true, null);
+                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, siege, "GENERAL", true, false, false, false, false, false, false, null);
                     code = country + "-admiral-" + i;
                     if (badAdmiralManoeuvre) {
                         manoeuvre--;
@@ -1654,7 +1654,7 @@ public class TablesGenerator {
                     if (badAdmiralFire) {
                         fire--;
                     }
-                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, 0, "ADMIRAL", true, false, false, false, false, false, true, null);
+                    addLeaderLine(sqlWriter, code, null, code, country, null, null, null, null, manoeuvre, fire, shock, 0, "ADMIRAL", true, false, false, false, false, false, false, null);
                 } else {
                     System.out.println("Bad Stats : " + m.group(i + 1));
                 }
