@@ -816,7 +816,7 @@ public class TablesGenerator {
         if (m.matches()) {
             type = "landtech";
         }
-        m = Pattern.compile("\\\\newcommand\\{\\\\combatresults\\}\\{").matcher(line);
+        m = Pattern.compile("\\\\newcommand\\{\\\\table@combatresults\\}\\{").matcher(line);
         if (m.matches()) {
             type = "combatresults";
         }
@@ -832,11 +832,11 @@ public class TablesGenerator {
         if (m.matches()) {
             type = "artillerybonus";
         }
-        m = Pattern.compile("\\\\GTmorecontent\\{fortresses\\}\\{.*").matcher(line);
+        m = Pattern.compile("\\\\newcommand\\{\\\\table@@resistance\\}\\{.*").matcher(line);
         if (m.matches()) {
             type = "fortressResistance";
         }
-        m = Pattern.compile("\\\\newcommand\\{\\\\assault\\}\\{").matcher(line);
+        m = Pattern.compile("\\\\newcommand\\{\\\\table@assault\\}\\{").matcher(line);
         if (m.matches()) {
             type = "assault";
         }
@@ -994,7 +994,7 @@ public class TablesGenerator {
      */
     private static void computeBattleTech(String line, String type, Writer sqlWriter) throws IOException {
         boolean land = StringUtils.equals("landtech", type);
-        Matcher m = Pattern.compile("\\\\technologie\\{([^\\}]*)\\}.*").matcher(line);
+        Matcher m = Pattern.compile("\\\\([^\\s]*).*").matcher(line);
         if (m.matches()) {
             String tech = m.group(1);
             String[] split = line.split("&");
@@ -1065,49 +1065,49 @@ public class TablesGenerator {
         String tech = null;
 
         switch (text) {
-            case "Galley":
+            case "TGA":
                 tech = "GALLEY";
                 break;
-            case "Carrack":
+            case "TCAR":
                 tech = "CARRACK";
                 break;
-            case "Nao-Galeon":
+            case "TGLN":
                 tech = "NAE_GALEON";
                 break;
-            case "Galleon-Fluyt":
+            case "TGF":
                 tech = "GALLEON_FLUYT";
                 break;
-            case "Battery":
+            case "TBAT":
                 tech = "BATTERY";
                 break;
-            case "Vessel":
+            case "TVE":
                 tech = "VESSEL";
                 break;
-            case "Three-Decker":
+            case "TTD":
                 tech = "THREE_DECKER";
                 break;
-            case "74s":
+            case "TSF":
                 tech = "SEVENTY_FOUR";
                 break;
-            case "Medieval":
+            case "TMED":
                 tech = "MEDIEVAL";
                 break;
-            case "Renaissance":
+            case "TREN":
                 tech = "RENAISSANCE";
                 break;
-            case "Arquebus":
+            case "TARQ":
                 tech = "ARQUEBUS";
                 break;
-            case "Muskets":
+            case "TMUS":
                 tech = "MUSKET";
                 break;
-            case "Baroque":
+            case "TBAR":
                 tech = "BAROQUE";
                 break;
-            case "Manoeuvre":
+            case "TMAN":
                 tech = "MANOEUVRE";
                 break;
-            case "Lace":
+            case "TL":
                 tech = "LACE_WAR";
                 break;
         }

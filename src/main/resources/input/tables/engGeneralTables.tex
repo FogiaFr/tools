@@ -1,4 +1,47 @@
+% -*- mode: LaTeX; -*-
+
 % Page 1
+
+\makeatletter
+% \table@toto -> Table toto only without decoration or legends
+% \totoonly -> Table only without legends but with \GTdecorate, for
+%              the rules (DRM and legends are in the running text)
+% \toto -> Table + legends + complex decorate, for the Player's aid
+
+% \table@@toto -> sutables, included via \GTmorecontent, require
+%                 special treatment
+% \alias@@toto, \title@@toto -> args for the \GT
+%         used to make sure the name is the same everywhere.
+
+% creates \totoonly from \table@toto
+\newcommand{\make@only}[1]{
+  \csdef{#1only}{\csname table@#1\endcsname\GTdecorate}}
+
+% creates \totoonly from \table@@toto, \alias@@toto, \title@@toto
+% use \make@@all !
+\newcommand{\make@@only}[2]{
+  \csdef{#2only}{
+    \ifx#1\relax\relax % we should rather test \ifdef \alias@@#2
+    \GT{#2}{\csname title@@#2\endcsname}
+    \else
+    \GT[\csname alias@@#2\endcsname]{#2}{\csname title@@#2\endcsname}
+    \fi
+    \GTcontent{\csname table@@#2\endcsname}
+    \GTdecorate
+  } }
+
+% creates \more@@toto to include in \toto
+% ##1, ##2 and ##3 are positioning args for \GTmorecontent
+% use \make@@all !
+\newcommand{\make@@more}[2]{
+  \csdef{more@@#2}##1##2##3{
+    \GTmorecontent{#2}{##1}{##2}{##3}{\csname table@@#2\endcsname}
+    \GTmoretitle{#2}{\csname title@@#2\endcsname}
+    \GTdecorate
+  }
+}
+
+\newcommand{\make@@all}[2][]{\make@@only{#1}{#2}\make@@more{#1}{#2}}
 
 \newcommand{\monarchduration}{
   \GT{monarchduration}{Reign}
@@ -901,7 +944,7 @@
       %
       \hline\hline
       %
-      \gris{\textbf{Exceptional levies:}} & \multicolumn{5}{l}{\STAB\ -1 (unless enemy forces on National Territory), get (1d10+3\textmultiply\STAB+\ADM)\textmultiply10 \ducats}\\
+      \gris{\textbf{Exceptional taxes:}} & \multicolumn{5}{l}{\STAB\ -1 (unless enemy forces on National Territory), get (1d10+3\textmultiply\STAB+\ADM)\textmultiply10 \ducats}\\
       %
       \hline\hline
       %
@@ -970,7 +1013,7 @@
 %    4 & \stz{Atlantique W}&\\\ghline
     4 & \stz{Amerique}&\\\ghline
     5 & \stz{Recife}\\\ghline
-    \gris{6} & \stz{Patagonie} \& \seazone{Tempetes} or \terme{Piracy} everywhere if leader & Normal\\\ghline
+    \gris{6} & \stz{Patagonie} \& \seazone{Aiguilles} or \terme{Piracy} everywhere if leader & Normal\\\ghline
     7 & \stz{Arabie}&\\\hline\ghline
     8 & \stz{Chine} \faceplus\relax &\\\ghline
     9 & \stz{Indien} \faceplus\relax & Boom\\\ghline
@@ -1000,7 +1043,7 @@
   }
   \GTmoretitle{tableb}{Exotic resources variations}
   \GTlegend[caption=captiona,east south=tableb,to eastpoint=tableb]{
-    \GTitem{\stz{Tempetes}: America, \stz{Perou}: Asia, \stz{Canarias}: Asia \& America.}
+    \GTitem{\stz{Aiguilles}: America, \stz{Perou}: Asia, \stz{Canarias}: Asia \& America.}
   }
   \GTlegend[south west=tableb,xsize=(\gtid tableb)(\gtid captiona)]{%
     \GTitem{Accumulate \terme{Piracy} from Random piracy and Economical events \emph{before} rolling}
@@ -1036,10 +1079,10 @@
     \GTitem{Besieged (\textbf{siege} attrition)}
     \GTitem{No supply}
 %    \GTitem{Weak  land supply:}
-    \GTitem{6\MP\leq\LoS\leq12\MP except \LD in \ROTW}
     \GTitem{\LoS through Desert}
     \GTitem{\SoS not owned, nor allied}
-    \GTitem{By a fleet not adjacent to port/arsenal}
+    \GTitem{6\MP\leq\LoS\leq12\MP \quad (\emph{except \LD in \ROTW})}
+    \GTitem{By a fleet not adjacent to its \SoS \quad (\emph{idem})}
     \GTheader{Movement segment}
     \GTitem{Massed force (\geq6\LD, no logistics: \geq3\LD)}
     \GTitem{Movement \geq3\MP if \terme{bad weather}}
@@ -1058,39 +1101,46 @@
   \GTtextdecorate
 }
 
-\newcommand{\discoveriesattrition}{
+\newcommand{\table@discoveriesattrition}{
   \GT{discoveriesattrition}{Discoveries and Attrition}
   \GTcontent{
-    \graytabular\begin{tabular}{c|cc|c|cccc}
-      \multicolumn{1}{c|}{1d10}&\multicolumn{2}{c|}{Discovery\global\countcol=2} & \ROTW&\multicolumn{4}{c}{Loss in Europe (fct. of \#\LD)}\\\ghline\noalign{\global\countrow=0}
-      +?& Sea         & Land & Losses & 1\LD & 2\LD & 3--5\LD & \geq6\LD\\\ghline\hline
-      \leq11&S            &S            &0\% &---&---&---&---\\\ghline
-      12 &S            &S            &10\%&---& P & P &1+P\\\ghline
-      13 &S\textetoilex&S            &20\%&---& P & P &1+P\\\ghline
-      14 &S\textetoilex&S            &30\%&---& P & P &1+P\\\ghline
-      15 &\undemi      &\undemi      &40\%& P & P &1+P&2+P\\\ghline
-      16 &\undemi      &\undemi      &50\%& P & P &1+P&2+P\\\ghline
-      17 &F            &F\textetoilex&60\%& P & 1 &1+P&2+P\\\ghline
-      18 &F            &F\textetoilex&70\%& P & 1 &1+P&2+P\\\ghline
-      19 &F\textetoilex&F\textetoilex&80\%& P & 1 &1+P&2+P\\\ghline
-      20 &F\textetoilex&F\textetoilex&90\%& P & 1 &1+P&2+P\\\ghline
-      \geq21&F\textetoilex&F\textetoilex&100\%&1+P&1+P &2+P&3+P\\\ghline
+    \graytabular\begin{tabular}{r||cc||c|cccc}
+      \multicolumn{1}{c||}{1d10}&\multicolumn{2}{c||}{Discovery\global\countcol=2} & \ROTW&\multicolumn{4}{c}{Land, Europe (fct. of \#\LD)}\\\ghline\noalign{\global\countrow=0}
+      \multicolumn{1}{c||}{+?}& Sea         & Land & or Sea & 1\LD & 2\LD & 3--5\LD & \geq6\LD\\\ghline\hline
+      \leq 5&S  &S &0\% &---&---&---&---\\\ghline
+      6 &S            &S            &10\%&---& P & P &1+P\\\ghline
+      7 &S\xxa&S            &20\%&---& P & P &1+P\\\ghline
+      8 &S\xxa&S\xxc        &30\%&---& P & P &1+P\\\ghline
+      9 &\undemi      &\undemi      &40\%& P & P &1+P&2+P\\\ghline
+      10 &\undemi      &\undemi      &50\%& P & P &1+P&2+P\\\ghline
+      11 &F\xxc            &F\xxa&60\%& P & 1 &1+P&2+P\\\ghline
+      12 &F\xxc            &F\xxa&70\%& P & 1 &1+P&2+P\\\ghline
+      13 &F\xxa&F\xxa&80\%& P & 1 &1+P&2+P\\\ghline
+      14 &F\xxa&F\xxa&90\%& P & 1 &1+P&2+P\\\ghline
+      \geq 15&F\xxa&F\xxa&100\%&1+P&1+P &2+P&3+P\\\ghline
     \end{tabular}%
   }
+}
+
+\make@only{discoveriesattrition}
+
+\newcommand{\discoveriesattrition}{
+  \table@discoveriesattrition
   \GTlegend[east south,to eastpoint]{
     \GTheader{Results}
     \begin{modlist}
-    \item[S] Success
-    \item[F] Failure
+    \item[S] Success \quad F Failure
+%    \item[F] Failure
     \item[\undemi]
       \begin{modlisti}
-      \item[1--3]: F\textetoilex
-      \item[4--5]: F
-      \item[6--8]: S\textetoilex
-      \item[9--10]: S
+      \item[1--3]: F\xxa
+      \item[4--5]: F\xxc
+      \item[6--8]: S\xxa
+      \item[9--10]: S\xxc
       \end{modlisti}
-    \item[\textetoile] Test of death for leader: 1d10>\Man \textarrow death
-    \item[?\%] See lost troops below
+    \item[\xxa] 1d10>MAN \textarrow death
+    \item[\xxc, no troops:] idem
+    \item[XX\%] See lost troops below
     \item[P]
       \begin{modlisti}
       \item[Med--Arq] 1\LD and \PILLAGE\facemoins
@@ -1105,32 +1155,32 @@
 %    \textbf{All:} -M Leader \Man (except during sieges)\\
     \GTheader{Land Attrition (supply/mvt/siege/redeployment)}
     \begin{modlist}
-    \item[+8] if entering or in at least one enemy province
-    \item[+6] if entering or in friendly provinces only
+    \item[+2] if entering or in at least one enemy province (unless besieger)
+%    \item[+6] if entering or in friendly provinces only
     \item[+2] if no \LoS
     \item[+1/+2] per \PILLAGE \facemoins/\faceplus\GTnb{a}
     \item[+1/+2] per unfriendly \REVOLT \facemoins/\faceplus\GTnb{b}
     \item[+?] \ROTW Cold malus (not controlled)
     \item[-2] Voluntarily redeployment, Peace evacuation
     \end{modlist}
-    \GTheader{Siege modifiers only}
+    \GTheader{Siege Attrition}
     \begin{modlist}
     \item[-S] Siege of one allied leader
     \item[+S] Siege of one enemy leader
     \item[-3] if besieged in port and no blockade
     \item[+1/+3] if besieged, per \USURE \facemoins/\faceplus
-    \item[-2] for besieger
+%    \item[-2] for besieger
     \end{modlist}
   }
   \GTnotabene{text width=20mm}{(unless\\besieged)}
   \GTlegend[caption=captionc,east north=captionb,xsize offset=-2pt,xsize scale=0.5,xsize=(\gtid main.west)(\gtid caption.east)]{
-    \GTheader{Sea Attrition only}
+    \GTheader{Sea Movement Attrition \hspace{13mm} (Always at -6)}
     \begin{modlist}
-    \item[+?] Greatest sea difficulty (or difficulty-2 if port)
-    \item[+1] per 4 sea zones entered (1\FLEET or less) [BLP]
-    \item[+2/4] per 2 sea zones (2/3\FLEET) [BLP]
+    \item[+?] Greatest sea difficulty (-2 if port)
+    \item[+1] per 4 zones entered (1\FLEET or less) [BLP]
+    \item[+2/4] per 2 zones (2/3\FLEET) [BLP]
     \item[-1] if 2 or 3\FLEET, arsenal to arsenal [BLP]
-    \item[+3/+6/+9] if \FLEET begins at 1/2/5+ zones from SoS
+    \item[+3/+6/+9] if \FLEET begins at 2/3/6+ zones from SoS
 %    \item[+?] LoS crossing \StraitFort
     \item[+1/+2] Per unfriendly \corsaire \facemoins/\faceplus [TBD]
     \item[+2] retreating after rout
@@ -1138,10 +1188,11 @@
     \item[+?] half level of blockaded \fortress (round up) [BLP]
     \item[+2] to stay at sea at the end of turn
     \end{modlist}
-    \GTheader{Exploration only}
+    \GTheader{Exploration \hspace{28mm} (Always at +4)}
     \begin{modlist}
     \item[-2] if sea zone already known (by anyone) in pIV+
-    \item[+10] For all explorations (land or sea)
+    \item[-M] MAN of \LeaderE/\LeaderC/\LeaderGov \textbf{only}
+%    \item[+4] For all explorations (land or sea)
     \end{modlist}
   }
   % Alas, we cannot do simply a west south=captionb, text is too tall. Using westpoint as reference.
@@ -1149,7 +1200,7 @@
     \GTheader{All Attritions}
     \begin{modlist}
     \item[+2] Per extra cause
-    \item[-M] MAN of Leader (except for sieges)
+    \item[-M] MAN of Leader (except siege, explo.)
     \item[+?] LoS crossing \StraitFort
     \end{modlist}
     \GTheader{At sea (Exploration or Attrition)}
@@ -1180,9 +1231,9 @@
   }
 }
 
-\newcommand{\attritionlosses}{
+\def\de{\textit{d}}
+\newcommand{\table@attritionlosses}{
   \GT[Attrition ROTW Remainders]{attritionlosses}{Remaining troops after attrition (naval and \ROTW)}
-  \def\de{\textit{d}}
   \GTcontent{
     \graytabular\begin{tabular}{c|ccccccccc}
       \% lost  & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 \\\ghline\hline
@@ -1194,12 +1245,18 @@
       4 D       &  3+\de  &  3 &  3    & 2+\de &  2 & 1+\de  &  1+\de &  2\de & \de \\\ghline
       5 D       &  4+\de  & 4  & 3+\de & 3 &  2+\de & 2  &  1+\de &  1 & \de \\\ghline
       6 D       &  5+\de & 5 &  4 & 3+\de  &  3 & 2+\de  &  2 &  1 & 2\de\textetoilex \\\ghline
-      7 D       &  6 & 5+\de &  5 & 4  &  3+\de & 3  &  2 &  1+\de & 2\de \\\ghline
-      8 D       & 7 & 6  &  5+\de & 5  &  4 & 3  &  2 &  1 & 2\de  \\ \ghline
+      7 D       &  6 & 5+\de &  5 & 4  &  3+\de & 3  &  2 &  1 & 2\de \\\ghline
+      8 D       & 7 & 6  &  5+\de & 5  &  4 & 3  &  2 &  1+\de & 2\de  \\ \ghline
       9 D        & 8 & 7 & 6+\de & 6 & 5  & 4 & 3 & 2 & 1\textetoilex \\ \ghline
       10D & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 \\\ghline
     \end{tabular}
   }
+}
+
+\make@only{attritionlosses}
+
+\newcommand{\attritionlosses}{
+  \table@attritionlosses
   \GTlegend{
     D=1 \ND or 1 \LD, \de=\LDE or \NDE\quad \textetoilex = 50\% chance
     to lose 1 more \de\\
@@ -1303,7 +1360,7 @@
   }
   \GTlegend[west south,text width=30mm]{
     \begin{modlist}
-    \item[\ARMY\faceplus] as shown right
+    \item[\ARMY\faceplus] see Table
     \item[\ARMY\facemoins] =  \undemi\ARMY\faceplus
     \item [\LD] 2 and \xspace \LDE 0.5
     \item[Gold] 1 per 5\ducats
@@ -1335,7 +1392,8 @@
     \NGD, \NTD: counts as \ND\\
     \FLEET\facemoins\geq 2\ND,
     \FLEET\faceplus\geq 3\ND\\
-    Convoys: no supply, \ND
+    Convoys: no supply%, \ND
+% Jym : il voulait dire quoi ce \ND dans la ligne Convoys ???
   }
   \GTdecorate
 }
@@ -1355,12 +1413,13 @@
   \GTheader{Interception: success on \geq8 or natural 10}
   \begin{modlist}
   \item[\textplusminus?] \Man differential  % [TBD : only if positive ?]
-  \item[+1] if technology counter has an advance of 6 cases or higher
+  \item[+1] if interceptor has a technological advance of 6 levels or more
   \item[+1] If the target province contains a friendly force/city
   \item[-1] From or to swamps (-2 if both) or from Flooded province
-  \item[-2] Through mountain pass, river or \terme{bad weather}
+  \item[-2] Through mountain pass, river or \terme{bad weather} (-4 if both)
   \item[-2] If the target province contains an enemy force
-  \item[-1] If interceptor was besieging or blockading at current or previous round
+  \item[-1] If interceptor is besieging or blockading
+    % at current or previous round
   \item[+1] If intercepting in the same province/sea zone or with \terme{Three-decker}
   \item[or +2] if intercepted Fleet will make a Debarkment in same sea zone,
   \item[]  or same province as port,  or adjacent sea zone from arsenal
@@ -1383,7 +1442,7 @@
   \GTitem{Automatic success if retreat in fortress (max. 1\LD per level, 1\LD in a fort)}
 }
 
-\newcommand{\conquistadors}{
+\newcommand{\table@conquistadors}{
   \GT{conquistadors}{Conquistadors Effects}
   \GTcontent{
     \graytabular\begin{tabular}{cccc}
@@ -1402,6 +1461,12 @@
       \geq11&---    &---    &---    \\\ghline
     \end{tabular}%
   }
+}
+
+\make@only{conquistadors}
+
+\newcommand{\conquistadors}{
+  \table@conquistadors
   \GTlegend[caption=captiona,east north,to eastpoint]{
     \begin{modlist}
     \item[+1] per previous use of a \LeaderC in the \terme{area}
@@ -1449,23 +1514,31 @@
   \GTdecorate
 }
 
-\newcommand{\windadvantage}{
+\newcommand{\table@windadvantage}{
   \GT{windadvantage}{Wind Advantage Determination}
   \GTcontent{
-    \graytabular\begin{tabular}{c|ccccccc}
-      \textdownarrow Naval     & \multicolumn{7}{c}{Opponent's technology} \\\ghline\noalign{\global\countrow=0}
-      technology               & GA & CAR& Nao& GAL & BAT& VE &TD\\ \ghline\hline
-      \technologie{Galley}     & na &  - &  - &  - &  - &  - & - \\ \ghline
-      \technologie{Carrack}    & -3 &  0 &  - &  - &  - &  - & - \\ \ghline
-      \technologie{Nao-Galeon}    & -1 &  +2 &  0 &  - &  - &  - & - \\ \ghline
-      \technologie{Galleon-Fluyt}& +2 & +3 & +2 &  0 &  - &  - & - \\ \ghline
-      \technologie{Battery}    & +2 & +3 & +3 &  0 &  0 &  - & - \\ \ghline
-      \technologie{Vessel}     & +3 & +4 & +3 & +2 & +1 &  0 & - \\ \ghline
-      \technologie{Three-Decker}& +4& +6 & +4 & +3 & +2 & +1 & 0 \\ \ghline
+    \graytabular\begin{tabular}{c|cccccccc}
+    & \multicolumn{8}{c}{Opponent's technology} \\
+    \ghline\noalign{\global\countrow=0}
+      \textdownarrow tech. & \NGD & \STCAR& \STGLN & \STGF & \STBAT& \STVE & \STTD & \STSF\\ \ghline\hline
+      \NTD & \textmultiply & \textmultiply & \textmultiply & \textmultiply & \textmultiply & \textmultiply & \textmultiply & \textmultiply\\ \ghline
+      \NGD     & na &  - &  - &  - &  - &  - & - & - \\ \ghline
+      \STCAR    & -3 &  0 &  - &  - &  - &  - & - & - \\ \ghline
+      \STGLN    & -1 &  +2 &  0 &  - &  - &  - & - & - \\ \ghline
+      \STGF & +2 & +3 & +2 &  0 &  - &  - & - & - \\ \ghline
+      \STBAT    & +2 & +3 & +3 &  0 &  0 &  - & - & - \\ \ghline
+      \STVE     & +3 & +4 & +3 & +2 & +1 &  0 & - & - \\ \ghline
+      \STTD & +4& +6 & +4 & +3 & +2 & +1 & 0 & - \\ \ghline
+      \STSF & +4& +6 & +4 & +3 & +2 & +1 & +1 & 0 \\ \ghline
     \end{tabular}
   }
+}
+
+\make@only{windadvantage}
+
+\newcommand{\windadvantage}{
+  \table@windadvantage
   \GTlegend{
-    \technologie{74s}: same as \technologie{Three-Decker}, except +1 against \technologie{Three-Decker}.\\
     Each side rolls 1d10+\Man of {\LeaderA}+the tech. factor above.
     Highest score takes the advantage. No test in \technologie{Galley} vs. \technologie{Galley}.
     No advantage in case of equality. \terme{Wind advantage} allows to break after Fire.
@@ -1478,20 +1551,20 @@
   \GT[Naval Fire Shock]{navaltech}{Naval Technology Table (Fire/Boarding)}
   \GTcontent{
     \graytabular\begin{tabular}{l|*{8}{c}|c}
-      \textdownarrow Naval     & \multicolumn{8}{c|}{Opponent's technology\global\countcol=0} & Morale\\\ghline\noalign{\global\countrow=0}
-      technology               &   GA  &  CAR  &  Nao  &  GAL   &  BAT  &  VE   &  TD & 74s  &   \\ \ghline\hline
-      \technologie{Galley}  \textetoile   &\bf E/A&  E/A  &  E/B  &  E/B  &  E/B  & E/C & E/D & E/E  & 2/3\textdag \\ \ghline
-      \technologie{Carrack}    &  E/E  &\bf D/C&  D/C  &  E/C  &  E/D  &  E/E  & E/E & --/E & 1 \\ \ghline
-      \technologie{Nao-Galeon}    &  C/C  &  C/C  &\bf D/B&  C/C  &  C/C  &  D/C  &  E/D  & E/D & 2 \\ \ghline
-      \technologie{Galleon-Fluyt}&  B/B  &  B/B  &  B/C  &\bf C/C &  C/C  &  D/D  &  E/D  & E/D & 2 \\ \ghline
-      \technologie{Battery} \textetoile   &  B/B  &  A/A  &  A/B  &  B/B  &\bf B/C&  C/C  &  D/D & D/D  & 3 \\ \ghline
-      \technologie{Vessel}     &  B/B  &  A/A  &  A/A  &  B/B  &  B/B  &\bf B/B&  C/C & C/C & 3 \\ \ghline
-      \technologie{Three-Decker}     &  B/B  &  A/A  &  A/A  &  A/A  &  A/B  & B/B & \bf B/B&  C/C  & 3/4\textdag \\ \ghline
-      \technologie{74s}& A/B  &  A/A  &  A/A  &  A/A  &  A/A  &  B/B  &\bf B/B & B/B & 3/4\textdag \\\ghline
+      \textdownarrow you / opp. \textrightarrow  &   \STGA  &  \STCAR  &  \STGLN  &  \STGF   &  \STBAT  &  \STVE   &  \STTD & \STSF  &  Morale \\ \ghline\hline
+      \NTD & --/-- & --/-- & --/-- & --/-- & --/-- & --/-- & --/-- & --/-- & 0\\ \ghline
+      \TGA  \textetoile   &\bf E/A&  E/A  &  E/B  &  E/B  &  E/B  & E/C & E/D & E/E  & 2\textdag \\ \ghline
+      \TCAR    &  E/E  &\bf D/C&  D/C  &  E/C  &  E/D  &  E/E  & E/E & E/E & 1 \\ \ghline
+      \TGLN    &  C/C  &  C/C  &\bf D/B&  C/C  &  C/C  &  D/C  &  E/D  & E/D & 2 \\ \ghline
+      \TGF &  B/B  &  B/B  &  B/C  &\bf C/C &  C/C  &  D/D  &  E/D  & E/D & 2 \\ \ghline
+      \TBAT \textetoile   &  B/B  &  A/A  &  A/B  &  B/B  &\bf B/C&  C/C  &  D/D & D/D  & 3 \\ \ghline
+      \TVE     &  B/B  &  A/A  &  A/A  &  B/B  &  B/B  &\bf B/B&  C/C & C/C & 3 \\ \ghline
+      \TTD     &  B/B  &  A/A  &  A/A  &  A/A  &  A/B  & B/B & \bf B/B&  C/C  & 3\textdag \\ \ghline
+      \TSF & A/B  &  A/A  &  A/A  &  A/A  &  A/A  &  B/B  & B/B &\bf B/B & 3\textdag \\\ghline
     \end{tabular}
   }
   \GTlegend{
-    \textetoile \TBAT: all \NGD contains Galleasses; \hfill \textdag: Morale +1 if \terme{Veteran}
+    \textetoile \TBAT: all \NGD contains \VGD; \hfill \textdag: Morale +1 if \terme{Veteran}
   }
   \GTdecorate
 }
@@ -1500,15 +1573,14 @@
   \GT[Land Fire Shock]{landtech}{Land Technology Table (Fire/Shock)}
   \GTcontent{
     \graytabular\begin{tabular}{l|*{7}{c}|c}
-      \textdownarrow Land      & \multicolumn{7}{c|}{Opponent's technology\global\countcol=0} & Morale \\\ghline\noalign{\global\countrow=0}
-      technology               &  MED  &  REN  &  ARQ  &  MUS  &  BAR  &  MAN  &   L   &   \\ \ghline\hline
-      \technologie{Medieval}   & --/\bf A & --/B & --/B & --/C & --/C & --/D & --/E & 1 \\ \ghline
-      \technologie{Renaissance}&  C/A  &\bf C/A&  C/B  &  D/C  &  E/D  &  E/E  &  E/E  & 1\textetoile/2\rlap\textdag \\ \ghline
-      \technologie{Arquebus}   &  B/A  &  C/A  &\bf C/B&  C/B  &  D/D  &  E/E  &  E/E  & 2\rlap\textdag \\ \ghline
-      \technologie{Muskets}    &  A/A  &  B/A  &  B/B  &\bf C/B&  D/C  &  D/D  &  E/E  & 3 \\ \ghline
-      \technologie{Baroque}    &  A/A  &  B/A  &  B/A  &  B/B  &\bf B/B&  D/B  &  D/C  & 3 \\ \ghline
-      \technologie{Manoeuvre}  &  A/A  &  A/A  &  A/A  &  B/A  &  B/B  &\bf C/C&  C/C  & 3 \\ \ghline
-      \technologie{Lace}       &  A/A  &  A/A  &  A/A  &  A/A  &  A/A  &  B/B  &\bf B/B& 3 \\ \ghline
+      \textdownarrow you / opp. \textrightarrow &  \STMED  &  \STREN  &  \STARQ  &  \STMUS  &  \STBAR  &  \STMAN  &   \STL   & Morale \\ \ghline\hline
+      \TMED & --/\bf A & --/B & --/B & --/C & --/C & --/D & --/E & 1 \\ \ghline
+      \TREN &  C/A  &\bf C/A&  C/B  &  D/C  &  E/D  &  E/E  &  E/E  & 1\textetoile/2\rlap\textdag \\ \ghline
+      \TARQ &  B/A  &  C/A  &\bf C/B&  C/B  &  D/D  &  E/E  &  E/E  & 2\rlap\textdag \\ \ghline
+      \TMUS &  A/A  &  B/A  &  B/B  &\bf C/B&  D/C  &  D/D  &  E/E  & 3 \\ \ghline
+      \TBAR &  A/A  &  B/A  &  B/A  &  B/B  &\bf B/B&  D/B  &  D/C  & 3 \\ \ghline
+      \TMAN &  A/A  &  A/A  &  A/A  &  B/A  &  B/B  &\bf C/C&  C/C  & 3 \\ \ghline
+      \TL   &  A/A  &  A/A  &  A/A  &  A/A  &  A/A  &  B/B  &\bf B/B& 3 \\ \ghline
     \end{tabular}
   }
   \GTlegend{
@@ -1538,11 +1610,11 @@
     \item {\bf End of fight}: one side routs (morale loss), or discretionary retreat, or end of 2\up{nd} day.
       Pursuit; Compute losses (adjust by size, then add retreat for loser).\par
     \end{enumerate}
-    \centerline{\bf -- See Land or Sea Battle summaries on next page --} \par
-    {\bf Major Defeat}: routed and loss difference larger by 3\LD or 5\NWD or 8\NGD.\par
-  }
-  \GTtextdecorate
-}
+    \centerline{\bf -- See Land or Sea Battle summaries on next page
+      --} \par
+    {\bf Major Defeat}: routed, (\ROTW: looser had European \ARMY),
+    and loss difference at least 3\LD or 5\NWD or 8\NGD.\par
+  } \GTtextdecorate }
 
 % Page 6
 
@@ -1567,21 +1639,37 @@
   \GTdecorate
 }
 
-\newcommand{\armysizes}{
+\newcommand{\table@armysizes}{
   \GT{armysizes}{Size Comparison}
   \GTcontent{
     \graytabular\begin{tabular}{c|*{8}{c}}
-      &\bf  0&1&\bf 2&\bf 3&\bf 4&5&6&\bf 7 \\\ghline
-      \bf 7&\bf \llap+2&\llap+2&\bf \llap+2& \llap+1&\bf \llap+1&\llap+1&0&\bf 0 \\\ghline
-      6&\llap+2&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0 \\\ghline
-      5&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0&\llap-1 \\\ghline
-      \bf 4&\bf \llap+1&\llap+1&\bf \llap+1&\bf 0&\bf 0&0&\llap-1&\bf \llap-1 \\ \ghline
-      \bf 3&\bf \llap+1&\llap+1&\bf 0&\bf 0&\bf 0&\llap-1&\llap-1&\llap-1 \\ \ghline
-      \bf 2&\bf\llap+1&0&\bf0&\bf 0&\bf \llap-1&\llap-1&\llap-1&\bf \llap-2\\ \ghline
-      1&0&0&0&\llap-1&\llap-1&\llap-1&\llap-2&\llap-2\\ \ghline
-      \bf 0&\bf 0&0&\bf \llap-1&\bf \llap-1&\bf \llap-1&\llap-2&\llap-2&\bf \llap-2 \\ \ghline
+      & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\\ghline
+      7&\llap+2&\llap+2&\llap+2&\llap+1&\llap+1&\llap+1&0&0 \\ \ghline
+      6&\llap+2&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0 \\ \ghline
+      5&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0&\llap-1 \\ \ghline
+      4&\llap+1&\llap+1&\llap+1&0&0&0&\llap-1&\llap-1 \\ \ghline
+      3&\llap+1&\llap+1&0&0&0&\llap-1&\llap-1&\llap-1 \\ \ghline
+      2&\llap+1&0&0&0&\llap-1&\llap-1&\llap-1&\llap-2 \\ \ghline
+      1&0&0&0&\llap-1&\llap-1&\llap-1&\llap-2&\llap-2 \\ \ghline
+      0&0&0&\llap-1&\llap-1&\llap-1&\llap-2&\llap-2&\llap-2 \\ \ghline
+% the bold is a bit confusing and not that visible.
+      % &\bf  0&1&\bf 2&\bf 3&\bf 4&5&6&\bf 7 \\\ghline
+      % \bf 7&\bf \llap+2&\llap+2&\bf \llap+2& \llap+1&\bf \llap+1&\llap+1&0&\bf 0 \\\ghline
+      % 6&\llap+2&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0 \\\ghline
+      % 5&\llap+2&\llap+1&\llap+1&\llap+1&0&0&0&\llap-1 \\\ghline
+      % \bf 4&\bf \llap+1&\llap+1&\bf \llap+1&\bf 0&\bf 0&0&\llap-1&\bf \llap-1 \\ \ghline
+      % \bf 3&\bf \llap+1&\llap+1&\bf 0&\bf 0&\bf 0&\llap-1&\llap-1&\llap-1 \\ \ghline
+      % \bf 2&\bf\llap+1&0&\bf0&\bf 0&\bf \llap-1&\llap-1&\llap-1&\bf \llap-2\\ \ghline
+      % 1&0&0&0&\llap-1&\llap-1&\llap-1&\llap-2&\llap-2\\ \ghline
+      % \bf 0&\bf 0&0&\bf \llap-1&\bf \llap-1&\bf \llap-1&\llap-2&\llap-2&\bf \llap-2 \\ \ghline
     \end{tabular}
   }
+}
+
+\make@only{armysizes}
+
+\newcommand{\armysizes}{
+  \table@armysizes
   \GTlegend[south west,margins,xsize=(\gtid main)(\gtid eastpoint),font=\small]{
     Compute the average size of each \LD (number between 0 and 7).
     Compute the difference \emph{X} between one army and the other, divide it by 3 and round it to the nearest integer.
@@ -1589,7 +1677,7 @@
   \GTdecorate
 }
 
-\newcommand{\combatresults}{
+\newcommand{\table@combatresults}{
   \GT[Combat Results]{combatresults}{Combat results (Loss/Morale)}
   \GTcontent{
     \graytabular\begin{tabular}{r|*{5}{>{\global\savecol\countcol}c>{\global\countcol\savecol}l}}
@@ -1610,10 +1698,16 @@
       \geq14& 4 & \textetoilex\textetoilex\textetoilex & 3\td & \textetoilex\textetoilex\textetoilex & 3 & \textetoilex\textetoilex\textetoilex & 2\td & \textetoilex\textetoilex\textetoilex & 2\tu & \textetoilex\textetoilex\textetoilex \\\ghline
     \end{tabular}
   }
+}
+
+\make@only{combatresults}
+
+\newcommand{\combatresults}{
+  \table@combatresults
   \GTlegend[east south,to eastpoint]{
     \GTheader{Fire effects}
     \begin{modlist}[5em]
-    \item[\technologie{Renaissance}] If \ARMY present or against \ROTW, apply only the \textetoile
+    \item[\technologie{Renaissance}] If \ARMY present or in \ROTW, apply only the \textetoile
     \item[\technologie{Arquebus}] Divide losses by two (round to lesser \tu)
     \item[\technologie{Galley}] Divide losses by two (round to larger \tu)
     \item[\technologie{Galleasses}] (\VGD or \TBAT) Do full losses.
@@ -1630,7 +1724,6 @@
     \item[+?] Differential of leaders \terme{Fire} or \terme{Shock} if \geq0, max +3 [TBD]
     \item[-1] For the second day
     \item[-1] For the first day if \terme{foraging}
-      % \item[-1] For the day following a failed \terme{retreat during battle}
     \end{modlist}
   }
   \GTlegend[caption=captiona,xsize offset=-4pt,xsize scale=0.3,xsize=(\gtid main.west)(\gtid caption.east)]{
@@ -1653,38 +1746,48 @@
     \item[+1] If after \terme{Fire} segment
     \end{modlist}
     \GTheader[end of day]{Retreat during battle}
-    \GTitem{Land: roll 1d10\leq\Man+Morale}
+    % \GTitem{Land: roll 1d10\leq\Man+Morale}
+    % \begin{modlist}[3em]
+    % \item[Success] Battle lost (pursuit, retreat)
+    % \item[Failure] 2\up{nd} day (enemy has bonus +1)
+    % \end{modlist}
+    % \GTitem{Sea: automatic success}
+    \GTitem{roll 1d10\leq\Man+Morale}
     \begin{modlist}[3em]
     \item[Success] Battle lost (pursuit, retreat)
     \item[Failure] 2\up{nd} day (enemy has bonus +1)
     \end{modlist}
-    \GTitem{Sea: automatic success}
+%    \GTitem{Sea: automatic success}
   }
   \GTlegend[caption=captionb,east north=captiona,xsize offset=-4pt,xsize scale=0.37,xsize=(\gtid main.west)(\gtid caption.east)]{
     \GTheader[Fire/Shock // Fire/Shock 2\up{nd} day]{Terrain modifiers}
     \begin{modlist}[13.8em]
     \item[Forest, Swamp, Desert] -1/-1 // -1/-1
-    \item[Mountain: defender, interceptor] 0/0 // 0/0
-    \item[~~~attacker (exc. if has intercepted)]-1/-1 // -1/-1
+    \item[Mountain: non-phasing or intercepted] 0/0 // 0/0
+    \item[~~~phasing and not intercepted]-1/-1 // -1/-1
       % \item[Mountain (defender, interceptor)] 0/0 // 0/0
-    \item[Through river, pass (exc. interceptor)] -1/-1 // 0/0
+    \item[River or pass (phasing)] -1/-1 // 0/0
     \item[Through strait or disembarking] -2/-3 // 0/0
     \end{modlist}
     \GTheader{Land Artillery \terme{Fire} modifiers} %{[TBD]}
     \begin{modlist}
-    \item[-1] if no \ARMY (Exc: Conquistador in \ROTW, pI to pIV)
-    \item[+1] if Artillery at least 6 (as vs. Fortresses)
+    \item[-1] if no \ARMY (Exc: \LeaderC in \ROTW, pI to pIV)
+    \item[+1] if \geq6 Artillery in the stack
     \end{modlist}}
   \GTlegend[caption=captionc,east north=captionb,xsize offset=-4pt,xsize scale=0.33,xsize=(\gtid main.west)(\gtid caption.east)]{
-    \GTheader{Cavalry \terme{Shock} modifiers}{Land battle}
-    \emph{At least one \ARMY}\\
-    \begin{modlist}[2em]
-    \item[All] +1 if at least 3\LD more than enemy % [TDB ?]
-    \item[\CAIV] +1, p. III--V in plains
-    \item[\CAIIIM] +1, p. IV--V in plains and dense forests
-    \item[\SUE] +1, p. III--VI in northern forests
-    \item[\CAIIM] +1, p. I--IV in plains and sparse forests
-    \item[\TUR] +1 for \terme{Sipahi} cav. (before reform M-2) in plains and deserts
+    \GTheader{Land Cavalry \terme{Shock} modifiers}
+    \begin{modlist}
+    \item[+1] if at least 3\LD more than enemy
+    \item[+1] \emph{At least one \ARMY} and (max. 1):
+      \begin{modlist}%[2em]
+      \item[\CAIIM] p. \period{I}--\period{IV} in plains and sparse
+        forests
+      \item[\CAIIIM] p. \period{IV}--\period{V} in plains and dense
+        forests
+      \item[\CAIV] p. \period{III}--\period{V} in plains
+      \item[\SUE] p. \period{III}--\period{VI} in northern forests
+      \item[\TUR] before M-2 in plains and deserts
+      \end{modlist}
     \end{modlist}
   }
   \node (\gtid northbox)[inner sep=2pt,fit=(\gtid main)(\gtid title)(\gtid caption)(\gtid captionb)(\gtid captionc)]{\filler};
@@ -1705,45 +1808,55 @@
   }
 }
 
-\newcommand{\lossestables}{%
+\newcommand{\table@lossestables}{ % L1/S1
   \GT[Losses Tables]{lossestables}{<L1/S1> Loss modification for small stacks}
   \GTcontent{
     \begin{tabular}{l|*{8}{c|}c}
       \multicolumn{3}{l|}{\#\ND (\NDE ignored)}&0&1&2&3&4&5&\\\hline
       \#\LD&\LDE&2\LDE&1&1+\LDE&2&3&4/5&6&7: 1d10\\\hline
       Mod.&-3&-2\tu&-2&-1\td&-1\tu&-1&-\td&-\tu&-\tu\ if odd
-    \end{tabular} }
-  \GTlegend[east south,to eastpoint,font=\small]{
-    \textbf{Cap losses after mod.:}\\
-    Land: to size of enemy\\
-    Sea: to 2\textmultiply size of
-    enemy (1\ND if only \NDE). If routed, min. losses 1\ND.
-  }
-  \GTmorecontent{size}{north west}%
-  {\gtid main.south west}{0pt,-5ex}{%
-    \begin{tabular}{c||c|c||*{6}{c}|c}
-      -2	&\tu	&\tu	& \td	&1\tu	&2\tu	&3	&4	&4\td	& \#-2+\td \\\hline
-      -1/0 	&\tu	&\td	&1	& 2	&3	   &4	     &5	&6	& \#=6+ \\\hline
-      +1	&\tu	&\td	&1\tu	&2\tu	&3\td   &4\td   &6	&7	& \#+1 \\\hline
-      +2	&\td	&1	&1\td	&2\td&4\tu   &5\td   &7	&8	& \#+2 \\\hline
-      +3	&\td	&1\tu	&2	&3\tu&5       &7      &9	&10	& \#+4
     \end{tabular}
   }
-  \GTmoretitle{size}{<L2/S2> Loss Modification by Size}
-  % Push 8pt to the left instead of usual 2pt, because of title shape
-  \GTlegend[caption=captionsize,east south=sizetitle,xsize offset=-8pt,xoffset=8pt,xsize=(\gtid sizetitle.east)(\gtid caption.east)]{
-    % Lookup loss in line 0\textrightarrow line obtained by \emph{Size comparison}.
-    Reduce independently the \tu{} or \td{} and the full \GD.
-  }
-  \GTmorecontent{retreat}{north east}%
-  {\gtid captionsize.south east}{0pt,-4ex-2pt}{%
+}
+
+\newcommand{\table@@size}{ % L2/S2
+  \begin{tabular}{c||c|c||*{6}{c}|c}
+    -2 & \tu & \tu & \td & 1\tu & 2\tu & 3 & 4 & 4\td & \#-2+\td \\\hline
+    \bf-1/0 & \bf\tu & \bf\td & \bf1 & \bf2 & \bf3 & \bf4 & \bf5 & \bf6  & \bf >6 \\\hline
+    +1 & \tu & \td & 1\tu & 2\tu & 3\td & 4\td & 6 & 7 & \#+1 \\\hline
+    +2 & \td & 1 & 1\td & 2\td & 4\tu & 5\td & 7 & 8 & \#+2 \\\hline
+    +3 & \td & 1\tu & 2 & 3\tu & 5 & 7 & 9 & 11 & \#+5
+    \end{tabular}
+}
+\newcommand{\title@@size}{<L2/S2> Loss Modification by Size}
+
+\newcommand{\table@@retreat}{ % L3
     \begin{tabular}{c|cccc}
       1d10-M & 1--2  & 3--4  & 5--6 & 7--10 \\\hline
       Losses    & ---   & +\tu & +\td  & +1
     \end{tabular}
-  }
-  \GTmoretitle{retreat}{<L3> Retreat}
+}
+\newcommand{\title@@retreat}{<L3> Retreat}
 
+\make@only{lossestables}
+\make@@all{size}
+\make@@all{retreat}
+
+\newcommand{\lossestables}{%
+  \table@lossestables
+  \GTlegend[east south,to eastpoint,font=\small]{
+    \textbf{Cap losses after mod.:}\\
+    Land: to size\\
+    Sea: to 2\textmultiply size (1\ND if only \NDE). If routed,
+    min. losses 1\ND.
+  }
+  \more@@size{north west}{\gtid main.south west}{0pt,-5ex}
+  % Push 8pt to the left instead of usual 2pt, because of title shape
+  \GTlegend[caption=captionsize,east south=sizetitle,xsize offset=-8pt,xoffset=8pt,xsize=(\gtid sizetitle.east)(\gtid caption.east)]{
+    % Lookup loss in line 0\textrightarrow line obtained by \emph{Size comparison}.
+    Modify \textbf{both} the \tu{} or \td{} and the full \GD.
+  }
+  \more@@retreat{north east}{\gtid captionsize.south east}{0pt,-4ex-2pt}
   \GTlegend[caption=captionretreat,south west=retreat]{
     M=\Man of leader unless routed
   }
@@ -1754,18 +1867,14 @@
   \GT{landbattlesummary}{Land battle summary}
   \GTtextcontent[eastpoint,font=\small]{
     \tablenarrow{\vspace*{2ex}\\}
-    % \GTitem{1\up{st} day (Fire/Shock); discretionary retreat?; 2\up{nd} day ?; end battle}
-    % \GTitem{As soon as morale breaks, army routed: battle lost}
-    % \GTitem{End of 1\up{st} day: if one force crushed or if an army attempt and manage to retreat: battle lost.}
-    % \GTitem{Else force with higher morale wins at end of 2\up{nd} day (may be none)}
     \GTitem{Discretionary {\bf Retreat}: after 1\up{st} day (test)}
     \GTitem{{\bf Winner}: enemy force is eliminated or retreats after 1\up{st} day; or force with higher morale wins at end of 2\up{nd} day}
     \GTitem{Winner (may be none) rolls for \terme{Pursuit}}
     \GTitem{{\bf Modify losses} by stack size (and cap) on <L1> , then apply size comparison <L2/S2>}
     \GTitem{Any non-winning army then adds retreat losses <L3> [TBD ?]}
-    % \attritionRetraite
     \GTitem{In Europe, round to nearest integer loss}
-    \GTitem{{\bf Major defeat:} rout, loss difference at least 3\LD and losers had \ARMY}
+    \GTitem{{\bf Major defeat:} rout, loss difference at least 3\LD
+      and (in the \ROTW) losers had European \ARMY}
   }
   \GTtextdecorate
 }
@@ -1774,118 +1883,109 @@
 \newcommand{\seabattlesummary}{%
   \GT{seabattlesummary}{Sea battle summary}
   \GTtextcontent[eastpoint,font=\small]{
-    % \GTheader{Sea battle summary}
-    % \GTitem{First day: Fire, \terme{Wind advantage} allows to retreat, Boarding}
-    % \GTitem{Defender then Attacker are allowed to retreat, else 2\up{nd}  day}
-    % \GTitem{Battle stops: one morale breaks, or one retreat, or end  2\up{nd}  day.}
-    % \GTitem{Winner: only other fleet routed or retreat, or higher morale. Rolls for \terme{pursuit}.}
     \GTitem{Discretionary {\bf Retreat}: after Fire if \terme{Wind advantage}; after Boarding of 1\up{st} day:\tablenarrow{\\} Defender then Attacker may opt to retreat.}
     \GTitem{{\bf Winner}: only other fleet routed or retreat; or higher morale at end of 2\up{nd} day.}
     \GTitem{Winning force rolls for \terme{Pursuit} (may be none).}
-    % \GTitem{Compute size differential X in \DN (rounded down)}
-    % \GTitem{If the winner is larger, add X\tu{} to the losses (but it must not exceed half of the initial losses)}
     \GTitem{{\bf Modify losses}: see <S1> if stack size less than 6\ND;
       see <L2/S2> if more:
       line +1 if 7 to 12\DN; +2 if 13 to 18\DN; +3 if 19+\DN (ignore fractions).
-      % Muf ? On passe d'un nÃ©gatif (6ND) Ã  un positif (7ND) sans passer par
-      % la case zÃ©ro ?
-      % PB: Non puisque 6DN = pas de modification.
-      % \variationPertesMer
     }
-    % \GTitem{Cap losses to twice size (or 1\ND if \NDE alone). If routed: min. loss 1\ND}
-    % \GTitem{If routed, losses are at least 1\ND}
     \GTitem{{Winner:} 1st \ND\ lost  \terme{Damaged}, 2nd \terme{Destroyed} and 3rd refitted (then loop over).}
     \GTitem{{Loser (or equality.):} 1st \ND\ lost  \terme{Damaged}, 2nd \terme{Destroyed} and 3rd \terme{Damaged}.}
-    % \GTitem{Losses are split evenly in \terme{At port}, \terme{Damaged} and \terme{Destroyed}.}
-    % \GTitem{The remainder is given in priority in this order.}
-    % \GTitem{A \NGD that takes partial losses takes the highest level of those losses.}
-    % \GTitem{Integer {\bf losses split} evenly in \terme{Damaged}, \terme{Destroyed} and \terme{At port}, in units of \ND.}
     \GTitem{Fractions vs. \NGD or \NTD:  round up (vs. \ND: fractions in next loss category).}
     \GTitem{{\bf Pursuit} losses, each \textetoilex: capture (from \terme{Damaged} if any, or \NTD) 1\NWD, 2\NGD or 2\NTD (with corresponding transports points sunk if troops, or 10 \ducats captured and 5 \ducats sunk per \NTD if Gold.)}
     \GTitem{Routed or Loser: goes to next port.
-      % Others: may stay at sea, but no Invasion admitted.
-      % Muf ? Se faire intercepter, mÃªme si on gagne, suffit Ã  empÃªcher le
-      % dÃ©barquement ?
-      % PB, Non (fut mal ecrit) ; mais ne peut plus commencer un transport naval.
       Winner may follow and blockade.
       Fleets going to port: normal attrition roll.
       If Rout: one loss on \VGD.}\null
-    % \GTitem{Fleets going to port: normal attrition roll.}
-    \GTitem{{\bf Major defeat}: rout and loss difference at least 5\ND or 8\NGD}
-  }
-  \GTtextdecorate
-}
+    \GTitem{{\bf Major defeat}: rout and loss difference at least
+      5\NWD or 8\NGD} } \GTtextdecorate }
 
 % Page 7
 
-\newcommand{\assault}{
+\newcommand{\table@assault}{
   \GT{assault}{Assault Results}
   \GTcontent{
     \graytabular\begin{tabular}{c|clc|clc|cl|cl}
-      & \multicolumn{6}{c|}{\sc Besieged} &  \multicolumn{4}{c}{\sc Besieger}\\\ghline\hline\noalign{\global\countrow=0}
-      1d10 &  Fire &  &\terme{Breach} &  Shock &   & \terme{Breach} &
-      Fire & & Shock & \\\ghline\hline
+      & \multicolumn{6}{c|}{\sc Besieged} &  \multicolumn{4}{c}{\sc Besieger}\\\ghline
+      & \multicolumn{3}{c|}{Fire} & \multicolumn{3}{c|}{Shock}\\\ghline\hline\noalign{\global\countrow=0}
+      1d10 &  &  &\terme{Breach} &  &   & \terme{Breach} &
+      \multicolumn{2}{c|}{Fire} & \multicolumn{2}{c}{Shock} \\\ghline\hline
       \leq3 & --- &  & --- & --- &  & --- & --- &  & --- & \\\ghline
       4  & \tu &  & --- & \tu & & --- & \tu &  &  \tu & \\\ghline
       5  & \td & \textetoilex & --- & \td & \textetoilex & --- & \td &  & \td & \\\ghline
       6 & \td & \textetoilex & --- & 1 & \textetoilex &   & \td & & 1 & \\\ghline
       7 & 1 & \textetoilex & --- & 1\tu & \textetoilex & \tu & 1 & \textetoilex & 1\tu & \textetoilex \\\ghline
-      8 & 1\tu & \textetoilex\textetoilex & \tu  & 1\tu & \textetoilex\textetoilex & \td  & 1\tu & \textetoilex & 1\td & \textetoilex \\\ghline
+      8 & 1\tu & \textetoilex\textetoilex & \tu  & 1\td & \textetoilex\textetoilex & \td  & 1\tu & \textetoilex & 1\td & \textetoilex \\\ghline
       9 & 1\td& \textetoilex\textetoilex & \td  & 2 & \textetoilex\textetoilex & 1  & 1\tu & \textetoilex & 2 & \textetoilex\\\ghline
       10 & 2 & \textetoilex\textetoilex\textetoilex & 1 & 2 & \textetoilex\textetoilex\textetoilex & 1 & 2 & \textetoilex\textetoilex & 2  &  \textetoilex\textetoilex\\\ghline
       11 & 2 & \textetoilex\textetoilex &  1 & 2\tu & \textetoilex\textetoilex & 1\tu  & 2 & \textetoilex\textetoilex & 2\tu & \textetoilex\textetoilex \\\ghline
       \geq12 & 2\tu & \textetoilex\textetoilex\textetoilex & 1\tu & 2\td & \textetoilex\textetoilex\textetoilex & 1\td & 2\tu & \textetoilex\textetoilex & 2\td & \textetoilex\textetoilex \\\ghline
     \end{tabular}
   }
+}
+
+\newcommand{\assaultonly}{
+  \table@assault
+  \GTdecorate
+}
+
+\newcommand{\table@@resistance}{
+  \begin{tabular}{l*{6}{|c}}
+    Level & Fort & 1 & 2 & 3 & 4 & 5 \\\hline
+    Resistance & \td & 1 & 2 & 3 & 3 & 3 \\\hline
+    If \terme{Breach} & \tu & \td & \td & 1 & 1\tu & 1\td
+  \end{tabular}
+}
+\newcommand{\title@@resistance}{Fortresses Resistance}
+
+\make@@all{resistance}
+
+\newcommand{\assault}{
+  \table@assault
   \GTlegend[east north,yoffset=4ex,to eastpoint]{
-    \GTitem{One \terme{Fire}, one \terme{Shock}}
-    \GTitem{Any side routed during \terme{Fire} does not roll for \terme{Shock}}
-    \GTitem{A fortress is \terme{Veteran}; use a replacement leader if needed}
-    \GTitem{Fortress falls if the besieged has no more resistance or morale. Losses are first taken on the troops inside the fortress.}
-    \GTheader{Fire stage}
+    \GTitem{A fortress is always \terme{Veteran}.}
+    \GTitem{One \terme{Fire}, one \terme{Shock} (not for routed side).}
+%    \GTitem{Any side routed during \terme{Fire} does not roll for \terme{Shock}}
+    \GTitem{Fortress falls if the besieged has no more resistance or
+      morale.}
+    \GTitem{Losses are first taken on the troops inside the fortress.}
+    \GTheader{Fire (besieger) (besieged always use full Fire)}
     \begin{modlist}
     \item[\technologie{Medieval}] no \terme{Fire}
-    \item[\technologie{Renaissance}] only if \ARMY\ present or against \ROTW, no losses
+    \item[\technologie{Renaissance}] only if \ARMY\ present or against
+      \ROTW, only \textetoile
     \item[\technologie{Arquebus}] Divide losses by two (round to lesser \tu)
     \end{modlist}
-    \GTheader{Losses modifiers}
-    \textbf{Besieger size}\leq6\LD: -\tu\ or  \leq 4\LD: -\td; \textbf{no \ARMY}: -\td\ (cumulative); \textbf{One \ARMY\faceplus of}
-    \CAI\ or \POL (pI--II), \RUS (pI--III), \TUR \Janissaire (before M-1a , pI-III): +\td\par
-    Besieged: cap by 2\textmultiply resistance+\#\LD inside, then add \td\ if besieger is routed\par
   }
-  \GTlegend[caption=captiona,south west,xsize scale=0.5,xsize offset=-2pt,xsize=(\gtid main)]{
+  \GTlegend[caption=captiona,south west,xsize scale=1,xsize offset=-2pt,xsize=(\gtid main)]{
+    \GTheader{Losses modifiers}
+    \textbf{Besieged:} cap by 2\textmultiply res.+\#\LD; next  +\td\ if
+    besieger routed\par
+    \textbf{Besieger size (cumulative).} \leq 6\LD: -\tu; \leq 4\LD: -\tu;
+    \textbf{no \ARMY}: -\td;\par
+    \textbf{\ARMY\faceplus of} \CAI\ or \POL (pI--II), \RUS
+    (pI--III), \Janissaire (no M-1a , pI-III): +\td\par
+  }
+  \GTlegend[caption=captionb,south west=caption,xsize scale=0.3, xsize
+  offset=2pt, xsize=(\gtid main)(\gtid caption)]{
     \GTheader{Modifiers for the besieger}
     \begin{modlist}
     \item[+1] if besieged is \technologie{Medieval}
     \item[-1] if besieged is \technologie{Arquebus} or better
     \item[-N] level of the fortress, unless \terme{Breach}
-    \item[+?] Artillery bonus against fortress
-      % \item[+1] if at least 3 artillery against fortress level 1
-      % \item[+1/+2] if at least 4/6 artillery against fortress level 2
-      %   Muf ? Avec brÃ¨ches, une f2 est de fait plus simple Ã  prendre qu'une f1
-      %   (si on a les 6 canons).
-      %   PB: plus vrai avec nouvelle table
-      % \item[+1] if at least 5 artillery against fortress level 3
+    \item[+?] \terme{Artillery bonus} against fortress
     \end{modlist}
   }
-  \GTlegend[caption=captionb,south east,xsize scale=0.5,xsize offset=-2pt,xsize=(\gtid main)]{
-    \GTheader{Modifiers for all sides}
+  \GTlegend[caption=captionc,south east=caption,xsize scale=0.18,
+  xsize offset=2pt, xsize=(\gtid main)(\gtid caption), xoffset=5pt]{
+    \GTheader{Modifiers for both}
     \begin{modlist}
-    \item[+?] \terme{Fire} differential during Fire if \geq0
-    \item[+?] \terme{Shock} differential during Shock if \geq\rlap{0}
+    \item[+F/0] \terme{Fire} diff. if \geq 0
+    \item[0/+S] \terme{Shock} diff. if \geq 0
     \end{modlist}
   }
-
-  \GTmorecontent{fortresses}{north east}{\gtid caption.south east}{0pt,-2pt}%
-  {
-    \begin{tabular}{l*{6}{|c}}
-      Level & Fort & 1 & 2 & 3 & 4 & 5 \\\hline
-      Resistance & \td & 1 & 2 & 3 & 3 & 3 \\\hline
-      If \terme{Breach} & \tu & \td & \td & 1 & 1\tu & 1\td
-    \end{tabular}
-  }
-  \GTmoretitle{fortresses}{Fortresses Resistance}
-  \GTdecorate
+  \more@@resistance{north}{\gtid captionb.south}{50pt,-25pt}%
 }
 
 \newcommand{\artilleryvalue}{
@@ -1894,11 +1994,11 @@
   \GTcontent{
     \graytabular\begin{tabular}{l|ccccccc}
       Nation     &I&II&III&IV&V&VI&VII\\\ghline\hline
-      \VEN       &2&3&3&3&4&5&5\\\ghline
+      \VEN       &2&3&3& & & & \\\ghline
+      \HAB       & & & &4&4&5&6\\\ghline\hline
       \HOL       & & &4&4&5&5&5\\\ghline
-      \HAB       &2&2&3&4&4&5&6\\\ghline\hline
-      \POR       &2&3&3&3&4&5&5\\\ghline
-      \SUE       &2&2&3&4&4&5&5\\\ghline\hline
+      \POR       &2&3& & & & & \\\ghline
+      \SUE       & & &3&4&4&5&5\\\ghline\hline
       \SPA       &2&3&4&4&4&5&5\\\ghline\hline
       \FRA       &2&3&3&4&5&6&6\\\ghline\hline
       \ENG       &2&2&3&4&4&6&6\\\ghline\hline
@@ -1907,13 +2007,15 @@
       \RUS       &1&1&1&2&3&4&4\\\ghline
       ~\emph{Reformed}   &1&1&1&3&4&6&6\\\ghline\hline
       \POL       &1&2&3&3&4&4&4\\\ghline
-      \PRU       &2&2&3&3&4&6&6\\\ghline\hline
+      \PRU       & & & & & &6&6\\\ghline\hline
       \pays{USA} & & & & & &6&6\\\ghline\hline
-      % &\multicolumn{7}{c|}{Other countries (class)}\\\ghline\hline
-      \quad \CAI/\CAII &1&2&3&3&3&3&3\\\ghline
-      \quad\CAIIM/\CAIIIM&2&2&3&3&4&5&5\\\ghline
-      \quad \CAIII/\CAIV&2&2&3&3&4&5&5\\\ghline
-      \smash{\rlap{\tikz\node[scale=0.8,transform shape,rotate=90]{Other countries};}}\quad Asia \CAA  &1&1&1&1&1&2&2\\\ghline
+      \CAI/\CAII &1&2&3&3&3&3&3\\\ghline
+      \CAA  &1&1&1&1&1&2&2\\\ghline
+      Others &2&2&3&3&4&5&5\\\ghline
+      % \quad \CAI/\CAII &1&2&3&3&3&3&3\\\ghline
+      % \quad\CAIIM/\CAIIIM&2&2&3&3&4&5&5\\\ghline
+      % \quad \CAIII/\CAIV&2&2&3&3&4&5&5\\\ghline
+      % \smash{\rlap{\tikz\node[scale=0.8,transform shape,rotate=90]{Other countries};}}\quad \CAA  &1&1&1&1&1&2&2\\\ghline
     \end{tabular}}
   \GTlegend{
     \ARMY\facemoins: divide by two, round down.\\
@@ -1926,9 +2028,11 @@
   \GT{artillerybonus}{Artillery bonus against Fortresses}
   \GTcontent{
     \begin{tabular}{l|*{6}{l|}l}
-      F level & 0  & 1 & 2 & 3 & 4 & 5 & bonus \\ \hline
+      \fortress level & 0  & 1 & 2 & 3 & 4 & 5 & bonus \\ \hline
       & 1 & 1 & 2 & 4 & 5 & 6 & +1 \\
-      \raisebox{1ex}{\tikz[overlay]\node[anchor=north,draw,text centered,text width=7ex,transform shape,rotate=90,font=\small]{Artillery value \geq};}
+      \raisebox{1ex}{\tikz[overlay]\node[anchor=north,draw,text
+      centered,text width=7ex,transform
+      shape,rotate=90,font=\small,inner sep=2pt]{Artillery value \geq};}
       & 3 & 3 & 4 & 5 & 6 & 7 & +2 \\
       & 5 & 6 & 7 & 7 & 7 & 8 & +3 \\
     \end{tabular}
@@ -1948,11 +2052,11 @@
   \GTdecorate
 }
 
-\newcommand{\siege}{
-  \GT{siege}{Siegeworks}
+\newcommand{\table@undermining}{
+  \GT{undermining}{Undermining}
   \GTcontent{
     \graytabular\begin{tabular}{c|c}
-      1d10 & Result\\\ghline\hline
+      1d10+? & Result\\\ghline\hline
       \leq3& --- \\\ghline
       4--6   & \textbf{S}\facemoins\\\ghline
       7--9   & \textbf{S}\faceplus\\\ghline
@@ -1961,42 +2065,44 @@
       \geq13 & \textbf{R}\\\ghline
     \end{tabular}
   }
+}
+
+\newcommand{\underminingonly}{
+  \table@undermining
+  \GTdecorate
+}
+
+\newcommand{\undermining}{
+  \table@undermining
   \GTlegend[east north,yoffset=4ex,to eastpoint]{
     \GTheader{Siege impossible}
-    \GTitem{If \#\LD<Fortress level, before roll $\rightarrow$ forced redeployment}
+    \GTitem{If \#\LD<Fortress level, before roll \textrightarrow Siege
+    attrition}
     \GTheader{Siege results}
     \begin{modlist}
     \item[\textbf{S}] Put a \terme{Siegeworks} counter (2\facemoins=1\faceplus, max. 2 counters)
     \item[\textbf{B}] \terme{Breach}: the besieger may attempt an immediate assault
-    \item[\textbf{WH}] War Honor: fortress falls and besieged gains 1\LD
+    \item[\textbf{WH}] War Honour: fortress falls and besieged gains 1\LD
     \item[\textbf{R}] Rendition: the fortress falls, no survivors
     \end{modlist}
-    \GTitem{The falling fortress loses 2 levels (1 if 1\LD is given by the besieger)}
-    \GTitem{The minimum level is one, even if it is lower than the map}
+    \GTitem{A falling fortress loses 2 levels (1 if 1\LD is given by the besieger)}
+    \GTitem{In Europe, minimum level is 1 (even if lower than the map)}
   }
   \GTlegend[caption=captiona,south west,xsize scale=0.6,xsize offset=-2pt,xsize=(\gtid main)(\gtid caption)]{
     \GTheader{Siege modifiers}
     \begin{modlist}
     \item[-N] Fortress level
-      % \item[-1] Fort not port+rough or unblockaded port\xm{notabenea}
-      % \item[-2] ROTW not port+rough or unblockaded port\xm{notabeneb}
-      % \item[-3] Europe rough and unblockaded port\xm{notabenec}
-      % \item[-2] Europe rough or unblockaded port\xm{notabened}
     \item[-2] If port (plain, no blockade) or non-plain terrain
     \item[-3] Any other terrain with port (no blockade)
     \item[Exc.:] \ROTW= terrain does not count if port
     \item[Exc.:] fort= terrain or port: -1 only
     \item[+2] \terme{Breach} during this turn
     \item[+1/+3] Per \terme{Siegeworks}\facemoins/\faceplus
-    \item[-S] Siege value of one besieged leader ([BLP] land or naval)
-    \item[+S] Siege value of one besieger leader ([BLP] land or naval)
+    \item[-S] Siege value of one besieged leader % ([BLP] land or naval)
+    \item[+S] Siege value of one besieger/blockading leader
+      % ([BLP] land or naval)
     \item[+1/+3] If at least one \LD/\ARMY in the fortress
     \item[+?] Artillery bonus against fortress
-      % \item[+1] If \#Artillery>Fortress level
-      % \item[+1] If \#Artillery\geq 2\textmultiply Fortress level (cumulative)
-      %   Muf ? Quel est le niveau d'un fort vis-Ã -vis du nombre de canons pour
-      %   ces bonus ?
-      %   PB: question caduque avec tableau
     \end{modlist}
   }
   \GTlegend[caption=captionb,south east=caption,xsize scale=0.4,xsize offset=-2pt,xsize=(\gtid main)(\gtid caption)]{
@@ -2045,7 +2151,7 @@
   \item[-?] \#\LD inside the fortress
   \item[-3] If not in plain
   \item[-2] If counter is \faceplus
-  \item[+E] Against revolts in \FRA during \rlap{\xeventref{pIII:FWR}{III-D}}
+  \item[+E] Event specific modifier that may apply
   \end{modlist}
 }
 
@@ -2396,14 +2502,22 @@
     \tablenarrow{\vspace*{2ex}\\}
     \GTitem{Minor monarch ransom is 50\ducats \textbf{or} bonus to peace
       proposal \textbf{or} allowing separate peace.}
-    \GTitem{1 proposal per alliance, plus separate peace to minors either at war by event or with at least 1 province occupied (by or on the minor).}
-    \GTitem{No separate peace against \VASSAL or \ANNEXION unless either Capital occupied or monarch captured (instead of ransom).}
-    \GTitem{Minors always accept global white peace in \terme{Overseas wars}.}
+    \GTitem{1 proposal per alliance, plus separate peace to minors
+      either at war by event or with at least 1 province occupied (by
+      or on the minor).}
+    \GTitem{No separate peace against \VASSAL or \ANNEXION unless
+      either Capital occupied or monarch captured (instead of
+      ransom).}
+    \GTitem{Minors always accept global white peace in \terme{Overseas
+        wars}.}
     \GTitem{Maximum indemnity is 4 times total provinces income.}
     \GTitem{Forced diplomacy: 1 cond. for \RM, 2 for \MA and 3 for \VASSAL.}
-    \GTitem{Minor always accept unconditional victory if either attacking by event or global peace.}
-    \GTitem{If all provinces are occupied, mandatory unconditional surrender against \textbf{all} opponents.}
-    \GTitem{Goes to \Neutral after unconditional surrender (only).}
+    \GTitem{Minor always accept unconditional victory if either
+      attacking by event or global peace.}
+    \GTitem{If all provinces are occupied, mandatory unconditional
+      surrender against \textbf{all} opponents simultaneously.}
+    \GTitem{Goes to \Neutral after unconditional surrender or if
+      allies \textbf{choses} to give minor territory.}
   }
   \GTtextdecorate
 }
@@ -2434,12 +2548,18 @@
   \GTtextcontent[eastpoint]{
     \tablenarrow{\vspace*{2ex}\\}
     \GTitem{Always: \terme{Peace level} = \terme{Peace differential}}
-    \GTitem{If \terme{differential} $\leq 2$: \terme{Peace level} $-1, 0$ or $1$ is allowed.}
-    \GTitem{If capital and half national provinces are conquered: Unconditional peace is allowed (also as separate peace).}
-    \GTitem{\terme{Mandatory peace} if two consecutive turns at $-3$ \STAB (\textbf{after} \STAB improvement); \textbf{must propose} a white or losing peace based on differential (another peace may be signed, if allowed). If this is a separate peace, no \CB to former allies.}
-  }
-  \GTtextdecorate
-}
+    \GTitem{If \terme{differential} $\leq 2$: \terme{Peace level} $-1,
+      0$ or $1$ is allowed.}
+    \GTitem{If capital and half national provinces are conquered:
+      Unconditional peace is allowed (also as separate peace).}
+
+    \GTitem{\terme{Mandatory peace} if two consecutive turns at $-3$
+      \STAB (\textbf{after} \STAB improvement); \textbf{must propose}
+      a peace based on differential (another peace may be signed, if
+      allowed). If this is a separate peace, no \CB to former
+      allies. If this is a loosing peace of level 4 or 5, it must be
+      accepted.}
+  } \GTtextdecorate }
 
 
 
@@ -2592,6 +2712,15 @@
   \GTitem{\terme{#1} never cause activation of natives.}
 }
 
+\makeatother
+
+% Local Variables:
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: flyspell
+% ispell-local-dictionary: "british"
+% End:
 
 % LocalWords:  Condottieri monarchduration Surv Succ xsize Reroll pIII
 % LocalWords:  reroll monarchvalue FWR endogamy monarchmilitary swpa
