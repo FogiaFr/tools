@@ -1512,12 +1512,14 @@ public class TablesGenerator {
      * @throws IOException if the writer fails.
      */
     private static void addArmyArtilleryLine(Writer sqlWriter, String country, String armyClass, String period, int artillery) throws IOException {
-        sqlWriter.append("INSERT INTO T_ARMY_ARTILLERY (R_COUNTRY, CLASS, PERIOD, ARTILLERY)\n" +
-                "    VALUES (")
-                .append(stringToString(country)).append(", ")
-                .append(stringToString(armyClass)).append(", ")
-                .append(stringToString(period)).append(", ")
-                .append(integerToInteger(artillery)).append(");\n");
+        if (artillery > 0) {
+            sqlWriter.append("INSERT INTO T_ARMY_ARTILLERY (R_COUNTRY, CLASS, PERIOD, ARTILLERY)\n" +
+                    "    VALUES (")
+                    .append(stringToString(country)).append(", ")
+                    .append(stringToString(armyClass)).append(", ")
+                    .append(stringToString(period)).append(", ")
+                    .append(integerToInteger(artillery)).append(");\n");
+        }
     }
 
     /**
