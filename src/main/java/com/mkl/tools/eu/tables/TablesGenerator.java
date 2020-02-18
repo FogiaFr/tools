@@ -136,6 +136,12 @@ public class TablesGenerator {
                 .append("ALTER TABLE T_EXCHEQUER AUTO_INCREMENT = 1;\n")
                 .append("DELETE FROM T_LEADER;\n")
                 .append("ALTER TABLE T_LEADER AUTO_INCREMENT = 1;\n")
+                .append("DELETE FROM T_DISCOVERY;\n")
+                .append("ALTER TABLE T_DISCOVERY AUTO_INCREMENT = 1;\n")
+                .append("DELETE FROM T_ATTRITION_LAND_EUROPE;\n")
+                .append("ALTER TABLE T_ATTRITION_LAND_EUROPE AUTO_INCREMENT = 1;\n")
+                .append("DELETE FROM T_ATTRITION_OTHER;\n")
+                .append("ALTER TABLE T_ATTRITION_OTHER AUTO_INCREMENT = 1;\n")
                 .append("\n");
 
         computeCountryTables(sqlWriter);
@@ -785,6 +791,8 @@ public class TablesGenerator {
                 computeExchequer(line, sqlWriter);
             } else if (StringUtils.equals("leader", type)) {
                 computeReplacementLeader(line, sqlWriter);
+            } else if (StringUtils.equals("attrition", type)) {
+                computeDiscoveryAttrition(line, sqlWriter);
             }
         }
     }
@@ -847,6 +855,10 @@ public class TablesGenerator {
         m = Pattern.compile("\\\\newcommand\\{\\\\replacement\\}\\{").matcher(line);
         if (m.matches()) {
             type = "leader";
+        }
+        m = Pattern.compile("\\\\newcommand\\{\\\\table@discoveriesattrition\\}\\{").matcher(line);
+        if (m.matches()) {
+            type = "attrition";
         }
         if (line.equals("}")) {
             type = null;
@@ -1617,6 +1629,125 @@ public class TablesGenerator {
                 .append(integerToInteger(prestige)).append(", ")
                 .append(integerToInteger(nationalLoan)).append(", ")
                 .append(integerToInteger(internationalLoan)).append(");\n");
+    }
+
+    /**
+     * Creates the discovery/attrition table insertion for this line.
+     *
+     * @param line      the line to compute.
+     * @param sqlWriter the writer with all database instructions.
+     * @throws IOException if the writer fails.
+     */
+    private static void computeDiscoveryAttrition(String line, Writer sqlWriter) throws IOException {
+        Matcher m = Pattern.compile("[^\\d]*([\\d]+)\\s*&\\s*([^&]*)\\s*&\\s*([^&]*)\\s*&\\s*(\\d+)\\\\%\\s*&\\s*([^&]*)\\s*&\\s*([^&]*)\\s*&\\s*([^&]*)\\s*&\\s*([^&]*)\\s*\\\\\\\\\\\\ghline").matcher(line);
+        if (m.matches()) {
+            int dice = Integer.parseInt(m.group(1));
+            String resultSea = m.group(2);
+            String resultLand = m.group(3);
+            int percentage = Integer.parseInt(m.group(4));
+            String result1 = m.group(5);
+            String result2 = m.group(6);
+            String result35 = m.group(7);
+            String result6 = m.group(8);
+            addDiscoveryLine(sqlWriter, dice, true, getResult(resultLand), isCheckLeader(resultLand), isCheckLeaderNoTroops(resultLand));
+            addDiscoveryLine(sqlWriter, dice, false, getResult(resultSea), isCheckLeader(resultSea), isCheckLeaderNoTroops(resultSea));
+            addAttritionOtherLine(sqlWriter, dice, percentage);
+            addAttritionLandEuropeLine(sqlWriter, dice, 1, 2, getLoss(result1), isPillage(result1));
+            addAttritionLandEuropeLine(sqlWriter, dice, 2, 3, getLoss(result2), isPillage(result2));
+            addAttritionLandEuropeLine(sqlWriter, dice, 3, 6, getLoss(result35), isPillage(result35));
+            addAttritionLandEuropeLine(sqlWriter, dice, 6, null, getLoss(result6), isPillage(result6));
+        }
+    }
+
+    private static String getResult(String result) {
+        if (result.startsWith("S")) {
+            return "SUCCESS";
+        } else if (result.startsWith("F")) {
+            return "FAILED";
+        } else if (result.contains("\\undemi")) {
+            return "AVERAGE";
+        }
+        LOGGER.error("Result type unknown : " + result);
+        return null;
+    }
+
+    private static boolean isCheckLeader(String result) {
+        return result.contains("\\xxa");
+    }
+
+    private static boolean isCheckLeaderNoTroops(String result) {
+        return result.contains("\\xxc");
+    }
+
+    private static Integer getLoss(String result) {
+        Integer loss = null;
+
+        if (StringUtils.isNotEmpty(result) && NumberUtils.isNumber(result.substring(0, 1))) {
+            loss = Integer.parseInt(result.substring(0, 1));
+        }
+
+        return loss;
+    }
+
+    private static boolean isPillage(String result) {
+        return result.contains("P");
+    }
+
+    /**
+     * Creates an insert for a discovery.
+     *
+     * @param sqlWriter           where to write the db instructions.
+     * @param land                flag saying if it is land or naval.
+     * @param dice                result of the modified dice.
+     * @param result              result of the discovery.
+     * @param checkLeader         flag saying if the leader should check death.
+     * @param checkLeaderNoTroops flag saying if a leader without troops should check death.
+     * @throws IOException if the writer fails.
+     */
+    private static void addDiscoveryLine(Writer sqlWriter, int dice, boolean land, String result, boolean checkLeader, boolean checkLeaderNoTroops) throws IOException {
+        sqlWriter.append("INSERT INTO T_DISCOVERY (DICE, LAND, RESULT, CHECKLEADER, CHECKLEADERNOTROOPS)\n" +
+                "    VALUES (")
+                .append(integerToInteger(dice)).append(", ")
+                .append(booleanToBit(land)).append(", ")
+                .append(stringToString(result)).append(", ")
+                .append(booleanToBit(checkLeader)).append(", ")
+                .append(booleanToBit(checkLeaderNoTroops)).append(");\n");
+    }
+
+    /**
+     * Creates an insert for an attrition naval or rotw.
+     *
+     * @param sqlWriter      where to write the db instructions.
+     * @param dice           result of the modified dice.
+     * @param lossPercentage percentage of loss due to the attrition.
+     * @throws IOException if the writer fails.
+     */
+    private static void addAttritionOtherLine(Writer sqlWriter, int dice, Integer lossPercentage) throws IOException {
+        sqlWriter.append("INSERT INTO T_ATTRITION_OTHER (DICE, LOSSPERCENTAGE)\n" +
+                "    VALUES (")
+                .append(integerToInteger(dice)).append(", ")
+                .append(integerToInteger(lossPercentage)).append(");\n");
+    }
+
+    /**
+     * Creates an insert for an attrition land in Europe.
+     *
+     * @param sqlWriter where to write the db instructions.
+     * @param min       minimum number of LD for land attrition in Europe.
+     * @param max       maximum number of LD for land attrition in Europe.
+     * @param dice      result of the modified dice.
+     * @param loss      LD loss due to the attrition.
+     * @param pillage   pillage due to the attrition.
+     * @throws IOException if the writer fails.
+     */
+    private static void addAttritionLandEuropeLine(Writer sqlWriter, int dice, Integer min, Integer max, Integer loss, boolean pillage) throws IOException {
+        sqlWriter.append("INSERT INTO T_ATTRITION_LAND_EUROPE (DICE, MINSIZE, MAXSIZE, LOSS, PILLAGE)\n" +
+                "    VALUES (")
+                .append(integerToInteger(dice)).append(", ")
+                .append(integerToInteger(min)).append(", ")
+                .append(integerToInteger(max)).append(", ")
+                .append(integerToInteger(loss)).append(", ")
+                .append(booleanToBit(pillage)).append(");\n");
     }
 
     /**
